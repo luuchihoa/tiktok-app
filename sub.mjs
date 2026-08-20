@@ -60,14 +60,10 @@ const subFile = async (filePath, fileName, folder) => {
 };
 
 const processVideo = async (fullPath, entry, directory) => {
-  if (
-    !fullPath.endsWith(".mp4") &&
-    !fullPath.endsWith(".webm") &&
-    !fullPath.endsWith(".mkv") &&
-    !fullPath.endsWith(".mov") &&
-    !fullPath.endsWith(".mp3") &&
-    !fullPath.endsWith(".wav")
-  ) {
+  const ext = path.extname(fullPath).toLowerCase();
+  const allowed = [".mp4", ".webm", ".mkv", ".mov", ".mp3", ".wav", ".m4a", ".aac"];
+  if (!allowed.includes(ext)) {
+    console.warn("Unsupported audio/video extension:", ext);
     return;
   }
 
@@ -87,23 +83,27 @@ const processVideo = async (fullPath, entry, directory) => {
 
   console.log("Processing file", fullPath);
 
-  let tempWavFileName = entry.replace(/\.(mp4|mkv|mov|webm|mp3)$/, ".wav");
+  const baseName = path.basename(entry, path.extname(entry));
+  const tempWavFileName = `${baseName}_temp_${Date.now()}.wav`;
   const tempWavFilePath = path.join(process.cwd(), tempWavFileName);
 
-  if (!fullPath.endsWith(".wav")) {
-    console.log("Extracting audio from file", entry);
-    extractToTempAudioFile(fullPath, tempWavFilePath);
-  }
+  try {
+    if (ext !== ".wav") {
+      console.log("Extracting audio from file", entry);
+      extractToTempAudioFile(fullPath, tempWavFilePath);
+    }
 
-  await subFile(
-    fullPath.endsWith(".wav") ? fullPath : tempWavFilePath,
-    entry,
-    directory
-  );
-
-  if (!fullPath.endsWith(".wav")) {
-    // Use unlinkSync instead of shell `rm` to avoid path injection
-    unlinkSync(tempWavFilePath);
+    await subFile(
+      ext === ".wav" ? fullPath : tempWavFilePath,
+      entry,
+      directory
+    );
+  } finally {
+    if (ext !== ".wav" && existsSync(tempWavFilePath)) {
+      try {
+        unlinkSync(tempWavFilePath);
+      } catch (_) {}
+    }
   }
 };
 

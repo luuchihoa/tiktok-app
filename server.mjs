@@ -659,6 +659,19 @@ app.get("/api/project-by-ref", (req, res) => {
   }
 });
 
+// ── POST /api/subtitles/clear ────────────────────────────────────────────────
+app.post("/api/subtitles/clear", (_req, res) => {
+  try {
+    const currentSubPath = path.join(__dirname, "public", "subs", "current_subtitles.json");
+    fs.writeFileSync(currentSubPath, "[]", "utf-8");
+    res.json({ success: true, message: "Đã làm sạch phụ đề trên server" });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+let currentSubtitleProcess = null;
+
 // ── GET /api/create-subtitles/status ─────────────────────────────────────────
 app.get("/api/create-subtitles/status", (_req, res) => {
   res.json({ success: true, job: publicSubtitleJob() });
@@ -666,7 +679,7 @@ app.get("/api/create-subtitles/status", (_req, res) => {
 
 // ── POST /api/create-subtitles ────────────────────────────────────────────────
 app.post("/api/create-subtitles", (req, res) => {
-  let audioFile = String(req.body.audioFile || "audio.mp3");
+  let audioFile = String(req.body.audioFile || "current_audio.mp3");
   if (audioFile.startsWith("http")) {
     audioFile = path.basename(audioFile);
   }
@@ -682,16 +695,23 @@ app.post("/api/create-subtitles", (req, res) => {
     return res.status(400).json({ success: false, error: "Audio file not found on server" });
   }
 
+  const force = req.body.force === true;
   if (subtitleJob.status === "running") {
-    return res.status(409).json({
-      success: false,
-      error: "Phụ đề đang được tạo. Vui lòng chờ tác vụ hiện tại hoàn tất.",
-      job: publicSubtitleJob(),
-    });
+    if (force && currentSubtitleProcess) {
+      console.log("[Whisper] Force killing previous running subtitle process...");
+      try {
+        currentSubtitleProcess.kill("SIGTERM");
+      } catch (_) {}
+    } else {
+      return res.status(409).json({
+        success: false,
+        error: "Phụ đề đang được tạo. Vui lòng chờ tác vụ hiện tại hoàn tất.",
+        job: publicSubtitleJob(),
+      });
+    }
   }
 
   console.log("Generating subtitles for:", audioFile);
-  const force = req.body.force === true;
   subtitleJob = {
     status: "running",
     message: "Đang khởi động Whisper AI. Lần chạy đầu có thể mất vài phút để chuẩn bị mô hình.",
@@ -705,8 +725,9 @@ app.post("/api/create-subtitles", (req, res) => {
   const child = execFile(
     "node",
     ["sub.mjs", resolvedAudioPath, ...(force ? ["--force"] : [])],
-    { cwd: __dirname },
+    { cwd: __dirname, timeout: 600000, maxBuffer: 10 * 1024 * 1024 },
     (error, stdout, stderr) => {
+      currentSubtitleProcess = null;
       if (error) {
         console.error("Whisper error:", stderr);
         subtitleJob = {
@@ -737,7 +758,10 @@ app.post("/api/create-subtitles", (req, res) => {
     }
   );
 
+  currentSubtitleProcess = child;
+
   child.on("error", (error) => {
+    currentSubtitleProcess = null;
     subtitleJob = {
       ...subtitleJob,
       status: "failed",

@@ -1079,38 +1079,38 @@
             document.getElementById('image-filename').innerText = '✅ Đã nạp ảnh mới: ' + json.filename;
           } else if (fileType === 'audio') {
             currentData.audioFile = json.filename;
-            document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename;
+            if (document.getElementById('audio-filename')) {
+              document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename;
+            }
 
-            // ── SUBTITLE MIGRATION ON NEW AUDIO UPLOAD ───────────
-            const newJsonName = 'current_subtitles.json';
-            loadedJsonName = newJsonName;
-            
+            // Prompt user about subtitles for this newly uploaded audio
             if (currentSubtitles && currentSubtitles.length > 0) {
-              try {
-                localStorage.setItem('catholic_studio_subs_last_backup', JSON.stringify(currentSubtitles));
-                localStorage.setItem('catholic_studio_subs_' + newJsonName, JSON.stringify(currentSubtitles));
-              } catch(e) {}
+              const runAI = await showConfirmModal({
+                icon: '🎙️',
+                title: 'Đã Nạp Audio Mới — Xử Lý Phụ Đề?',
+                message: `Bạn vừa tải bài đọc mới (${file.name}). Bạn có muốn AI nghe và tự động sinh phụ đề mới khớp với audio này không?`,
+                cancelText: '📋 Giữ Phụ Đề Cũ',
+                okText: '⚡ Sinh Phụ Đề AI Mới',
+                okClass: 'bg-indigo-600 hover:bg-indigo-500 text-white'
+              });
 
-              try {
-                await fetch('/api/subtitles', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    jsonName: newJsonName,
-                    subtitles: currentSubtitles
-                  })
-                });
-              } catch (err) {
-                console.warn('Auto-save migrated subtitles failed:', err);
+              if (runAI) {
+                setTimeout(() => generateSubtitles(), 300);
+              } else {
+                showToast('📋 Giữ Lại Phụ Đề', 'Đang giữ lại danh sách phụ đề hiện có cho video.', 'info');
               }
-
-              showToast(
-                '📋 Đã giữ lại phụ đề hiện tại',
-                'Đã tự động kế thừa & lưu phụ đề cho Audio mới',
-                'success'
-              );
             } else {
-              loadSubtitles();
+              const runAI = await showConfirmModal({
+                icon: '⚡',
+                title: 'Sinh Phụ Đề AI Cho Audio Mới?',
+                message: `Đã nạp file âm thanh ${file.name}. Bạn có muốn AI tự động sinh phụ đề ngay bây giờ không?`,
+                cancelText: 'Để Sau',
+                okText: '⚡ Sinh Phụ Đề Ngay',
+                okClass: 'bg-indigo-600 hover:bg-indigo-500 text-white'
+              });
+              if (runAI) {
+                setTimeout(() => generateSubtitles(), 300);
+              }
             }
           } else if (fileType === 'logo') {
             currentData.logoFile = json.filename;
