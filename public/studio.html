@@ -35,29 +35,26 @@
       </div>
     </div>
     <div class="flex gap-2.5 items-center">
-      <!-- PROJECT BACKUP / RESTORE BUTTONS (OPTION 1) -->
-      <button onclick="exportProject()" title="Xuất file phụ đề .srt chuẩn chỉnh để edit bằng CapCut/Premiere" class="bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 font-bold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-        <span>📥 1-Click Tải Phụ Đề (.srt)</span>
+      <!-- PROJECT BACKUP / RESTORE BUTTONS -->
+      <button onclick="exportProject()" title="Xuất file phụ đề .srt để dùng cho CapCut / Premiere" class="bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 font-bold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+        <span>📥 Tải SRT</span>
       </button>
       <button onclick="importProject()" title="Nạp file phụ đề .srt hoặc file dự án .json" class="bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 font-bold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-        <span>📤 1-Click Mở Phụ Đề (.srt/.json)</span>
+        <span>📂 Nạp File</span>
       </button>
-      <button onclick="resetStudioCache()" title="Xóa toàn bộ cache/nháp cũ trong trình duyệt và tải lại dữ liệu mới từ server" class="bg-zinc-700/50 hover:bg-zinc-600/60 text-zinc-300 border border-zinc-600/40 font-bold text-xs px-3 py-2.5 rounded-xl transition flex items-center gap-1.5">
-        <span>🧹 Reset</span>
+      <button onclick="resetStudioCache()" title="Xóa cache và làm mới dữ liệu" class="bg-zinc-700/50 hover:bg-zinc-600/60 text-zinc-300 border border-zinc-600/40 font-bold text-xs px-3 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+        <span>🔄 Đặt lại</span>
       </button>
 
       <div class="h-6 w-px bg-zinc-800 mx-1"></div>
 
-      <button onclick="generateSubtitles()" id="btn-sub" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2">
-        <span>⚡ 1-Click Sinh Phụ Đề AI</span>
+      <button onclick="generateSubtitles()" id="btn-sub" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2 cursor-pointer">
+        <span>⚡ Sinh Phụ Đề AI</span>
       </button>
 
-      <div class="flex flex-col items-end">
-        <button onclick="renderVideo()" id="btn-render" class="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-5 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/25 flex items-center gap-2 cursor-pointer">
-          <span>🎬 Xuất Video MP4 (15s Siêu Tốc)</span>
-        </button>
-        <span class="text-[9px] text-amber-400/80 font-mono pt-0.5">Apple Silicon • 15M Bitrate • BT.709</span>
-      </div>
+      <button onclick="renderVideo()" id="btn-render" class="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-5 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/25 flex items-center gap-2 cursor-pointer">
+        <span>🎬 Xuất Video MP4</span>
+      </button>
     </div>
   </header>
 
@@ -263,8 +260,8 @@
             <span>📖 4. Chỉnh Sửa Phụ Đề & Timeline</span>
           </label>
           <div class="flex items-center gap-1.5">
-            <button onclick="restoreLastSubtitleBackup()" class="text-[10px] bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-lg transition font-semibold flex items-center gap-1" title="Khôi phục bản phụ đề trước đó nếu lỡ tay làm mất">
-              <span>🔄 Khôi Phục Phụ Đề Cũ</span>
+            <button onclick="restoreLastSubtitleBackup()" class="text-[10px] bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-lg transition font-semibold flex items-center gap-1 cursor-pointer" title="Khôi phục bản phụ đề trước đó nếu lỡ tay làm mất">
+              <span>↩ Khôi Phục</span>
             </button>
           </div>
         </div>
@@ -282,7 +279,7 @@
 
         <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-2">
           <div class="mb-1 flex items-center justify-between text-[10px] text-zinc-500">
-            <span>Timeline — bấm đoạn để tập trung chỉnh sửa</span>
+            <span>Timeline</span>
             <span id="subtitle-active-time" class="font-mono text-amber-300">Chưa chọn</span>
           </div>
           <div id="subtitle-timeline" class="flex h-9 items-stretch gap-px overflow-x-auto rounded-md bg-black/50 p-1" aria-label="Timeline phụ đề"></div>
@@ -291,11 +288,11 @@
 
 
         <div id="sub-list-container" class="space-y-2 max-h-[62vh] overflow-y-auto p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800">
-          <p class="text-xs text-zinc-500 italic text-center py-4">Bấm "Tải Phụ Đề" hoặc "1-Click Sinh Phụ Đề AI" để xem, sửa chữ, sửa mốc thời gian và thêm/xóa phụ đề.</p>
+          <p class="text-xs text-zinc-500 italic text-center py-4">Bấm "Sinh Phụ Đề AI" để tạo và chỉnh sửa mốc thời gian.</p>
         </div>
 
-        <button id="btn-save-subs" onclick="saveSubtitles()" class="hidden sticky bottom-0 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2">
-          <span>💾 Lưu Chỉnh Sửa Phụ Đề & Thời Gian</span><span class="opacity-70 font-normal">⌘/Ctrl + Enter</span>
+        <button id="btn-save-subs" onclick="saveSubtitles()" class="hidden sticky bottom-0 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+          <span>💾 Lưu Phụ Đề</span><span class="opacity-70 font-normal">⌘+Enter</span>
         </button>
       </div>
 
@@ -756,11 +753,11 @@
           const formatToolbar = document.createElement('div');
           formatToolbar.className = 'flex items-center justify-between gap-1 text-[10px] font-semibold text-zinc-400 bg-zinc-950/40 px-2 py-1 rounded-md border border-zinc-800/40';
           formatToolbar.innerHTML = `
-            <span class="text-zinc-500">Bôi đen từ để định dạng:</span>
+            <span class="text-zinc-500">Định dạng chữ:</span>
             <div class="flex items-center gap-1">
-              <button type="button" class="fmt-gold bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded">✨ Tô Vàng (*)</button>
-              <button type="button" class="fmt-bracket bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded"><b>Tự Nổi ([])</b></button>
-              <button type="button" class="fmt-clear bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-1.5 py-0.5 rounded">🧹 Clear</button>
+              <button type="button" class="fmt-gold bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded cursor-pointer">✨ Vàng (*)</button>
+              <button type="button" class="fmt-bracket bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded cursor-pointer">🔲 Khung ([])</button>
+              <button type="button" class="fmt-clear bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-2 py-0.5 rounded cursor-pointer">✕ Xóa</button>
             </div>
           `;
           formatToolbar.querySelector('.fmt-gold').addEventListener('click', (e) => { e.stopPropagation(); formatSubSelection(idx, 'gold'); });
