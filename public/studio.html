@@ -1079,8 +1079,11 @@
             document.getElementById('image-filename').innerText = '✅ Đã nạp ảnh mới: ' + json.filename;
           } else if (fileType === 'audio') {
             currentData.audioFile = json.filename;
+            if (json.durationSeconds) {
+              currentData.audioDurationSeconds = json.durationSeconds;
+            }
             if (document.getElementById('audio-filename')) {
-              document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename;
+              document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename + (json.durationSeconds ? ` (${json.durationSeconds}s)` : '');
             }
 
             // Prompt user about subtitles for this newly uploaded audio

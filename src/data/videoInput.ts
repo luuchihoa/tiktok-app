@@ -10,6 +10,7 @@ export const VideoInputSchema = z.object({
   bibleRef: z.string().describe("Trích đoạn Kinh Thánh (VD: 1 Ga 4,7-16)"),
   quote: z.string().describe("Câu trích dẫn ngắn (Quote)"),
   audioFile: z.string().describe("File âm thanh bài đọc trong public/ (VD: audio.mp3)"),
+  audioDurationSeconds: z.number().optional().describe("Thời lượng âm thanh tính bằng giây"),
   introAudioFile: z.string().optional().default("piano_intro.mp3").describe("File nhạc dạo vào (.mp3)"),
   outroAudioFile: z.string().optional().default("piano_outro.mp3").describe("File nhạc dạo ra (.mp3)"),
   imageFile: z.string().default("cross.jpg").describe("File ảnh trung tâm trong public/ (VD: cross.jpg)"),

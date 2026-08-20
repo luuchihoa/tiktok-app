@@ -156,8 +156,30 @@ app.post("/api/upload-file", handleUpload, (req, res) => {
   fs.writeFileSync(destPath, req.file.buffer);
   const fileUrl = `http://localhost:${PORT}/${finalName}`;
   console.log(`[UPLOAD] Saved (overwrite): ${finalName}`);
-  res.json({ success: true, filename: finalName, url: fileUrl });
+
+  let durationSeconds = null;
+  if (fileType === "audio" || isAudio) {
+    durationSeconds = getExactAudioDuration(destPath);
+    console.log(`[UPLOAD] Measured exact audio duration: ${durationSeconds}s`);
+  }
+
+  res.json({ success: true, filename: finalName, url: fileUrl, durationSeconds });
 });
+
+function getExactAudioDuration(filePath) {
+  try {
+    if (!fs.existsSync(filePath)) return null;
+    const output = execSync(
+      `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${filePath}"`,
+      { timeout: 5000 }
+    ).toString().trim();
+    const dur = parseFloat(output);
+    return isFinite(dur) && dur > 0 ? parseFloat(dur.toFixed(2)) : null;
+  } catch (e) {
+    console.warn("[ffprobe] Could not get audio duration:", e.message);
+    return null;
+  }
+}
 
 // ── Regular middleware ────────────────────────────────────────────────────────
 app.use(express.json({ limit: "4mb" }));
@@ -349,10 +371,18 @@ app.post("/api/data", (req, res) => {
     return path.basename(val);
   };
 
+  const cleanAudioName = sanitizeFilename(req.body.audioFile) || "current_audio.mp3";
+  let audioDuration = req.body.audioDurationSeconds;
+  const audioFilePath = path.join(__dirname, "public", cleanAudioName);
+  if ((!audioDuration || audioDuration <= 0) && fs.existsSync(audioFilePath)) {
+    audioDuration = getExactAudioDuration(audioFilePath) || undefined;
+  }
+
   const sanitizedBody = {
     ...req.body,
     imageFile: sanitizeFilename(req.body.imageFile) || "cross.jpg",
-    audioFile: sanitizeFilename(req.body.audioFile) || "current_audio.mp3",
+    audioFile: cleanAudioName,
+    audioDurationSeconds: audioDuration,
     bgImageFile: req.body.bgImageFile ? sanitizeFilename(req.body.bgImageFile) : undefined,
     logoFile: req.body.logoFile ? sanitizeFilename(req.body.logoFile) : "logo.png",
     introAudioFile: req.body.introAudioFile ? sanitizeFilename(req.body.introAudioFile) : "piano_intro.mp3",

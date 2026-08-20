@@ -21,36 +21,36 @@ export const RemotionRoot: React.FC = () => {
         }}
         calculateMetadata={async ({ props }) => {
           const typedProps = props as VideoInput;
-          const rawAudioStr = typedProps?.audioFile || "audio.mp3";
+          if (typedProps?.audioDurationSeconds && typedProps.audioDurationSeconds > 0) {
+            return {
+              durationInFrames: Math.ceil((typedProps.audioDurationSeconds + 8.0) * 30),
+              props,
+            };
+          }
+
+          const rawAudioStr = typedProps?.audioFile || "current_audio.mp3";
           let cleanAudio =
             rawAudioStr.startsWith("http") || rawAudioStr.startsWith("blob:")
-              ? rawAudioStr.split("/").pop() || "audio.mp3"
+              ? rawAudioStr.split("/").pop() || "current_audio.mp3"
               : rawAudioStr;
           cleanAudio = cleanAudio.split("?")[0].split("#")[0];
 
           const audioUrl = rawAudioStr.startsWith("blob:")
             ? rawAudioStr
-            : staticFile(cleanAudio);
+            : staticFile(`${cleanAudio}?t=${Date.now()}`);
           try {
             const durationSeconds = await getAudioDurationInSeconds(audioUrl);
-            // Duration calculation:
-            //   intro  = 3.5 s (105 frames at 30 fps)
-            //   outro  = 4.5 s (135 frames at 30 fps)
-            //   total padding = 3.5 + 4.5 = 8.0 s
-            // The outro Sequence starts at (durationInFrames - 135), which equals
-            // audioDuration * 30 + 105 frames — exactly when main voice audio ends.
-            // This guarantees the outro receives its full 4.5 s and does not get cut.
             return {
               durationInFrames: Math.ceil((durationSeconds + 8.0) * 30),
               props,
             };
           } catch (e) {
             console.warn(
-              "Could not calculate audio duration, fallback to 1500 frames",
+              "Could not calculate audio duration via getAudioDurationInSeconds, fallback to 3600 frames",
               e,
             );
             return {
-              durationInFrames: 1500,
+              durationInFrames: 3600,
               props,
             };
           }
