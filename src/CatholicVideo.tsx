@@ -297,8 +297,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
         >
           <div
             style={{
-              background: "rgba(24, 20, 16, 0.85)",
-              backdropFilter: "blur(12px)",
+              background: "rgba(22, 17, 13, 0.95)",
               border: `1.5px solid ${theme.secondaryColor}`,
               borderRadius: 22,
               padding: "10px 22px",
@@ -327,8 +326,8 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
         </div>
       )}
       {/* GOLDEN PARTICLES LAYER */}
-      <GoldenParticles color={theme.particleColor} count={35} />
-      {/* SWEEPING GOD RAYS LIGHT BEAM */}
+      <GoldenParticles color={theme.particleColor} count={25} />
+      {/* SWEEPING GOD RAYS LIGHT BEAM (FEATHERED CONIC GRADIENT - 0 FILTER COST) */}
       <div
         style={{
           position: "absolute",
@@ -336,12 +335,11 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
           left: -200,
           width: 1480,
           height: 1480,
-          background: `conic-gradient(from 0deg at 50% 50%, transparent 40deg, ${theme.glowColor} 70deg, transparent 100deg)`,
-          transform: `rotate(${rayAngle}deg)`,
+          background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 40deg, ${theme.glowColor}18 55deg, ${theme.glowColor}40 70deg, ${theme.glowColor}18 85deg, transparent 100deg)`,
+          transform: `rotate(${rayAngle}deg) translateZ(0)`,
           opacity: rayOpacity,
           pointerEvents: "none",
           zIndex: 0,
-          filter: "blur(40px)",
         }}
       />
       {/* OPTION 3: SACRED LITURGICAL RADIAL VIGNETTE LAYER */}
@@ -692,32 +690,22 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
       <div
         style={{
           position: "absolute",
-          top: 1320,
-          left: 54,
+          top: 1470,
+          left: "50%",
+          transform: "translateX(-50%)",
           width: 972,
           height: 280,
-          zIndex: 3,
-          opacity: sp(9),
-          transform: `translateY(${Math.round(
-            spring({
-              fps,
-              frame: frame - 9,
-              from: 40,
-              to: 0,
-            }),
-          )}px)`,
+          zIndex: 40,
         }}
       >
         <div
           style={{
             width: "100%",
             height: "100%",
-            background: "rgba(14, 10, 8, 0.84)",
-            backdropFilter: "blur(32px)",
-            WebkitBackdropFilter: "blur(32px)",
+            background: "linear-gradient(180deg, rgba(22, 16, 12, 0.96) 0%, rgba(12, 9, 7, 0.98) 100%)",
             borderRadius: 32,
             border: `1.5px solid ${theme.secondaryColor}`,
-            boxShadow: `0 25px 70px rgba(0,0,0,0.7), 0 0 45px ${theme.glowColor}, inset 0 1.5px 1px rgba(255,255,255,0.2)`,
+            boxShadow: `0 20px 50px rgba(0,0,0,0.85), 0 0 30px ${theme.glowColor}40, inset 0 1px 0 rgba(255,255,255,0.15)`,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -774,9 +762,8 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   letterSpacing: "0.5px",
                   padding: "8px 20px",
                   borderRadius: 999,
-                  background: "rgba(255,255,255,0.12)",
+                  background: "rgba(255,255,255,0.15)",
                   border: `1px solid ${theme.glowColor}`,
-                  backdropFilter: "blur(8px)",
                   boxShadow: `0 0 20px ${theme.glowColor}66`,
                 }}
               >
@@ -815,9 +802,8 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   letterSpacing: "0.5px",
                   padding: "10px 24px", // pill to hơn chút
                   borderRadius: 999,
-                  background: theme.secondaryColor + "22", // nền ánh theme thay vì trắng mờ
+                  background: "rgba(28, 22, 17, 0.95)",
                   border: `1.5px solid ${theme.secondaryColor}`,
-                  backdropFilter: "blur(8px)",
                   boxShadow: `0 0 24px ${theme.glowColor}`,
                 }}
               >

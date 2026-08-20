@@ -58,13 +58,12 @@ export const GoldenParticles: React.FC<GoldenParticlesProps> = ({
               position: "absolute",
               left: p.x + swayX,
               top: (p.y + translateY + 1920) % 1920,
-              width: p.size,
-              height: p.size,
+              width: p.size * 2,
+              height: p.size * 2,
               borderRadius: "50%",
-              backgroundColor: color,
-              opacity: Math.max(0.1, Math.min(0.8, opacity)),
-              boxShadow: `0 0 ${p.size * 2}px ${color}`,
-              filter: "blur(1px)",
+              background: `radial-gradient(circle, #ffffff 15%, ${color} 60%, transparent 80%)`,
+              opacity: Math.max(0.15, Math.min(0.85, opacity)),
+              transform: "translate3d(0, 0, 0)",
             }}
           />
         );
