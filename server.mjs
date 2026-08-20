@@ -954,9 +954,12 @@ app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "studio.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`✝️  Studio Web App running at http://localhost:${PORT}`);
-  console.log(`   CORS origin: ${CORS_ORIGIN}`);
-  console.log(`   Upload limit: ${UPLOAD_MAX_MB} MB`);
-  cleanupLegacyUploads();
-});
+const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url).endsWith(path.basename(process.argv[1]));
+if (isDirectRun && !process.env.NODE_TEST_CONTEXT) {
+  app.listen(PORT, () => {
+    console.log(`✝️  Studio Web App running at http://localhost:${PORT}`);
+    console.log(`   CORS origin: ${CORS_ORIGIN}`);
+    console.log(`   Upload limit: ${UPLOAD_MAX_MB} MB`);
+    cleanupLegacyUploads();
+  });
+}
