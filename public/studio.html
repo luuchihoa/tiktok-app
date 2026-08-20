@@ -262,8 +262,12 @@
             <span>🎬 PREVIEW VIDEO THỜI GIAN THỰC (9:16 FULL KHUNG)</span>
           </h2>
           <p class="text-[11px] text-zinc-500">Được đồng bộ tức thì khi chọn file hoặc sửa chữ/thời gian phụ đề</p>
+        <div class="flex items-center gap-2">
+          <button onclick="refreshPreview()" class="text-[10px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-full font-bold transition flex items-center gap-1 cursor-pointer">
+            <span>🔄 Làm Mới Preview</span>
+          </button>
+          <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full font-mono font-bold">1080 × 1920 HD</span>
         </div>
-        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full font-mono font-bold">1080 × 1920 HD</span>
       </div>
 
       <!-- EMBEDDED IFRAME TO REMOTION PREVIEW - FULL HEIGHT MAXIMIZED -->
@@ -2013,7 +2017,6 @@
 
 
 
-    setPreviewSize(previewSize);
     loadData();
   </script>
 

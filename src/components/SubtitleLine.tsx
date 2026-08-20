@@ -16,6 +16,21 @@ interface SubtitleLineProps {
 }
 
 const HOLY_WORDS_LIST = [
+  "Thiên Chúa",
+  "Đức Giêsu Kitô",
+  "Đức Giê-su Ki-tô",
+  "Đức Giêsu",
+  "Đức Giê-su",
+  "Chúa Giêsu",
+  "Chúa Giê-su",
+  "Chúa Cha",
+  "Chúa Con",
+  "Chúa Thánh Thần",
+  "Thánh Thần",
+  "Đức Kitô",
+  "Đức Ki-tô",
+  "Đức Chúa",
+  "Đức Mẹ",
   "Thiên-Chúa",
 ];
 

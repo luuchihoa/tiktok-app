@@ -555,7 +555,6 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
               objectPosition: `center ${data.imagePositionY ?? 50}%`,
               transform: `scale(${breathScale})`,
             }}
-            durationInFrames={6085}
           />
           {/* Top Blend Gradient — 130px, 4-stop feather, solid black at edge */}
           <div
@@ -889,7 +888,6 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
             );
             return fadeOut;
           }}
-          from={1}
         />
       </Sequence>
       {/* 🎶 3. BACKGROUND PIANO AMBIENT (Starts at 3.5s at 18% volume under voiceover) */}

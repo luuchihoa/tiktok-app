@@ -37,7 +37,7 @@ export const RemotionRoot: React.FC = () => {
 
           const audioUrl = rawAudioStr.startsWith("blob:")
             ? rawAudioStr
-            : staticFile(`${cleanAudio}?t=${Date.now()}`);
+            : `${staticFile(cleanAudio)}?t=${Date.now()}`;
           try {
             const durationSeconds = await getAudioDurationInSeconds(audioUrl);
             return {

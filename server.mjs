@@ -117,8 +117,7 @@ app.post("/api/upload-file", handleUpload, (req, res) => {
     return res.status(400).json({ success: false, error: "No file uploaded" });
   }
 
-  const ext = path.extname(req.file.originalname).toLowerCase() || ".bin";
-  const fileType = req.body?.fileType || req.query?.fileType;
+  const isAudioFile = fileType === "audio" || AUDIO_MIME_TYPES.has(req.file.mimetype) || AUDIO_EXTENSIONS.has(ext);
 
   let prefix = "current_image";
   if (fileType === "audio") prefix = "current_audio";
@@ -127,9 +126,7 @@ app.post("/api/upload-file", handleUpload, (req, res) => {
   else if (fileType === "introAudio") prefix = "piano_intro";
   else if (fileType === "outroAudio") prefix = "piano_outro";
   else {
-    const isAudio =
-      AUDIO_MIME_TYPES.has(req.file.mimetype) || AUDIO_EXTENSIONS.has(ext);
-    prefix = isAudio ? "current_audio" : "current_image";
+    prefix = isAudioFile ? "current_audio" : "current_image";
   }
 
   const finalName = `${prefix}${ext}`;
@@ -158,7 +155,7 @@ app.post("/api/upload-file", handleUpload, (req, res) => {
   console.log(`[UPLOAD] Saved (overwrite): ${finalName}`);
 
   let durationSeconds = null;
-  if (fileType === "audio" || isAudio) {
+  if (isAudioFile) {
     durationSeconds = getExactAudioDuration(destPath);
     console.log(`[UPLOAD] Measured exact audio duration: ${durationSeconds}s`);
   }
@@ -372,11 +369,9 @@ app.post("/api/data", (req, res) => {
   };
 
   const cleanAudioName = sanitizeFilename(req.body.audioFile) || "current_audio.mp3";
-  let audioDuration = req.body.audioDurationSeconds;
   const audioFilePath = path.join(__dirname, "public", cleanAudioName);
-  if ((!audioDuration || audioDuration <= 0) && fs.existsSync(audioFilePath)) {
-    audioDuration = getExactAudioDuration(audioFilePath) || undefined;
-  }
+  const physicalDuration = fs.existsSync(audioFilePath) ? getExactAudioDuration(audioFilePath) : null;
+  const audioDuration = physicalDuration || req.body.audioDurationSeconds;
 
   const sanitizedBody = {
     ...req.body,

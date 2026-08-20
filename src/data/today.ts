@@ -6,6 +6,7 @@ export const videoData: VideoInput = {
   "feastName": "",
   "readingType": "Bài Đọc 1",
   "bibleRef": "Ed 36,23-28",
+  "quote": "",
   "audioFile": "current_audio.mp3",
   "audioDurationSeconds": 192.76,
   "introAudioFile": "piano_intro.mp3",
