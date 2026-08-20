@@ -753,11 +753,11 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 42,
                   fontWeight: 800,
                   color: theme.secondaryColor,
-                  letterSpacing: "2px",
+                  letterSpacing: "1px",
                   textShadow: `0 0 20px ${theme.glowColor}, 0 2px 10px rgba(0,0,0,0.9)`,
                 }}
               >
-                ✦ LỜI CHÚA MỖI NGÀY ✦
+                ✨ LỜI CHÚA MỖI NGÀY ✨
               </div>
               <div
                 style={{
@@ -765,7 +765,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 28,
                   fontWeight: 600,
                   color: "#ffffff",
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.5px",
                   padding: "8px 24px",
                   borderRadius: 999,
                   background: "rgba(255,255,255,0.15)",
@@ -773,7 +773,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   boxShadow: `0 0 20px ${theme.glowColor}66`,
                 }}
               >
-                {websiteUrl}
+                🔗 {websiteUrl}
               </div>
             </div>
           ) : frame >= durationInFrames - OUTRO_OFFSET_FRAMES ? (
@@ -793,11 +793,11 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 42,
                   fontWeight: 800,
                   color: theme.secondaryColor,
-                  letterSpacing: "2px",
+                  letterSpacing: "1px",
                   textShadow: `0 0 20px ${theme.glowColor}, 0 2px 10px rgba(0,0,0,0.9)`,
                 }}
               >
-                ✦ Nguyện Xin Chúa Chúc Lành ✦
+                🙏 Nguyện Xin Chúa Chúc Lành
               </div>
               <div
                 style={{
@@ -805,7 +805,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 32,
                   fontWeight: 700,
                   color: "#ffffff",
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.5px",
                   padding: "10px 26px",
                   borderRadius: 999,
                   background: "rgba(28, 22, 17, 0.95)",
@@ -813,7 +813,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   boxShadow: `0 0 24px ${theme.glowColor}`,
                 }}
               >
-                {websiteUrl}
+                🔗 {websiteUrl}
               </div>
               <div
                 style={{

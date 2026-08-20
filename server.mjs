@@ -872,37 +872,7 @@ app.post("/api/cancel-render", (_req, res) => {
   res.json({ success: true, message: "Đã đặt trạng thái hủy render." });
 });
 
-// ── GITHUB COLAB SYNC INTEGRATION ─────────────────────────────────────────────
-const execAsync = promisify(exec);
-const COLAB_NOTEBOOK_URL = "https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb";
 
-app.post("/api/github/sync", async (_req, res) => {
-  try {
-    const timeStr = new Date().toLocaleString("vi-VN");
-    // Stage changed data files
-    await execAsync(
-      "git add -f src/data/today.ts public/subs/current_subtitles.json public/current_image.jpg public/current_image.png public/current_audio.mp3 public/logo.png Render_Catholic_Video.ipynb",
-      { cwd: __dirname }
-    );
-    // Commit if there are changes
-    try {
-      await execAsync(`git commit -m "chore: update video data ${timeStr}"`, { cwd: __dirname });
-    } catch (_) {
-      // Nothing new to commit, proceed to push
-    }
-    // Push directly to GitHub main branch
-    await execAsync("git push origin main", { cwd: __dirname });
-
-    res.json({
-      success: true,
-      message: `Đã đồng bộ dữ liệu bài đọc & phụ đề lên GitHub thành công lúc ${timeStr}!`,
-      colabUrl: COLAB_NOTEBOOK_URL,
-    });
-  } catch (e) {
-    console.error("POST /api/github/sync error:", e);
-    res.status(500).json({ success: false, error: e.message });
-  }
-});
 
 // ── Serve Main Studio Web Page ─────────────────────────────────────────────────
 app.get("/", (_req, res) => {
