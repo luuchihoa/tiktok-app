@@ -686,16 +686,23 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
           </p>
         )}
       </div>
-      {/* ── ZONE 4: SUBTITLE PANEL (original full-width layout) ───────────────────────────────── */}
       <div
         style={{
           position: "absolute",
-          top: 1470,
-          left: "50%",
-          transform: "translateX(-50%)",
+          top: 1320,
+          left: 54,
           width: 972,
           height: 280,
-          zIndex: 40,
+          zIndex: 3,
+          opacity: sp(9),
+          transform: `translateY(${Math.round(
+            spring({
+              fps,
+              frame: frame - 9,
+              from: 40,
+              to: 0,
+            }),
+          )}px)`,
         }}
       >
         <div
