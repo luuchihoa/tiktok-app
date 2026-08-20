@@ -341,7 +341,25 @@ app.get("/api/data", (_req, res) => {
 
 // ── POST /api/data ─────────────────────────────────────────────────────────────
 app.post("/api/data", (req, res) => {
-  const result = VideoInputSchema.safeParse(req.body);
+  const sanitizeFilename = (val) => {
+    if (!val || typeof val !== "string") return val;
+    if (val.startsWith("http://") || val.startsWith("https://") || val.startsWith("blob:")) {
+      return path.basename(val.split("?")[0].split("#")[0]);
+    }
+    return path.basename(val);
+  };
+
+  const sanitizedBody = {
+    ...req.body,
+    imageFile: sanitizeFilename(req.body.imageFile) || "cross.jpg",
+    audioFile: sanitizeFilename(req.body.audioFile) || "current_audio.mp3",
+    bgImageFile: req.body.bgImageFile ? sanitizeFilename(req.body.bgImageFile) : undefined,
+    logoFile: req.body.logoFile ? sanitizeFilename(req.body.logoFile) : "logo.png",
+    introAudioFile: req.body.introAudioFile ? sanitizeFilename(req.body.introAudioFile) : "piano_intro.mp3",
+    outroAudioFile: req.body.outroAudioFile ? sanitizeFilename(req.body.outroAudioFile) : "piano_outro.mp3",
+  };
+
+  const result = VideoInputSchema.safeParse(sanitizedBody);
   if (!result.success) {
     return res
       .status(400)
@@ -863,7 +881,7 @@ app.post("/api/github/sync", async (_req, res) => {
     const timeStr = new Date().toLocaleString("vi-VN");
     // Stage changed data files
     await execAsync(
-      "git add src/data/today.ts public/subs/current_subtitles.json public/current_image.png public/current_audio.mp3 Render_Catholic_Video.ipynb",
+      "git add -f src/data/today.ts public/subs/current_subtitles.json public/current_image.jpg public/current_image.png public/current_audio.mp3 public/logo.png Render_Catholic_Video.ipynb",
       { cwd: __dirname }
     );
     // Commit if there are changes

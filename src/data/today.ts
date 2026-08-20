@@ -10,7 +10,7 @@ export const videoData: VideoInput = {
   "audioFile": "current_audio.mp3",
   "introAudioFile": "piano_intro.mp3",
   "outroAudioFile": "piano_outro.mp3",
-  "imageFile": "http://localhost:3001/current_image.jpg",
+  "imageFile": "current_image.jpg",
   "imagePositionY": 50,
   "season": "EASTER_CHRISTMAS",
   "websiteUrl": "loichuamoingay.org"

@@ -163,13 +163,6 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
     [0.12, 0.28],
   );
 
-  // Center Hero Image (User Selected Image for Reading / Feast Day)
-  const heroImageSrc = data?.imageFile
-    ? data.imageFile.startsWith("blob:") || data.imageFile.startsWith("http")
-      ? data.imageFile
-      : staticFile(data.imageFile)
-    : staticFile("cross.jpg");
-
   const getCleanBasename = (filePath?: string, fallback = "") => {
     if (!filePath) return fallback;
     const clean =
@@ -178,6 +171,12 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
         : filePath;
     return clean.split("?")[0].split("#")[0];
   };
+
+  // Center Hero Image (User Selected Image for Reading / Feast Day)
+  const cleanImageFile = getCleanBasename(data.imageFile, "cross.jpg");
+  const heroImageSrc = data?.imageFile?.startsWith("blob:")
+    ? data.imageFile
+    : staticFile(cleanImageFile);
 
   const cleanAudioFile = getCleanBasename(data.audioFile, "audio.mp3");
   const cleanIntroFile = getCleanBasename(
