@@ -854,98 +854,35 @@ app.post("/api/cancel-render", (_req, res) => {
   res.json({ success: true, message: "Đã đặt trạng thái hủy render." });
 });
 
-// ── GITHUB CLOUD RENDER INTEGRATION ───────────────────────────────────────────
+// ── GITHUB COLAB SYNC INTEGRATION ─────────────────────────────────────────────
 const execAsync = promisify(exec);
+const COLAB_NOTEBOOK_URL = "https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb";
 
-app.get("/api/github/info", async (_req, res) => {
+app.post("/api/github/sync", async (_req, res) => {
   try {
-    const { stdout } = await execAsync("git remote get-url origin", { cwd: __dirname });
-    const remoteUrl = stdout.trim();
-    const match = remoteUrl.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
-    const owner = match ? match[1] : "";
-    const repo = match ? match[2] : "";
-
-    res.json({
-      configured: Boolean(remoteUrl),
-      remoteUrl,
-      owner,
-      repo,
-      actionsUrl: owner && repo ? `https://github.com/${owner}/${repo}/actions` : "",
-    });
-  } catch (e) {
-    res.json({
-      configured: false,
-      remoteUrl: "",
-      error: "Chưa cấu hình Git Remote Origin",
-    });
-  }
-});
-
-app.post("/api/github/trigger-render", async (req, res) => {
-  try {
-    // 1. Check if git remote origin is configured
-    let hasRemote = false;
+    const timeStr = new Date().toLocaleString("vi-VN");
+    // Stage changed data files
+    await execAsync(
+      "git add src/data/today.ts public/subs/current_subtitles.json public/current_image.png public/current_audio.mp3 Render_Catholic_Video.ipynb",
+      { cwd: __dirname }
+    );
+    // Commit if there are changes
     try {
-      const { stdout } = await execAsync("git remote get-url origin", { cwd: __dirname });
-      hasRemote = Boolean(stdout.trim());
+      await execAsync(`git commit -m "chore: update video data ${timeStr}"`, { cwd: __dirname });
     } catch (_) {
-      hasRemote = false;
+      // Nothing new to commit, proceed to push
     }
-
-    if (!hasRemote) {
-      return res.status(400).json({
-        success: false,
-        error: "Chưa thiết lập Git Remote GitHub. Vui lòng kết nối GitHub repository trước.",
-      });
-    }
-
-    // 2. Commit current video data & subtitles to git
-    try {
-      await execAsync("git add src/data/today.ts public/subs/current_subtitles.json", { cwd: __dirname });
-      const commitMsg = `chore: update video data & subtitles ${new Date().toISOString()}`;
-      await execAsync(`git commit -m "${commitMsg}" || true`, { cwd: __dirname });
-      await execAsync("git push origin main || git push origin HEAD", { cwd: __dirname });
-    } catch (pushErr) {
-      console.warn("Git push warning:", pushErr.message);
-    }
-
-    // 3. Trigger workflow via gh CLI if available
-    try {
-      await execAsync("gh workflow run render-video.yml || true", { cwd: __dirname });
-    } catch (_) {}
+    // Push directly to GitHub main branch
+    await execAsync("git push origin main", { cwd: __dirname });
 
     res.json({
       success: true,
-      message: "Đã kích hoạt tiến trình render trên GitHub Actions Cloud thành công!",
+      message: `Đã đồng bộ dữ liệu bài đọc & phụ đề lên GitHub thành công lúc ${timeStr}!`,
+      colabUrl: COLAB_NOTEBOOK_URL,
     });
   } catch (e) {
-    console.error("POST /api/github/trigger-render error:", e);
+    console.error("POST /api/github/sync error:", e);
     res.status(500).json({ success: false, error: e.message });
-  }
-});
-
-app.get("/api/github/status", async (_req, res) => {
-  try {
-    // Query latest run of render-video.yml using gh CLI or git
-    const { stdout } = await execAsync(
-      "gh run list --workflow=render-video.yml --limit 1 --json databaseId,status,conclusion,url,createdAt,updatedAt",
-      { cwd: __dirname }
-    );
-    const runs = JSON.parse(stdout || "[]");
-    if (runs && runs.length > 0) {
-      const latest = runs[0];
-      return res.json({
-        success: true,
-        run: latest,
-        status: latest.status, // "queued", "in_progress", "completed"
-        conclusion: latest.conclusion, // "success", "failure", null
-        url: latest.url,
-      });
-    }
-
-    res.json({ success: true, run: null, status: "idle" });
-  } catch (e) {
-    res.json({ success: false, error: e.message, status: "unknown" });
   }
 });
 

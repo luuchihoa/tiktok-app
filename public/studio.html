@@ -52,24 +52,17 @@
         <span>⚡ 1-Click Sinh Phụ Đề AI</span>
       </button>
       <div class="flex flex-col items-end">
-        <a href="https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb" target="_blank" id="btn-colab-render" title="Render bằng GPU NVIDIA T4 Miễn Phí trên Google Colab (~30 giây)" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-orange-500/20 flex items-center gap-1.5 cursor-pointer">
-          <span>⚡ Mở Google Colab (GPU)</span>
-        </a>
-        <span class="text-[9px] text-amber-400/90 font-mono pt-0.5">NVIDIA T4 16GB • ~30s</span>
-      </div>
-
-      <div class="flex flex-col items-end">
-        <button onclick="openCloudRenderModal()" id="btn-cloud-render" title="Render trên máy chủ đám mây GitHub Actions (không tốn CPU/RAM máy bạn)" class="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 cursor-pointer">
-          <span>☁️ Render Cloud (GitHub)</span>
+        <button onclick="syncAndOpenColab()" id="btn-colab-sync" title="1-Click: Tự động lưu & đẩy bài đọc lên GitHub ➔ Mở Google Colab để GPU NVIDIA T4 render siêu tốc" class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 hover:from-amber-400 hover:to-orange-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-orange-500/25 flex items-center gap-1.5 cursor-pointer">
+          <span id="colab-sync-icon">⚡</span> <span>1-Click Đẩy & Mở Colab (GPU)</span>
         </button>
-        <span class="text-[9px] text-emerald-400/80 font-mono pt-0.5">GitHub Actions • 0% CPU</span>
+        <span class="text-[9px] text-amber-400/90 font-mono pt-0.5">Tự Động Push ➔ Mở Colab ~30s</span>
       </div>
 
       <div class="flex flex-col items-end">
-        <button onclick="renderVideo()" id="btn-render" class="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 flex items-center gap-2">
+        <button onclick="renderVideo()" id="btn-render" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-md flex items-center gap-2">
           <span>🎬 Xuất Video Máy (Local)</span>
         </button>
-        <span class="text-[9px] text-amber-400/80 font-mono pt-0.5" title="Cấu hình ngầm: Bitrate 15M, BT.709, HW Accel if-possible, JPEG Quality 100%">⚡ 15M Bitrate • BT.709 • Q100</span>
+        <span class="text-[9px] text-zinc-400 font-mono pt-0.5">Render trực tiếp trên máy Mac</span>
       </div>
     </div>
   </header>
@@ -2061,129 +2054,49 @@
       if (e.target.closest('#sub-list-container')) _pageHasUnsavedWork = true;
     });
 
-    // ── GITHUB CLOUD RENDER INTEGRATION ───────────────────────────────────────
-    let _cloudPollInterval = null;
-    let _cloudStartTime = 0;
-
-    async function openCloudRenderModal() {
-      const modal = document.getElementById('cloud-render-modal');
-      if (!modal) return;
-      modal.classList.remove('hidden');
-
-      // Query git/github repository info
-      try {
-        const res = await fetch('/api/github/info');
-        if (!res.ok) {
-          throw new Error('Server chưa cập nhật API GitHub. Vui lòng khởi động lại server!');
-        }
-        const contentType = res.headers.get('content-type') || '';
-        if (!contentType.includes('application/json')) {
-          throw new Error('Server trả về định dạng không phải JSON. Vui lòng khởi động lại server!');
-        }
-        const info = await res.json();
-        const repoStatusEl = document.getElementById('cloud-repo-info');
-        const startBtn = document.getElementById('btn-start-cloud-render');
-
-        if (info.configured && info.repo) {
-          repoStatusEl.innerHTML = `<span class="text-emerald-400 font-bold">✅ Đã kết nối:</span> <a href="${info.actionsUrl}" target="_blank" class="text-amber-300 underline font-mono font-semibold">${info.owner}/${info.repo}</a>`;
-          if (startBtn) startBtn.disabled = false;
-        } else {
-          repoStatusEl.innerHTML = `<span class="text-amber-400 font-bold">⚠️ Chưa kết nối GitHub Remote:</span> Bạn cần chạy lệnh <code>git remote add origin ...</code> và đẩy code lên GitHub trước khi bấm render cloud.`;
-          if (startBtn) startBtn.disabled = true;
-        }
-      } catch (e) {
-        console.warn('GitHub info error:', e);
-        const repoStatusEl = document.getElementById('cloud-repo-info');
-        if (repoStatusEl) repoStatusEl.innerHTML = `<span class="text-amber-400">⚠️ Thông báo: ${e.message}</span>`;
+    // ── 1-CLICK GITHUB SYNC & OPEN GOOGLE COLAB ──────────────────────────────
+    async function syncAndOpenColab() {
+      const btn = document.getElementById('btn-colab-sync');
+      const icon = document.getElementById('colab-sync-icon');
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add('opacity-50');
       }
-    }
+      if (icon) icon.textContent = '⏳';
 
-    function closeCloudRenderModal() {
-      const modal = document.getElementById('cloud-render-modal');
-      if (modal) modal.classList.add('hidden');
-      clearInterval(_cloudPollInterval);
-    }
-
-    async function startCloudRender() {
-      const startBtn = document.getElementById('btn-start-cloud-render');
-      const statusText = document.getElementById('cloud-status-text');
-      const downloadBtn = document.getElementById('btn-download-cloud-video');
-      const progressBar = document.getElementById('cloud-progress-bar');
-      const timerEl = document.getElementById('cloud-timer');
-
-      if (startBtn) {
-        startBtn.disabled = true;
-        startBtn.classList.add('opacity-50');
-      }
-      if (downloadBtn) downloadBtn.classList.add('hidden');
-      if (progressBar) progressBar.style.width = '20%';
-
-      statusText.textContent = '🚀 Đang đồng bộ dữ liệu bài đọc và kích hoạt GitHub Actions Runner...';
-      _cloudStartTime = Date.now();
+      showToast('📤 Đang đồng bộ...', 'Đang lưu nội dung & phụ đề và đẩy lên GitHub...', 'info');
 
       try {
-        const res = await fetch('/api/github/trigger-render', { method: 'POST' });
+        // 1. Tự động lưu form và phụ đề nháp trước khi đẩy
+        if (typeof saveData === 'function') await saveData();
+        if (typeof saveSubtitles === 'function') await saveSubtitles();
+
+        // 2. Gọi API đồng bộ đẩy lên GitHub
+        const res = await fetch('/api/github/sync', { method: 'POST' });
         const contentType = res.headers.get('content-type') || '';
         if (!contentType.includes('application/json')) {
-          throw new Error('Server Node.js chưa nhận API mới. Vui lòng khởi động lại server bằng lệnh: npm run studio-app');
+          throw new Error('Server Node.js chưa cập nhật API mới. Vui lòng khởi động lại server!');
         }
         const json = await res.json();
 
         if (!json.success) {
-          throw new Error(json.error || 'Không thể kích hoạt GitHub Actions.');
+          throw new Error(json.error || 'Không thể đồng bộ lên GitHub.');
         }
 
-        showToast('🚀 Đã gửi lệnh Render Cloud!', 'GitHub Actions đang chạy trên máy chủ đám mây...', 'info');
+        showToast('🎉 Đã đồng bộ GitHub!', 'Đang mở Google Colab GPU trong tab mới...', 'success');
 
-        // Start polling status every 4 seconds
-        clearInterval(_cloudPollInterval);
-        _cloudPollInterval = setInterval(async () => {
-          try {
-            const statusRes = await fetch('/api/github/status');
-            const data = await statusRes.json();
-
-            const seconds = Math.floor((Date.now() - _cloudStartTime) / 1000);
-            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-            const secs = String(seconds % 60).padStart(2, '0');
-            if (timerEl) timerEl.textContent = `⏱️ ${mins}:${secs}`;
-
-            if (data.status === 'in_progress' || data.status === 'queued') {
-              if (progressBar) progressBar.style.width = '65%';
-              statusText.textContent = `☁️ Đang render video 1080x1920 trên server GitHub (${mins}:${secs})...`;
-            } else if (data.status === 'completed') {
-              clearInterval(_cloudPollInterval);
-              if (data.conclusion === 'success') {
-                if (progressBar) progressBar.style.width = '100%';
-                statusText.textContent = '🎉 Render Cloud hoàn tất 100%! Video đã sẵn sàng tải về.';
-                showToast('🎉 Render Cloud thành công!', 'Bấm nút "Tải Video Về Máy" để nhận file MP4.', 'success');
-
-                if (downloadBtn) {
-                  downloadBtn.classList.remove('hidden');
-                  if (data.url) {
-                    downloadBtn.onclick = () => window.open(data.url, '_blank');
-                  }
-                }
-              } else {
-                statusText.textContent = `❌ Render Cloud thất bại (${data.conclusion}).`;
-                showToast('Render Cloud lỗi', 'Vui lòng kiểm tra log trên GitHub Actions.', 'error');
-              }
-
-              if (startBtn) {
-                startBtn.disabled = false;
-                startBtn.classList.remove('opacity-50');
-              }
-            }
-          } catch (pollErr) {
-            console.warn('Cloud poll error:', pollErr);
-          }
-        }, 4000);
+        // 3. Mở Google Colab tab mới
+        const colabUrl = json.colabUrl || 'https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb';
+        window.open(colabUrl, '_blank');
       } catch (err) {
-        statusText.textContent = '❌ Lỗi: ' + err.message;
-        showToast('Lỗi Render Cloud', err.message, 'error');
-        if (startBtn) {
-          startBtn.disabled = false;
-          startBtn.classList.remove('opacity-50');
+        console.error('syncAndOpenColab error:', err);
+        showToast('Lỗi đồng bộ GitHub', err.message, 'error');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.remove('opacity-50');
         }
+        if (icon) icon.textContent = '⚡';
       }
     }
 
@@ -2260,97 +2173,6 @@
           <span>⬇️ Tải Video Về Máy (.mp4)</span>
         </button>
       </div>
-    </div>
-  </div>
-
-  <!-- CLOUD RENDER MODAL OVERLAY (GITHUB ACTIONS) -->
-  <div id="cloud-render-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-[#141816] border border-emerald-500/40 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-5 relative">
-      <div class="flex justify-between items-start">
-        <div>
-          <h3 class="text-base font-extrabold text-emerald-400 flex items-center gap-2">
-            <span>☁️ Render Video Trên GitHub Cloud (Actions)</span>
-          </h3>
-          <p class="text-xs text-zinc-400 mt-1">Render hoàn toàn trên máy chủ GitHub — không tốn CPU/RAM máy bạn</p>
-        </div>
-        <span id="cloud-timer" class="text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2.5 py-1 rounded-lg font-bold">⏱️ 00:00</span>
-      </div>
-
-      <!-- SPECS BADGES -->
-      <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
-          <span class="text-base">🖥️</span>
-          <div>
-            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Server Runner</span>
-            <strong class="text-emerald-300 font-mono">Ubuntu 2-Core / 7GB</strong>
-          </div>
-        </div>
-        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
-          <span class="text-base">🔋</span>
-          <div>
-            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Tài Nguyên Máy</span>
-            <strong class="text-teal-300 font-mono">0% CPU / Máy Mát</strong>
-          </div>
-        </div>
-        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
-          <span class="text-base">🎞️</span>
-          <div>
-            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Chất Lượng Video</span>
-            <strong class="text-amber-300 font-mono">1080x1920 • 30 FPS</strong>
-          </div>
-        </div>
-        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
-          <span class="text-base">📦</span>
-          <div>
-            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Lưu Trữ Artifact</span>
-            <strong class="text-indigo-300 font-mono">30 Ngày Tải Về</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- GOOGLE COLAB GPU CALLOUT -->
-      <div class="bg-gradient-to-r from-orange-950/70 to-amber-950/70 border border-orange-500/40 rounded-xl p-3.5 flex items-center justify-between gap-3">
-        <div class="space-y-0.5">
-          <div class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-            <span>⚡ Render Siêu Tốc Trên Google Colab (NVIDIA GPU T4)</span>
-          </div>
-          <p class="text-[11px] text-zinc-400">Render xong trong ~30 giây bằng card đồ họa GPU miễn phí của Google</p>
-        </div>
-        <a href="https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb" target="_blank" class="shrink-0 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-black font-extrabold text-xs px-3.5 py-2 rounded-xl transition shadow-md flex items-center gap-1 cursor-pointer">
-          <span>▶️ Mở Colab GPU</span>
-        </a>
-      </div>
-
-      <!-- REPO INFO -->
-      <div id="cloud-repo-info" class="text-xs bg-zinc-950/80 border border-zinc-800/80 p-3 rounded-xl text-zinc-300 font-mono break-all">
-        Đang kiểm tra kết nối GitHub repository...
-      </div>
-
-      <!-- PROGRESS BAR & STATUS TEXT -->
-      <div class="space-y-2">
-        <div class="flex justify-between text-xs text-zinc-400 font-medium">
-          <span id="cloud-status-text">Sẵn sàng kích hoạt máy chủ GitHub render...</span>
-        </div>
-        <div class="w-full bg-zinc-900 h-3 rounded-full overflow-hidden border border-zinc-800 p-0.5">
-          <div id="cloud-progress-bar" class="bg-gradient-to-r from-teal-500 via-emerald-400 to-amber-400 h-full rounded-full transition-all duration-300 shadow-md shadow-emerald-500/30" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- ACTION BUTTONS -->
-      <div class="flex items-center justify-between gap-3 pt-2">
-        <button onclick="closeCloudRenderModal()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 px-4 py-2.5 rounded-xl font-bold transition cursor-pointer">
-          <span>✕ Đóng</span>
-        </button>
-        <div class="flex items-center gap-2">
-          <button id="btn-start-cloud-render" onclick="startCloudRender()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-extrabold transition flex items-center gap-1.5 shadow-lg shadow-emerald-600/30 cursor-pointer">
-            <span>🚀 Bắt Đầu Render Trên GitHub Cloud</span>
-          </button>
-          <button id="btn-download-cloud-video" class="hidden text-xs bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 rounded-xl font-extrabold transition flex items-center gap-1.5 shadow-lg shadow-amber-500/30 cursor-pointer">
-            <span>⬇️ Tải Video Về Máy (.mp4)</span>
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- CONFIRMATION MODAL -->
