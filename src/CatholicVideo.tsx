@@ -753,11 +753,11 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 42,
                   fontWeight: 800,
                   color: theme.secondaryColor,
-                  letterSpacing: "1px",
+                  letterSpacing: "2px",
                   textShadow: `0 0 20px ${theme.glowColor}, 0 2px 10px rgba(0,0,0,0.9)`,
                 }}
               >
-                ✨ LỜI CHÚA MỖI NGÀY ✨
+                ✦ LỜI CHÚA MỖI NGÀY ✦
               </div>
               <div
                 style={{
@@ -765,15 +765,15 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 28,
                   fontWeight: 600,
                   color: "#ffffff",
-                  letterSpacing: "0.5px",
-                  padding: "8px 20px",
+                  letterSpacing: "0.8px",
+                  padding: "8px 24px",
                   borderRadius: 999,
                   background: "rgba(255,255,255,0.15)",
                   border: `1px solid ${theme.glowColor}`,
                   boxShadow: `0 0 20px ${theme.glowColor}66`,
                 }}
               >
-                🔗 {websiteUrl}
+                {websiteUrl}
               </div>
             </div>
           ) : frame >= durationInFrames - OUTRO_OFFSET_FRAMES ? (
@@ -793,27 +793,27 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
                   fontSize: 42,
                   fontWeight: 800,
                   color: theme.secondaryColor,
-                  letterSpacing: "1px",
+                  letterSpacing: "2px",
                   textShadow: `0 0 20px ${theme.glowColor}, 0 2px 10px rgba(0,0,0,0.9)`,
                 }}
               >
-                🙏 Nguyện Xin Chúa Chúc Lành
+                ✦ Nguyện Xin Chúa Chúc Lành ✦
               </div>
               <div
                 style={{
                   fontFamily: "Outfit, 'Be Vietnam Pro', sans-serif",
-                  fontSize: 32, // tăng nhẹ so với 24 ở intro
-                  fontWeight: 700, // đậm hơn chút
+                  fontSize: 32,
+                  fontWeight: 700,
                   color: "#ffffff",
-                  letterSpacing: "0.5px",
-                  padding: "10px 24px", // pill to hơn chút
+                  letterSpacing: "0.8px",
+                  padding: "10px 26px",
                   borderRadius: 999,
                   background: "rgba(28, 22, 17, 0.95)",
                   border: `1.5px solid ${theme.secondaryColor}`,
                   boxShadow: `0 0 24px ${theme.glowColor}`,
                 }}
               >
-                🔗 {websiteUrl}
+                {websiteUrl}
               </div>
               <div
                 style={{
