@@ -1,0 +1,1659 @@
+[
+  {
+    "text": "Tin Mừng Chúa Giêsu Kitô \ntheo thánh Mát-thêu",
+    "startMs": 0,
+    "durationMs": 3520,
+    "tokens": [
+      {
+        "text": "tin",
+        "fromMs": 30,
+        "toMs": 200
+      },
+      {
+        "text": " bừng",
+        "fromMs": 200,
+        "toMs": 590
+      },
+      {
+        "text": " chúa",
+        "fromMs": 590,
+        "toMs": 1020
+      },
+      {
+        "text": " Giê-xu",
+        "fromMs": 1020,
+        "toMs": 1420
+      },
+      {
+        "text": " Kỳ-tô",
+        "fromMs": 1420,
+        "toMs": 1950
+      },
+      {
+        "text": " theo",
+        "fromMs": 1950,
+        "toMs": 2190
+      },
+      {
+        "text": " thánh",
+        "fromMs": 2190,
+        "toMs": 2530
+      },
+      {
+        "text": " Matthew.",
+        "fromMs": 2530,
+        "toMs": 3200
+      }
+    ]
+  },
+  {
+    "text": "Khi ấy, Đức Giê-su dùng \ndụ ngôn ",
+    "startMs": 3520,
+    "durationMs": 2950,
+    "tokens": [
+      {
+        "text": " Khi",
+        "fromMs": 3200,
+        "toMs": 3870
+      },
+      {
+        "text": " ấy,",
+        "fromMs": 3870,
+        "toMs": 4060
+      },
+      {
+        "text": " Đức",
+        "fromMs": 4060,
+        "toMs": 4830
+      },
+      {
+        "text": " Giê-xu",
+        "fromMs": 4830,
+        "toMs": 5290
+      },
+      {
+        "text": " dùng",
+        "fromMs": 5290,
+        "toMs": 5770
+      },
+      {
+        "text": " dụ",
+        "fromMs": 5770,
+        "toMs": 6150
+      }
+    ]
+  },
+  {
+    "text": "mà nói với các thượng tế và \nkỳ mục trong dân rằng :",
+    "startMs": 6470,
+    "durationMs": 2980,
+    "tokens": [
+      {
+        "text": " ngôn",
+        "fromMs": 6150,
+        "toMs": 6850
+      },
+      {
+        "text": " mà",
+        "fromMs": 6850,
+        "toMs": 6920
+      },
+      {
+        "text": " nói",
+        "fromMs": 6920,
+        "toMs": 7140
+      },
+      {
+        "text": " với",
+        "fromMs": 7140,
+        "toMs": 7400
+      },
+      {
+        "text": " các",
+        "fromMs": 7400,
+        "toMs": 7630
+      },
+      {
+        "text": " thượng",
+        "fromMs": 7630,
+        "toMs": 8120
+      },
+      {
+        "text": " tế",
+        "fromMs": 8120,
+        "toMs": 8360
+      },
+      {
+        "text": " và",
+        "fromMs": 8360,
+        "toMs": 8530
+      }
+    ]
+  },
+  {
+    "text": "Nước Trời cũng giống như \nchuyện một vua kia ",
+    "startMs": 9450,
+    "durationMs": 3030,
+    "tokens": [
+      {
+        "text": " kỳ",
+        "fromMs": 8530,
+        "toMs": 8740
+      },
+      {
+        "text": " mục",
+        "fromMs": 8740,
+        "toMs": 9100
+      },
+      {
+        "text": " trong",
+        "fromMs": 9100,
+        "toMs": 9300
+      },
+      {
+        "text": " dân",
+        "fromMs": 9300,
+        "toMs": 9520
+      },
+      {
+        "text": " rằng,",
+        "fromMs": 9520,
+        "toMs": 9920
+      },
+      {
+        "text": " \"Nước",
+        "fromMs": 9920,
+        "toMs": 10760
+      },
+      {
+        "text": " Trời,",
+        "fromMs": 10760,
+        "toMs": 11860
+      }
+    ]
+  },
+  {
+    "text": "mở tiệc cưới cho con mình.",
+    "startMs": 12480,
+    "durationMs": 1890,
+    "tokens": [
+      {
+        "text": " cũng",
+        "fromMs": 11860,
+        "toMs": 11980
+      },
+      {
+        "text": " giống",
+        "fromMs": 11980,
+        "toMs": 12270
+      },
+      {
+        "text": " như",
+        "fromMs": 12270,
+        "toMs": 12510
+      },
+      {
+        "text": " chuyện",
+        "fromMs": 12510,
+        "toMs": 12980
+      },
+      {
+        "text": " một",
+        "fromMs": 12980,
+        "toMs": 13280
+      },
+      {
+        "text": " vua",
+        "fromMs": 13280,
+        "toMs": 13450
+      },
+      {
+        "text": " kia",
+        "fromMs": 13450,
+        "toMs": 13620
+      },
+      {
+        "text": " mở",
+        "fromMs": 13620,
+        "toMs": 13850
+      }
+    ]
+  },
+  {
+    "text": "Nhà vua sai đầy tớ đi thỉnh \ncác quan khách ",
+    "startMs": 14370,
+    "durationMs": 2870,
+    "tokens": [
+      {
+        "text": " Nhà",
+        "fromMs": 15520,
+        "toMs": 15740
+      },
+      {
+        "text": " vua",
+        "fromMs": 15740,
+        "toMs": 16060
+      },
+      {
+        "text": " sai",
+        "fromMs": 16060,
+        "toMs": 16070
+      },
+      {
+        "text": " đại",
+        "fromMs": 16070,
+        "toMs": 16410
+      },
+      {
+        "text": " tớ",
+        "fromMs": 16410,
+        "toMs": 16660
+      },
+      {
+        "text": " đi",
+        "fromMs": 16660,
+        "toMs": 16800
+      },
+      {
+        "text": " thỉnh",
+        "fromMs": 16800,
+        "toMs": 17190
+      },
+      {
+        "text": " các",
+        "fromMs": 17190,
+        "toMs": 17420
+      }
+    ]
+  },
+  {
+    "text": "đã được mời trước,",
+    "startMs": 17240,
+    "durationMs": 1460,
+    "tokens": [
+      {
+        "text": " quan",
+        "fromMs": 17420,
+        "toMs": 17650
+      },
+      {
+        "text": " khách",
+        "fromMs": 17650,
+        "toMs": 18060
+      },
+      {
+        "text": " đã",
+        "fromMs": 18060,
+        "toMs": 18220
+      },
+      {
+        "text": " được",
+        "fromMs": 18220,
+        "toMs": 18690
+      },
+      {
+        "text": " mời",
+        "fromMs": 18690,
+        "toMs": 18970
+      },
+      {
+        "text": " trước,",
+        "fromMs": 18970,
+        "toMs": 19600
+      },
+      {
+        "text": " xin",
+        "fromMs": 19600,
+        "toMs": 19850
+      },
+      {
+        "text": " họ",
+        "fromMs": 19850,
+        "toMs": 19980
+      }
+    ]
+  },
+  {
+    "text": "xin họ đến dự tiệc, nhưng họ \nkhông chịu đến.",
+    "startMs": 18700,
+    "durationMs": 3220,
+    "tokens": [
+      {
+        "text": " đến",
+        "fromMs": 19980,
+        "toMs": 20320
+      },
+      {
+        "text": " dự",
+        "fromMs": 20320,
+        "toMs": 20540
+      },
+      {
+        "text": " tiệc,",
+        "fromMs": 20540,
+        "toMs": 20980
+      },
+      {
+        "text": " nhưng",
+        "fromMs": 20980,
+        "toMs": 21480
+      },
+      {
+        "text": " họ",
+        "fromMs": 21480,
+        "toMs": 21540
+      },
+      {
+        "text": " không",
+        "fromMs": 21540,
+        "toMs": 21970
+      },
+      {
+        "text": " chịu",
+        "fromMs": 21970,
+        "toMs": 22210
+      },
+      {
+        "text": " đến.",
+        "fromMs": 22210,
+        "toMs": 22800
+      }
+    ]
+  },
+  {
+    "text": "Nhà vua lại sai những đầy tớ \nkhác đi, và dặn họ :",
+    "startMs": 21920,
+    "durationMs": 3690,
+    "tokens": [
+      {
+        "text": " Nhà",
+        "fromMs": 22800,
+        "toMs": 23080
+      },
+      {
+        "text": " vua",
+        "fromMs": 23080,
+        "toMs": 23640
+      },
+      {
+        "text": " lại",
+        "fromMs": 23640,
+        "toMs": 23640
+      },
+      {
+        "text": " sai",
+        "fromMs": 23640,
+        "toMs": 23880
+      },
+      {
+        "text": " những",
+        "fromMs": 23880,
+        "toMs": 24340
+      },
+      {
+        "text": " đại",
+        "fromMs": 24340,
+        "toMs": 24760
+      },
+      {
+        "text": " tớ",
+        "fromMs": 24760,
+        "toMs": 25040
+      },
+      {
+        "text": " khác",
+        "fromMs": 25040,
+        "toMs": 25390
+      }
+    ]
+  },
+  {
+    "text": "Hãy thưa với quan khách đã \nđược mời rằng :",
+    "startMs": 25610,
+    "durationMs": 2710,
+    "tokens": [
+      {
+        "text": " Hãy",
+        "fromMs": 26880,
+        "toMs": 27170
+      },
+      {
+        "text": " thưa",
+        "fromMs": 27170,
+        "toMs": 27490
+      },
+      {
+        "text": " với",
+        "fromMs": 27490,
+        "toMs": 27670
+      },
+      {
+        "text": " quan",
+        "fromMs": 27670,
+        "toMs": 27890
+      },
+      {
+        "text": " khách",
+        "fromMs": 27890,
+        "toMs": 28250
+      },
+      {
+        "text": " đã",
+        "fromMs": 28250,
+        "toMs": 28580
+      },
+      {
+        "text": " được",
+        "fromMs": 28580,
+        "toMs": 28920
+      },
+      {
+        "text": " mời",
+        "fromMs": 28920,
+        "toMs": 29200
+      }
+    ]
+  },
+  {
+    "text": "Này cỗ bàn, ta đã dọn xong, ",
+    "startMs": 28320,
+    "durationMs": 2420,
+    "tokens": [
+      {
+        "text": " rằng,",
+        "fromMs": 29200,
+        "toMs": 29640
+      },
+      {
+        "text": " \"Này,",
+        "fromMs": 29960,
+        "toMs": 30130
+      },
+      {
+        "text": " cổ",
+        "fromMs": 30130,
+        "toMs": 30410
+      },
+      {
+        "text": " bàn,",
+        "fromMs": 30410,
+        "toMs": 30830
+      },
+      {
+        "text": " ta",
+        "fromMs": 30830,
+        "toMs": 31120
+      },
+      {
+        "text": " đã",
+        "fromMs": 31120,
+        "toMs": 31250
+      },
+      {
+        "text": " dọn",
+        "fromMs": 31250,
+        "toMs": 31600
+      },
+      {
+        "text": " xong,",
+        "fromMs": 31600,
+        "toMs": 32020
+      }
+    ]
+  },
+  {
+    "text": "bò tơ và thú béo đã hạ rồi, \nmọi sự đã sẵn.",
+    "startMs": 30740,
+    "durationMs": 3140,
+    "tokens": [
+      {
+        "text": " bò",
+        "fromMs": 32020,
+        "toMs": 32230
+      },
+      {
+        "text": " tơ",
+        "fromMs": 32230,
+        "toMs": 32480
+      },
+      {
+        "text": " và",
+        "fromMs": 32480,
+        "toMs": 32650
+      },
+      {
+        "text": " thu",
+        "fromMs": 32650,
+        "toMs": 32860
+      },
+      {
+        "text": " béo",
+        "fromMs": 32860,
+        "toMs": 33140
+      },
+      {
+        "text": " đã",
+        "fromMs": 33140,
+        "toMs": 33420
+      },
+      {
+        "text": " hạ",
+        "fromMs": 33420,
+        "toMs": 33700
+      },
+      {
+        "text": " rồi.",
+        "fromMs": 33700,
+        "toMs": 34360
+      }
+    ]
+  },
+  {
+    "text": "Mời quý vị đến dự tiệc cưới !",
+    "startMs": 33880,
+    "durationMs": 2650,
+    "tokens": [
+      {
+        "text": " Mọi",
+        "fromMs": 34360,
+        "toMs": 34890
+      },
+      {
+        "text": " sự",
+        "fromMs": 34890,
+        "toMs": 34980
+      },
+      {
+        "text": " đã",
+        "fromMs": 34980,
+        "toMs": 35260
+      },
+      {
+        "text": " sẵn,",
+        "fromMs": 35260,
+        "toMs": 35710
+      },
+      {
+        "text": " mời",
+        "fromMs": 35710,
+        "toMs": 36050
+      },
+      {
+        "text": " quý",
+        "fromMs": 36050,
+        "toMs": 36590
+      },
+      {
+        "text": " vị",
+        "fromMs": 36590,
+        "toMs": 36610
+      },
+      {
+        "text": " đến",
+        "fromMs": 36610,
+        "toMs": 37010
+      }
+    ]
+  },
+  {
+    "text": "Nhưng quan khách không \nthèm đếm xỉa tới, ",
+    "startMs": 36530,
+    "durationMs": 2450,
+    "tokens": [
+      {
+        "text": " dự",
+        "fromMs": 37010,
+        "toMs": 37280
+      },
+      {
+        "text": " tiệc",
+        "fromMs": 37280,
+        "toMs": 37690
+      },
+      {
+        "text": " cưới.\"",
+        "fromMs": 37690,
+        "toMs": 38560
+      }
+    ]
+  },
+  {
+    "text": "lại bỏ đi,",
+    "startMs": 38980,
+    "durationMs": 1220,
+    "tokens": []
+  },
+  {
+    "text": "kẻ thì đi thăm nông trại\nngười thì đi buôn,",
+    "startMs": 40200,
+    "durationMs": 2970,
+    "tokens": [
+      {
+        "text": " Nhưng",
+        "fromMs": 38560,
+        "toMs": 38950
+      },
+      {
+        "text": " quan",
+        "fromMs": 38950,
+        "toMs": 39210
+      },
+      {
+        "text": " khách",
+        "fromMs": 39210,
+        "toMs": 39600
+      },
+      {
+        "text": " không",
+        "fromMs": 39600,
+        "toMs": 40060
+      },
+      {
+        "text": " thèm",
+        "fromMs": 40060,
+        "toMs": 40350
+      },
+      {
+        "text": " đếm",
+        "fromMs": 40350,
+        "toMs": 40710
+      },
+      {
+        "text": " sỉa",
+        "fromMs": 40710,
+        "toMs": 41070
+      },
+      {
+        "text": " tới",
+        "fromMs": 41070,
+        "toMs": 41360
+      }
+    ]
+  },
+  {
+    "text": "còn những kẻ khác lại bắt \ncác đầy tớ của vua",
+    "startMs": 43170,
+    "durationMs": 2750,
+    "tokens": [
+      {
+        "text": " trại,",
+        "fromMs": 43650,
+        "toMs": 44320
+      },
+      {
+        "text": " người",
+        "fromMs": 44320,
+        "toMs": 44820
+      },
+      {
+        "text": " thì",
+        "fromMs": 44820,
+        "toMs": 45140
+      },
+      {
+        "text": " đi",
+        "fromMs": 45140,
+        "toMs": 45250
+      },
+      {
+        "text": " buôn,",
+        "fromMs": 45250,
+        "toMs": 45670
+      },
+      {
+        "text": " còn",
+        "fromMs": 45670,
+        "toMs": 45920
+      },
+      {
+        "text": " những",
+        "fromMs": 45920,
+        "toMs": 46360
+      },
+      {
+        "text": " kẻ",
+        "fromMs": 46360,
+        "toMs": 46600
+      }
+    ]
+  },
+  {
+    "text": " mà hành hạ và giết chết.",
+    "startMs": 45920,
+    "durationMs": 1680,
+    "tokens": [
+      {
+        "text": " khác",
+        "fromMs": 46600,
+        "toMs": 46900
+      },
+      {
+        "text": " lại",
+        "fromMs": 46900,
+        "toMs": 47220
+      },
+      {
+        "text": " bắt",
+        "fromMs": 47220,
+        "toMs": 47690
+      },
+      {
+        "text": " các",
+        "fromMs": 47690,
+        "toMs": 47780
+      },
+      {
+        "text": " đại",
+        "fromMs": 47780,
+        "toMs": 48170
+      },
+      {
+        "text": " tớ",
+        "fromMs": 48170,
+        "toMs": 48470
+      },
+      {
+        "text": " của",
+        "fromMs": 48470,
+        "toMs": 48760
+      },
+      {
+        "text": " vua",
+        "fromMs": 48760,
+        "toMs": 48880
+      }
+    ]
+  },
+  {
+    "text": "Nhà vua liền nổi cơn thịnh nộ,",
+    "startMs": 47600,
+    "durationMs": 2100,
+    "tokens": [
+      {
+        "text": " mà",
+        "fromMs": 48880,
+        "toMs": 49060
+      },
+      {
+        "text": " hành",
+        "fromMs": 49060,
+        "toMs": 49430
+      },
+      {
+        "text": " hạ",
+        "fromMs": 49430,
+        "toMs": 49610
+      },
+      {
+        "text": " và",
+        "fromMs": 49610,
+        "toMs": 49790
+      },
+      {
+        "text": " giết",
+        "fromMs": 49790,
+        "toMs": 50160
+      },
+      {
+        "text": " chết.",
+        "fromMs": 50160,
+        "toMs": 50880
+      }
+    ]
+  },
+  {
+    "text": "sai quân đi tru diệt bọn\n sát nhân ấy",
+    "startMs": 49700,
+    "durationMs": 3000,
+    "tokens": [
+      {
+        "text": " Nhà",
+        "fromMs": 50880,
+        "toMs": 51160
+      },
+      {
+        "text": " vua",
+        "fromMs": 51160,
+        "toMs": 51370
+      },
+      {
+        "text": " liền",
+        "fromMs": 51370,
+        "toMs": 51830
+      },
+      {
+        "text": " nổi",
+        "fromMs": 51830,
+        "toMs": 52140
+      },
+      {
+        "text": " cơn",
+        "fromMs": 52140,
+        "toMs": 52410
+      },
+      {
+        "text": " thịnh",
+        "fromMs": 52410,
+        "toMs": 52950
+      },
+      {
+        "text": " nộ,",
+        "fromMs": 52950,
+        "toMs": 53330
+      },
+      {
+        "text": " sai",
+        "fromMs": 53330,
+        "toMs": 53680
+      }
+    ]
+  },
+  {
+    "text": "và thiêu huỷ thành phố \ncủa chúng.",
+    "startMs": 52700,
+    "durationMs": 2120,
+    "tokens": [
+      {
+        "text": " quân",
+        "fromMs": 53680,
+        "toMs": 53890
+      },
+      {
+        "text": " đi",
+        "fromMs": 53890,
+        "toMs": 54100
+      },
+      {
+        "text": " tru",
+        "fromMs": 54100,
+        "toMs": 54310
+      },
+      {
+        "text": " diệt",
+        "fromMs": 54310,
+        "toMs": 54730
+      },
+      {
+        "text": " bọn",
+        "fromMs": 54730,
+        "toMs": 55140
+      },
+      {
+        "text": " sát",
+        "fromMs": 55140,
+        "toMs": 55360
+      },
+      {
+        "text": " nhân",
+        "fromMs": 55360,
+        "toMs": 55710
+      },
+      {
+        "text": " ấy,",
+        "fromMs": 55710,
+        "toMs": 56200
+      }
+    ]
+  },
+  {
+    "text": "Rồi nhà vua bảo đầy tớ : ",
+    "startMs": 54820,
+    "durationMs": 1980,
+    "tokens": [
+      {
+        "text": " và",
+        "fromMs": 56800,
+        "toMs": 56900
+      },
+      {
+        "text": " thiêu",
+        "fromMs": 56900,
+        "toMs": 57280
+      },
+      {
+        "text": " hủy",
+        "fromMs": 57280,
+        "toMs": 57560
+      },
+      {
+        "text": " thành",
+        "fromMs": 57560,
+        "toMs": 57920
+      },
+      {
+        "text": " phố",
+        "fromMs": 57920,
+        "toMs": 58240
+      },
+      {
+        "text": " của",
+        "fromMs": 58240,
+        "toMs": 58520
+      },
+      {
+        "text": " chúng.",
+        "fromMs": 58520,
+        "toMs": 59120
+      }
+    ]
+  },
+  {
+    "text": "Tiệc cưới đã sẵn sàng rồi, ",
+    "startMs": 56800,
+    "durationMs": 1900,
+    "tokens": [
+      {
+        "text": " Rồi",
+        "fromMs": 59120,
+        "toMs": 59360
+      },
+      {
+        "text": " nhà",
+        "fromMs": 59360,
+        "toMs": 59640
+      },
+      {
+        "text": " vua",
+        "fromMs": 59640,
+        "toMs": 59780
+      },
+      {
+        "text": " bảo",
+        "fromMs": 59780,
+        "toMs": 60080
+      },
+      {
+        "text": " đầy",
+        "fromMs": 60080,
+        "toMs": 60440
+      },
+      {
+        "text": " tớ,",
+        "fromMs": 60440,
+        "toMs": 60840
+      },
+      {
+        "text": " \"Tịa",
+        "fromMs": 60840,
+        "toMs": 61150
+      },
+      {
+        "text": " cưới",
+        "fromMs": 61150,
+        "toMs": 61490
+      }
+    ]
+  },
+  {
+    "text": "mà những kẻ đã được mời lại \nkhông xứng đáng.",
+    "startMs": 58700,
+    "durationMs": 3080,
+    "tokens": [
+      {
+        "text": " đã",
+        "fromMs": 61490,
+        "toMs": 61690
+      },
+      {
+        "text": " sẵn",
+        "fromMs": 61690,
+        "toMs": 61940
+      },
+      {
+        "text": " sàng",
+        "fromMs": 61940,
+        "toMs": 62190
+      },
+      {
+        "text": " rồi,",
+        "fromMs": 62190,
+        "toMs": 62550
+      },
+      {
+        "text": " mà",
+        "fromMs": 62550,
+        "toMs": 62920
+      },
+      {
+        "text": " những",
+        "fromMs": 62920,
+        "toMs": 63060
+      },
+      {
+        "text": " kẻ",
+        "fromMs": 63060,
+        "toMs": 63290
+      },
+      {
+        "text": " đã",
+        "fromMs": 63290,
+        "toMs": 63460
+      }
+    ]
+  },
+  {
+    "text": "Vậy các ngươi đi ra \ncác ngả đường,",
+    "startMs": 61780,
+    "durationMs": 2320,
+    "tokens": [
+      {
+        "text": " được",
+        "fromMs": 63460,
+        "toMs": 63870
+      },
+      {
+        "text": " mời",
+        "fromMs": 63870,
+        "toMs": 64120
+      },
+      {
+        "text": " lại",
+        "fromMs": 64120,
+        "toMs": 64380
+      },
+      {
+        "text": " không",
+        "fromMs": 64380,
+        "toMs": 64690
+      },
+      {
+        "text": " xứng",
+        "fromMs": 64690,
+        "toMs": 65000
+      },
+      {
+        "text": " đáng.\"",
+        "fromMs": 65000,
+        "toMs": 65640
+      }
+    ]
+  },
+  {
+    "text": "gặp ai cũng mời hết \nvào tiệc cưới.’",
+    "startMs": 64100,
+    "durationMs": 2310,
+    "tokens": [
+      {
+        "text": " Vậy",
+        "fromMs": 65640,
+        "toMs": 65950
+      },
+      {
+        "text": " các",
+        "fromMs": 65950,
+        "toMs": 66580
+      },
+      {
+        "text": " người",
+        "fromMs": 66580,
+        "toMs": 66710
+      },
+      {
+        "text": " đi",
+        "fromMs": 66710,
+        "toMs": 66900
+      },
+      {
+        "text": " ra",
+        "fromMs": 66900,
+        "toMs": 67020
+      },
+      {
+        "text": " các",
+        "fromMs": 67020,
+        "toMs": 67270
+      },
+      {
+        "text": " ngã",
+        "fromMs": 67270,
+        "toMs": 67510
+      },
+      {
+        "text": " đường,",
+        "fromMs": 67510,
+        "toMs": 68190
+      }
+    ]
+  },
+  {
+    "text": "Đầy tớ liền đi ra các nẻo \nđường, gặp ai, ",
+    "startMs": 66410,
+    "durationMs": 3270,
+    "tokens": [
+      {
+        "text": " gặp",
+        "fromMs": 68190,
+        "toMs": 68620
+      },
+      {
+        "text": " ai",
+        "fromMs": 68620,
+        "toMs": 68750
+      },
+      {
+        "text": " cũng",
+        "fromMs": 68750,
+        "toMs": 69000
+      },
+      {
+        "text": " mời",
+        "fromMs": 69000,
+        "toMs": 69250
+      },
+      {
+        "text": " hết",
+        "fromMs": 69250,
+        "toMs": 69570
+      },
+      {
+        "text": " vào",
+        "fromMs": 69570,
+        "toMs": 69820
+      },
+      {
+        "text": " tiệc",
+        "fromMs": 69820,
+        "toMs": 70190
+      },
+      {
+        "text": " cưới.",
+        "fromMs": 70190,
+        "toMs": 70960
+      }
+    ]
+  },
+  {
+    "text": "bất luận xấu tốt, cũng tập \nhợp cả lại,",
+    "startMs": 69680,
+    "durationMs": 2850,
+    "tokens": [
+      {
+        "text": " Đại",
+        "fromMs": 70960,
+        "toMs": 71320
+      },
+      {
+        "text": " tớ",
+        "fromMs": 71320,
+        "toMs": 71600
+      },
+      {
+        "text": " liền",
+        "fromMs": 71600,
+        "toMs": 71920
+      },
+      {
+        "text": " đi",
+        "fromMs": 71920,
+        "toMs": 72100
+      },
+      {
+        "text": " ra",
+        "fromMs": 72100,
+        "toMs": 72220
+      },
+      {
+        "text": " các",
+        "fromMs": 72220,
+        "toMs": 72460
+      },
+      {
+        "text": " nẻo",
+        "fromMs": 72460,
+        "toMs": 72760
+      },
+      {
+        "text": " đường,",
+        "fromMs": 72760,
+        "toMs": 73510
+      }
+    ]
+  },
+  {
+    "text": "nên phòng tiệc cưới đã \nđầy thực khách.",
+    "startMs": 72530,
+    "durationMs": 2560,
+    "tokens": [
+      {
+        "text": " gặp",
+        "fromMs": 73510,
+        "toMs": 74000
+      },
+      {
+        "text": " ai,",
+        "fromMs": 74000,
+        "toMs": 74360
+      },
+      {
+        "text": " bất",
+        "fromMs": 74360,
+        "toMs": 74610
+      },
+      {
+        "text": " luận",
+        "fromMs": 74610,
+        "toMs": 74900
+      },
+      {
+        "text": " xấu",
+        "fromMs": 74900,
+        "toMs": 75160
+      },
+      {
+        "text": " tốt,",
+        "fromMs": 75160,
+        "toMs": 75900
+      },
+      {
+        "text": " cũng",
+        "fromMs": 75900,
+        "toMs": 75900
+      },
+      {
+        "text": " tập",
+        "fromMs": 75900,
+        "toMs": 76270
+      }
+    ]
+  },
+  {
+    "text": "Bấy giờ nhà vua tiến vào \nquan sát khách dự tiệc,",
+    "startMs": 75090,
+    "durationMs": 3390,
+    "tokens": [
+      {
+        "text": " hợp",
+        "fromMs": 76270,
+        "toMs": 76630
+      },
+      {
+        "text": " cả",
+        "fromMs": 76630,
+        "toMs": 76930
+      },
+      {
+        "text": " lại.",
+        "fromMs": 76930,
+        "toMs": 77360
+      }
+    ]
+  },
+  {
+    "text": "thấy ở đó có một người không \nmặc y phục lễ cưới,",
+    "startMs": 78480,
+    "durationMs": 3190,
+    "tokens": [
+      {
+        "text": " Nên",
+        "fromMs": 77360,
+        "toMs": 77560
+      },
+      {
+        "text": " phòng",
+        "fromMs": 77560,
+        "toMs": 77970
+      },
+      {
+        "text": " tiệc",
+        "fromMs": 77970,
+        "toMs": 78230
+      },
+      {
+        "text": " cưới",
+        "fromMs": 78230,
+        "toMs": 78540
+      },
+      {
+        "text": " đã",
+        "fromMs": 78540,
+        "toMs": 78750
+      },
+      {
+        "text": " đầy",
+        "fromMs": 78750,
+        "toMs": 79050
+      },
+      {
+        "text": " thực",
+        "fromMs": 79050,
+        "toMs": 79370
+      },
+      {
+        "text": " khách.",
+        "fromMs": 79370,
+        "toMs": 79920
+      }
+    ]
+  },
+  {
+    "text": "mới hỏi người ấy : Này bạn,",
+    "startMs": 81670,
+    "durationMs": 2590,
+    "tokens": [
+      {
+        "text": " khách",
+        "fromMs": 82250,
+        "toMs": 82650
+      },
+      {
+        "text": " dự",
+        "fromMs": 82650,
+        "toMs": 82910
+      },
+      {
+        "text": " tiệc,",
+        "fromMs": 82910,
+        "toMs": 83560
+      }
+    ]
+  },
+  {
+    "text": "làm sao bạn vào đây mà lại \nkhông có y phục lễ cưới ?",
+    "startMs": 84260,
+    "durationMs": 3340,
+    "tokens": [
+      {
+        "text": " thấy",
+        "fromMs": 84420,
+        "toMs": 84610
+      },
+      {
+        "text": " ở",
+        "fromMs": 84610,
+        "toMs": 84760
+      },
+      {
+        "text": " đó",
+        "fromMs": 84760,
+        "toMs": 84960
+      },
+      {
+        "text": " có",
+        "fromMs": 84960,
+        "toMs": 85110
+      },
+      {
+        "text": " một",
+        "fromMs": 85110,
+        "toMs": 85360
+      },
+      {
+        "text": " người",
+        "fromMs": 85360,
+        "toMs": 85790
+      },
+      {
+        "text": " không",
+        "fromMs": 85790,
+        "toMs": 86040
+      },
+      {
+        "text": " mặc",
+        "fromMs": 86040,
+        "toMs": 86280
+      }
+    ]
+  },
+  {
+    "text": "Người ấy câm miệng không \nnói được gì.",
+    "startMs": 87600,
+    "durationMs": 2530,
+    "tokens": [
+      {
+        "text": " \"Này",
+        "fromMs": 88640,
+        "toMs": 89050
+      },
+      {
+        "text": " bạn,",
+        "fromMs": 89050,
+        "toMs": 89360
+      },
+      {
+        "text": " làm",
+        "fromMs": 89360,
+        "toMs": 89600
+      },
+      {
+        "text": " sao",
+        "fromMs": 89600,
+        "toMs": 90000
+      },
+      {
+        "text": " bạn",
+        "fromMs": 90000,
+        "toMs": 90080
+      },
+      {
+        "text": " vào",
+        "fromMs": 90080,
+        "toMs": 90340
+      },
+      {
+        "text": " đây",
+        "fromMs": 90340,
+        "toMs": 90620
+      },
+      {
+        "text": " mà",
+        "fromMs": 90620,
+        "toMs": 90810
+      }
+    ]
+  },
+  {
+    "text": "Nhà vua liền bảo những \nngười phục dịch :",
+    "startMs": 90130,
+    "durationMs": 2490,
+    "tokens": [
+      {
+        "text": " lại",
+        "fromMs": 90810,
+        "toMs": 91100
+      },
+      {
+        "text": " không",
+        "fromMs": 91100,
+        "toMs": 91460
+      },
+      {
+        "text": " có",
+        "fromMs": 91460,
+        "toMs": 91640
+      },
+      {
+        "text": " y",
+        "fromMs": 91640,
+        "toMs": 91700
+      },
+      {
+        "text": " phục",
+        "fromMs": 91700,
+        "toMs": 92120
+      },
+      {
+        "text": " lễ",
+        "fromMs": 92120,
+        "toMs": 92310
+      },
+      {
+        "text": " cưới?\"",
+        "fromMs": 92310,
+        "toMs": 93000
+      }
+    ]
+  },
+  {
+    "text": "Trói chân tay nó lại,",
+    "startMs": 92620,
+    "durationMs": 1700,
+    "tokens": [
+      {
+        "text": " Người",
+        "fromMs": 93000,
+        "toMs": 93500
+      },
+      {
+        "text": " ấy",
+        "fromMs": 93500,
+        "toMs": 93810
+      },
+      {
+        "text": " căm",
+        "fromMs": 93810,
+        "toMs": 94000
+      },
+      {
+        "text": " miệng",
+        "fromMs": 94000,
+        "toMs": 94430
+      },
+      {
+        "text": " không",
+        "fromMs": 94430,
+        "toMs": 94810
+      },
+      {
+        "text": " nói",
+        "fromMs": 94810,
+        "toMs": 95130
+      },
+      {
+        "text": " được",
+        "fromMs": 95130,
+        "toMs": 95570
+      },
+      {
+        "text": " gì.",
+        "fromMs": 95570,
+        "toMs": 96000
+      }
+    ]
+  },
+  {
+    "text": "quăng nó ra chỗ tối tăm \nbên ngoài, ",
+    "startMs": 94320,
+    "durationMs": 2280,
+    "tokens": [
+      {
+        "text": " Nhà",
+        "fromMs": 96000,
+        "toMs": 96220
+      },
+      {
+        "text": " vua",
+        "fromMs": 96220,
+        "toMs": 96380
+      },
+      {
+        "text": " liền",
+        "fromMs": 96380,
+        "toMs": 96710
+      },
+      {
+        "text": " bảo",
+        "fromMs": 96710,
+        "toMs": 96980
+      },
+      {
+        "text": " những",
+        "fromMs": 96980,
+        "toMs": 97370
+      },
+      {
+        "text": " người",
+        "fromMs": 97370,
+        "toMs": 97820
+      },
+      {
+        "text": " phục",
+        "fromMs": 97820,
+        "toMs": 98200
+      },
+      {
+        "text": " dịch,",
+        "fromMs": 98200,
+        "toMs": 98840
+      }
+    ]
+  },
+  {
+    "text": "ở đó người ta sẽ phải khóc lóc \nnghiến răng !",
+    "startMs": 96600,
+    "durationMs": 3100,
+    "tokens": [
+      {
+        "text": " trói",
+        "fromMs": 98840,
+        "toMs": 99170
+      },
+      {
+        "text": " trên",
+        "fromMs": 99170,
+        "toMs": 99490
+      },
+      {
+        "text": " tay",
+        "fromMs": 99490,
+        "toMs": 99740
+      },
+      {
+        "text": " nó",
+        "fromMs": 99740,
+        "toMs": 99990
+      },
+      {
+        "text": " lại,",
+        "fromMs": 99990,
+        "toMs": 100660
+      },
+      {
+        "text": " quăng",
+        "fromMs": 100660,
+        "toMs": 100880
+      },
+      {
+        "text": " nó",
+        "fromMs": 100880,
+        "toMs": 101040
+      },
+      {
+        "text": " ra",
+        "fromMs": 101040,
+        "toMs": 101150
+      }
+    ]
+  },
+  {
+    "text": "Vì kẻ được gọi thì nhiều, \nmà người được chọn thì ít.",
+    "startMs": 99700,
+    "durationMs": 4380,
+    "tokens": [
+      {
+        "text": " chỗ",
+        "fromMs": 101150,
+        "toMs": 101420
+      },
+      {
+        "text": " tối",
+        "fromMs": 101420,
+        "toMs": 101690
+      },
+      {
+        "text": " tầm",
+        "fromMs": 101690,
+        "toMs": 101950
+      },
+      {
+        "text": " bên",
+        "fromMs": 101950,
+        "toMs": 102170
+      },
+      {
+        "text": " ngoài.",
+        "fromMs": 102170,
+        "toMs": 102760
+      }
+    ]
+  }
+]

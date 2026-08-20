@@ -1,0 +1,56 @@
+name: 🎬 Render Catholic Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_title:
+        description: 'Tên file video xuất ra (không cần đuôi .mp4)'
+        required: false
+        default: 'CatholicVideo'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/data/today.ts'
+      - 'public/subs/current_subtitles.json'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  render:
+    name: 🚀 Render MP4 Video (1080x1920 30FPS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 📥 Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🧪 Pre-flight Checks (TypeScript & Tests)
+        run: |
+          npx tsc --noEmit
+          npm test
+
+      - name: 🎬 Render Video with Remotion Engine
+        run: |
+          mkdir -p out
+          npx remotion render CatholicVideo out/CatholicVideo.mp4             --video-bitrate=15M             --color-space=bt709             --jpeg-quality=100             --overwrite
+
+      - name: 📤 Upload Video Artifact (Direct Download Link)
+        uses: actions/upload-artifact@v4
+        with:
+          name: CatholicVideo-MP4
+          path: out/CatholicVideo.mp4
+          retention-days: 30
+          if-no-files-found: error

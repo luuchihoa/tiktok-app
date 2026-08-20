@@ -1,0 +1,47 @@
+{
+  "name": "tiktok-app",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/captions": "4.0.500",
+    "@remotion/cli": "4.0.500",
+    "@remotion/google-fonts": "4.0.500",
+    "@remotion/install-whisper-cpp": "4.0.500",
+    "@remotion/media": "4.0.500",
+    "@remotion/player": "^4.0.501",
+    "@remotion/tailwind-v4": "4.0.500",
+    "@remotion/zod-types": "^4.0.501",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.500",
+    "tailwindcss": "4.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.500",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "build-video": "remotion render CatholicVideo public/output.mp4 --video-bitrate=15M --color-space=bt709 --hardware-acceleration=if-possible --jpeg-quality=100 --overwrite",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc",
+    "test": "node --test tests/*.test.mjs",
+    "create-subtitles": "node sub.mjs",
+    "studio-app": "node server.mjs"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

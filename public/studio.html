@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✝️ Catholic Video Studio Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #0a0806; color: #f4f4f5; }
+    .glass-card { background: rgba(24, 20, 16, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(245, 158, 11, 0.2); }
+    .glass-input { background: #181410; border: 1px solid rgba(255, 255, 255, 0.12); color: #ffffff; }
+    .glass-input:focus { border-color: #f59e0b; outline: none; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3); }
+    .season-btn { transition: all 0.2s ease; cursor: pointer; }
+    .season-btn.active { border-width: 2px; transform: scale(1.02); }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col">
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none max-w-sm"></div>
+
+  <!-- HEADER BAR -->
+  <header class="h-16 border-b border-amber-500/20 bg-[#120e0b] px-6 flex items-center justify-between z-10 shrink-0">
+    <div class="flex items-center gap-3">
+      <span class="text-2xl">✝️</span>
+      <div>
+        <div class="flex items-center gap-2.5">
+          <h1 class="font-extrabold text-amber-500 text-lg tracking-wide">CATHOLIC VIDEO STUDIO PRO</h1>
+          <span id="auto-save-badge" class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-500/40 font-medium flex items-center gap-1 transition-all">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="auto-save-text">🟢 Đã lưu tự động</span>
+          </span>
+        </div>
+        <p class="text-xs text-zinc-400">Trình tạo Video Phụng Vụ Công Giáo Tự Động Cao Cấp</p>
+      </div>
+    </div>
+    <div class="flex gap-2.5 items-center">
+      <!-- PROJECT BACKUP / RESTORE BUTTONS (OPTION 1) -->
+      <button onclick="exportProject()" title="Xuất file phụ đề .srt chuẩn chỉnh để edit bằng CapCut/Premiere" class="bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 font-bold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+        <span>📥 1-Click Tải Phụ Đề (.srt)</span>
+      </button>
+      <button onclick="importProject()" title="Nạp file phụ đề .srt hoặc file dự án .json" class="bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 font-bold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+        <span>📤 1-Click Mở Phụ Đề (.srt/.json)</span>
+      </button>
+      <button onclick="resetStudioCache()" title="Xóa toàn bộ cache/nháp cũ trong trình duyệt và tải lại dữ liệu mới từ server" class="bg-zinc-700/50 hover:bg-zinc-600/60 text-zinc-300 border border-zinc-600/40 font-bold text-xs px-3 py-2.5 rounded-xl transition flex items-center gap-1.5">
+        <span>🧹 Reset</span>
+      </button>
+
+      <div class="h-6 w-px bg-zinc-800 mx-1"></div>
+
+      <button onclick="generateSubtitles()" id="btn-sub" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2">
+        <span>⚡ 1-Click Sinh Phụ Đề AI</span>
+      </button>
+      <div class="flex flex-col items-end">
+        <button onclick="openCloudRenderModal()" id="btn-cloud-render" title="Render trên máy chủ đám mây GitHub Actions (không tốn CPU/RAM máy bạn)" class="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 cursor-pointer">
+          <span>☁️ 1-Click Render Cloud</span>
+        </button>
+        <span class="text-[9px] text-emerald-400/80 font-mono pt-0.5">GitHub Actions • 0% CPU</span>
+      </div>
+
+      <div class="flex flex-col items-end">
+        <button onclick="renderVideo()" id="btn-render" class="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 flex items-center gap-2">
+          <span>🎬 Xuất Video Máy (Local)</span>
+        </button>
+        <span class="text-[9px] text-amber-400/80 font-mono pt-0.5" title="Cấu hình ngầm: Bitrate 15M, BT.709, HW Accel if-possible, JPEG Quality 100%">⚡ 15M Bitrate • BT.709 • Q100</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN STUDIO LAYOUT -->
+  <div class="flex-1 flex overflow-hidden">
+    <!-- LEFT CONTROL PANEL (FORM) -->
+    <div id="editor-panel" class="w-[500px] shrink-0 bg-[#14100c] border-r border-amber-500/20 p-6 overflow-y-auto space-y-6">
+      <!-- SECTION 1: LITURGICAL SEASON -->
+      <div id="subtitle-editor-section" class="space-y-3">
+        <label class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-2">
+          <span>🎨 1. Chọn Mùa Phụng Vụ (Tự Đổi Màu & Icon ✝️🌿🕯️🔥)</span>
+        </label>
+        <div class="grid grid-cols-2 gap-2.5" id="season-grid">
+          <button onclick="selectSeason('EASTER_CHRISTMAS')" id="btn-EASTER_CHRISTMAS" class="season-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900/60 text-left hover:border-amber-500/50">
+            <div class="text-amber-400 font-bold text-xs">🟡 Phục Sinh / Lễ Trọng</div>
+            <div class="text-[10px] text-zinc-400 mt-1">Icon 🕯️ - Vàng Hoàng Gia</div>
+          </button>
+          <button onclick="selectSeason('ORDINARY')" id="btn-ORDINARY" class="season-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900/60 text-left hover:border-emerald-500/50">
+            <div class="text-emerald-400 font-bold text-xs">🟢 Mùa Thường Niên</div>
+            <div class="text-[10px] text-zinc-400 mt-1">Icon 🌿 - Xanh Ngọc Lục</div>
+          </button>
+          <button onclick="selectSeason('LENT_ADVENT')" id="btn-LENT_ADVENT" class="season-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900/60 text-left hover:border-purple-500/50">
+            <div class="text-purple-400 font-bold text-xs">🟣 Mùa Chay / Mùa Vọng</div>
+            <div class="text-[10px] text-zinc-400 mt-1">Icon ✝️ - Tím Thạch Anh</div>
+          </button>
+          <button onclick="selectSeason('MARTYR')" id="btn-MARTYR" class="season-btn p-3 rounded-xl border border-zinc-800 bg-zinc-900/60 text-left hover:border-red-500/50">
+            <div class="text-red-400 font-bold text-xs">🔴 Lễ Tử Đạo / Thánh Thần</div>
+            <div class="text-[10px] text-zinc-400 mt-1">Icon 🔥 - Đỏ Hồng Ngọc</div>
+          </button>
+        </div>
+      </div>
+
+      <hr class="border-zinc-800">
+
+      <!-- SECTION 2: CONTENT INPUTS -->
+      <div class="space-y-4">
+        <label class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-2">
+          <span>📝 2. Nội Dung Văn Bản</span>
+        </label>
+        
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-[11px] font-semibold text-zinc-400 block">Ngày Tháng</label>
+              <button type="button" onclick="setTodayDate()" class="text-[10px] text-amber-400 hover:text-amber-300 font-mono font-semibold">📅 Hôm nay</button>
+            </div>
+            <input type="text" id="input-date" oninput="saveData()" onchange="saveData()" class="w-full glass-input px-3.5 py-2.5 rounded-lg text-xs" placeholder="05/08/2026">
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-400 block mb-1">Thẻ Chủ Đề Header</label>
+            <input type="text" id="input-bannerTag" oninput="saveData()" onchange="saveData()" class="w-full glass-input px-3.5 py-2.5 rounded-lg text-xs" placeholder="PHỤNG VỤ LỜI CHÚA HÀNG NGÀY">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="text-[11px] font-semibold text-zinc-400 block">Tên Thánh Lễ / Lễ Trọng</label>
+            <span class="text-[10px] text-amber-400/80 font-mono">💡 Bấm Enter để xuống dòng</span>
+          </div>
+          <textarea id="input-feastName" oninput="saveData()" onchange="saveData()" rows="2" class="w-full glass-input px-3.5 py-2 rounded-lg text-xs leading-relaxed" placeholder="Các thánh Mác-ta, Ma-ri-a&#10;và La-da-rô..."></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-400 block mb-1">Loại Bài Đọc</label>
+            <input type="text" id="input-readingType" oninput="onLibraryFieldsInput()" onchange="onLibraryFieldsInput()" class="w-full glass-input px-3.5 py-2.5 rounded-lg text-xs" placeholder="BÀI ĐỌC 1">
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-400 block mb-1">Kinh Thánh Ref</label>
+            <input type="text" id="input-bibleRef" oninput="onLibraryFieldsInput()" onchange="onLibraryFieldsInput()" class="w-full glass-input px-3.5 py-2.5 rounded-lg text-xs" placeholder="1 Ga 4,7-16">
+          </div>
+        </div>
+
+        <!-- AUDIO + SUBTITLE LIBRARY SUGGESTION -->
+        <div id="ref-sub-suggestion-container" class="hidden"></div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="text-[11px] font-semibold text-zinc-400 block">Câu Trích Dẫn (Quote)</label>
+            <span class="text-[10px] text-amber-400/80 font-mono">💡 Bấm Enter để xuống dòng</span>
+          </div>
+          <textarea id="input-quote" oninput="saveData()" onchange="saveData()" rows="3" class="w-full glass-input px-3.5 py-2.5 rounded-lg text-xs leading-relaxed" placeholder="”Nếu chúng ta yêu thương nhau,&#10;thì Thiên Chúa ở lại trong chúng ta...“"></textarea>
+        </div>
+      </div>
+
+      <hr class="border-zinc-800">
+
+      <!-- SECTION 3: MEDIA FILES, INTRO/OUTRO & IMAGE SLIDER -->
+      <div class="space-y-4">
+        <label class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-2">
+          <span>🖼️ 3. Tải File, Nhạc Dạo Vào/Ra & Vị Trí Ảnh</span>
+        </label>
+
+        <!-- IMAGE FILE PICKER -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-zinc-300 block">🖼️ Chọn Ảnh Trung Tâm (.jpg, .png, .webp):</label>
+          <input
+            type="file"
+            id="picker-image"
+            accept="image/*"
+            onchange="handleFileUpload(this, 'image')"
+            class="w-full text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-black hover:file:bg-amber-400"
+          >
+          <div id="image-filename" class="text-[11px] text-amber-400/90 font-mono break-all pt-0.5">File hiện tại: cross.jpg</div>
+        </div>
+
+        <!-- LOGO FILE PICKER -->
+        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
+          <label class="text-[11px] font-semibold text-amber-300 block">🏷️ Logo Thương Hiệu (.png, .jpg):</label>
+          <input
+            type="file"
+            id="picker-logo"
+            accept="image/*"
+            onchange="handleFileUpload(this, 'logo')"
+            class="w-full text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-black hover:file:bg-amber-400"
+          >
+          <div id="logo-filename" class="text-[11px] text-amber-400/90 font-mono break-all pt-0.5">✅ Logo hiện tại: logo.png (Góc Trên Trái)</div>
+        </div>
+
+        <!-- WEBSITE URL INPUT -->
+        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
+          <label class="text-[11px] font-semibold text-amber-300 block">🌐 Địa Chỉ Website / Kênh Truyền Thông:</label>
+          <input
+            type="text"
+            id="input-websiteUrl"
+            oninput="saveData()"
+            placeholder="VD: loichuamoingay.org"
+            class="w-full glass-input p-2.5 rounded-xl text-xs text-amber-200 font-mono"
+          >
+          <div class="text-[10px] text-zinc-400 pt-0.5">Hiển thị ở Badge góc trên phải & phụ đề Intro/Outro</div>
+        </div>
+
+        <!-- IMAGE POSITION Y SLIDER -->
+        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
+          <div class="flex justify-between items-center">
+            <label class="text-[11px] font-semibold text-amber-300 flex items-center gap-1.5">
+              <span>↕️ Dịch Chuyển Ảnh Lên / Xuống (Căn Khuôn Mặt)</span>
+            </label>
+            <span id="pos-val" class="text-[10px] text-amber-400 font-mono font-bold">50% (Chính Giữa)</span>
+          </div>
+          <input
+            type="range"
+            id="input-imagePositionY"
+            min="0"
+            max="100"
+            value="50"
+            oninput="updateImagePos(this.value)"
+            class="w-full accent-amber-500 bg-zinc-800 h-2 rounded-lg cursor-pointer mt-1"
+          >
+          <div class="flex justify-between text-[9px] text-zinc-500 pt-1">
+            <span>⬆️ 0% (Dịch Lên Đỉnh)</span>
+            <span>↔️ 50% (Chính Giữa)</span>
+            <span>⬇️ 100% (Dịch Xuống Đáy)</span>
+          </div>
+        </div>
+
+        <!-- MAIN AUDIO FILE PICKER -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-zinc-300 block">🎙️ Chọn File Âm Thanh Bài Đọc (.mp3, .wav):</label>
+          <input
+            type="file"
+            id="picker-audio"
+            accept="audio/*"
+            onchange="handleFileUpload(this, 'audio')"
+            class="w-full text-xs text-blue-300 bg-blue-500/10 border border-blue-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-400"
+          >
+          <div id="audio-filename" class="text-[11px] text-blue-400/90 font-mono break-all pt-0.5">File hiện tại: audio.mp3</div>
+        </div>
+
+        <!-- INTRO & OUTRO AUDIO FILE PICKERS -->
+        <div class="grid grid-cols-2 gap-3 bg-purple-500/5 border border-purple-500/20 p-3.5 rounded-xl">
+          <div class="space-y-1">
+            <label class="text-[10px] font-bold text-purple-300 block">🔔 Nhạc Dạo Vào (Intro):</label>
+            <input
+              type="file"
+              id="picker-introAudio"
+              accept="audio/*"
+              onchange="handleFileUpload(this, 'introAudio')"
+              class="w-full text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/30 p-1.5 rounded-lg cursor-pointer file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-purple-600 file:text-white"
+            >
+            <div id="intro-audio-filename" class="text-[10px] text-purple-400/90 font-mono break-all pt-0.5">File hiện tại: piano_intro.mp3</div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] font-bold text-purple-300 block">⛪ Nhạc Dạo Ra (Outro):</label>
+            <input
+              type="file"
+              id="picker-outroAudio"
+              accept="audio/*"
+              onchange="handleFileUpload(this, 'outroAudio')"
+              class="w-full text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/30 p-1.5 rounded-lg cursor-pointer file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-purple-600 file:text-white"
+            >
+            <div id="outro-audio-filename" class="text-[10px] text-purple-400/90 font-mono break-all pt-0.5">File hiện tại: piano_outro.mp3</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-zinc-800">
+
+      <!-- SECTION 4: INTERACTIVE SUBTITLE EDITOR -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <label class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-2">
+            <span>📖 4. Chỉnh Sửa Phụ Đề & Timeline</span>
+          </label>
+          <div class="flex items-center gap-1.5">
+            <button onclick="restoreLastSubtitleBackup()" class="text-[10px] bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-lg transition font-semibold flex items-center gap-1" title="Khôi phục bản phụ đề trước đó nếu lỡ tay làm mất">
+              <span>🔄 Khôi Phục Phụ Đề Cũ</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-[10px]">
+          <div class="rounded-lg bg-zinc-950/70 border border-zinc-800 px-2.5 py-2 text-zinc-400">
+            <span class="block text-zinc-500">ĐOẠN HIỂN THỊ</span>
+            <strong id="subtitle-count" class="text-zinc-100 text-xs">0 / 0</strong>
+          </div>
+          <div class="rounded-lg bg-zinc-950/70 border border-zinc-800 px-2.5 py-2 text-zinc-400">
+            <span class="block text-zinc-500">THỜI LƯỢNG</span>
+            <strong id="subtitle-duration" class="text-zinc-100 text-xs">00:00</strong>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-2">
+          <div class="mb-1 flex items-center justify-between text-[10px] text-zinc-500">
+            <span>Timeline — bấm đoạn để tập trung chỉnh sửa</span>
+            <span id="subtitle-active-time" class="font-mono text-amber-300">Chưa chọn</span>
+          </div>
+          <div id="subtitle-timeline" class="flex h-9 items-stretch gap-px overflow-x-auto rounded-md bg-black/50 p-1" aria-label="Timeline phụ đề"></div>
+        </div>
+
+
+
+        <div id="sub-list-container" class="space-y-2 max-h-[62vh] overflow-y-auto p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800">
+          <p class="text-xs text-zinc-500 italic text-center py-4">Bấm "Tải Phụ Đề" hoặc "1-Click Sinh Phụ Đề AI" để xem, sửa chữ, sửa mốc thời gian và thêm/xóa phụ đề.</p>
+        </div>
+
+        <button id="btn-save-subs" onclick="saveSubtitles()" class="hidden sticky bottom-0 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2">
+          <span>💾 Lưu Chỉnh Sửa Phụ Đề & Thời Gian</span><span class="opacity-70 font-normal">⌘/Ctrl + Enter</span>
+        </button>
+      </div>
+
+      <!-- STATUS LOG BOX -->
+      <div id="status-box" class="hidden p-4 rounded-xl bg-zinc-900 border border-amber-500/30 text-xs space-y-2">
+        <div class="font-bold text-amber-400 flex items-center gap-2">
+          <span class="animate-spin">⏳</span>
+          <span id="status-title">Đang xử lý...</span>
+        </div>
+        <div id="status-desc" class="text-zinc-400 text-[11px] font-mono break-all"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT PREVIEW PANEL (MAXIMIZED FULL HEIGHT) -->
+    <div id="preview-panel" class="flex-1 bg-[#060504] flex flex-col p-4 relative overflow-hidden h-full">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-900 shrink-0">
+        <div>
+          <h2 class="text-xs font-bold text-amber-500 tracking-widest uppercase flex items-center gap-2">
+            <span>🎬 PREVIEW VIDEO THỜI GIAN THỰC (9:16 FULL KHUNG)</span>
+          </h2>
+          <p class="text-[11px] text-zinc-500">Được đồng bộ tức thì khi chọn file hoặc sửa chữ/thời gian phụ đề</p>
+        </div>
+        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full font-mono font-bold">1080 × 1920 HD</span>
+      </div>
+
+      <!-- EMBEDDED IFRAME TO REMOTION PREVIEW - FULL HEIGHT MAXIMIZED -->
+      <div class="flex-1 w-full flex items-center justify-center overflow-hidden">
+        <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/10 border border-amber-500/30 bg-black relative flex items-center justify-center">
+          <iframe id="preview-iframe" src="http://localhost:3000" class="w-full h-full border-0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentData = {};
+    let loadedJsonName = "";
+    let currentSubtitles = [];
+    let _saveDebounceTimer = null;
+    let _subJobRunning = false;
+    let _subtitleJobPoll = null;
+    let _renderJobRunning = false;
+    let activeSubtitleIndex = -1;
+
+    // ── Toast Notifications & Auto-Save Status ────────────────────────────────
+    function showToast(title, message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto p-3.5 rounded-xl border shadow-xl backdrop-blur-md transition-all duration-300 transform translate-y-2 opacity-0 flex items-start gap-3 text-xs';
+      
+      const colors = {
+        success: 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200',
+        error: 'bg-red-950/90 border-red-500/50 text-red-200',
+        warning: 'bg-amber-950/90 border-amber-500/50 text-amber-200',
+        info: 'bg-indigo-950/90 border-indigo-500/50 text-indigo-200'
+      };
+      const icons = {
+        success: '✅',
+        error: '❌',
+        warning: '⚠️',
+        info: 'ℹ️'
+      };
+
+      toast.className += ` ${colors[type] || colors.info}`;
+      toast.innerHTML = `
+        <span class="text-base leading-none">${icons[type] || 'ℹ️'}</span>
+        <div class="flex-1">
+          <div class="font-bold tracking-wide">${title}</div>
+          ${message ? `<div class="text-[11px] opacity-90 mt-0.5">${message}</div>` : ''}
+        </div>
+      `;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    function showAutoSaveStatus(status) {
+      const badge = document.getElementById('auto-save-badge');
+      const text = document.getElementById('auto-save-text');
+      if (!badge || !text) return;
+
+      if (status === 'saving') {
+        badge.className = 'text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-amber-950/90 text-amber-400 border border-amber-500/40 font-medium flex items-center gap-1 transition-all';
+        text.textContent = '🟡 Đang lưu...';
+      } else {
+        const timeStr = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        badge.className = 'text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-500/40 font-medium flex items-center gap-1 transition-all';
+        text.textContent = `🟢 Đã lưu tự động (${timeStr})`;
+      }
+    }
+
+    // ── Subtitle Snippet Audio Preview Singleton ──────────────────────────────
+    let _snippetAudioPlayer = null;
+    let _snippetTimer = null;
+
+    function previewSubtitleAudio(idx) {
+      const sub = currentSubtitles[idx];
+      if (!sub || !currentData.audioFile) {
+        showToast('Chưa có audio', 'Vui lòng chọn hoặc upload file audio bài đọc trước.', 'warning');
+        return;
+      }
+
+      const rawAudio = currentData.audioFile || '';
+      const audioPath = rawAudio.startsWith('http') || rawAudio.startsWith('blob:')
+        ? rawAudio
+        : '/' + (rawAudio || 'audio.mp3');
+
+      if (!_snippetAudioPlayer) {
+        _snippetAudioPlayer = new Audio();
+      }
+
+      _snippetAudioPlayer.pause();
+      clearTimeout(_snippetTimer);
+
+      _snippetAudioPlayer.src = audioPath;
+      _snippetAudioPlayer.currentTime = sub.startMs / 1000;
+      _snippetAudioPlayer.play().then(() => {
+        showToast('▶️ Đang nghe thử đoạn #' + (idx + 1), formatTime(sub.startMs) + ' → ' + formatTime(sub.startMs + sub.durationMs), 'info');
+      }).catch(err => {
+        console.warn('Audio snippet preview error:', err);
+        showToast('Lỗi phát âm thanh', err.message, 'error');
+      });
+
+      _snippetTimer = setTimeout(() => {
+        if (_snippetAudioPlayer) {
+          _snippetAudioPlayer.pause();
+        }
+      }, sub.durationMs);
+    }
+
+    // ── Nudge Timestamps (-0.1s / +0.1s) ──────────────────────────────────────
+    function nudgeSubTime(idx, type, deltaSec) {
+      if (!currentSubtitles[idx]) return;
+      const deltaMs = Math.round(deltaSec * 1000);
+
+      if (type === 'start') {
+        const oldEnd = currentSubtitles[idx].startMs + currentSubtitles[idx].durationMs;
+        const newStart = Math.max(0, currentSubtitles[idx].startMs + deltaMs);
+        currentSubtitles[idx].startMs = newStart;
+        currentSubtitles[idx].durationMs = Math.max(0, oldEnd - newStart);
+
+        // 2-Way Snap: Adjust endMs of previous segment (#idx - 1) to equal newStart
+        if (idx > 0 && currentSubtitles[idx - 1]) {
+          const prevStart = currentSubtitles[idx - 1].startMs;
+          currentSubtitles[idx - 1].durationMs = Math.max(0, newStart - prevStart);
+        }
+      } else if (type === 'end') {
+        const oldEnd = currentSubtitles[idx].startMs + currentSubtitles[idx].durationMs;
+        const newEnd = Math.max(currentSubtitles[idx].startMs, oldEnd + deltaMs);
+        currentSubtitles[idx].durationMs = newEnd - currentSubtitles[idx].startMs;
+
+        // 2-Way Snap: Adjust startMs of next segment (#idx + 1) to equal newEnd, keeping its endMs fixed
+        if (currentSubtitles[idx + 1]) {
+          const oldNextEnd = currentSubtitles[idx + 1].startMs + currentSubtitles[idx + 1].durationMs;
+          currentSubtitles[idx + 1].startMs = newEnd;
+          currentSubtitles[idx + 1].durationMs = Math.max(0, oldNextEnd - newEnd);
+        }
+      }
+
+      renderSubtitlesList();
+      debouncedSaveSubtitlesDraft();
+    }
+
+    // ── Subtitle Text Formatting Helpers (WYSIWYG) ────────────────────────────
+    function formatSubSelection(idx, styleType) {
+      const card = document.getElementById(`subtitle-card-${idx}`);
+      if (!card) return;
+      const textarea = card.querySelector('textarea');
+      if (!textarea) return;
+
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const val = textarea.value;
+
+      if (start === end) {
+        showToast('Hướng dẫn định dạng', 'Hãy bôi đen từ ngữ cần tô vàng hoặc nổi bật trước.', 'info');
+        return;
+      }
+
+      const selected = val.substring(start, end);
+      let replaced = selected;
+
+      if (styleType === 'gold') {
+        if (selected.startsWith('*') && selected.endsWith('*')) {
+          replaced = selected.slice(1, -1);
+        } else {
+          replaced = `*${selected}*`;
+        }
+      } else if (styleType === 'bracket') {
+        if (selected.startsWith('[') && selected.endsWith(']')) {
+          replaced = selected.slice(1, -1);
+        } else {
+          replaced = `[${selected}]`;
+        }
+      } else if (styleType === 'clear') {
+        replaced = selected.replace(/[*[\]]/g, '');
+      }
+
+      textarea.value = val.substring(0, start) + replaced + val.substring(end);
+      textarea.selectionStart = start;
+      textarea.selectionEnd = start + replaced.length;
+      textarea.focus();
+
+      onSubTextChange(idx, textarea.value);
+    }
+
+    // ── Subtitle Backup & Restore Helper ──────────────────────────────────────
+    async function restoreLastSubtitleBackup() {
+      try {
+        const backupStr = localStorage.getItem('catholic_studio_subs_last_backup');
+        if (!backupStr) {
+          showToast('Chưa có bản sao lưu', 'Không tìm thấy bản phụ đề nào được sao lưu trước đó.', 'warning');
+          return;
+        }
+
+        const backupSubs = JSON.parse(backupStr);
+        if (!Array.isArray(backupSubs) || backupSubs.length === 0) {
+          showToast('Bản sao lưu trống', 'Bản phụ đề sao lưu trước đó không chứa dữ liệu.', 'warning');
+          return;
+        }
+
+        // Ask for confirmation before overwriting current subtitles
+        const currentCount = currentSubtitles ? currentSubtitles.length : 0;
+        const confirmed = await showConfirmModal({
+          icon: '🔄',
+          title: 'Khôi Phục Phụ Đề Cũ?',
+          message: `Thao tác này sẽ thay thế ${currentCount > 0 ? currentCount + ' đoạn phụ đề hiện tại' : 'phụ đề hiện tại'} bằng bản sao lưu trước đó (${backupSubs.length} đoạn). Phụ đề hiện tại sẽ bị mất nếu chưa được xuất dự án.`,
+          cancelText: 'Giữ Phụ Đề Hiện Tại',
+          okText: '🔄 Khôi Phục',
+          okClass: 'bg-amber-500 hover:bg-amber-400 text-black'
+        });
+        if (!confirmed) return;
+
+        currentSubtitles = backupSubs;
+        renderSubtitlesList();
+        saveSubtitles();
+        showToast('✅ Khôi phục thành công!', `Đã khôi phục ${currentSubtitles.length} câu phụ đề từ bản sao lưu trước đó!`, 'success');
+      } catch (e) {
+        console.error('Error restoring subtitle backup:', e);
+        showToast('Lỗi khôi phục', e.message, 'error');
+      }
+    }
+    function getTodayFormattedDate() {
+      const now = new Date();
+      const d = String(now.getDate()).padStart(2, '0');
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const y = now.getFullYear();
+      return `${d}/${m}/${y}`;
+    }
+
+    function setTodayDate() {
+      const today = getTodayFormattedDate();
+      document.getElementById('input-date').value = today;
+      saveData();
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('/api/data');
+        const serverData = await res.json();
+        
+        let localDraft = {};
+        try {
+          const savedStr = localStorage.getItem('catholic_studio_draft');
+          if (savedStr) localDraft = JSON.parse(savedStr);
+        } catch(e) {}
+
+        // Merge: server is source of truth for media files, localStorage only overrides text fields
+        const { audioFile, imageFile, logoFile, introAudioFile, outroAudioFile, season, ...textOnlyDraft } = localDraft;
+        currentData = { ...serverData, ...textOnlyDraft };
+        
+        document.getElementById('input-date').value = currentData.date || getTodayFormattedDate();
+        document.getElementById('input-bannerTag').value = currentData.bannerTag || 'PHỤNG VỤ LỜI CHÚA HÀNG NGÀY';
+        document.getElementById('input-feastName').value = currentData.feastName || '';
+        document.getElementById('input-readingType').value = currentData.readingType || '';
+        document.getElementById('input-bibleRef').value = currentData.bibleRef || '';
+        document.getElementById('input-quote').value = currentData.quote || '';
+        document.getElementById('input-websiteUrl').value = currentData.websiteUrl || 'loichuamoingay.org';
+        
+        const pos = currentData.imagePositionY !== undefined ? currentData.imagePositionY : 50;
+        document.getElementById('input-imagePositionY').value = pos;
+        updatePosLabel(pos);
+
+        document.getElementById('image-filename').innerText = 'File hiện tại: ' + (currentData.imageFile || 'cross.jpg');
+        document.getElementById('logo-filename').innerText = '✅ Logo hiện tại: ' + (currentData.logoFile || 'logo.png') + ' (Góc Trên Trái)';
+        document.getElementById('audio-filename').innerText = 'File hiện tại: ' + (currentData.audioFile || 'audio.mp3');
+        document.getElementById('intro-audio-filename').innerText = 'File hiện tại: ' + (currentData.introAudioFile || 'piano_intro.mp3');
+        document.getElementById('outro-audio-filename').innerText = 'File hiện tại: ' + (currentData.outroAudioFile || 'piano_outro.mp3');
+
+        selectSeason(currentData.season || 'EASTER_CHRISTMAS', false);
+      } catch (e) {
+        console.error('loadData error:', e);
+      } finally {
+        await loadSubtitles();
+      }
+    }
+
+    function getCleanAudioName(rawAudio) {
+      if (!rawAudio) return 'audio.mp3';
+      let cleaned = String(rawAudio).split('?')[0].split('#')[0];
+      cleaned = cleaned.split('/').pop().split('\\').pop();
+      return cleaned || 'audio.mp3';
+    }
+
+    function getJsonNameForAudio(rawAudio) {
+      const clean = getCleanAudioName(rawAudio);
+      return clean.replace(/\.(mp4|mkv|mov|webm|mp3|wav)$/i, ".json");
+    }
+
+    async function loadSubtitles(forceServer = false) {
+      loadedJsonName = 'current_subtitles.json';
+
+      // 1. Try localStorage draft first (skip if forceServer)
+      if (!forceServer) {
+        try {
+          const draft = localStorage.getItem('catholic_studio_subs_current_subtitles.json');
+          if (draft) {
+            const parsed = JSON.parse(draft);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              currentSubtitles = parsed;
+              renderSubtitlesList();
+              return;
+            }
+          }
+        } catch(e) {}
+      } else {
+        try { localStorage.removeItem('catholic_studio_subs_current_subtitles.json'); } catch(e) {}
+      }
+
+      // 2. Fetch the static file directly — same source the video preview uses
+      try {
+        const res = await fetch('/subs/current_subtitles.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            currentSubtitles = data;
+            try { localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(data)); } catch(e) {}
+            renderSubtitlesList();
+            return;
+          }
+        }
+      } catch(e) {
+        console.error('[loadSubtitles] fetch /subs/current_subtitles.json error:', e);
+      }
+
+      // 3. Nothing found — show empty state
+      if (!currentSubtitles || currentSubtitles.length === 0) {
+        currentSubtitles = [];
+      }
+      renderSubtitlesList();
+    }
+
+
+    function renderSubtitlesList() {
+      const container = document.getElementById('sub-list-container');
+      console.log('[renderSubtitlesList] called. count=', currentSubtitles ? currentSubtitles.length : 'NULL');
+      if (!container) { console.error('[renderSubtitlesList] #sub-list-container NOT FOUND!'); return; }
+      if (!currentSubtitles) currentSubtitles = [];
+      container.innerHTML = '';
+      updateSubtitleEditorSummary(currentSubtitles.length);
+      try { renderSubtitleTimeline(); } catch(err) { console.error('[renderSubtitleTimeline] ERROR:', err); }
+
+      if (currentSubtitles.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-xs text-zinc-500 italic text-center py-4';
+        p.textContent = 'Chưa có đoạn phụ đề nào. Hãy bấm "⚡ 1-Click Sinh Phụ Đề AI" để tạo tự động.';
+        container.appendChild(p);
+        document.getElementById('btn-save-subs').classList.add('hidden');
+        return;
+      }
+
+      console.log('[renderSubtitlesList] rendering', currentSubtitles.length, 'cards...');
+      currentSubtitles.forEach((sub, idx) => {
+        try {
+          const startSec = (sub.startMs / 1000).toFixed(2);
+          const endSec = ((sub.startMs + sub.durationMs) / 1000).toFixed(2);
+
+          const div = document.createElement('div');
+          div.id = `subtitle-card-${idx}`;
+          div.className = `p-3 bg-zinc-900 border rounded-xl space-y-2 relative group transition ${idx === activeSubtitleIndex ? 'border-amber-400 ring-2 ring-amber-500/40 bg-amber-950/20' : 'border-zinc-800 hover:border-amber-500/40'}`;
+          div.addEventListener('click', (e) => {
+            if (!e.target.closest('button') && !e.target.closest('input') && !e.target.closest('textarea')) {
+              setActiveSubtitle(idx, false);
+            }
+          });
+
+          const headerDiv = document.createElement('div');
+          headerDiv.className = 'flex items-center justify-between border-b border-zinc-800/80 pb-1.5 flex-wrap gap-1.5';
+
+          const indexSpan = document.createElement('span');
+          indexSpan.className = 'text-amber-400 font-bold text-xs font-mono cursor-pointer hover:underline flex items-center gap-1';
+          indexSpan.title = 'Bấm để nghe thử âm thanh đoạn này';
+          indexSpan.textContent = `#${idx + 1} · ${formatTime(sub.startMs)} → ${formatTime(sub.startMs + sub.durationMs)}`;
+          indexSpan.addEventListener('click', (e) => { e.stopPropagation(); previewSubtitleAudio(idx); });
+
+          const btnDiv = document.createElement('div');
+          btnDiv.className = 'flex gap-1 items-center';
+
+          const playBtn = document.createElement('button');
+          playBtn.type = 'button';
+          playBtn.className = 'text-[10px] bg-emerald-500/20 hover:bg-emerald-500/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded transition font-semibold';
+          playBtn.textContent = '▶️ Nghe thử';
+          playBtn.addEventListener('click', (e) => { e.stopPropagation(); previewSubtitleAudio(idx); });
+
+          const insertBtn = document.createElement('button');
+          insertBtn.type = 'button';
+          insertBtn.className = 'text-[10px] bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded transition font-semibold';
+          insertBtn.textContent = '➕ Chèn Sau';
+          insertBtn.addEventListener('click', (e) => { e.stopPropagation(); insertSubSegmentAfter(idx); });
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.type = 'button';
+          deleteBtn.className = 'text-[10px] bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/30 px-2 py-0.5 rounded transition font-semibold';
+          deleteBtn.textContent = '🗑️ Xóa';
+          deleteBtn.addEventListener('click', (e) => { e.stopPropagation(); deleteSubSegment(idx); });
+
+          btnDiv.appendChild(playBtn);
+          btnDiv.appendChild(insertBtn);
+          btnDiv.appendChild(deleteBtn);
+          headerDiv.appendChild(indexSpan);
+          headerDiv.appendChild(btnDiv);
+
+          const timeBar = document.createElement('div');
+          timeBar.className = 'flex items-center justify-between text-[11px] text-zinc-300 font-mono bg-zinc-950/60 px-2.5 py-1 rounded-lg border border-zinc-800/60 flex-wrap gap-2';
+          timeBar.innerHTML = `
+            <div class="flex items-center gap-1">
+              <span class="text-zinc-400 text-[10px] font-semibold">⏱️ TỪ:</span>
+              <button type="button" class="nudge-s-dn text-[10px] bg-zinc-800 hover:bg-zinc-700 text-amber-400 px-1.5 py-0.5 rounded font-bold border border-zinc-700">-0.1s</button>
+              <input type="number" step="0.1" value="${startSec}" class="w-14 glass-input px-1 py-0.5 rounded text-amber-400 text-[11px] text-center font-bold">
+              <button type="button" class="nudge-s-up text-[10px] bg-zinc-800 hover:bg-zinc-700 text-amber-400 px-1.5 py-0.5 rounded font-bold border border-zinc-700">+0.1s</button>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="text-zinc-400 text-[10px] font-semibold">→ ĐẾN:</span>
+              <button type="button" class="nudge-e-dn text-[10px] bg-zinc-800 hover:bg-zinc-700 text-amber-400 px-1.5 py-0.5 rounded font-bold border border-zinc-700">-0.1s</button>
+              <input type="number" step="0.1" value="${endSec}" class="w-14 glass-input px-1 py-0.5 rounded text-amber-400 text-[11px] text-center font-bold">
+              <button type="button" class="nudge-e-up text-[10px] bg-zinc-800 hover:bg-zinc-700 text-amber-400 px-1.5 py-0.5 rounded font-bold border border-zinc-700">+0.1s</button>
+            </div>
+          `;
+
+          timeBar.querySelector('.nudge-s-dn').addEventListener('click', (e) => { e.stopPropagation(); nudgeSubTime(idx, 'start', -0.1); });
+          timeBar.querySelector('.nudge-s-up').addEventListener('click', (e) => { e.stopPropagation(); nudgeSubTime(idx, 'start', 0.1); });
+          timeBar.querySelector('.nudge-e-dn').addEventListener('click', (e) => { e.stopPropagation(); nudgeSubTime(idx, 'end', -0.1); });
+          timeBar.querySelector('.nudge-e-up').addEventListener('click', (e) => { e.stopPropagation(); nudgeSubTime(idx, 'end', 0.1); });
+
+          const inputs = timeBar.querySelectorAll('input');
+          inputs[0].addEventListener('change', () => updateSubTime(idx, 'start', inputs[0].value));
+          inputs[1].addEventListener('change', () => updateSubTime(idx, 'end', inputs[1].value));
+
+          const formatToolbar = document.createElement('div');
+          formatToolbar.className = 'flex items-center justify-between gap-1 text-[10px] font-semibold text-zinc-400 bg-zinc-950/40 px-2 py-1 rounded-md border border-zinc-800/40';
+          formatToolbar.innerHTML = `
+            <span class="text-zinc-500">Bôi đen từ để định dạng:</span>
+            <div class="flex items-center gap-1">
+              <button type="button" class="fmt-gold bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded">✨ Tô Vàng (*)</button>
+              <button type="button" class="fmt-bracket bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded"><b>Tự Nổi ([])</b></button>
+              <button type="button" class="fmt-clear bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-1.5 py-0.5 rounded">🧹 Clear</button>
+            </div>
+          `;
+          formatToolbar.querySelector('.fmt-gold').addEventListener('click', (e) => { e.stopPropagation(); formatSubSelection(idx, 'gold'); });
+          formatToolbar.querySelector('.fmt-bracket').addEventListener('click', (e) => { e.stopPropagation(); formatSubSelection(idx, 'bracket'); });
+          formatToolbar.querySelector('.fmt-clear').addEventListener('click', (e) => { e.stopPropagation(); formatSubSelection(idx, 'clear'); });
+
+          const textarea = document.createElement('textarea');
+          textarea.rows = 2;
+          textarea.className = 'w-full glass-input px-3 py-2 rounded-lg text-xs leading-relaxed font-medium';
+          textarea.placeholder = 'Nhập nội dung phụ đề...';
+          textarea.value = sub.text || '';
+          textarea.addEventListener('focus', () => setActiveSubtitle(idx, false));
+          textarea.addEventListener('input', () => onSubTextChange(idx, textarea.value));
+
+          div.appendChild(headerDiv);
+          div.appendChild(timeBar);
+          div.appendChild(formatToolbar);
+          div.appendChild(textarea);
+          container.appendChild(div);
+        } catch(cardErr) {
+          console.error('[renderSubtitlesList] card #' + idx + ' error:', cardErr, sub);
+        }
+      });
+
+      console.log('[renderSubtitlesList] DONE. cards in DOM:', container.children.length);
+      document.getElementById('btn-save-subs').classList.remove('hidden');
+    }
+
+    function formatTime(ms) {
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const tenths = Math.floor((Math.max(0, ms) % 1000) / 100);
+      return `${String(Math.floor(totalSeconds / 60)).padStart(2, '0')}:${String(totalSeconds % 60).padStart(2, '0')}.${tenths}`;
+    }
+
+    function updateSubtitleEditorSummary(visibleCount) {
+      const endMs = currentSubtitles.reduce((max, sub) => Math.max(max, sub.startMs + sub.durationMs), 0);
+      document.getElementById('subtitle-count').textContent = `${visibleCount} / ${currentSubtitles.length}`;
+      document.getElementById('subtitle-duration').textContent = formatTime(endMs);
+    }
+
+    function renderSubtitleTimeline() {
+      const timeline = document.getElementById('subtitle-timeline');
+      const activeTime = document.getElementById('subtitle-active-time');
+      const previewTimeline = document.getElementById('preview-subtitle-timeline');
+      const previewActiveTime = document.getElementById('preview-subtitle-active-time');
+      if (timeline) timeline.innerHTML = '';
+      if (previewTimeline) previewTimeline.innerHTML = '';
+      
+      const endMs = currentSubtitles.reduce((max, sub) => Math.max(max, sub.startMs + sub.durationMs), 0);
+      currentSubtitles.forEach((sub, idx) => {
+        [timeline, previewTimeline].filter(Boolean).forEach((targetTimeline) => {
+          const segment = document.createElement('button');
+          segment.type = 'button';
+          const pct = Math.max(2, (sub.durationMs / (endMs || 1)) * 100);
+          segment.style.flex = `1 0 ${pct}%`;
+          segment.style.minWidth = '14px';
+          segment.style.height = '100%';
+          segment.title = `#${idx + 1}: ${formatTime(sub.startMs)} — ${sub.text}`;
+          segment.className = `rounded cursor-pointer transition-all ${idx === activeSubtitleIndex ? 'bg-amber-400 ring-2 ring-white text-zinc-950 font-bold shadow-lg scale-105' : 'bg-indigo-500/70 hover:bg-indigo-400 border border-indigo-400/30'}`;
+          segment.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setActiveSubtitle(idx, true);
+          });
+          targetTimeline.appendChild(segment);
+        });
+      });
+      const activeLabel = activeSubtitleIndex >= 0 && currentSubtitles[activeSubtitleIndex] ? `${formatTime(currentSubtitles[activeSubtitleIndex].startMs)} — ${formatTime(currentSubtitles[activeSubtitleIndex].startMs + currentSubtitles[activeSubtitleIndex].durationMs)}` : 'Chưa chọn';
+      if (activeTime) activeTime.textContent = activeLabel;
+      if (previewActiveTime) previewActiveTime.textContent = activeLabel;
+    }
+
+    function setActiveSubtitle(idx, shouldFocus) {
+      if (activeSubtitleIndex === idx) {
+        if (shouldFocus) focusSubtitleEditor(idx);
+        return;
+      }
+      activeSubtitleIndex = idx;
+      renderSubtitlesList();
+      if (shouldFocus) requestAnimationFrame(() => focusSubtitleEditor(idx));
+    }
+
+    function focusSubtitleEditor(idx) {
+      const list = document.getElementById('sub-list-container');
+      const card = document.getElementById(`subtitle-card-${idx}`);
+      if (!list || !card) return;
+
+      // Timeline belongs to section 4 already. Only scroll its internal list so the outer editor never jumps away.
+      list.scrollTo({ top: Math.max(0, card.offsetTop - list.offsetTop - list.clientHeight / 2 + card.clientHeight / 2), behavior: 'smooth' });
+    }
+
+
+
+    function refreshPreview() {
+      const iframe = document.getElementById('preview-iframe');
+      iframe.src = `http://localhost:3000?t=${Date.now()}`;
+    }
+
+    function openPreviewWindow() {
+      window.open('http://localhost:3000', 'catholic-video-preview', 'popup=yes,width=540,height=960');
+    }
+
+    function setPreviewSize(size) {
+      previewSize = size;
+      const shell = document.getElementById('preview-shell');
+      const isTimeline = size === 'timeline';
+      shell.style.height = '100%';
+      shell.style.width = isTimeline ? '100%' : 'auto';
+      shell.classList.toggle('aspect-[9/16]', !isTimeline);
+      shell.classList.toggle('aspect-auto', isTimeline);
+      document.querySelectorAll('.preview-size-btn').forEach((button) => {
+        const isSelected = button.dataset.size === size;
+        button.classList.toggle('border-amber-500', isSelected);
+        button.classList.toggle('bg-amber-500/10', isSelected);
+        button.classList.toggle('text-amber-300', isSelected);
+        button.classList.toggle('border-zinc-700', !isSelected);
+      });
+    }
+
+    function togglePreviewFocus() {
+      const editor = document.getElementById('editor-panel');
+      const panel = document.getElementById('preview-panel');
+      const button = document.getElementById('btn-preview-focus');
+      const isFocused = editor.classList.toggle('hidden');
+      panel.classList.toggle('fixed', isFocused);
+      panel.classList.toggle('inset-0', isFocused);
+      panel.classList.toggle('z-50', isFocused);
+      button.textContent = isFocused ? '↔ Quay lại chỉnh sửa' : '⛶ Tập trung';
+      setPreviewSize(previewSize);
+    }
+
+    let _subSaveDebounceTimer = null;
+    function saveSubtitlesDraft() {
+      loadedJsonName = "current_subtitles.json";
+      try {
+        localStorage.setItem('catholic_studio_subs_' + loadedJsonName, JSON.stringify(currentSubtitles));
+      } catch(e) {}
+    }
+
+    function debouncedSaveSubtitlesDraft() {
+      clearTimeout(_subSaveDebounceTimer);
+      _subSaveDebounceTimer = setTimeout(saveSubtitlesDraft, 300);
+    }
+
+    function onSubTextChange(idx, val) {
+      if (currentSubtitles[idx]) {
+        currentSubtitles[idx].text = val;
+        debouncedSaveSubtitlesDraft();
+      }
+    }
+
+    function updateSubTime(idx, type, val) {
+      if (!currentSubtitles[idx]) return;
+      const num = parseFloat(val);
+      if (isNaN(num)) return;
+
+      if (type === 'start') {
+        const newStartMs = Math.max(0, Math.round(num * 1000));
+        const oldEndMs = currentSubtitles[idx].startMs + currentSubtitles[idx].durationMs;
+        currentSubtitles[idx].startMs = newStartMs;
+        currentSubtitles[idx].durationMs = Math.max(0, oldEndMs - newStartMs);
+
+        // 2-Way Snap: Adjust endMs of previous segment (#idx - 1) to equal newStartMs
+        if (idx > 0 && currentSubtitles[idx - 1]) {
+          const prevStart = currentSubtitles[idx - 1].startMs;
+          currentSubtitles[idx - 1].durationMs = Math.max(0, newStartMs - prevStart);
+        }
+      } else if (type === 'end') {
+        const requestedEndMs = Math.round(num * 1000);
+        const actualEndMs = Math.max(currentSubtitles[idx].startMs, requestedEndMs);
+        currentSubtitles[idx].durationMs = actualEndMs - currentSubtitles[idx].startMs;
+
+        // 2-Way Snap: Adjust startMs of next segment (#idx + 1) to equal actualEndMs, keeping its endMs fixed
+        if (currentSubtitles[idx + 1]) {
+          const oldNextEnd = currentSubtitles[idx + 1].startMs + currentSubtitles[idx + 1].durationMs;
+          currentSubtitles[idx + 1].startMs = actualEndMs;
+          currentSubtitles[idx + 1].durationMs = Math.max(0, oldNextEnd - actualEndMs);
+        }
+      }
+
+      renderSubtitlesList();
+      debouncedSaveSubtitlesDraft();
+    }
+
+    function insertSubSegmentAfter(idx) {
+      let newStartMs = 0;
+      if (idx >= 0 && idx < currentSubtitles.length) {
+        const cur = currentSubtitles[idx];
+        newStartMs = cur.startMs + cur.durationMs + 100;
+      }
+      currentSubtitles.splice(idx + 1, 0, {
+        text: "Nhập nội dung phụ đề mới...",
+        startMs: newStartMs,
+        durationMs: 3000,
+        tokens: []
+      });
+      renderSubtitlesList();
+      debouncedSaveSubtitlesDraft();
+    }
+
+    function addSubSegment() {
+      let newStart = 0;
+      if (currentSubtitles.length > 0) {
+        const last = currentSubtitles[currentSubtitles.length - 1];
+        newStart = last.startMs + last.durationMs + 200;
+      }
+      currentSubtitles.push({
+        text: "Nhập nội dung phụ đề mới...",
+        startMs: newStart,
+        durationMs: 3000,
+        tokens: []
+      });
+      renderSubtitlesList();
+      debouncedSaveSubtitlesDraft();
+      const container = document.getElementById('sub-list-container');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function deleteSubSegment(idx) {
+      if (confirm('Bạn có chắc muốn xóa đoạn phụ đề #' + (idx + 1) + '?')) {
+        currentSubtitles.splice(idx, 1);
+        renderSubtitlesList();
+        debouncedSaveSubtitlesDraft();
+      }
+    }
+
+    function syncSubtitlesFromDOM() {
+      const container = document.getElementById('sub-list-container');
+      if (!container) return currentSubtitles;
+
+      const cards = container.children;
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (currentSubtitles[i]) {
+          const textarea = card.querySelector('textarea');
+          if (textarea) {
+            currentSubtitles[i].text = textarea.value;
+          }
+          const inputs = card.querySelectorAll('input[type="number"]');
+          if (inputs && inputs.length >= 2) {
+            const startSec = parseFloat(inputs[0].value);
+            const endSec = parseFloat(inputs[1].value);
+            if (!isNaN(startSec) && !isNaN(endSec)) {
+              const startMs = Math.round(startSec * 1000);
+              const durationMs = Math.max(300, Math.round((endSec - startSec) * 1000));
+              currentSubtitles[i].startMs = startMs;
+              currentSubtitles[i].durationMs = durationMs;
+            }
+          }
+        }
+      }
+      return currentSubtitles;
+    }
+
+    async function saveSubtitles() {
+      syncSubtitlesFromDOM();
+      loadedJsonName = "current_subtitles.json";
+
+      currentSubtitles.sort((a, b) => a.startMs - b.startMs);
+
+      showStatus('⚡ Đang Lưu Phụ Đề & Thời Gian...', loadedJsonName);
+
+      try {
+        const res = await fetch('/api/subtitles', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonName: loadedJsonName,
+            subtitles: currentSubtitles
+          })
+        });
+
+        const json = await res.json();
+        if (json.success) {
+          try {
+            localStorage.setItem('catholic_studio_subs_' + loadedJsonName, JSON.stringify(currentSubtitles));
+          } catch(e) {}
+          showStatus('✅ Đã Lưu Phụ Đề & Thời Gian!', 'Video xem trước đã cập nhật mốc thời gian mới!');
+          setTimeout(hideStatus, 3000);
+          renderSubtitlesList();
+          const iframe = document.getElementById('preview-iframe');
+          iframe.src = 'http://localhost:3000?t=' + Date.now();
+        } else {
+          showStatus('❌ Lưu Thất Bại', json.error);
+        }
+      } catch (e) {
+        showStatus('❌ Lỗi Lưu Phụ Đề', e.message);
+      }
+    }
+
+    function updateImagePos(val) {
+      const num = parseInt(val, 10);
+      updatePosLabel(num);
+      currentData.imagePositionY = num;
+      saveData();
+    }
+
+    function updatePosLabel(val) {
+      const label = val < 45 ? '(Lên trên)' : val > 55 ? '(Xuống dưới)' : '(Chính Giữa)';
+      document.getElementById('pos-val').innerText = val + '% ' + label;
+    }
+
+    function selectSeason(seasonKey, triggerSave = true) {
+      currentData.season = seasonKey;
+      document.querySelectorAll('.season-btn').forEach(b => b.classList.remove('active', 'border-amber-500', 'border-emerald-500', 'border-purple-500', 'border-red-500'));
+      
+      const btn = document.getElementById('btn-' + seasonKey);
+      if (btn) {
+        btn.classList.add('active');
+        if (seasonKey === 'EASTER_CHRISTMAS') btn.classList.add('border-amber-500');
+        if (seasonKey === 'ORDINARY') btn.classList.add('border-emerald-500');
+        if (seasonKey === 'LENT_ADVENT') btn.classList.add('border-purple-500');
+        if (seasonKey === 'MARTYR') btn.classList.add('border-red-500');
+      }
+
+      if (triggerSave) {
+        saveData();
+      }
+    }
+
+    async function handleFileUpload(inputElement, fileType) {
+      console.log('handleFileUpload triggered for:', fileType);
+      const file = inputElement.files[0];
+      if (!file) return;
+
+      // ── Confirm before overwriting existing image / audio ─────────────────
+      const isMainMedia = fileType === 'image' || fileType === 'audio';
+      if (isMainMedia) {
+        const hasExisting = fileType === 'image'
+          ? (currentData.imageFile && !currentData.imageFile.endsWith('cross.jpg'))
+          : (currentData.audioFile && !currentData.audioFile.endsWith('audio.mp3'));
+
+        if (hasExisting) {
+          const label   = fileType === 'image' ? 'ảnh nền' : 'audio bài đọc';
+          const current = fileType === 'image' ? currentData.imageFile : currentData.audioFile;
+          const confirmed = await showConfirmModal({
+            icon: '🔄',
+            title: `Ghi Đè ${fileType === 'image' ? 'Ảnh Nền' : 'Audio Bài Đọc'}?`,
+            message: `Bạn đang chọn file mới "${file.name}" để thay thế ${label} hiện tại (${String(current).split('/').pop()}). Thao tác này sẽ ghi đè và không thể hoàn tác.`,
+            cancelText: 'Giữ File Cũ',
+            okText: `Ghi Đè ${fileType === 'image' ? 'Ảnh' : 'Audio'}`,
+            okClass: 'bg-red-600 hover:bg-red-500 text-white'
+          });
+          if (!confirmed) {
+            inputElement.value = '';
+            return;
+          }
+        }
+      }
+
+      showStatus('⚡ Đang Tải File Lên...', file.name);
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileType', fileType);
+
+      try {
+        const res = await fetch('/api/upload-file', {
+          method: 'POST',
+          body: formData
+        });
+
+        const json = await res.json();
+        console.log('Upload response:', json);
+
+        if (json.success) {
+          const targetUrl = json.url || ('http://localhost:3001/' + json.filename);
+          if (fileType === 'image') {
+            currentData.imageFile = targetUrl;
+            document.getElementById('image-filename').innerText = '✅ Đã nạp ảnh mới: ' + json.filename;
+          } else if (fileType === 'audio') {
+            currentData.audioFile = json.filename;
+            document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename;
+
+            // ── SUBTITLE MIGRATION ON NEW AUDIO UPLOAD ───────────
+            const newJsonName = 'current_subtitles.json';
+            loadedJsonName = newJsonName;
+            
+            if (currentSubtitles && currentSubtitles.length > 0) {
+              try {
+                localStorage.setItem('catholic_studio_subs_last_backup', JSON.stringify(currentSubtitles));
+                localStorage.setItem('catholic_studio_subs_' + newJsonName, JSON.stringify(currentSubtitles));
+              } catch(e) {}
+
+              try {
+                await fetch('/api/subtitles', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    jsonName: newJsonName,
+                    subtitles: currentSubtitles
+                  })
+                });
+              } catch (err) {
+                console.warn('Auto-save migrated subtitles failed:', err);
+              }
+
+              showToast(
+                '📋 Đã giữ lại phụ đề hiện tại',
+                'Đã tự động kế thừa & lưu phụ đề cho Audio mới',
+                'success'
+              );
+            } else {
+              loadSubtitles();
+            }
+          } else if (fileType === 'logo') {
+            currentData.logoFile = json.filename;
+            document.getElementById('logo-filename').innerText = '✅ Đã nạp Logo mới: ' + json.filename;
+          } else if (fileType === 'introAudio') {
+            currentData.introAudioFile = json.filename;
+            document.getElementById('intro-audio-filename').innerText = '✅ Đã nạp nhạc dạo vào: ' + json.filename;
+          } else if (fileType === 'outroAudio') {
+            currentData.outroAudioFile = json.filename;
+            document.getElementById('outro-audio-filename').innerText = '✅ Đã nạp nhạc dạo ra: ' + json.filename;
+          }
+
+          await saveData();
+          showStatus('✅ Nạp File Thành Công!', file.name + ' đã nạp vào video!');
+          setTimeout(hideStatus, 3000);
+
+          const iframe = document.getElementById('preview-iframe');
+          iframe.src = 'http://localhost:3000?t=' + Date.now();
+        } else {
+          showToast('Tải File Thất Bại', json.error || 'Lỗi không xác định', 'error');
+          showStatus('❌ Tải File Thất Bại', json.error || 'Có lỗi xảy ra.');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Lỗi Tải File', err.message, 'error');
+        showStatus('❌ Lỗi Tải File', err.message);
+      }
+    }
+
+
+    function saveData() {
+      currentData.date = document.getElementById('input-date').value;
+      currentData.bannerTag = document.getElementById('input-bannerTag').value;
+      currentData.feastName = document.getElementById('input-feastName').value;
+      currentData.readingType = document.getElementById('input-readingType').value;
+      currentData.bibleRef = document.getElementById('input-bibleRef').value;
+      currentData.quote = document.getElementById('input-quote').value;
+      currentData.websiteUrl = document.getElementById('input-websiteUrl').value || 'loichuamoingay.org';
+      currentData.imagePositionY = parseInt(document.getElementById('input-imagePositionY').value, 10);
+
+      showAutoSaveStatus('saving');
+
+      // Instant client-side draft cache
+      try {
+        localStorage.setItem('catholic_studio_draft', JSON.stringify(currentData));
+      } catch (e) {}
+
+      // Debounce: wait 500 ms after the last call before hitting the API
+      clearTimeout(_saveDebounceTimer);
+      _saveDebounceTimer = setTimeout(async () => {
+        try {
+          const res = await fetch('/api/data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(currentData)
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            console.warn('Save failed:', err.error || res.status);
+          } else {
+            showAutoSaveStatus('saved');
+            refreshPreview();
+          }
+        } catch (e) {
+          console.error('Save error:', e);
+        }
+      }, 500);
+    }
+    function resetStudioCache() {
+      if (!confirm('🧹 Xóa toàn bộ cache/nháp cũ trong trình duyệt?\n\nThao tác này sẽ:\n• Xóa bản nháp phụ đề cũ trong localStorage\n• Xóa bản nháp dữ liệu bài đọc cũ trong localStorage\n• Tải lại dữ liệu mới nhất từ server\n\nPhụ đề trên server (current_subtitles.json) sẽ KHÔNG bị xóa.')) return;
+
+      // Remove all studio localStorage keys
+      const keysToRemove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith('catholic_studio_')) keysToRemove.push(k);
+      }
+      keysToRemove.forEach(k => localStorage.removeItem(k));
+
+      // Reload fresh from server
+      currentSubtitles = [];
+      currentData = {};
+      showToast('🧹 Đã xóa cache', `Đã xóa ${keysToRemove.length} mục cache. Đang tải lại từ server...`, 'success');
+      setTimeout(() => loadData(), 300);
+    }
+
+    let _librarySearchDebounce = null;
+    let _librarySearchVersion = 0;
+    let _pendingLibraryAssets = null;
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
+    }
+
+    function onLibraryFieldsInput() {
+      saveData();
+      clearTimeout(_librarySearchDebounce);
+      const readingType = (document.getElementById('input-readingType').value || '').trim();
+      const bibleRef = (document.getElementById('input-bibleRef').value || '').trim();
+      const container = document.getElementById('ref-sub-suggestion-container');
+
+      if (!readingType || !bibleRef || bibleRef.length < 2) {
+        if (container) container.classList.add('hidden');
+        _pendingLibraryAssets = null;
+        return;
+      }
+
+      const requestVersion = ++_librarySearchVersion;
+      _librarySearchDebounce = setTimeout(async () => {
+        try {
+          const params = new URLSearchParams({ readingType, bibleRef });
+          const res = await fetch(`/api/library-assets?${params}`);
+          const data = await res.json();
+          if (requestVersion !== _librarySearchVersion) return;
+          if (!res.ok || !data.success || (!data.audio && !data.subtitle)) {
+            if (container) container.classList.add('hidden');
+            _pendingLibraryAssets = null;
+            return;
+          }
+          _pendingLibraryAssets = { ...data, readingType, bibleRef };
+          renderLibrarySuggestion();
+        } catch (e) {
+          console.warn('Error checking library assets:', e);
+        }
+      }, 350);
+    }
+
+    // Backward-compatible name for any code that still invokes the previous ref handler.
+    function onRefInput() { onLibraryFieldsInput(); }
+
+    function renderLibrarySuggestion() {
+      const container = document.getElementById('ref-sub-suggestion-container');
+      const data = _pendingLibraryAssets;
+      if (!container || !data) return;
+      const audio = data.audio;
+      const subtitle = data.subtitle;
+      const audioRow = audio
+        ? `<div class="flex items-center justify-between gap-2"><span class="text-blue-200 truncate">🎙️ ${escapeHtml(audio.filename)}</span><span class="flex gap-1 shrink-0"><button type="button" onclick="previewLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500/20 hover:bg-blue-500/35 text-blue-200">▶ Nghe</button><button type="button" onclick="applyLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500 hover:bg-blue-400 text-white font-bold">Dùng audio</button></span></div>`
+        : `<div class="text-zinc-500">🎙️ Chưa tìm thấy audio</div>`;
+      const subtitleRow = subtitle
+        ? `<div class="flex items-center justify-between gap-2"><span class="text-amber-200 truncate">💬 ${escapeHtml(subtitle.filename)} <span class="text-zinc-400">(${subtitle.subtitleCount} đoạn)</span></span><button type="button" onclick="applyLibrarySubtitles()" class="text-[10px] px-2 py-1 rounded bg-amber-500 hover:bg-amber-400 text-black font-bold shrink-0">Nạp phụ đề</button></div>`
+        : `<div class="text-zinc-500">💬 Chưa tìm thấy phụ đề</div>`;
+      const bothButton = audio && subtitle
+        ? `<button type="button" onclick="applyLibraryAssets()" class="mt-2 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs px-3 py-1.5 rounded-lg transition shadow cursor-pointer">📥 Nạp cả audio & phụ đề</button>`
+        : '';
+      container.innerHTML = `<div class="relative bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-xs shadow-lg animate-fadeIn"><div class="font-bold text-emerald-300 mb-2 pr-5">✨ Tài nguyên tìm thấy cho ${escapeHtml(data.readingType)} — ${escapeHtml(data.bibleRef)}</div><div class="space-y-1.5 font-mono text-[11px]">${audioRow}${subtitleRow}</div>${bothButton}<button type="button" onclick="dismissLibrarySuggestion()" title="Bỏ qua" class="absolute top-2.5 right-3 text-zinc-400 hover:text-zinc-200 text-xs">✕</button></div>`;
+      container.classList.remove('hidden');
+    }
+
+    function getLibraryParams() {
+      if (!_pendingLibraryAssets) return null;
+      return new URLSearchParams({ readingType: _pendingLibraryAssets.readingType, bibleRef: _pendingLibraryAssets.bibleRef });
+    }
+
+    function previewLibraryAudio() {
+      const params = getLibraryParams();
+      if (!params) return;
+      const player = new Audio(`/api/library-assets/audio-preview?${params}`);
+      player.play().catch(err => showToast('Không thể nghe thử audio', err.message, 'error'));
+    }
+
+    async function applyLibraryAudio() {
+      const data = _pendingLibraryAssets;
+      if (!data?.audio) return false;
+      const hasExisting = currentData.audioFile && !String(currentData.audioFile).endsWith('audio.mp3');
+      if (hasExisting) {
+        const confirmed = await showConfirmModal({
+          icon: '🔄', title: 'Thay audio bài đọc?',
+          message: `Dùng ${data.audio.filename} sẽ thay audio hiện tại (${String(currentData.audioFile).split('/').pop()}).`,
+          cancelText: 'Giữ File Cũ', okText: 'Dùng Audio Này', okClass: 'bg-blue-500 hover:bg-blue-400 text-white'
+        });
+        if (!confirmed) return false;
+      }
+      try {
+        const res = await fetch('/api/library-assets/import-audio', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ readingType: data.readingType, bibleRef: data.bibleRef }) });
+        const json = await res.json();
+        if (!res.ok || !json.success) throw new Error(json.error || 'Không thể nạp audio.');
+        currentData.audioFile = json.filename;
+        document.getElementById('audio-filename').innerText = `✅ Đã nạp audio thư viện: ${json.sourceFilename}`;
+        saveData();
+        showToast('✅ Đã nạp audio!', json.sourceFilename, 'success');
+        return true;
+      } catch (error) {
+        showToast('Lỗi nạp audio', error.message, 'error');
+        return false;
+      }
+    }
+
+    async function applyLibrarySubtitles() {
+      const data = _pendingLibraryAssets;
+      if (!data?.subtitle) return false;
+      if (currentSubtitles?.length) {
+        const confirmed = await showConfirmModal({
+          icon: '⚠️', title: 'Thay phụ đề hiện tại?',
+          message: `Nạp ${data.subtitle.filename} sẽ thay ${currentSubtitles.length} đoạn phụ đề đang chỉnh sửa.`,
+          cancelText: 'Giữ Phụ Đề Cũ', okText: 'Nạp Phụ Đề', okClass: 'bg-amber-500 hover:bg-amber-400 text-black'
+        });
+        if (!confirmed) return false;
+      }
+      try {
+        const params = getLibraryParams();
+        const res = await fetch(`/api/library-assets/subtitles?${params}`);
+        const json = await res.json();
+        if (!res.ok || !json.success || !Array.isArray(json.subtitles)) throw new Error(json.error || 'Không thể nạp phụ đề.');
+        currentSubtitles = json.subtitles;
+        try { localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(currentSubtitles)); } catch (_) {}
+        await saveSubtitles();
+        renderSubtitlesList();
+        showToast('✅ Đã nạp phụ đề!', `${json.filename} (${json.subtitleCount} đoạn)`, 'success');
+        return true;
+      } catch (error) {
+        showToast('Lỗi nạp phụ đề', error.message, 'error');
+        return false;
+      }
+    }
+
+    async function applyLibraryAssets() {
+      const audioApplied = await applyLibraryAudio();
+      if (!audioApplied) return;
+      await applyLibrarySubtitles();
+    }
+
+    function dismissLibrarySuggestion() {
+      const container = document.getElementById('ref-sub-suggestion-container');
+      if (container) container.classList.add('hidden');
+      _pendingLibraryAssets = null;
+    }
+
+    // ── Helper: Format milliseconds to SRT timestamp (00:00:01,500) ─────────
+    function formatSrtTimestamp(ms) {
+      const totalSec = Math.max(0, ms) / 1000;
+      const hours = Math.floor(totalSec / 3600);
+      const minutes = Math.floor((totalSec % 3600) / 60);
+      const seconds = Math.floor(totalSec % 60);
+      const millis = Math.floor(ms % 1000);
+
+      const pad = (num, size = 2) => String(num).padStart(size, '0');
+      return `${pad(hours)}:${pad(minutes)}:${pad(seconds)},${pad(millis, 3)}`;
+    }
+
+    // ── Helper: Generate SRT file content from subtitles array ───────────────
+    function generateSrtContent(subtitles) {
+      if (!Array.isArray(subtitles)) return '';
+      return subtitles
+        .filter(sub => sub && sub.text && String(sub.text).trim())
+        .map((sub, index) => {
+          const startMs = Math.round(Number(sub.startMs) || 0);
+          const durationMs = Math.round(Number(sub.durationMs) || 1000);
+          const endMs = startMs + durationMs;
+
+          const startStr = formatSrtTimestamp(startMs);
+          const endStr = formatSrtTimestamp(endMs);
+          const text = String(sub.text || '').trim();
+
+          return `${index + 1}\n${startStr} --> ${endStr}\n${text}\n`;
+        })
+        .join('\n');
+    }
+
+    // ── Helper: Parse SRT text into subtitles array ──────────────────────────
+    function parseSrtContent(srtText) {
+      if (!srtText || typeof srtText !== 'string') return [];
+      // Clean BOM and normalize newlines
+      const cleanText = srtText.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+      const entries = cleanText.split(/\n\s*\n/);
+      const subtitles = [];
+
+      for (const entry of entries) {
+        const lines = entry.trim().split('\n');
+        if (lines.length < 2) continue;
+
+        let timeLineIdx = 0;
+        if (/^\d+$/.test(lines[0].trim())) {
+          timeLineIdx = 1;
+        }
+
+        const timeLine = lines[timeLineIdx];
+        if (!timeLine || !timeLine.includes('-->')) continue;
+
+        const [startStr, endStr] = timeLine.split('-->').map(s => s.trim());
+        const parseTime = (str) => {
+          if (!str) return 0;
+          const parts = str.replace(',', '.').split(':');
+          if (parts.length === 3) {
+            const h = parseFloat(parts[0]) || 0;
+            const m = parseFloat(parts[1]) || 0;
+            const s = parseFloat(parts[2]) || 0;
+            return Math.round((h * 3600 + m * 60 + s) * 1000);
+          } else if (parts.length === 2) {
+            const m = parseFloat(parts[0]) || 0;
+            const s = parseFloat(parts[1]) || 0;
+            return Math.round((m * 60 + s) * 1000);
+          }
+          return Math.round((parseFloat(parts[0]) || 0) * 1000);
+        };
+
+        const startMs = parseTime(startStr);
+        const endMs = parseTime(endStr);
+        const durationMs = Math.max(200, endMs - startMs);
+        const text = lines.slice(timeLineIdx + 1).join('\n').trim();
+
+        if (text) {
+          subtitles.push({
+            text,
+            startMs,
+            durationMs
+          });
+        }
+      }
+
+      return subtitles;
+    }
+
+    async function exportProject() {
+      // Sync latest subtitle edits before exporting
+      syncSubtitlesFromDOM();
+      saveSubtitles();
+
+      if (!currentSubtitles || currentSubtitles.length === 0) {
+        showToast('Chưa có phụ đề', 'Vui lòng nạp hoặc sinh phụ đề trước khi tải file .srt!', 'warning');
+        return;
+      }
+
+      const rawRef = (document.getElementById('input-bibleRef')?.value || currentData.bibleRef || "").trim();
+      let cleanRef = rawRef
+        .replace(/[\/\\?%*:|"<>]/g, "-")
+        .replace(/[,;]/g, "_")
+        .replace(/\s+/g, "_")
+        .replace(/_+/g, "_")
+        .replace(/^[-_]+|[-_]+$/g, "");
+
+      if (!cleanRef) {
+        const rawDate = (document.getElementById('input-date')?.value || currentData.date || "PhuDe").trim();
+        cleanRef = rawDate.replace(/[\/\\?%*:|"<>]/g, "-");
+      }
+
+      const srtFileName = `${cleanRef}.srt`;
+      const srtText = generateSrtContent(currentSubtitles);
+
+      const projectPayload = {
+        projectVersion: "2.1",
+        exportedAt: new Date().toISOString(),
+        metadata: {
+          date: document.getElementById('input-date')?.value || currentData.date,
+          bannerTag: document.getElementById('input-bannerTag')?.value || currentData.bannerTag,
+          feastName: document.getElementById('input-feastName')?.value || currentData.feastName,
+          readingType: document.getElementById('input-readingType')?.value || currentData.readingType,
+          bibleRef: document.getElementById('input-bibleRef')?.value || currentData.bibleRef,
+          quote: document.getElementById('input-quote')?.value || currentData.quote,
+          websiteUrl: document.getElementById('input-websiteUrl')?.value || currentData.websiteUrl || "loichuamoingay.org",
+          season: currentData.season || "ORDINARY",
+          imagePositionY: parseInt(document.getElementById('input-imagePositionY')?.value, 10) || 50,
+        },
+        subtitles: currentSubtitles || []
+      };
+
+      // 1. Save copy to server in `private/audio/sub/<ref>.srt` and `<ref>.json`
+      let serverSavedPath = `private/audio/sub/${srtFileName}`;
+      try {
+        const saveRes = await fetch('/api/export-project', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            filename: srtFileName,
+            srtContent: srtText,
+            project: projectPayload
+          })
+        });
+        const saveJson = await saveRes.json();
+        if (saveJson.success && saveJson.savedPath) {
+          serverSavedPath = saveJson.savedPath;
+        }
+      } catch (err) {
+        console.warn('Could not save to private/audio/sub on server:', err);
+      }
+
+      // 2. Download .srt file in browser (Ready for 1-click drag & drop into CapCut)
+      const blob = new Blob([srtText], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = srtFileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast('📥 Đã tải file .srt!', `Đã lưu vào ${serverSavedPath} & tải về máy (${srtFileName}) - Tương thích 100% CapCut`, 'success');
+      showStatus("✅ Đã Lưu & Tải Về Phụ Đề .SRT!", `${serverSavedPath} (Sẵn sàng import vào CapCut)`);
+      setTimeout(hideStatus, 4500);
+    }
+
+
+    function importProject() {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = ".srt,.json,text/plain,application/json";
+
+      fileInput.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        showStatus("⚡ Đang Nạp File Phụ Đề...", file.name);
+
+        try {
+          const text = await file.text();
+
+          // TH1: File .srt hoặc text có format SRT
+          if (file.name.toLowerCase().endsWith('.srt') || text.includes('-->')) {
+            const parsedSubs = parseSrtContent(text);
+            if (!parsedSubs || parsedSubs.length === 0) {
+              showToast('Lỗi nạp phụ đề', 'Không thể đọc nội dung file SRT!', 'error');
+              showStatus("❌ Lỗi Nạp SRT", "File phụ đề không hợp lệ.");
+              return;
+            }
+
+            currentSubtitles = parsedSubs;
+            loadedJsonName = "current_subtitles.json";
+
+            try {
+              localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(currentSubtitles));
+            } catch(e) {}
+
+            await fetch('/api/subtitles', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                jsonName: loadedJsonName,
+                subtitles: currentSubtitles
+              })
+            });
+
+            renderSubtitlesList();
+
+            showToast('Nạp SRT Thành Công', `Đã nạp ${parsedSubs.length} đoạn phụ đề từ file ${file.name}!`, 'success');
+            showStatus("✅ Đã Nạp Phụ Đề .SRT!", `${file.name} (${parsedSubs.length} đoạn)`);
+            setTimeout(hideStatus, 4000);
+
+            const iframe = document.getElementById('preview-iframe');
+            if (iframe) iframe.src = 'http://localhost:3000?t=' + Date.now();
+            return;
+          }
+
+          // TH2: File .json dự án
+          const json = JSON.parse(text);
+
+          if (!json.metadata && !json.date && !json.subtitles) {
+            showToast('Lỗi nạp dự án', 'File JSON không đúng định dạng dự án Catholic Video Studio!', 'error');
+            showStatus("❌ Lỗi Nạp Dự Án", "File JSON không hợp lệ.");
+            return;
+          }
+
+          const meta = json.metadata || json;
+          const assets = json.assets || json;
+
+          currentData.date = meta.date || "";
+          currentData.bannerTag = meta.bannerTag || "PHỤNG VỤ LỜI CHÚA HÀNG NGÀY";
+          currentData.feastName = meta.feastName || "";
+          currentData.readingType = meta.readingType || "";
+          currentData.bibleRef = meta.bibleRef || "";
+          currentData.quote = meta.quote || "";
+          currentData.websiteUrl = meta.websiteUrl || "loichuamoingay.org";
+          currentData.season = meta.season || "ORDINARY";
+          currentData.imagePositionY = meta.imagePositionY !== undefined ? meta.imagePositionY : 50;
+
+          // NOTE: audioFile / imageFile are NOT loaded from the project file.
+          // Media files are machine-specific. User must re-upload them manually.
+          // introAudioFile / outroAudioFile keep their current server values.
+
+          document.getElementById('input-date').value = currentData.date;
+          document.getElementById('input-bannerTag').value = currentData.bannerTag;
+          document.getElementById('input-feastName').value = currentData.feastName;
+          document.getElementById('input-readingType').value = currentData.readingType;
+          document.getElementById('input-bibleRef').value = currentData.bibleRef;
+          document.getElementById('input-quote').value = currentData.quote;
+          document.getElementById('input-websiteUrl').value = currentData.websiteUrl;
+          document.getElementById('input-imagePositionY').value = currentData.imagePositionY;
+          updatePosLabel(currentData.imagePositionY);
+
+          // Prompt user to re-upload media for this project
+          document.getElementById('image-filename').innerText = '⚠️ Vui lòng upload lại ảnh nền cho dự án này';
+          document.getElementById('audio-filename').innerText  = '⚠️ Vui lòng upload lại audio bài đọc cho dự án này';
+
+          showToast('📤 Dự án đã được nạp!', 'Metadata & phụ đề đã khôi phục. Vui lòng upload lại ảnh nền và audio bài đọc để hoàn chỉnh dự án.', 'warning');
+
+          selectSeason(currentData.season, false);
+          await saveData();
+
+          if (json.subtitles && Array.isArray(json.subtitles)) {
+            currentSubtitles = json.subtitles;
+            loadedJsonName = "current_subtitles.json";
+
+            await fetch('/api/subtitles', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                jsonName: loadedJsonName,
+                subtitles: currentSubtitles
+              })
+            });
+            renderSubtitlesList();
+          }
+
+          showStatus("🎉 Khôi Phục Dự Án Thành Công!", file.name + " đã nạp 100%!");
+          setTimeout(hideStatus, 3500);
+
+          const iframe = document.getElementById('preview-iframe');
+          iframe.src = 'http://localhost:3000?t=' + Date.now();
+        } catch (err) {
+          console.error(err);
+          showToast('Lỗi nạp file', 'Không thể nạp file phụ đề / dự án: ' + err.message, 'error');
+          showStatus("❌ Lỗi Nạp File", err.message);
+        }
+      };
+
+      fileInput.click();
+    }
+
+    async function generateSubtitles() {
+      if (_subJobRunning) return;
+
+      // Warn if existing subtitles will be overwritten
+      if (currentSubtitles && currentSubtitles.length > 0) {
+        const confirmed = await showConfirmModal({
+          icon: '⚡',
+          title: 'Sinh Phụ Đề AI — Ghi Đè Phụ Đề Cũ?',
+          message: `Hiện có ${currentSubtitles.length} đoạn phụ đề đang được chỉnh sửa. Sinh phụ đề mới sẽ XÓA TOÀN BỘ và thay bằng kết quả AI mới từ audio. Bản sao lưu sẽ được giữ lại (nút 🔄 Khôi Phục Phụ Đề Cũ).`,
+          cancelText: 'Giữ Phụ Đề Hiện Tại',
+          okText: '⚡ Sinh Phụ Đề Mới',
+          okClass: 'bg-indigo-600 hover:bg-indigo-500 text-white'
+        });
+        if (!confirmed) return;
+      }
+
+      // 1. Save backup snapshot of current subtitles before running AI
+      if (currentSubtitles && currentSubtitles.length > 0) {
+        try {
+          localStorage.setItem('catholic_studio_subs_last_backup', JSON.stringify(currentSubtitles));
+        } catch(e) {}
+      }
+
+      // 2. Clear old draft from localStorage
+      const targetJson = "current_subtitles.json";
+      try {
+        localStorage.removeItem('catholic_studio_subs_' + targetJson);
+      } catch(e) {}
+
+      // 3. Clear in-memory subtitles and update UI
+      currentSubtitles = [];
+      const container = document.getElementById('sub-list-container');
+      if (container) {
+        container.innerHTML = '<p class="text-xs text-indigo-400 italic text-center py-4">⚡ AI đang sinh phụ đề mới từ giọng đọc audio...</p>';
+      }
+
+      _subJobRunning = true;
+      const btn = document.getElementById('btn-sub');
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      showStatus('⚡ AI đang chuẩn bị tạo phụ đề…', 'Tác vụ đã được gửi. Lần đầu có thể mất vài phút để tải mô hình Whisper.');
+      
+      const cleanAudioFile = getCleanAudioName(currentData.audioFile);
+      console.log('[generateSubtitles] audioFile sent to API:', cleanAudioFile);
+      
+      try {
+        const res = await fetch('/api/create-subtitles', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ audioFile: cleanAudioFile, force: true })
+        });
+        const json = await res.json();
+        if (json.success) {
+          pollSubtitleJob();
+        } else {
+          _subJobRunning = false;
+          btn.disabled = false;
+          btn.style.opacity = '';
+          showStatus('❌ Không thể bắt đầu tạo phụ đề', json.error || 'Có lỗi xảy ra.');
+          // Restore previously loaded subtitles to UI if available
+          await loadSubtitles(true);
+        }
+      } catch (e) {
+        _subJobRunning = false;
+        btn.disabled = false;
+        btn.style.opacity = '';
+        showStatus('❌ Lỗi Tiến Trình', e.message);
+        await loadSubtitles(true);
+      }
+    }
+
+    function formatJobElapsed(startedAt) {
+      if (!startedAt) return 'vài giây';
+      const seconds = Math.max(0, Math.floor((Date.now() - new Date(startedAt).getTime()) / 1000));
+      const minutes = Math.floor(seconds / 60);
+      return minutes ? `${minutes} phút ${seconds % 60} giây` : `${seconds} giây`;
+    }
+
+    async function pollSubtitleJob() {
+      clearTimeout(_subtitleJobPoll);
+      try {
+        const res = await fetch('/api/create-subtitles/status', { cache: 'no-store' });
+        const json = await res.json();
+        const job = json.job;
+        if (!job) throw new Error('Không nhận được trạng thái từ server.');
+
+        if (job.status === 'running') {
+          showStatus('⚡ AI đang tạo phụ đề…', `${job.message} • Đã chạy ${formatJobElapsed(job.startedAt)}. Không đóng server cho đến khi hoàn tất.`);
+          _subtitleJobPoll = setTimeout(pollSubtitleJob, 1000);
+          return;
+        }
+
+        const btn = document.getElementById('btn-sub');
+        _subJobRunning = false;
+        btn.disabled = false;
+        btn.style.opacity = '';
+
+        if (job.status === 'completed') {
+          const quality = job.quality?.summary;
+          const qualityMessage = quality
+            ? `${quality.segments} đoạn • ${quality.warnings} cảnh báo cần rà soát trước khi xuất video.`
+            : 'Dữ liệu phụ đề đã nạp mượt mà!';
+          showStatus('✅ Sinh phụ đề hoàn tất!', qualityMessage);
+          await loadSubtitles(true);
+          document.getElementById('preview-iframe').src = 'http://localhost:3000?t=' + Date.now();
+          setTimeout(hideStatus, 5000);
+          return;
+        }
+
+        if (job.status === 'failed') {
+          showStatus('❌ Tạo phụ đề thất bại', job.error || job.message || 'Không rõ nguyên nhân.');
+          return;
+        }
+
+        _subtitleJobPoll = setTimeout(pollSubtitleJob, 1000);
+      } catch (e) {
+        _subJobRunning = false;
+        const btn = document.getElementById('btn-sub');
+        btn.disabled = false;
+        btn.style.opacity = '';
+        showStatus('❌ Không đọc được trạng thái tạo phụ đề', e.message);
+      }
+    }
+
+    let _renderTimerInterval = null;
+    let _renderPollInterval = null;
+    let _renderStartTime = 0;
+    let _lastRenderedUrl = "";
+
+    async function renderVideo() {
+      if (_renderJobRunning) return;
+      _renderJobRunning = true;
+      const btn = document.getElementById('btn-render');
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+
+      const modal = document.getElementById('render-modal');
+      const cancelBtn = document.getElementById('btn-cancel-render');
+      const downloadBtn = document.getElementById('btn-download-video');
+      const timerEl = document.getElementById('render-timer');
+      const statusText = document.getElementById('render-status-text');
+      const progressBar = document.getElementById('render-progress-bar');
+      const percentText = document.getElementById('render-percent-text');
+      const frameText = document.getElementById('render-frame-text');
+
+      modal.classList.remove('hidden');
+      cancelBtn.classList.remove('hidden');
+      downloadBtn.classList.add('hidden');
+      statusText.textContent = 'Đang đóng gói và khởi tạo bộ render 1080x1920 HD...';
+      if (progressBar) progressBar.style.width = '0%';
+      if (percentText) percentText.textContent = '0%';
+      if (frameText) frameText.textContent = 'Khung hình: 0 / -- frames';
+
+      _renderStartTime = Date.now();
+      clearInterval(_renderTimerInterval);
+      _renderTimerInterval = setInterval(() => {
+        const seconds = Math.floor((Date.now() - _renderStartTime) / 1000);
+        const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        timerEl.textContent = `⏱️ ${mins}:${secs}`;
+      }, 1000);
+
+      showStatus('🎬 Đang Render Xuất Video MP4...', 'Đang encode chuẩn 1080x1920 HD: 15M Bitrate • BT.709 • HW Accel (if-possible) • JPEG Quality 100%');
+
+      try {
+        const startRes = await fetch('/api/render-video', { method: 'POST' });
+        const startJson = await startRes.json();
+        if (!startJson.success) {
+          throw new Error(startJson.error || 'Không thể khởi chạy tiến trình render.');
+        }
+
+        clearInterval(_renderPollInterval);
+        _renderPollInterval = setInterval(async () => {
+          try {
+            const statusRes = await fetch('/api/render-status');
+            const job = await statusRes.json();
+
+            const p = job.progress || 0;
+            if (progressBar) progressBar.style.width = `${p}%`;
+            if (percentText) percentText.textContent = `${p}%`;
+            if (job.totalFrames > 0 && frameText) {
+              frameText.textContent = `Khung hình: ${job.renderedFrames || 0} / ${job.totalFrames} frames`;
+            }
+
+            if (job.status === 'rendering') {
+              if (p < 5) {
+                statusText.textContent = '⚡ Đang chuẩn bị và đóng gói giao diện Remotion...';
+              } else {
+                statusText.textContent = `🎬 Đang render xuất khung hình (${p}%)...`;
+              }
+            } else if (job.status === 'completed') {
+              clearInterval(_renderPollInterval);
+              clearInterval(_renderTimerInterval);
+              if (progressBar) progressBar.style.width = '100%';
+              if (percentText) percentText.textContent = '100%';
+              statusText.textContent = '🎉 Render hoàn tất 100%! Đang tải video về máy...';
+              showToast('🎉 Render hoàn tất 100%!', 'Đang tải tệp video MP4 về thư mục Downloads...', 'success');
+
+              cancelBtn.classList.add('hidden');
+              downloadBtn.classList.remove('hidden');
+
+              _lastRenderedUrl = job.videoUrl || '/output.mp4';
+              triggerAutoDownload(_lastRenderedUrl);
+
+              setTimeout(() => {
+                modal.classList.add('hidden');
+              }, 4000);
+
+              _renderJobRunning = false;
+              btn.disabled = false;
+              btn.style.opacity = '';
+            } else if (job.status === 'cancelled') {
+              clearInterval(_renderPollInterval);
+              clearInterval(_renderTimerInterval);
+              statusText.textContent = '❌ Tiến trình render đã bị hủy.';
+              showToast('Đã hủy render', 'Tiến trình render video đã dừng.', 'warning');
+              setTimeout(() => modal.classList.add('hidden'), 2000);
+
+              _renderJobRunning = false;
+              btn.disabled = false;
+              btn.style.opacity = '';
+            } else if (job.status === 'error') {
+              clearInterval(_renderPollInterval);
+              clearInterval(_renderTimerInterval);
+              statusText.textContent = '❌ Lỗi render: ' + (job.error || 'Có lỗi xảy ra.');
+              showToast('Lỗi Render', job.error || 'Có lỗi xảy ra.', 'error');
+              setTimeout(() => modal.classList.add('hidden'), 3500);
+
+              _renderJobRunning = false;
+              btn.disabled = false;
+              btn.style.opacity = '';
+            }
+          } catch (err) {
+            console.error('Error polling render status:', err);
+          }
+        }, 500);
+      } catch (e) {
+        clearInterval(_renderTimerInterval);
+        clearInterval(_renderPollInterval);
+        statusText.textContent = '❌ Lỗi render: ' + e.message;
+        showToast('Lỗi Render', e.message, 'error');
+        setTimeout(() => modal.classList.add('hidden'), 3000);
+        _renderJobRunning = false;
+        btn.disabled = false;
+        btn.style.opacity = '';
+      }
+    }
+
+    async function cancelRenderVideo() {
+      try {
+        const cancelBtn = document.getElementById('btn-cancel-render');
+        if (cancelBtn) cancelBtn.disabled = true;
+
+        showToast('Đang hủy render...', 'Đang tiêu diệt tiến trình render ngầm...', 'warning');
+
+        const res = await fetch('/api/cancel-render', { method: 'POST' });
+        const json = await res.json();
+
+        clearInterval(_renderPollInterval);
+        clearInterval(_renderTimerInterval);
+
+        const modal = document.getElementById('render-modal');
+        const statusText = document.getElementById('render-status-text');
+        if (statusText) statusText.textContent = '❌ Tiến trình render đã bị hủy thành công.';
+
+        showToast('Đã dừng render', json.message || 'Tiến trình render video đã dừng.', 'warning');
+
+        setTimeout(() => {
+          if (modal) modal.classList.add('hidden');
+          if (cancelBtn) cancelBtn.disabled = false;
+        }, 1500);
+
+        _renderJobRunning = false;
+        const renderBtn = document.getElementById('btn-render');
+        if (renderBtn) {
+          renderBtn.disabled = false;
+          renderBtn.style.opacity = '';
+        }
+      } catch (e) {
+        console.error('Cancel render error:', e);
+      }
+    }
+
+    function triggerAutoDownload(url) {
+      const a = document.createElement('a');
+      a.href = url + '?t=' + Date.now();
+      const dateStr = getTodayFormattedDate().replace(/\//g, '');
+      a.download = `catholic_video_${dateStr}_${Date.now()}.mp4`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function downloadRenderedVideo() {
+      if (_lastRenderedUrl) {
+        triggerAutoDownload(_lastRenderedUrl);
+      }
+    }
+
+    function showStatus(title, desc) {
+      const box = document.getElementById('status-box');
+      box.classList.remove('hidden');
+      document.getElementById('status-title').innerText = title;
+      document.getElementById('status-desc').innerText = desc;
+    }
+
+    function hideStatus() {
+      document.getElementById('status-box').classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+        event.preventDefault();
+        saveSubtitles();
+      }
+    });
+
+    // ── Confirmation Modal Helper ─────────────────────────────────────────────
+    // Returns Promise<boolean> — true = user clicked Confirm, false = Cancel.
+    function showConfirmModal({ icon = '⚠️', title, message, cancelText = 'Hủy', okText = 'Xác nhận', okClass = 'bg-amber-500 hover:bg-amber-400 text-black' }) {
+      return new Promise((resolve) => {
+        const modal  = document.getElementById('confirm-modal');
+        const elIcon = document.getElementById('confirm-modal-icon');
+        const elTitle = document.getElementById('confirm-modal-title');
+        const elMsg   = document.getElementById('confirm-modal-message');
+        const btnCancel = document.getElementById('confirm-modal-cancel');
+        const btnOk     = document.getElementById('confirm-modal-ok');
+
+        elIcon.textContent   = icon;
+        elTitle.textContent  = title;
+        elMsg.textContent    = message;
+        btnCancel.textContent = cancelText;
+        btnOk.textContent     = okText;
+        btnOk.className = `text-xs px-5 py-2.5 rounded-xl font-extrabold transition cursor-pointer ${okClass}`;
+
+        modal.classList.remove('hidden');
+
+        const close = (result) => {
+          modal.classList.add('hidden');
+          btnOk.removeEventListener('click', onOk);
+          btnCancel.removeEventListener('click', onCancel);
+          resolve(result);
+        };
+        const onOk     = () => close(true);
+        const onCancel = () => close(false);
+        btnOk.addEventListener('click', onOk);
+        btnCancel.addEventListener('click', onCancel);
+      });
+    }
+
+    // ── Beforeunload guard (warns on accidental refresh / tab-close) ──────────
+    // Only fires when there is unsaved work (subtitle job running or render job).
+    let _pageHasUnsavedWork = false;
+    window.addEventListener('beforeunload', (e) => {
+      if (_subJobRunning || _renderJobRunning || _pageHasUnsavedWork) {
+        e.preventDefault();
+        e.returnValue = 'Bạn có thay đổi chưa được lưu hoặc đang có tác vụ đang chạy. Bạn có chắc muốn rời khỏi trang?';
+        return e.returnValue;
+      }
+    });
+    // Mark unsaved work whenever subtitles are edited
+    document.addEventListener('input', (e) => {
+      if (e.target.closest('#sub-list-container')) _pageHasUnsavedWork = true;
+    });
+
+    // ── GITHUB CLOUD RENDER INTEGRATION ───────────────────────────────────────
+    let _cloudPollInterval = null;
+    let _cloudStartTime = 0;
+
+    async function openCloudRenderModal() {
+      const modal = document.getElementById('cloud-render-modal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+
+      // Query git/github repository info
+      try {
+        const res = await fetch('/api/github/info');
+        if (!res.ok) {
+          throw new Error('Server chưa cập nhật API GitHub. Vui lòng khởi động lại server!');
+        }
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Server trả về định dạng không phải JSON. Vui lòng khởi động lại server!');
+        }
+        const info = await res.json();
+        const repoStatusEl = document.getElementById('cloud-repo-info');
+        const startBtn = document.getElementById('btn-start-cloud-render');
+
+        if (info.configured && info.repo) {
+          repoStatusEl.innerHTML = `<span class="text-emerald-400 font-bold">✅ Đã kết nối:</span> <a href="${info.actionsUrl}" target="_blank" class="text-amber-300 underline font-mono font-semibold">${info.owner}/${info.repo}</a>`;
+          if (startBtn) startBtn.disabled = false;
+        } else {
+          repoStatusEl.innerHTML = `<span class="text-amber-400 font-bold">⚠️ Chưa kết nối GitHub Remote:</span> Bạn cần chạy lệnh <code>git remote add origin ...</code> và đẩy code lên GitHub trước khi bấm render cloud.`;
+          if (startBtn) startBtn.disabled = true;
+        }
+      } catch (e) {
+        console.warn('GitHub info error:', e);
+        const repoStatusEl = document.getElementById('cloud-repo-info');
+        if (repoStatusEl) repoStatusEl.innerHTML = `<span class="text-amber-400">⚠️ Thông báo: ${e.message}</span>`;
+      }
+    }
+
+    function closeCloudRenderModal() {
+      const modal = document.getElementById('cloud-render-modal');
+      if (modal) modal.classList.add('hidden');
+      clearInterval(_cloudPollInterval);
+    }
+
+    async function startCloudRender() {
+      const startBtn = document.getElementById('btn-start-cloud-render');
+      const statusText = document.getElementById('cloud-status-text');
+      const downloadBtn = document.getElementById('btn-download-cloud-video');
+      const progressBar = document.getElementById('cloud-progress-bar');
+      const timerEl = document.getElementById('cloud-timer');
+
+      if (startBtn) {
+        startBtn.disabled = true;
+        startBtn.classList.add('opacity-50');
+      }
+      if (downloadBtn) downloadBtn.classList.add('hidden');
+      if (progressBar) progressBar.style.width = '20%';
+
+      statusText.textContent = '🚀 Đang đồng bộ dữ liệu bài đọc và kích hoạt GitHub Actions Runner...';
+      _cloudStartTime = Date.now();
+
+      try {
+        const res = await fetch('/api/github/trigger-render', { method: 'POST' });
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Server Node.js chưa nhận API mới. Vui lòng khởi động lại server bằng lệnh: npm run studio-app');
+        }
+        const json = await res.json();
+
+        if (!json.success) {
+          throw new Error(json.error || 'Không thể kích hoạt GitHub Actions.');
+        }
+
+        showToast('🚀 Đã gửi lệnh Render Cloud!', 'GitHub Actions đang chạy trên máy chủ đám mây...', 'info');
+
+        // Start polling status every 4 seconds
+        clearInterval(_cloudPollInterval);
+        _cloudPollInterval = setInterval(async () => {
+          try {
+            const statusRes = await fetch('/api/github/status');
+            const data = await statusRes.json();
+
+            const seconds = Math.floor((Date.now() - _cloudStartTime) / 1000);
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            if (timerEl) timerEl.textContent = `⏱️ ${mins}:${secs}`;
+
+            if (data.status === 'in_progress' || data.status === 'queued') {
+              if (progressBar) progressBar.style.width = '65%';
+              statusText.textContent = `☁️ Đang render video 1080x1920 trên server GitHub (${mins}:${secs})...`;
+            } else if (data.status === 'completed') {
+              clearInterval(_cloudPollInterval);
+              if (data.conclusion === 'success') {
+                if (progressBar) progressBar.style.width = '100%';
+                statusText.textContent = '🎉 Render Cloud hoàn tất 100%! Video đã sẵn sàng tải về.';
+                showToast('🎉 Render Cloud thành công!', 'Bấm nút "Tải Video Về Máy" để nhận file MP4.', 'success');
+
+                if (downloadBtn) {
+                  downloadBtn.classList.remove('hidden');
+                  if (data.url) {
+                    downloadBtn.onclick = () => window.open(data.url, '_blank');
+                  }
+                }
+              } else {
+                statusText.textContent = `❌ Render Cloud thất bại (${data.conclusion}).`;
+                showToast('Render Cloud lỗi', 'Vui lòng kiểm tra log trên GitHub Actions.', 'error');
+              }
+
+              if (startBtn) {
+                startBtn.disabled = false;
+                startBtn.classList.remove('opacity-50');
+              }
+            }
+          } catch (pollErr) {
+            console.warn('Cloud poll error:', pollErr);
+          }
+        }, 4000);
+      } catch (err) {
+        statusText.textContent = '❌ Lỗi: ' + err.message;
+        showToast('Lỗi Render Cloud', err.message, 'error');
+        if (startBtn) {
+          startBtn.disabled = false;
+          startBtn.classList.remove('opacity-50');
+        }
+      }
+    }
+
+    setPreviewSize(previewSize);
+    loadData();
+  </script>
+
+  <!-- RENDER PROGRESS & SPECS MODAL OVERLAY -->
+  <div id="render-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#18130e] border border-amber-500/40 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-5 relative">
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-base font-extrabold text-amber-400 flex items-center gap-2">
+            <span>🎬 Đang Render Xuất Video MP4 HD</span>
+          </h3>
+          <p class="text-xs text-zinc-400 mt-1">Đang tiến hành encode video 1080x1920 30FPS...</p>
+        </div>
+        <span id="render-timer" class="text-xs font-mono bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-lg font-bold">⏱️ 00:00</span>
+      </div>
+
+      <!-- SPECS GRID BADGES -->
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🎞️</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Target Bitrate</span>
+            <strong class="text-amber-300 font-mono">15 Mbps (Custom)</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🎨</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Color Space</span>
+            <strong class="text-emerald-300 font-mono">Rec.709 (BT.709)</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🚀</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">HW Acceleration</span>
+            <strong class="text-indigo-300 font-mono">If-Possible (GPU)</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🖼️</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">JPEG Quality</span>
+            <strong class="text-amber-300 font-mono">100% (Max Quality)</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRESS BAR & STATUS TEXT -->
+      <div class="space-y-2">
+        <div class="flex justify-between text-xs text-zinc-400 font-medium">
+          <span id="render-status-text">Đang khởi tạo tiến trình render...</span>
+          <span id="render-percent-text" class="font-mono text-amber-400 font-bold">0%</span>
+        </div>
+        <div class="w-full bg-zinc-900 h-3 rounded-full overflow-hidden border border-zinc-800 p-0.5">
+          <div id="render-progress-bar" class="bg-gradient-to-r from-amber-500 via-amber-400 to-emerald-400 h-full rounded-full transition-all duration-300 shadow-md shadow-amber-500/30" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-[11px] text-zinc-500 font-mono">
+          <span id="render-frame-text">Khung hình: 0 / -- frames</span>
+          <span>Target: 30 FPS • 1080x1920</span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button id="btn-cancel-render" onclick="cancelRenderVideo()" class="text-xs bg-red-600/30 hover:bg-red-600/50 text-red-300 border border-red-500/40 px-4 py-2.5 rounded-xl font-bold transition flex items-center gap-1.5 cursor-pointer">
+          <span>❌ Hủy Render</span>
+        </button>
+        <button id="btn-download-video" onclick="downloadRenderedVideo()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-extrabold transition flex items-center gap-1.5 shadow-lg shadow-emerald-600/30 cursor-pointer">
+          <span>⬇️ Tải Video Về Máy (.mp4)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOUD RENDER MODAL OVERLAY (GITHUB ACTIONS) -->
+  <div id="cloud-render-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#141816] border border-emerald-500/40 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-5 relative">
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-base font-extrabold text-emerald-400 flex items-center gap-2">
+            <span>☁️ Render Video Trên GitHub Cloud (Actions)</span>
+          </h3>
+          <p class="text-xs text-zinc-400 mt-1">Render hoàn toàn trên máy chủ GitHub — không tốn CPU/RAM máy bạn</p>
+        </div>
+        <span id="cloud-timer" class="text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2.5 py-1 rounded-lg font-bold">⏱️ 00:00</span>
+      </div>
+
+      <!-- SPECS BADGES -->
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🖥️</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Server Runner</span>
+            <strong class="text-emerald-300 font-mono">Ubuntu 2-Core / 7GB</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🔋</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Tài Nguyên Máy</span>
+            <strong class="text-teal-300 font-mono">0% CPU / Máy Mát</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">🎞️</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Chất Lượng Video</span>
+            <strong class="text-amber-300 font-mono">1080x1920 • 30 FPS</strong>
+          </div>
+        </div>
+        <div class="bg-zinc-900/90 border border-zinc-800 p-2.5 rounded-xl flex items-center gap-2">
+          <span class="text-base">📦</span>
+          <div>
+            <span class="text-[10px] text-zinc-500 block uppercase font-bold">Lưu Trữ Artifact</span>
+            <strong class="text-indigo-300 font-mono">30 Ngày Tải Về</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPO INFO -->
+      <div id="cloud-repo-info" class="text-xs bg-zinc-950/80 border border-zinc-800/80 p-3 rounded-xl text-zinc-300 font-mono break-all">
+        Đang kiểm tra kết nối GitHub repository...
+      </div>
+
+      <!-- PROGRESS BAR & STATUS TEXT -->
+      <div class="space-y-2">
+        <div class="flex justify-between text-xs text-zinc-400 font-medium">
+          <span id="cloud-status-text">Sẵn sàng kích hoạt máy chủ GitHub render...</span>
+        </div>
+        <div class="w-full bg-zinc-900 h-3 rounded-full overflow-hidden border border-zinc-800 p-0.5">
+          <div id="cloud-progress-bar" class="bg-gradient-to-r from-teal-500 via-emerald-400 to-amber-400 h-full rounded-full transition-all duration-300 shadow-md shadow-emerald-500/30" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex items-center justify-between gap-3 pt-2">
+        <button onclick="closeCloudRenderModal()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 px-4 py-2.5 rounded-xl font-bold transition cursor-pointer">
+          <span>✕ Đóng</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button id="btn-start-cloud-render" onclick="startCloudRender()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-extrabold transition flex items-center gap-1.5 shadow-lg shadow-emerald-600/30 cursor-pointer">
+            <span>🚀 Bắt Đầu Render Trên GitHub Cloud</span>
+          </button>
+          <button id="btn-download-cloud-video" class="hidden text-xs bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 rounded-xl font-extrabold transition flex items-center gap-1.5 shadow-lg shadow-amber-500/30 cursor-pointer">
+            <span>⬇️ Tải Video Về Máy (.mp4)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION MODAL -->
+  <div id="confirm-modal" class="hidden fixed inset-0 z-[60] bg-black/70 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+    <div class="bg-[#18130e] border border-amber-500/40 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-5 transform transition-all duration-200">
+      <!-- Icon + Title -->
+      <div class="flex items-start gap-4">
+        <div id="confirm-modal-icon" class="text-3xl shrink-0 mt-0.5">⚠️</div>
+        <div class="flex-1">
+          <h3 id="confirm-modal-title" class="text-base font-extrabold text-amber-400 leading-tight"></h3>
+          <p id="confirm-modal-message" class="text-xs text-zinc-400 mt-2 leading-relaxed"></p>
+        </div>
+      </div>
+      <!-- Divider -->
+      <div class="border-t border-zinc-800"></div>
+      <!-- Buttons -->
+      <div class="flex items-center justify-end gap-3">
+        <button id="confirm-modal-cancel" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 px-5 py-2.5 rounded-xl font-bold transition cursor-pointer"></button>
+        <button id="confirm-modal-ok" class="text-xs px-5 py-2.5 rounded-xl font-extrabold transition cursor-pointer"></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

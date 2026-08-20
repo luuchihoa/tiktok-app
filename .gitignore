@@ -1,0 +1,21 @@
+node_modules
+dist
+build
+.DS_Store
+.env
+
+# Output videos
+out
+*.mp4
+public/*.mp4
+
+# Runtime-uploaded media files
+public/upload_*
+
+# Subtitle files: keep current_subtitles.json
+public/subs/*.json
+!public/subs/current_subtitles.json
+
+# Whisper.cpp compiled binaries and downloaded models
+whisper.cpp/
+*.wav
