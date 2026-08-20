@@ -1126,12 +1126,13 @@
             document.getElementById('outro-audio-filename').innerText = '✅ Đã nạp nhạc dạo ra: ' + json.filename;
           }
 
-          await saveData();
+          await saveData(true);
           showStatus('✅ Nạp File Thành Công!', file.name + ' đã nạp vào video!');
           setTimeout(hideStatus, 3000);
 
-          const iframe = document.getElementById('preview-iframe');
-          iframe.src = 'http://localhost:3000?t=' + Date.now();
+          setTimeout(() => {
+            refreshPreview();
+          }, 300);
         } else {
           showToast('Tải File Thất Bại', json.error || 'Lỗi không xác định', 'error');
           showStatus('❌ Tải File Thất Bại', json.error || 'Có lỗi xảy ra.');
@@ -1144,7 +1145,7 @@
     }
 
 
-    function saveData() {
+    async function saveData(immediate = false) {
       currentData.date = document.getElementById('input-date')?.value || currentData.date || '';
       currentData.bannerTag = document.getElementById('input-bannerTag')?.value || currentData.bannerTag || '';
       currentData.feastName = document.getElementById('input-feastName')?.value || currentData.feastName || '';
@@ -1164,9 +1165,7 @@
         localStorage.setItem('catholic_studio_draft', JSON.stringify(currentData));
       } catch (e) {}
 
-      // Debounce: wait 500 ms after the last call before hitting the API
-      clearTimeout(_saveDebounceTimer);
-      _saveDebounceTimer = setTimeout(async () => {
+      const doSave = async () => {
         try {
           const res = await fetch('/api/data', {
             method: 'POST',
@@ -1177,13 +1176,24 @@
             const err = await res.json().catch(() => ({}));
             console.warn('Save failed:', err.error || res.status);
           } else {
+            const json = await res.json();
+            if (json?.data?.audioDurationSeconds) {
+              currentData.audioDurationSeconds = json.data.audioDurationSeconds;
+            }
             showAutoSaveStatus('saved');
             refreshPreview();
           }
         } catch (e) {
           console.error('Save error:', e);
         }
-      }, 500);
+      };
+
+      clearTimeout(_saveDebounceTimer);
+      if (immediate) {
+        return await doSave();
+      } else {
+        _saveDebounceTimer = setTimeout(doSave, 500);
+      }
     }
     function resetStudioCache() {
       if (!confirm('🧹 Xóa toàn bộ cache/nháp cũ trong trình duyệt?\n\nThao tác này sẽ:\n• Xóa bản nháp phụ đề cũ trong localStorage\n• Xóa bản nháp dữ liệu bài đọc cũ trong localStorage\n• Tải lại dữ liệu mới nhất từ server\n\nPhụ đề trên server (current_subtitles.json) sẽ KHÔNG bị xóa.')) return;
