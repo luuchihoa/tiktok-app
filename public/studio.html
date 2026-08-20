@@ -142,15 +142,28 @@
 
       <hr class="border-zinc-800">
 
-      <!-- SECTION 3: MEDIA FILES, INTRO/OUTRO & IMAGE SLIDER -->
+      <!-- SECTION 3: AUDIO & HERO IMAGE -->
       <div class="space-y-4">
         <label class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-2">
-          <span>🖼️ 3. Tải File, Nhạc Dạo Vào/Ra & Vị Trí Ảnh</span>
+          <span>🎙️ 3. Âm Thanh & Ảnh Trung Tâm</span>
         </label>
 
+        <!-- MAIN AUDIO FILE PICKER -->
+        <div class="space-y-1.5 bg-blue-500/5 border border-blue-500/20 p-3.5 rounded-xl">
+          <label class="text-[11px] font-semibold text-blue-300 block">🎙️ File Âm Thanh Bài Đọc (.mp3, .wav):</label>
+          <input
+            type="file"
+            id="picker-audio"
+            accept="audio/*"
+            onchange="handleFileUpload(this, 'audio')"
+            class="w-full text-xs text-blue-300 bg-blue-500/10 border border-blue-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-400"
+          >
+          <div id="audio-filename" class="text-[11px] text-blue-400/90 font-mono break-all pt-0.5">File hiện tại: audio.mp3</div>
+        </div>
+
         <!-- IMAGE FILE PICKER -->
-        <div class="space-y-1.5">
-          <label class="text-[11px] font-semibold text-zinc-300 block">🖼️ Chọn Ảnh Trung Tâm (.jpg, .png, .webp):</label>
+        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
+          <label class="text-[11px] font-semibold text-amber-300 block">🖼️ Ảnh Thánh Trung Tâm (.jpg, .png):</label>
           <input
             type="file"
             id="picker-image"
@@ -161,39 +174,13 @@
           <div id="image-filename" class="text-[11px] text-amber-400/90 font-mono break-all pt-0.5">File hiện tại: cross.jpg</div>
         </div>
 
-        <!-- LOGO FILE PICKER -->
-        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
-          <label class="text-[11px] font-semibold text-amber-300 block">🏷️ Logo Thương Hiệu (.png, .jpg):</label>
-          <input
-            type="file"
-            id="picker-logo"
-            accept="image/*"
-            onchange="handleFileUpload(this, 'logo')"
-            class="w-full text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-black hover:file:bg-amber-400"
-          >
-          <div id="logo-filename" class="text-[11px] text-amber-400/90 font-mono break-all pt-0.5">✅ Logo hiện tại: logo.png (Góc Trên Trái)</div>
-        </div>
-
-        <!-- WEBSITE URL INPUT -->
-        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
-          <label class="text-[11px] font-semibold text-amber-300 block">🌐 Địa Chỉ Website / Kênh Truyền Thông:</label>
-          <input
-            type="text"
-            id="input-websiteUrl"
-            oninput="saveData()"
-            placeholder="VD: loichuamoingay.org"
-            class="w-full glass-input p-2.5 rounded-xl text-xs text-amber-200 font-mono"
-          >
-          <div class="text-[10px] text-zinc-400 pt-0.5">Hiển thị ở Badge góc trên phải & phụ đề Intro/Outro</div>
-        </div>
-
         <!-- IMAGE POSITION Y SLIDER -->
-        <div class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3.5 rounded-xl">
+        <div class="space-y-1.5 bg-zinc-900/60 border border-zinc-800 p-3.5 rounded-xl">
           <div class="flex justify-between items-center">
-            <label class="text-[11px] font-semibold text-amber-300 flex items-center gap-1.5">
-              <span>↕️ Dịch Chuyển Ảnh Lên / Xuống (Căn Khuôn Mặt)</span>
+            <label class="text-[11px] font-semibold text-zinc-300 flex items-center gap-1.5">
+              <span>↕️ Căn Vị Trí Ảnh (Lên / Xuống)</span>
             </label>
-            <span id="pos-val" class="text-[10px] text-amber-400 font-mono font-bold">50% (Chính Giữa)</span>
+            <span id="pos-val" class="text-[10px] text-amber-400 font-mono font-bold">50%</span>
           </div>
           <input
             type="range"
@@ -205,48 +192,9 @@
             class="w-full accent-amber-500 bg-zinc-800 h-2 rounded-lg cursor-pointer mt-1"
           >
           <div class="flex justify-between text-[9px] text-zinc-500 pt-1">
-            <span>⬆️ 0% (Dịch Lên Đỉnh)</span>
-            <span>↔️ 50% (Chính Giữa)</span>
-            <span>⬇️ 100% (Dịch Xuống Đáy)</span>
-          </div>
-        </div>
-
-        <!-- MAIN AUDIO FILE PICKER -->
-        <div class="space-y-1.5">
-          <label class="text-[11px] font-semibold text-zinc-300 block">🎙️ Chọn File Âm Thanh Bài Đọc (.mp3, .wav):</label>
-          <input
-            type="file"
-            id="picker-audio"
-            accept="audio/*"
-            onchange="handleFileUpload(this, 'audio')"
-            class="w-full text-xs text-blue-300 bg-blue-500/10 border border-blue-500/30 p-2.5 rounded-xl cursor-pointer file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-400"
-          >
-          <div id="audio-filename" class="text-[11px] text-blue-400/90 font-mono break-all pt-0.5">File hiện tại: audio.mp3</div>
-        </div>
-
-        <!-- INTRO & OUTRO AUDIO FILE PICKERS -->
-        <div class="grid grid-cols-2 gap-3 bg-purple-500/5 border border-purple-500/20 p-3.5 rounded-xl">
-          <div class="space-y-1">
-            <label class="text-[10px] font-bold text-purple-300 block">🔔 Nhạc Dạo Vào (Intro):</label>
-            <input
-              type="file"
-              id="picker-introAudio"
-              accept="audio/*"
-              onchange="handleFileUpload(this, 'introAudio')"
-              class="w-full text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/30 p-1.5 rounded-lg cursor-pointer file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-purple-600 file:text-white"
-            >
-            <div id="intro-audio-filename" class="text-[10px] text-purple-400/90 font-mono break-all pt-0.5">File hiện tại: piano_intro.mp3</div>
-          </div>
-          <div class="space-y-1">
-            <label class="text-[10px] font-bold text-purple-300 block">⛪ Nhạc Dạo Ra (Outro):</label>
-            <input
-              type="file"
-              id="picker-outroAudio"
-              accept="audio/*"
-              onchange="handleFileUpload(this, 'outroAudio')"
-              class="w-full text-[10px] text-purple-300 bg-purple-500/10 border border-purple-500/30 p-1.5 rounded-lg cursor-pointer file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-purple-600 file:text-white"
-            >
-            <div id="outro-audio-filename" class="text-[10px] text-purple-400/90 font-mono break-all pt-0.5">File hiện tại: piano_outro.mp3</div>
+            <span>⬆️ Đỉnh (0%)</span>
+            <span>↔️ Giữa (50%)</span>
+            <span>⬇️ Đáy (100%)</span>
           </div>
         </div>
       </div>
@@ -578,18 +526,20 @@
         document.getElementById('input-feastName').value = currentData.feastName || '';
         document.getElementById('input-readingType').value = currentData.readingType || '';
         document.getElementById('input-bibleRef').value = currentData.bibleRef || '';
-        document.getElementById('input-quote').value = currentData.quote || '';
-        document.getElementById('input-websiteUrl').value = currentData.websiteUrl || 'loichuamoingay.org';
+        if (document.getElementById('input-websiteUrl')) {
+          document.getElementById('input-websiteUrl').value = currentData.websiteUrl || 'loichuamoingay.org';
+        }
         
         const pos = currentData.imagePositionY !== undefined ? currentData.imagePositionY : 50;
         document.getElementById('input-imagePositionY').value = pos;
         updatePosLabel(pos);
 
-        document.getElementById('image-filename').innerText = 'File hiện tại: ' + (currentData.imageFile || 'cross.jpg');
-        document.getElementById('logo-filename').innerText = '✅ Logo hiện tại: ' + (currentData.logoFile || 'logo.png') + ' (Góc Trên Trái)';
-        document.getElementById('audio-filename').innerText = 'File hiện tại: ' + (currentData.audioFile || 'audio.mp3');
-        document.getElementById('intro-audio-filename').innerText = 'File hiện tại: ' + (currentData.introAudioFile || 'piano_intro.mp3');
-        document.getElementById('outro-audio-filename').innerText = 'File hiện tại: ' + (currentData.outroAudioFile || 'piano_outro.mp3');
+        if (document.getElementById('image-filename')) {
+          document.getElementById('image-filename').innerText = 'File hiện tại: ' + (currentData.imageFile || 'cross.jpg');
+        }
+        if (document.getElementById('audio-filename')) {
+          document.getElementById('audio-filename').innerText = 'File hiện tại: ' + (currentData.audioFile || 'audio.mp3');
+        }
 
         selectSeason(currentData.season || 'EASTER_CHRISTMAS', false);
       } catch (e) {
@@ -1192,14 +1142,17 @@
 
 
     function saveData() {
-      currentData.date = document.getElementById('input-date').value;
-      currentData.bannerTag = document.getElementById('input-bannerTag').value;
-      currentData.feastName = document.getElementById('input-feastName').value;
-      currentData.readingType = document.getElementById('input-readingType').value;
-      currentData.bibleRef = document.getElementById('input-bibleRef').value;
-      currentData.quote = document.getElementById('input-quote').value;
-      currentData.websiteUrl = document.getElementById('input-websiteUrl').value || 'loichuamoingay.org';
-      currentData.imagePositionY = parseInt(document.getElementById('input-imagePositionY').value, 10);
+      currentData.date = document.getElementById('input-date')?.value || currentData.date || '';
+      currentData.bannerTag = document.getElementById('input-bannerTag')?.value || currentData.bannerTag || '';
+      currentData.feastName = document.getElementById('input-feastName')?.value || currentData.feastName || '';
+      currentData.readingType = document.getElementById('input-readingType')?.value || currentData.readingType || '';
+      currentData.bibleRef = document.getElementById('input-bibleRef')?.value || currentData.bibleRef || '';
+      currentData.quote = document.getElementById('input-quote')?.value || currentData.quote || '';
+      currentData.websiteUrl = document.getElementById('input-websiteUrl')?.value || currentData.websiteUrl || 'loichuamoingay.org';
+      currentData.logoFile = currentData.logoFile || 'logo.png';
+      currentData.introAudioFile = currentData.introAudioFile || 'piano_intro.mp3';
+      currentData.outroAudioFile = currentData.outroAudioFile || 'piano_outro.mp3';
+      currentData.imagePositionY = parseInt(document.getElementById('input-imagePositionY')?.value || '50', 10);
 
       showAutoSaveStatus('saving');
 
