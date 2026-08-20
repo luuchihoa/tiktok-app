@@ -52,8 +52,15 @@
         <span>⚡ 1-Click Sinh Phụ Đề AI</span>
       </button>
       <div class="flex flex-col items-end">
+        <a href="https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb" target="_blank" id="btn-colab-render" title="Render bằng GPU NVIDIA T4 Miễn Phí trên Google Colab (~30 giây)" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-orange-500/20 flex items-center gap-1.5 cursor-pointer">
+          <span>⚡ Mở Google Colab (GPU)</span>
+        </a>
+        <span class="text-[9px] text-amber-400/90 font-mono pt-0.5">NVIDIA T4 16GB • ~30s</span>
+      </div>
+
+      <div class="flex flex-col items-end">
         <button onclick="openCloudRenderModal()" id="btn-cloud-render" title="Render trên máy chủ đám mây GitHub Actions (không tốn CPU/RAM máy bạn)" class="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-black font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 cursor-pointer">
-          <span>☁️ 1-Click Render Cloud</span>
+          <span>☁️ Render Cloud (GitHub)</span>
         </button>
         <span class="text-[9px] text-emerald-400/80 font-mono pt-0.5">GitHub Actions • 0% CPU</span>
       </div>
@@ -2299,6 +2306,19 @@
             <strong class="text-indigo-300 font-mono">30 Ngày Tải Về</strong>
           </div>
         </div>
+      </div>
+
+      <!-- GOOGLE COLAB GPU CALLOUT -->
+      <div class="bg-gradient-to-r from-orange-950/70 to-amber-950/70 border border-orange-500/40 rounded-xl p-3.5 flex items-center justify-between gap-3">
+        <div class="space-y-0.5">
+          <div class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+            <span>⚡ Render Siêu Tốc Trên Google Colab (NVIDIA GPU T4)</span>
+          </div>
+          <p class="text-[11px] text-zinc-400">Render xong trong ~30 giây bằng card đồ họa GPU miễn phí của Google</p>
+        </div>
+        <a href="https://colab.research.google.com/github/luuchihoa/tiktok-app/blob/main/Render_Catholic_Video.ipynb" target="_blank" class="shrink-0 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-black font-extrabold text-xs px-3.5 py-2 rounded-xl transition shadow-md flex items-center gap-1 cursor-pointer">
+          <span>▶️ Mở Colab GPU</span>
+        </a>
       </div>
 
       <!-- REPO INFO -->
