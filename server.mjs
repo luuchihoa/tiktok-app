@@ -3,7 +3,7 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import multer from "multer";
-import { exec, execFile, spawn } from "child_process";
+import { exec, execFile, execSync, spawn } from "child_process";
 import { promisify } from "util";
 import { fileURLToPath } from "url";
 import {
