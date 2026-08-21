@@ -259,155 +259,25 @@
       <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-900 shrink-0 flex-wrap gap-2">
         <div>
           <h2 class="text-xs font-bold text-amber-500 tracking-widest uppercase flex items-center gap-2">
-            <span>🎬 PREVIEW VIDEO THỜI GIAN THỰC (9:16 INTERACTIVE)</span>
+            <span>🎬 PREVIEW VIDEO THỜI GIAN THỰC (REMOTION STUDIO 9:16)</span>
           </h2>
-          <p id="preview-subtitle" class="text-[11px] text-zinc-500">Đồng bộ tức thì 100% khi gõ chữ, chỉnh thời gian, đổi ảnh & nghe thử phụ đề</p>
+          <p class="text-[11px] text-zinc-500">Được đồng bộ tức thì khi chọn file hoặc sửa chữ/thời gian phụ đề</p>
         </div>
         <div class="flex items-center gap-2">
-          <!-- ENVIRONMENT PREVIEW MODE SWITCH -->
-          <div id="preview-mode-switch" class="flex items-center bg-zinc-900 border border-zinc-800 rounded-lg p-0.5 text-[10px]">
-            <button id="mode-btn-interactive" type="button" onclick="switchPreviewMode('interactive')" class="px-2.5 py-1 rounded-md font-bold bg-amber-500 text-black transition cursor-pointer">✨ Trực Tiếp (Live)</button>
-            <button id="mode-btn-remotion" type="button" onclick="switchPreviewMode('remotion')" class="px-2.5 py-1 rounded-md font-bold text-zinc-400 hover:text-white transition cursor-pointer">⚡ Remotion (3000)</button>
-          </div>
           <button onclick="refreshPreview()" class="text-[10px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-full font-bold transition flex items-center gap-1 cursor-pointer">
-            <span>🔄 Làm Mới</span>
+            <span>🔄 Làm Mới Preview</span>
+          </button>
+          <button onclick="openPreviewWindow()" class="text-[10px] bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 px-2.5 py-1 rounded-full font-bold transition flex items-center gap-1 cursor-pointer">
+            <span>↗ Cửa Sổ Mới</span>
           </button>
           <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full font-mono font-bold">1080 × 1920 HD</span>
         </div>
       </div>
 
-      <!-- EMBEDDED PREVIEW CONTAINER - FULL HEIGHT MAXIMIZED -->
+      <!-- EMBEDDED IFRAME TO REMOTION PREVIEW - FULL HEIGHT MAXIMIZED -->
       <div class="flex-1 w-full flex items-center justify-center overflow-hidden relative">
         <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/10 border border-amber-500/30 bg-black relative flex items-center justify-center">
-          <!-- REMOTION IFRAME (Optional when running on localhost:3000) -->
-          <iframe id="preview-iframe" src="" class="w-full h-full border-0 hidden"></iframe>
-
-          <!-- NATIVE CLIENT-SIDE INTERACTIVE LIVE PREVIEW CANVAS (100% REAL-TIME REACTIVE) -->
-          <div id="live-canvas-container" class="w-full h-full flex flex-col items-center justify-center relative bg-[#040302] select-none p-2 overflow-hidden">
-            <!-- 9:16 SCALED PHONE / VIDEO SCREEN -->
-            <div id="video-stage-wrapper" class="relative overflow-hidden shadow-2xl rounded-2xl border border-amber-500/40 transition-all duration-150 flex items-center justify-center bg-black" style="width: 330px; height: 586px;">
-              <!-- 1080x1920 INTERNAL RESOLUTION SCALED DOWN -->
-              <div id="video-stage" class="absolute top-0 left-0 overflow-hidden" style="width: 1080px; height: 1920px; transform-origin: top left; transform: scale(0.30555);">
-                <!-- BACKGROUND LAYER -->
-                <div id="pv-bg" class="absolute inset-0 transition-all duration-500" style="background: radial-gradient(circle at 50% 30%, #3d2407 0%, #1c1003 55%, #0a0501 100%);"></div>
-
-                <!-- AMBIENT LIGHT RAYS & VIGNETTE -->
-                <div id="pv-light-ray" class="absolute -top-[200px] -left-[200px] w-[1480px] h-[1480px] pointer-events-none opacity-25" style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 40deg, rgba(245, 158, 11, 0.12) 55deg, rgba(245, 158, 11, 0.35) 70deg, rgba(245, 158, 11, 0.12) 85deg, transparent 100deg);"></div>
-                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at center, transparent 30%, rgba(5, 4, 3, 0.95) 85%);"></div>
-
-                <!-- TOP-LEFT LOGO MEDALLION -->
-                <div class="absolute top-[125px] left-[60px] z-10 flex items-center gap-3">
-                  <div id="pv-logo-border" class="w-[92px] h-[92px] rounded-full p-[2.5px] shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #fbbf24, #ffffff, #f59e0b); box-shadow: 0 0 24px rgba(245,158,11,0.45);">
-                    <div class="w-full h-full rounded-full overflow-hidden bg-[#0a0806] border border-amber-400">
-                      <img id="pv-logo-img" src="./logo.png" alt="Logo" class="w-full h-full object-cover">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- TOP-RIGHT WEBSITE PILL -->
-                <div class="absolute top-[140px] right-[90px] z-10">
-                  <div id="pv-website-pill" class="bg-[#16110d]/95 border border-amber-400 rounded-full px-5 py-2 flex items-center gap-2.5 shadow-xl">
-                    <span class="text-xl">🌐</span>
-                    <span id="pv-website-text" class="text-[22px] font-bold text-amber-300 tracking-wider">loichuamoingay.org</span>
-                  </div>
-                </div>
-
-                <!-- ZONE 1: HEADER (Y: 270px -> 470px) -->
-                <div class="absolute top-[270px] left-0 w-[1080px] h-[200px] flex flex-col items-center justify-center z-10 px-[60px] text-center">
-                  <div id="pv-date" class="text-[32px] font-bold text-zinc-200 uppercase tracking-[4px]">21/08/2026</div>
-                  
-                  <!-- TAPERED GOLD SPEAR DIVIDER -->
-                  <div class="flex items-center gap-4 my-3">
-                    <div id="pv-spear-left" class="w-[170px] h-[4px]" style="clip-path: polygon(0% 50%, 100% 0%, 100% 100%); background: linear-gradient(to right, transparent, #fbbf24 65%, #ffffff 100%); filter: drop-shadow(0 0 8px rgba(245,158,11,0.5));"></div>
-                    <span id="pv-diamond" class="text-base text-white scale-125" style="text-shadow: 0 0 10px #ffffff, 0 0 20px #fbbf24;">◆</span>
-                    <div id="pv-spear-right" class="w-[170px] h-[4px]" style="clip-path: polygon(0% 0%, 100% 50%, 0% 100%); background: linear-gradient(to left, transparent, #fbbf24 65%, #ffffff 100%); filter: drop-shadow(0 0 8px rgba(245,158,11,0.5));"></div>
-                  </div>
-
-                  <!-- FEAST NAME -->
-                  <h2 id="pv-feast-name" class="text-[40px] font-extrabold text-white leading-tight drop-shadow-xl whitespace-pre-line">Các thánh Mác-ta, Ma-ri-a và La-da-rô</h2>
-
-                  <!-- LITURGICAL BADGE -->
-                  <div id="pv-season-badge-wrapper" class="mt-3.5 p-[2.5px] rounded-full shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #fbbf24, rgba(255,255,255,0.4), #f59e0b); box-shadow: 0 0 24px rgba(245,158,11,0.45);">
-                    <div id="pv-season-badge" class="px-6 py-1.5 rounded-full bg-[#0a0806]/90 backdrop-blur-md border border-amber-400 flex items-center gap-2.5">
-                      <span id="pv-season-icon-1" class="text-xl">🕯️</span>
-                      <span id="pv-banner-tag" class="text-xl font-extrabold text-amber-300 tracking-[2.5px] uppercase">PHỤNG VỤ LỜI CHÚA HÀNG NGÀY</span>
-                      <span id="pv-season-icon-2" class="text-xl">🕯️</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ZONE 2: HERO IMAGE (Y: 510px -> 1050px) -->
-                <div class="absolute top-[510px] left-0 w-[1080px] h-[540px] overflow-hidden z-0">
-                  <img id="pv-hero-image" src="./cross.jpg" alt="Hero Image" class="w-full h-full object-cover transition-all duration-100" style="object-position: center 50%;">
-                  <!-- TOP BLEND -->
-                  <div class="absolute top-0 left-0 w-full h-[130px]" style="background: linear-gradient(to bottom, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.75) 35%, rgba(10,8,6,0.25) 70%, transparent 100%);"></div>
-                  <!-- BOTTOM BLEND -->
-                  <div class="absolute bottom-0 left-0 w-full h-[130px]" style="background: linear-gradient(to top, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.75) 35%, rgba(10,8,6,0.25) 70%, transparent 100%);"></div>
-                  <!-- LEFT & RIGHT FEATHER -->
-                  <div class="absolute top-0 left-0 w-[80px] h-[540px]" style="background: linear-gradient(to right, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.5) 50%, transparent 100%);"></div>
-                  <div class="absolute top-0 right-0 w-[80px] h-[540px]" style="background: linear-gradient(to left, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.5) 50%, transparent 100%);"></div>
-                </div>
-
-                <!-- ZONE 3: META CONTENT (Y: 1065px -> 1305px) -->
-                <div class="absolute top-[1065px] left-0 w-[1080px] h-[240px] flex flex-col items-center justify-center z-10 px-[60px] text-center">
-                  <h1 id="pv-reading-type" class="text-[56px] font-extrabold text-amber-500 uppercase tracking-[4px] m-0 drop-shadow-2xl">BÀI ĐỌC 1</h1>
-                  <div id="pv-bible-ref" class="text-[30px] font-semibold text-zinc-200 mt-2 tracking-[1.5px]">1 Ga 4,7-16</div>
-                  <p id="pv-quote" class="text-[26px] italic text-zinc-400 mt-6 leading-relaxed max-w-[960px] whitespace-pre-line">
-                    <span id="pv-quote-mark-1" class="text-amber-400 opacity-60">“ </span>
-                    <span id="pv-quote-text">Nếu chúng ta yêu thương nhau, thì Thiên Chúa ở lại trong chúng ta...</span>
-                    <span id="pv-quote-mark-2" class="text-amber-400 opacity-60"> ”</span>
-                  </p>
-                </div>
-
-                <!-- ZONE 4: SUBTITLE & CALL-TO-ACTION (Y: 1320px -> 1600px) -->
-                <div class="absolute top-[1320px] left-[54px] w-[972px] h-[280px] z-20">
-                  <div id="pv-sub-card" class="w-full h-full rounded-[32px] border border-amber-400 shadow-2xl flex items-center justify-center p-8 text-center relative overflow-hidden" style="background: linear-gradient(180deg, rgba(22, 16, 12, 0.96) 0%, rgba(12, 9, 7, 0.98) 100%); box-shadow: 0 20px 50px rgba(0,0,0,0.85), 0 0 30px rgba(245, 158, 11, 0.25);">
-                    <!-- TOP HIGHLIGHT LINE -->
-                    <div id="pv-sub-topline" class="absolute top-0 left-[15%] w-[70%] h-[2px]" style="background: linear-gradient(to right, transparent, #fbbf24, transparent);"></div>
-
-                    <!-- INTRO CONTENT (0 - 3.5s) -->
-                    <div id="pv-intro-box" class="flex flex-col items-center gap-3">
-                      <div id="pv-intro-title" class="text-[42px] font-extrabold text-amber-300 tracking-wider drop-shadow-lg">✨ LỜI CHÚA MỖI NGÀY ✨</div>
-                      <div id="pv-intro-url" class="text-[28px] font-semibold text-white px-6 py-2 rounded-full bg-white/15 border border-amber-400/50 shadow-md">🔗 loichuamoingay.org</div>
-                    </div>
-
-                    <!-- ACTIVE SUBTITLE TEXT (During Audio) -->
-                    <div id="pv-sub-text-box" class="hidden text-[38px] font-bold text-white leading-snug tracking-wide max-w-[900px]">
-                      <span id="pv-active-sub-text">Nhấp vào phụ đề để hiển thị trực tiếp tại đây...</span>
-                    </div>
-
-                    <!-- OUTRO CONTENT (Last 4.5s) -->
-                    <div id="pv-outro-box" class="hidden flex flex-col items-center gap-2">
-                      <div id="pv-outro-title" class="text-[42px] font-extrabold text-amber-300 tracking-wider drop-shadow-lg">🙏 Nguyện Xin Chúa Chúc Lành</div>
-                      <div class="text-[26px] font-medium text-zinc-300">Bình An & Ân Sủng Của Chúa Ở Cùng Bạn</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PLAY / PAUSE OVERLAY BUTTON (CLICK ON PREVIEW) -->
-              <div id="pv-click-overlay" onclick="togglePlayPreview()" class="absolute inset-0 z-30 cursor-pointer flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/30">
-                <div id="pv-overlay-play-icon" class="w-14 h-14 rounded-full bg-amber-500/90 text-black flex items-center justify-center text-2xl font-bold shadow-2xl transform hover:scale-110 transition">▶</div>
-              </div>
-            </div>
-
-            <!-- INTEGRATED LIVE PLAYBACK CONTROLS BAR -->
-            <div class="w-full max-w-[360px] bg-zinc-900/95 border border-zinc-800 rounded-xl p-2.5 mt-2.5 flex items-center gap-2.5 text-xs text-zinc-300 shadow-xl z-20">
-              <button id="pv-ctrl-play" onclick="togglePlayPreview()" title="Phát / Dừng âm thanh (Phím Space)" class="w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center font-bold text-sm transition cursor-pointer shrink-0">
-                <span>▶</span>
-              </button>
-              
-              <div class="flex-1 flex flex-col gap-1">
-                <input id="pv-scrubber" type="range" min="0" max="100" value="0" step="0.1" oninput="onScrubberInput(this.value)" class="w-full h-1.5 bg-zinc-800 accent-amber-500 rounded cursor-pointer">
-                <div class="flex justify-between text-[10px] text-zinc-400 font-mono">
-                  <span id="pv-time-current">00:00.0</span>
-                  <span id="pv-time-total">00:00.0</span>
-                </div>
-              </div>
-
-              <button onclick="toggleAudioMute()" id="pv-btn-mute" title="Bật / Tắt tiếng" class="text-xs text-zinc-400 hover:text-amber-400 px-1 cursor-pointer">🔊</button>
-            </div>
-          </div>
+          <iframe id="preview-iframe" src="http://localhost:3000" class="w-full h-full border-0"></iframe>
         </div>
       </div>
     </div>
@@ -697,7 +567,6 @@
         }
 
         selectSeason(currentData.season || 'ORDINARY', false);
-        initPreviewEnvironment();
         await loadSubtitles();
       }
     }
@@ -933,8 +802,11 @@
     }
 
     function setActiveSubtitle(idx, shouldFocus) {
+      if (activeSubtitleIndex === idx) {
+        if (shouldFocus) focusSubtitleEditor(idx);
+        return;
+      }
       activeSubtitleIndex = idx;
-      seekToSubtitle(idx);
       renderSubtitlesList();
       if (shouldFocus) requestAnimationFrame(() => focusSubtitleEditor(idx));
     }
@@ -950,342 +822,46 @@
 
 
 
-    // ── Liturgical Themes for Native Real-Time Live Preview ──────────────────
-    const THEMES = {
-      ORDINARY: {
-        primaryColor: '#10b981',
-        secondaryColor: '#34d399',
-        bgGradient: 'radial-gradient(circle at 50% 30%, #063726 0%, #031c13 55%, #010a07 100%)',
-        glowColor: 'rgba(16, 185, 129, 0.45)',
-        seasonIcon: '🌿'
-      },
-      LENT_ADVENT: {
-        primaryColor: '#a855f7',
-        secondaryColor: '#c084fc',
-        bgGradient: 'radial-gradient(circle at 50% 30%, #3b146b 0%, #1e0938 55%, #0b0217 100%)',
-        glowColor: 'rgba(168, 85, 247, 0.45)',
-        seasonIcon: '✝️'
-      },
-      MARTYR: {
-        primaryColor: '#ef4444',
-        secondaryColor: '#f87171',
-        bgGradient: 'radial-gradient(circle at 50% 30%, #520e0e 0%, #290606 55%, #0f0101 100%)',
-        glowColor: 'rgba(239, 68, 68, 0.45)',
-        seasonIcon: '🔥'
-      },
-      EASTER_CHRISTMAS: {
-        primaryColor: '#f59e0b',
-        secondaryColor: '#fbbf24',
-        bgGradient: 'radial-gradient(circle at 50% 30%, #3d2407 0%, #1c1003 55%, #0a0501 100%)',
-        glowColor: 'rgba(245, 158, 11, 0.45)',
-        seasonIcon: '🕯️'
-      }
-    };
-
-    function formatSubHtml(text) {
-      if (!text) return '';
-      let html = escapeHtml(text);
-      // Gold highlight *...*
-      html = html.replace(/\*(.*?)\*/g, '<span class="text-amber-300 font-extrabold" style="text-shadow: 0 0 16px rgba(245, 158, 11, 0.95);">$1</span>');
-      // Box highlight [...]
-      html = html.replace(/\[(.*?)\]/g, '<span class="px-2.5 py-0.5 rounded border border-purple-400 bg-purple-500/25 text-purple-200 font-bold">$1</span>');
-      // Newlines
-      html = html.replace(/\n/g, '<br/>');
-      return html;
-    }
-
-    function updateLivePreview() {
-      const theme = THEMES[currentData.season] || THEMES.EASTER_CHRISTMAS;
-      
-      const elBg = document.getElementById('pv-bg');
-      if (elBg) elBg.style.background = theme.bgGradient;
-
-      const elDate = document.getElementById('pv-date');
-      if (elDate) elDate.textContent = currentData.date || getTodayFormattedDate();
-
-      const elFeast = document.getElementById('pv-feast-name');
-      if (elFeast) elFeast.textContent = currentData.feastName || 'Tên Thánh Lễ / Lễ Trọng';
-
-      const elBanner = document.getElementById('pv-banner-tag');
-      if (elBanner) elBanner.textContent = currentData.bannerTag || 'PHỤNG VỤ LỜI CHÚA HÀNG NGÀY';
-
-      const elIcon1 = document.getElementById('pv-season-icon-1');
-      const elIcon2 = document.getElementById('pv-season-icon-2');
-      if (elIcon1) elIcon1.textContent = theme.seasonIcon;
-      if (elIcon2) elIcon2.textContent = theme.seasonIcon;
-
-      const elReading = document.getElementById('pv-reading-type');
-      if (elReading) {
-        elReading.textContent = currentData.readingType || 'BÀI ĐỌC';
-        elReading.style.color = theme.primaryColor;
-      }
-
-      const elRef = document.getElementById('pv-bible-ref');
-      if (elRef) elRef.textContent = currentData.bibleRef || '';
-
-      const elQuote = document.getElementById('pv-quote-text');
-      if (elQuote) {
-        let cleanQuote = (currentData.quote || '').replace(/^”|“|"/g, '').replace(/”|“|"$/g, '');
-        elQuote.textContent = cleanQuote;
-      }
-
-      const elHero = document.getElementById('pv-hero-image');
-      if (elHero) {
-        const rawImg = currentData.imageFile || 'cross.jpg';
-        elHero.src = rawImg.startsWith('http') || rawImg.startsWith('blob:') ? rawImg : './' + rawImg;
-        const pos = currentData.imagePositionY !== undefined ? currentData.imagePositionY : 50;
-        elHero.style.objectPosition = `center ${pos}%`;
-      }
-
-      const elWeb = document.getElementById('pv-website-text');
-      if (elWeb) elWeb.textContent = currentData.websiteUrl || 'loichuamoingay.org';
-
-      const elIntroUrl = document.getElementById('pv-intro-url');
-      if (elIntroUrl) elIntroUrl.textContent = '🔗 ' + (currentData.websiteUrl || 'loichuamoingay.org');
-
-      // Update active subtitle text in preview
-      if (activeSubtitleIndex >= 0 && currentSubtitles[activeSubtitleIndex]) {
-        updateActiveSubtitleInPreview(currentSubtitles[activeSubtitleIndex].startMs + 3500);
-      }
-    }
-
-    function resizeStage() {
-      const container = document.getElementById('live-canvas-container');
-      const wrapper = document.getElementById('video-stage-wrapper');
-      const stage = document.getElementById('video-stage');
-      if (!container || !wrapper || !stage) return;
-
-      const availW = Math.max(100, container.clientWidth - 24);
-      const availH = Math.max(100, container.clientHeight - 65);
-
-      let targetW = availW;
-      let targetH = targetW * (16 / 9);
-
-      if (targetH > availH) {
-        targetH = availH;
-        targetW = targetH * (9 / 16);
-      }
-
-      targetW = Math.max(200, Math.floor(targetW));
-      targetH = Math.max(355, Math.floor(targetH));
-
-      wrapper.style.width = targetW + 'px';
-      wrapper.style.height = targetH + 'px';
-
-      const scale = targetW / 1080;
-      stage.style.transform = `scale(${scale})`;
-    }
-
-    window.addEventListener('resize', resizeStage);
-
-    // ── Real-Time Interactive Audio Playback & Preview Synchronizer ───────────
-    let _previewAudio = null;
-    let _isPlaying = false;
-    let _audioDuration = 0;
-
-    function initPreviewAudio() {
-      if (!_previewAudio) {
-        _previewAudio = new Audio();
-        _previewAudio.ontimeupdate = onAudioTimeUpdate;
-        _previewAudio.onended = () => {
-          _isPlaying = false;
-          updatePlayButtonUI();
-        };
-        _previewAudio.onloadedmetadata = () => {
-          _audioDuration = _previewAudio.duration || 0;
-          const totalEl = document.getElementById('pv-time-total');
-          if (totalEl) totalEl.textContent = formatTime((_audioDuration + 8.0) * 1000);
-        };
-      }
-      const rawAudio = currentData.audioFile || 'current_audio.mp3';
-      const audioSrc = rawAudio.startsWith('http') || rawAudio.startsWith('blob:') ? rawAudio : './' + rawAudio;
-      if (_previewAudio.src !== audioSrc && !audioSrc.endsWith(_previewAudio.src)) {
-        _previewAudio.src = audioSrc;
-      }
-    }
-
-    function togglePlayPreview() {
-      initPreviewAudio();
-      if (_isPlaying) {
-        _previewAudio.pause();
-        _isPlaying = false;
-      } else {
-        _previewAudio.play().then(() => {
-          _isPlaying = true;
-        }).catch(err => {
-          console.warn('Audio play notice:', err);
-          showToast('Phát âm thanh', 'Nhấn vào timeline hoặc tải audio để nghe thử trực tiếp.', 'info');
-        });
-      }
-      updatePlayButtonUI();
-    }
-
-    function toggleAudioMute() {
-      if (_previewAudio) {
-        _previewAudio.muted = !_previewAudio.muted;
-        const btn = document.getElementById('pv-btn-mute');
-        if (btn) btn.textContent = _previewAudio.muted ? '🔇' : '🔊';
-      }
-    }
-
-    function updatePlayButtonUI() {
-      const btn = document.getElementById('pv-ctrl-play');
-      const overlayIcon = document.getElementById('pv-overlay-play-icon');
-      if (btn) btn.innerHTML = _isPlaying ? '<span>⏸</span>' : '<span>▶</span>';
-      if (overlayIcon) overlayIcon.textContent = _isPlaying ? '⏸' : '▶';
-    }
-
-    function onAudioTimeUpdate() {
-      if (!_previewAudio) return;
-      const audioTime = _previewAudio.currentTime;
-      const INTRO_SEC = 3.5;
-      const OUTRO_SEC = 4.5;
-      const videoTime = audioTime + INTRO_SEC;
-      const totalVideoTime = (_previewAudio.duration || _audioDuration || 60) + INTRO_SEC + OUTRO_SEC;
-
-      const scrubber = document.getElementById('pv-scrubber');
-      if (scrubber && !scrubber.matches(':active')) {
-        scrubber.value = (videoTime / totalVideoTime) * 100;
-      }
-
-      const curEl = document.getElementById('pv-time-current');
-      if (curEl) curEl.textContent = formatTime(videoTime * 1000);
-
-      updateActiveSubtitleInPreview(videoTime * 1000);
-    }
-
-    function onScrubberInput(val) {
-      initPreviewAudio();
-      const INTRO_SEC = 3.5;
-      const OUTRO_SEC = 4.5;
-      const totalVideoTime = (_previewAudio.duration || _audioDuration || 60) + INTRO_SEC + OUTRO_SEC;
-      const targetVideoSec = (totalVideoTime * val) / 100;
-      const targetAudioSec = Math.max(0, targetVideoSec - INTRO_SEC);
-      if (_previewAudio) {
-        _previewAudio.currentTime = targetAudioSec;
-      }
-      updateActiveSubtitleInPreview(targetVideoSec * 1000);
-    }
-
-    function updateActiveSubtitleInPreview(timeMs) {
-      const introBox = document.getElementById('pv-intro-box');
-      const subBox = document.getElementById('pv-sub-text-box');
-      const outroBox = document.getElementById('pv-outro-box');
-      const activeSubText = document.getElementById('pv-active-sub-text');
-
-      const totalMs = ((_audioDuration || 60) + 8.0) * 1000;
-      const INTRO_MS = 3500;
-      const OUTRO_MS = 4500;
-
-      if (timeMs < INTRO_MS) {
-        if (introBox) introBox.classList.remove('hidden');
-        if (subBox) subBox.classList.add('hidden');
-        if (outroBox) outroBox.classList.add('hidden');
-        return;
-      }
-
-      if (timeMs >= totalMs - OUTRO_MS) {
-        if (introBox) introBox.classList.add('hidden');
-        if (subBox) subBox.classList.add('hidden');
-        if (outroBox) outroBox.classList.remove('hidden');
-        return;
-      }
-
-      // In Audio range: find subtitle
-      const audioCurMs = timeMs - INTRO_MS;
-      if (currentSubtitles && currentSubtitles.length > 0) {
-        const subIdx = currentSubtitles.findIndex(s => audioCurMs >= s.startMs && audioCurMs <= (s.startMs + s.durationMs));
-
-        if (subIdx >= 0 && currentSubtitles[subIdx]) {
-          if (introBox) introBox.classList.add('hidden');
-          if (outroBox) outroBox.classList.add('hidden');
-          if (subBox) subBox.classList.remove('hidden');
-          if (activeSubText) activeSubText.innerHTML = formatSubHtml(currentSubtitles[subIdx].text);
-          return;
-        }
-      }
-
-      if (activeSubtitleIndex >= 0 && currentSubtitles[activeSubtitleIndex]) {
-        if (introBox) introBox.classList.add('hidden');
-        if (outroBox) outroBox.classList.add('hidden');
-        if (subBox) subBox.classList.remove('hidden');
-        if (activeSubText) activeSubText.innerHTML = formatSubHtml(currentSubtitles[activeSubtitleIndex].text);
-      } else {
-        if (introBox) introBox.classList.remove('hidden');
-        if (subBox) subBox.classList.add('hidden');
-        if (outroBox) outroBox.classList.add('hidden');
-      }
-    }
-
-    function seekToSubtitle(idx) {
-      if (!currentSubtitles[idx]) return;
-      initPreviewAudio();
-      const sub = currentSubtitles[idx];
-      const INTRO_MS = 3500;
-      const targetTimeSec = Math.max(0, sub.startMs / 1000);
-      if (_previewAudio) {
-        _previewAudio.currentTime = targetTimeSec;
-      }
-      activeSubtitleIndex = idx;
-      updateActiveSubtitleInPreview(sub.startMs + INTRO_MS);
-    }
-
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    let previewMode = 'interactive';
-
-    function initPreviewEnvironment() {
-      switchPreviewMode('interactive');
-      updateLivePreview();
-      setTimeout(resizeStage, 50);
-    }
-
-    function switchPreviewMode(mode) {
-      previewMode = mode;
-      const iframe = document.getElementById('preview-iframe');
-      const canvasContainer = document.getElementById('live-canvas-container');
-      const btnInteractive = document.getElementById('mode-btn-interactive');
-      const btnRemotion = document.getElementById('mode-btn-remotion');
-
-      if (mode === 'remotion') {
-        if (canvasContainer) canvasContainer.classList.add('hidden');
-        if (iframe) {
-          iframe.classList.remove('hidden');
-          if (!iframe.src || iframe.src === 'about:blank' || !iframe.src.includes(':3000')) {
-            iframe.src = 'http://localhost:3000?t=' + Date.now();
-          }
-        }
-        if (btnRemotion) btnRemotion.className = 'px-2.5 py-1 rounded-md font-bold bg-amber-500 text-black transition cursor-pointer';
-        if (btnInteractive) btnInteractive.className = 'px-2.5 py-1 rounded-md font-bold text-zinc-400 hover:text-white transition cursor-pointer';
-      } else {
-        if (iframe) {
-          iframe.classList.add('hidden');
-          iframe.src = 'about:blank';
-        }
-        if (canvasContainer) canvasContainer.classList.remove('hidden');
-        if (btnInteractive) btnInteractive.className = 'px-2.5 py-1 rounded-md font-bold bg-amber-500 text-black transition cursor-pointer';
-        if (btnRemotion) btnRemotion.className = 'px-2.5 py-1 rounded-md font-bold text-zinc-400 hover:text-white transition cursor-pointer';
-        updateLivePreview();
-        resizeStage();
-      }
-    }
-
     function refreshPreview() {
-      if (previewMode === 'remotion') {
-        const iframe = document.getElementById('preview-iframe');
-        if (iframe) iframe.src = `http://localhost:3000?t=${Date.now()}`;
-      } else {
-        updateLivePreview();
-        resizeStage();
-        showToast('🔄 Đã làm mới preview', 'Khung preview trực tiếp đã cập nhật dữ liệu mới nhất.', 'info');
+      const iframe = document.getElementById('preview-iframe');
+      if (iframe) {
+        iframe.src = `http://localhost:3000?t=${Date.now()}`;
       }
+      showToast('🔄 Đã làm mới preview', 'Đang kết nối lại Remotion Studio...', 'info');
     }
 
     function openPreviewWindow() {
-      if (isLocalhost) {
-        window.open('http://localhost:3000', 'catholic-video-preview', 'popup=yes,width=540,height=960');
-      } else {
-        window.open('./output.mp4', '_blank');
-      }
+      window.open('http://localhost:3000', 'catholic-video-preview', 'popup=yes,width=540,height=960');
+    }
+
+    function setPreviewSize(size) {
+      previewSize = size;
+      const shell = document.getElementById('preview-shell');
+      if (!shell) return;
+      const isTimeline = size === 'timeline';
+      shell.style.height = '100%';
+      shell.style.width = isTimeline ? '100%' : 'auto';
+      shell.classList.toggle('aspect-[9/16]', !isTimeline);
+      shell.classList.toggle('aspect-auto', isTimeline);
+      document.querySelectorAll('.preview-size-btn').forEach((button) => {
+        const isSelected = button.dataset.size === size;
+        button.classList.toggle('border-amber-500', isSelected);
+        button.classList.toggle('bg-amber-500/10', isSelected);
+        button.classList.toggle('text-amber-300', isSelected);
+        button.classList.toggle('border-zinc-700', !isSelected);
+      });
+    }
+
+    function togglePreviewFocus() {
+      const editor = document.getElementById('editor-panel');
+      const panel = document.getElementById('preview-panel');
+      const button = document.getElementById('btn-preview-focus');
+      if (!editor || !panel) return;
+      const isFocused = editor.classList.toggle('hidden');
+      panel.classList.toggle('fixed', isFocused);
+      panel.classList.toggle('inset-0', isFocused);
+      panel.classList.toggle('z-40', isFocused);
+      if (button) button.textContent = isFocused ? 'Thu nhỏ preview' : 'Tập trung preview';
     }
 
     function setPreviewSize(size) {
@@ -1342,7 +918,6 @@
     function onSubTextChange(idx, val) {
       if (currentSubtitles[idx]) {
         currentSubtitles[idx].text = val;
-        updateActiveSubtitleInPreview(currentSubtitles[idx].startMs + 3500);
         debouncedSaveSubtitlesDraft();
       }
     }
@@ -1526,31 +1101,6 @@
       const file = inputElement.files[0];
       if (!file) return;
 
-      // ── Confirm before overwriting existing image / audio ─────────────────
-      const isMainMedia = fileType === 'image' || fileType === 'audio';
-      if (isMainMedia) {
-        const hasExisting = fileType === 'image'
-          ? (currentData.imageFile && !currentData.imageFile.endsWith('cross.jpg'))
-          : (currentData.audioFile && !currentData.audioFile.endsWith('audio.mp3'));
-
-        if (hasExisting) {
-          const label   = fileType === 'image' ? 'ảnh nền' : 'audio bài đọc';
-          const current = fileType === 'image' ? currentData.imageFile : currentData.audioFile;
-          const confirmed = await showConfirmModal({
-            icon: '🔄',
-            title: `Ghi Đè ${fileType === 'image' ? 'Ảnh Nền' : 'Audio Bài Đọc'}?`,
-            message: `Bạn đang chọn file mới "${file.name}" để thay thế ${label} hiện tại (${String(current).split('/').pop()}). Thao tác này sẽ ghi đè và không thể hoàn tác.`,
-            cancelText: 'Giữ File Cũ',
-            okText: `Ghi Đè ${fileType === 'image' ? 'Ảnh' : 'Audio'}`,
-            okClass: 'bg-red-600 hover:bg-red-500 text-white'
-          });
-          if (!confirmed) {
-            inputElement.value = '';
-            return;
-          }
-        }
-      }
-
       showStatus('⚡ Đang Tải File Lên...', file.name);
 
       const formData = new FormData();
@@ -1579,36 +1129,6 @@
             if (document.getElementById('audio-filename')) {
               document.getElementById('audio-filename').innerText = '✅ Đã nạp audio mới: ' + json.filename + (json.durationSeconds ? ` (${json.durationSeconds}s)` : '');
             }
-
-            // Prompt user about subtitles for this newly uploaded audio
-            if (currentSubtitles && currentSubtitles.length > 0) {
-              const runAI = await showConfirmModal({
-                icon: '🎙️',
-                title: 'Đã Nạp Audio Mới — Xử Lý Phụ Đề?',
-                message: `Bạn vừa tải bài đọc mới (${file.name}). Bạn có muốn AI nghe và tự động sinh phụ đề mới khớp với audio này không?`,
-                cancelText: '📋 Giữ Phụ Đề Cũ',
-                okText: '⚡ Sinh Phụ Đề AI Mới',
-                okClass: 'bg-indigo-600 hover:bg-indigo-500 text-white'
-              });
-
-              if (runAI) {
-                setTimeout(() => generateSubtitles(), 300);
-              } else {
-                showToast('📋 Giữ Lại Phụ Đề', 'Đang giữ lại danh sách phụ đề hiện có cho video.', 'info');
-              }
-            } else {
-              const runAI = await showConfirmModal({
-                icon: '⚡',
-                title: 'Sinh Phụ Đề AI Cho Audio Mới?',
-                message: `Đã nạp file âm thanh ${file.name}. Bạn có muốn AI tự động sinh phụ đề ngay bây giờ không?`,
-                cancelText: 'Để Sau',
-                okText: '⚡ Sinh Phụ Đề Ngay',
-                okClass: 'bg-indigo-600 hover:bg-indigo-500 text-white'
-              });
-              if (runAI) {
-                setTimeout(() => generateSubtitles(), 300);
-              }
-            }
           } else if (fileType === 'logo') {
             currentData.logoFile = json.filename;
             document.getElementById('logo-filename').innerText = '✅ Đã nạp Logo mới: ' + json.filename;
@@ -1622,7 +1142,8 @@
 
           await saveData(true);
           showStatus('✅ Nạp File Thành Công!', file.name + ' đã nạp vào video!');
-          setTimeout(hideStatus, 3000);
+          showToast('✅ Nạp File Thành Công', file.name + ' đã nạp vào video.', 'success');
+          setTimeout(hideStatus, 2500);
 
           setTimeout(() => {
             refreshPreview();
@@ -1651,9 +1172,6 @@
       currentData.introAudioFile = currentData.introAudioFile || 'piano_intro.mp3';
       currentData.outroAudioFile = currentData.outroAudioFile || 'piano_outro.mp3';
       currentData.imagePositionY = parseInt(document.getElementById('input-imagePositionY')?.value || '50', 10);
-
-      // Instantly update live interactive preview
-      updateLivePreview();
 
       showAutoSaveStatus('saving');
 
