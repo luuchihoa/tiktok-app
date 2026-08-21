@@ -16,9 +16,12 @@ import {
 } from "./validation.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Library managed by loi-chua-hang-ngay. This is deliberately configured on the
-// server: browsers must never be allowed to submit arbitrary local paths.
-const AUDIO_LIBRARY_ROOT = process.env.AUDIO_LIBRARY_ROOT || "/Users/tranthithuynhi/loi-chua-hang-ngay/private/audio";
+const AUDIO_LIBRARY_ROOTS = [
+  path.join(__dirname, "private", "audio"),
+  process.env.AUDIO_LIBRARY_ROOT,
+  "/Users/tranthithuynhi/loi-chua-hang-ngay/private/audio"
+].filter(Boolean);
+const AUDIO_LIBRARY_ROOT = AUDIO_LIBRARY_ROOTS[0];
 
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
@@ -216,9 +219,11 @@ export function getBibleReferenceKeys(bibleRef) {
 }
 
 function isInsideLibrary(candidate) {
-  const root = path.resolve(AUDIO_LIBRARY_ROOT);
   const resolved = path.resolve(candidate);
-  return resolved.startsWith(root + path.sep);
+  return AUDIO_LIBRARY_ROOTS.some((r) => {
+    const root = path.resolve(r);
+    return resolved === root || resolved.startsWith(root + path.sep);
+  });
 }
 
 export function findLibraryAssets(readingType, bibleRef) {
@@ -227,28 +232,34 @@ export function findLibraryAssets(readingType, bibleRef) {
   if (!keys) return { error: "Kinh Thánh Ref không đúng định dạng tên file." };
   if (!audioSpec) return { error: "Loại Bài Đọc chưa được hỗ trợ." };
 
-  const audioDir = path.resolve(AUDIO_LIBRARY_ROOT, audioSpec.directory);
-  const subtitleDir = path.resolve(AUDIO_LIBRARY_ROOT, "sub");
-  if (!isInsideLibrary(audioDir) || !isInsideLibrary(subtitleDir)) {
-    return { error: "Đường dẫn thư viện audio không hợp lệ." };
-  }
-
   let audio = null;
-  for (const extension of [".mp3", ".wav"]) {
-    const filename = `${audioSpec.prefix}${keys.audioKey}${extension}`;
-    const filePath = path.join(audioDir, filename);
-    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-      audio = { filename, filePath, extension: extension.slice(1) };
-      break;
-    }
-  }
-
-  const subtitleFilename = `${keys.subtitleKey}.srt`;
-  const subtitlePath = path.join(subtitleDir, subtitleFilename);
   let subtitle = null;
-  if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
-    const subtitles = parseSrt(fs.readFileSync(subtitlePath, "utf-8"));
-    subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: subtitles.length };
+
+  for (const root of AUDIO_LIBRARY_ROOTS) {
+    try {
+      const audioDir = path.resolve(root, audioSpec.directory);
+      const subtitleDir = path.resolve(root, "sub");
+
+      if (!audio && fs.existsSync(audioDir)) {
+        for (const extension of [".mp3", ".wav"]) {
+          const filename = `${audioSpec.prefix}${keys.audioKey}${extension}`;
+          const filePath = path.join(audioDir, filename);
+          if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+            audio = { filename, filePath, extension: extension.slice(1) };
+            break;
+          }
+        }
+      }
+
+      if (!subtitle && fs.existsSync(subtitleDir)) {
+        const subtitleFilename = `${keys.subtitleKey}.srt`;
+        const subtitlePath = path.join(subtitleDir, subtitleFilename);
+        if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
+          const subtitles = parseSrt(fs.readFileSync(subtitlePath, "utf-8"));
+          subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: subtitles.length };
+        }
+      }
+    } catch (_) {}
   }
 
   return { keys, audio, subtitle };
@@ -924,7 +935,7 @@ const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url).endsWith(p
 if (isDirectRun && !process.env.NODE_TEST_CONTEXT) {
   app.listen(PORT, () => {
     console.log(`✝️  Studio Web App running at http://localhost:${PORT}`);
-    console.log(`   CORS origin: ${CORS_ORIGIN}`);
+    console.log(`   CORS: all origins allowed (local & tunnel)`);
     console.log(`   Upload limit: ${UPLOAD_MAX_MB} MB`);
     cleanupLegacyUploads();
   });
