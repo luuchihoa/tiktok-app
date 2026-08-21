@@ -23,21 +23,11 @@ const AUDIO_LIBRARY_ROOT = process.env.AUDIO_LIBRARY_ROOT || "/Users/tranthithuy
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
 
-// ── CORS: local-only by default ──────────────────────────────────────────────
-const CORS_ORIGIN = process.env.CORS_ORIGIN || `http://localhost:${PORT}`;
+// ── CORS: allow local and tunnel origins ──────────────────────────────────────
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (
-        origin === CORS_ORIGIN ||
-        origin.startsWith("http://localhost:") ||
-        origin.startsWith("http://127.0.0.1:")
-      ) {
-        return callback(null, true);
-      }
-      callback(new Error(`CORS: origin '${origin}' is not allowed`));
-    },
+    origin: true,
+    credentials: true,
   })
 );
 

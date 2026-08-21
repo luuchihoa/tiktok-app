@@ -1,9 +1,9 @@
 import { VideoInput } from "./videoInput";
 
 export const videoData: VideoInput = {
-  "date": "21/08/2026",
+  "date": "22/08/2026",
   "bannerTag": "Phụng Vụ lời chúa hằng ngày",
-  "feastName": "Thứ Sáu sau Chúa Nhật XX Thường Niên",
+  "feastName": "Thứ Bảy sau Chúa Nhật XX Thường Niên",
   "readingType": "Bài Đọc 1",
   "bibleRef": "Ed 43,1-7a",
   "quote": "\"Vinh quang Đức Chúa tràn ngập Đền Thờ.\"",
