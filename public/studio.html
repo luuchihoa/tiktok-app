@@ -278,6 +278,23 @@
       <div class="flex-1 w-full flex items-center justify-center overflow-hidden relative">
         <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/10 border border-amber-500/30 bg-black relative flex items-center justify-center">
           <iframe id="preview-iframe" src="http://localhost:3000" class="w-full h-full border-0"></iframe>
+
+          <!-- GITHUB PAGES STANDALONE PREVIEW FALLBACK -->
+          <div id="pages-fallback-preview" class="hidden w-full h-full flex flex-col items-center justify-center p-4 bg-zinc-950 text-center space-y-4">
+            <video id="pages-preview-video" controls playsinline class="max-h-[75%] aspect-[9/16] rounded-xl shadow-2xl border border-amber-500/40 bg-black object-contain" src="./output.mp4" poster="./cross.jpg">
+              Trình duyệt không hỗ trợ video.
+            </video>
+            <div class="max-w-sm p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs text-zinc-400 space-y-1">
+              <p class="text-amber-400 font-bold text-[11px] flex items-center justify-center gap-1.5">
+                <span>🌐 Đang xem trên GitHub Pages</span>
+              </p>
+              <p class="text-[11px] text-zinc-400 leading-relaxed">
+                Để kết nối <strong>Remotion Studio thời gian thực & Render MP4 bằng GPU</strong>, hãy mở qua link Tunnel:
+                <br/>
+                <a href="https://charles-classic-furnishings-secondary.trycloudflare.com" target="_blank" class="text-amber-300 underline font-bold hover:text-amber-200 mt-1 inline-block">Mở Studio Đầy Đủ (Cloudflare Tunnel) ↗</a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -567,7 +584,21 @@
         }
 
         selectSeason(currentData.season || 'ORDINARY', false);
+        checkPreviewEnvironment();
         await loadSubtitles();
+      }
+    }
+
+    function checkPreviewEnvironment() {
+      const isGitHubPages = window.location.hostname.includes('github.io');
+      const iframe = document.getElementById('preview-iframe');
+      const pagesFallback = document.getElementById('pages-fallback-preview');
+      if (isGitHubPages) {
+        if (iframe) iframe.classList.add('hidden');
+        if (pagesFallback) pagesFallback.classList.remove('hidden');
+      } else {
+        if (iframe) iframe.classList.remove('hidden');
+        if (pagesFallback) pagesFallback.classList.add('hidden');
       }
     }
 
