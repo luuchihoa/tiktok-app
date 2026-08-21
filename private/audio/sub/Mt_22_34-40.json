@@ -1,0 +1,752 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-20T08:45:47.000Z",
+  "metadata": {
+    "date": "21/08/2026",
+    "bannerTag": "Phụng Vụ lời chúa hằng ngày",
+    "feastName": "Thứ Sáu sau Chúa Nhật XX Thường Niên",
+    "readingType": "Tin Mừng",
+    "bibleRef": "Mt 22,34-40",
+    "quote": "\"Ngươi phải yêu mến Đức Chúa, Thiên Chúa của ngươi, \nvà yêu người thân cận như chính mình.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "ORDINARY",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Tin Mừng Chúa Giêsu Kitô \ntheo thánh Mát-thêu.",
+      "startMs": 0,
+      "durationMs": 3540,
+      "tokens": [
+        {
+          "text": "tin",
+          "fromMs": 30,
+          "toMs": 230
+        },
+        {
+          "text": " mừng",
+          "fromMs": 230,
+          "toMs": 680
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 680,
+          "toMs": 1050
+        },
+        {
+          "text": " Jesu",
+          "fromMs": 1050,
+          "toMs": 1420
+        },
+        {
+          "text": " Kito",
+          "fromMs": 1420,
+          "toMs": 1640
+        },
+        {
+          "text": " theo",
+          "fromMs": 1640,
+          "toMs": 2000
+        },
+        {
+          "text": " thánh",
+          "fromMs": 2000,
+          "toMs": 2390
+        },
+        {
+          "text": " Matthew.",
+          "fromMs": 2390,
+          "toMs": 3220
+        }
+      ]
+    },
+    {
+      "text": "Khi ấy, nghe tin Đức Giê-su ",
+      "startMs": 3540,
+      "durationMs": 2730,
+      "tokens": [
+        {
+          "text": " Khi",
+          "fromMs": 3220,
+          "toMs": 4040
+        },
+        {
+          "text": " ấy,",
+          "fromMs": 4040,
+          "toMs": 5020
+        },
+        {
+          "text": " nghe",
+          "fromMs": 5020,
+          "toMs": 5140
+        },
+        {
+          "text": " tin",
+          "fromMs": 5140,
+          "toMs": 5360
+        },
+        {
+          "text": " Đức-Gesu",
+          "fromMs": 5360,
+          "toMs": 6000
+        },
+        {
+          "text": " đã",
+          "fromMs": 6000,
+          "toMs": 6250
+        }
+      ]
+    },
+    {
+      "text": "đã làm cho nhóm Xa-đốc\n phải câm miệng,",
+      "startMs": 6270,
+      "durationMs": 2380,
+      "tokens": [
+        {
+          "text": " làm",
+          "fromMs": 6250,
+          "toMs": 6500
+        },
+        {
+          "text": " cho",
+          "fromMs": 6500,
+          "toMs": 6690
+        },
+        {
+          "text": " nhóm",
+          "fromMs": 6690,
+          "toMs": 7000
+        },
+        {
+          "text": " xa",
+          "fromMs": 7000,
+          "toMs": 7120
+        },
+        {
+          "text": " đốc",
+          "fromMs": 7120,
+          "toMs": 7490
+        },
+        {
+          "text": " phải",
+          "fromMs": 7490,
+          "toMs": 7900
+        },
+        {
+          "text": " cầm",
+          "fromMs": 7900,
+          "toMs": 8180
+        },
+        {
+          "text": " miệng,",
+          "fromMs": 8180,
+          "toMs": 8930
+        }
+      ]
+    },
+    {
+      "text": "thì những người Pha-ri-sêu \nhọp nhau lại.",
+      "startMs": 8650,
+      "durationMs": 2910,
+      "tokens": [
+        {
+          "text": " thì",
+          "fromMs": 8930,
+          "toMs": 9020
+        },
+        {
+          "text": " những",
+          "fromMs": 9020,
+          "toMs": 9370
+        },
+        {
+          "text": " người",
+          "fromMs": 9370,
+          "toMs": 9780
+        },
+        {
+          "text": " Pha-ri",
+          "fromMs": 9780,
+          "toMs": 10120
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 10120,
+          "toMs": 10270
+        },
+        {
+          "text": " học",
+          "fromMs": 10270,
+          "toMs": 10520
+        },
+        {
+          "text": " nhau",
+          "fromMs": 10520,
+          "toMs": 10720
+        },
+        {
+          "text": " lại.",
+          "fromMs": 10720,
+          "toMs": 11140
+        }
+      ]
+    },
+    {
+      "text": "Rồi một người thông luật trong \nnhóm hỏi Đức Giê-su ",
+      "startMs": 11560,
+      "durationMs": 3040,
+      "tokens": [
+        {
+          "text": " Rồi",
+          "fromMs": 11140,
+          "toMs": 11430
+        },
+        {
+          "text": " một",
+          "fromMs": 11430,
+          "toMs": 11970
+        },
+        {
+          "text": " người",
+          "fromMs": 11970,
+          "toMs": 12200
+        },
+        {
+          "text": " thông",
+          "fromMs": 12200,
+          "toMs": 12550
+        },
+        {
+          "text": " luật",
+          "fromMs": 12550,
+          "toMs": 12900
+        },
+        {
+          "text": " trong",
+          "fromMs": 12900,
+          "toMs": 13200
+        },
+        {
+          "text": " nhóm",
+          "fromMs": 13200,
+          "toMs": 13490
+        },
+        {
+          "text": " hỏi",
+          "fromMs": 13490,
+          "toMs": 13780
+        }
+      ]
+    },
+    {
+      "text": "để thử Người rằng :",
+      "startMs": 14600,
+      "durationMs": 2030,
+      "tokens": [
+        {
+          "text": " Đức-Gesu",
+          "fromMs": 13780,
+          "toMs": 14400
+        },
+        {
+          "text": " để",
+          "fromMs": 14400,
+          "toMs": 14690
+        },
+        {
+          "text": " thử",
+          "fromMs": 14690,
+          "toMs": 15010
+        },
+        {
+          "text": " người",
+          "fromMs": 15010,
+          "toMs": 15450
+        },
+        {
+          "text": " rằng,",
+          "fromMs": 15450,
+          "toMs": 15980
+        },
+        {
+          "text": " \"Thưa",
+          "fromMs": 15980,
+          "toMs": 16810
+        }
+      ]
+    },
+    {
+      "text": "Thưa Thầy, trong sách \nLuật Mô-sê,",
+      "startMs": 16630,
+      "durationMs": 2720,
+      "tokens": [
+        {
+          "text": " Thầy,",
+          "fromMs": 16810,
+          "toMs": 17760
+        },
+        {
+          "text": " trong",
+          "fromMs": 17760,
+          "toMs": 17810
+        },
+        {
+          "text": " sách",
+          "fromMs": 17810,
+          "toMs": 18150
+        },
+        {
+          "text": " luật",
+          "fromMs": 18150,
+          "toMs": 18520
+        },
+        {
+          "text": " Mô-xê,",
+          "fromMs": 18520,
+          "toMs": 19440
+        },
+        {
+          "text": " điều",
+          "fromMs": 19440,
+          "toMs": 19500
+        },
+        {
+          "text": " răng",
+          "fromMs": 19500,
+          "toMs": 19730
+        }
+      ]
+    },
+    {
+      "text": "điều răn nào là điều răn \ntrọng nhất ?",
+      "startMs": 19350,
+      "durationMs": 2690,
+      "tokens": [
+        {
+          "text": " nào",
+          "fromMs": 19730,
+          "toMs": 19920
+        },
+        {
+          "text": " là",
+          "fromMs": 19920,
+          "toMs": 20060
+        },
+        {
+          "text": " điều",
+          "fromMs": 20060,
+          "toMs": 20400
+        },
+        {
+          "text": " răng",
+          "fromMs": 20400,
+          "toMs": 20630
+        },
+        {
+          "text": " trọng",
+          "fromMs": 20630,
+          "toMs": 21010
+        },
+        {
+          "text": " nhất?\"",
+          "fromMs": 21010,
+          "toMs": 21540
+        }
+      ]
+    },
+    {
+      "text": "Đức Giê-su đáp :",
+      "startMs": 22040,
+      "durationMs": 1740,
+      "tokens": [
+        {
+          "text": " Đức-Gesu",
+          "fromMs": 22320,
+          "toMs": 22920
+        },
+        {
+          "text": " đáp,",
+          "fromMs": 22920,
+          "toMs": 23400
+        },
+        {
+          "text": " \"Ngươi",
+          "fromMs": 23400,
+          "toMs": 23870
+        },
+        {
+          "text": " phải",
+          "fromMs": 23870,
+          "toMs": 24260
+        },
+        {
+          "text": " yêu",
+          "fromMs": 24260,
+          "toMs": 24430
+        },
+        {
+          "text": " mến",
+          "fromMs": 24430,
+          "toMs": 24720
+        },
+        {
+          "text": " Đức-Chúa,",
+          "fromMs": 24720,
+          "toMs": 25560
+        }
+      ]
+    },
+    {
+      "text": "Ngươi phải yêu mến Đức Chúa,",
+      "startMs": 23780,
+      "durationMs": 2020,
+      "tokens": [
+        {
+          "text": " Thiên-Chúa",
+          "fromMs": 25560,
+          "toMs": 26280
+        },
+        {
+          "text": " của",
+          "fromMs": 26280,
+          "toMs": 26580
+        },
+        {
+          "text": " ngươi,",
+          "fromMs": 26580,
+          "toMs": 27280
+        },
+        {
+          "text": " hết",
+          "fromMs": 27280,
+          "toMs": 27460
+        },
+        {
+          "text": " lòng,",
+          "fromMs": 27460,
+          "toMs": 28140
+        },
+        {
+          "text": " hết",
+          "fromMs": 28140,
+          "toMs": 28160
+        },
+        {
+          "text": " linh",
+          "fromMs": 28160,
+          "toMs": 28380
+        }
+      ]
+    },
+    {
+      "text": "Thiên Chúa của ngươi,",
+      "startMs": 25800,
+      "durationMs": 1400,
+      "tokens": []
+    },
+    {
+      "text": "hết lòng, hết linh hồn và \nhết trí khôn ngươi.",
+      "startMs": 27200,
+      "durationMs": 3820,
+      "tokens": [
+        {
+          "text": " hồn",
+          "fromMs": 28380,
+          "toMs": 28680
+        },
+        {
+          "text": " và",
+          "fromMs": 28680,
+          "toMs": 28860
+        },
+        {
+          "text": " hết",
+          "fromMs": 28860,
+          "toMs": 29240
+        },
+        {
+          "text": " trí",
+          "fromMs": 29240,
+          "toMs": 29410
+        },
+        {
+          "text": " khôn",
+          "fromMs": 29410,
+          "toMs": 29700
+        },
+        {
+          "text": " ngươi.\"",
+          "fromMs": 29700,
+          "toMs": 30500
+        }
+      ]
+    },
+    {
+      "text": "Đó là điều răn trọng nhất và \nđiều răn thứ nhất.",
+      "startMs": 31020,
+      "durationMs": 3100,
+      "tokens": [
+        {
+          "text": " Đó",
+          "fromMs": 30500,
+          "toMs": 30740
+        },
+        {
+          "text": " là",
+          "fromMs": 30740,
+          "toMs": 31340
+        },
+        {
+          "text": " điều",
+          "fromMs": 31340,
+          "toMs": 31370
+        },
+        {
+          "text": " răng",
+          "fromMs": 31370,
+          "toMs": 31640
+        },
+        {
+          "text": " trọng",
+          "fromMs": 31640,
+          "toMs": 32110
+        },
+        {
+          "text": " nhất,",
+          "fromMs": 32110,
+          "toMs": 32750
+        },
+        {
+          "text": " và",
+          "fromMs": 32750,
+          "toMs": 33090
+        },
+        {
+          "text": " điều",
+          "fromMs": 33090,
+          "toMs": 33150
+        }
+      ]
+    },
+    {
+      "text": "Còn điều răn thứ hai,",
+      "startMs": 34120,
+      "durationMs": 1830,
+      "tokens": [
+        {
+          "text": " Còn",
+          "fromMs": 34100,
+          "toMs": 34660
+        },
+        {
+          "text": " điều",
+          "fromMs": 34660,
+          "toMs": 34850
+        },
+        {
+          "text": " răng",
+          "fromMs": 34850,
+          "toMs": 35190
+        },
+        {
+          "text": " thứ",
+          "fromMs": 35190,
+          "toMs": 35530
+        },
+        {
+          "text": " hai",
+          "fromMs": 35530,
+          "toMs": 35730
+        },
+        {
+          "text": " cũng",
+          "fromMs": 35730,
+          "toMs": 36130
+        },
+        {
+          "text": " giống",
+          "fromMs": 36130,
+          "toMs": 36550
+        },
+        {
+          "text": " điều",
+          "fromMs": 36550,
+          "toMs": 37030
+        }
+      ]
+    },
+    {
+      "text": "cũng giống điều răn ấy, là :",
+      "startMs": 35950,
+      "durationMs": 2190,
+      "tokens": [
+        {
+          "text": " răng",
+          "fromMs": 37030,
+          "toMs": 37420
+        },
+        {
+          "text": " ấy",
+          "fromMs": 37420,
+          "toMs": 37640
+        },
+        {
+          "text": " là",
+          "fromMs": 37640,
+          "toMs": 37990
+        },
+        {
+          "text": " \"Ngươi",
+          "fromMs": 37990,
+          "toMs": 38350
+        },
+        {
+          "text": " phải",
+          "fromMs": 38350,
+          "toMs": 38690
+        },
+        {
+          "text": " yêu",
+          "fromMs": 38690,
+          "toMs": 38880
+        },
+        {
+          "text": " người",
+          "fromMs": 38880,
+          "toMs": 39340
+        },
+        {
+          "text": " thân",
+          "fromMs": 39340,
+          "toMs": 39620
+        }
+      ]
+    },
+    {
+      "text": "Ngươi phải yêu người thân \ncận như chính mình.",
+      "startMs": 38140,
+      "durationMs": 3220,
+      "tokens": [
+        {
+          "text": " cận",
+          "fromMs": 39620,
+          "toMs": 39830
+        },
+        {
+          "text": " như",
+          "fromMs": 39830,
+          "toMs": 40070
+        },
+        {
+          "text": " chính",
+          "fromMs": 40070,
+          "toMs": 40360
+        },
+        {
+          "text": " mình.\"",
+          "fromMs": 40360,
+          "toMs": 40940
+        }
+      ]
+    },
+    {
+      "text": "Tất cả Luật Mô-sê và các \nsách ngôn sứ",
+      "startMs": 41360,
+      "durationMs": 2970,
+      "tokens": [
+        {
+          "text": " Tất",
+          "fromMs": 40940,
+          "toMs": 41470
+        },
+        {
+          "text": " cả",
+          "fromMs": 41470,
+          "toMs": 41540
+        },
+        {
+          "text": " luật",
+          "fromMs": 41540,
+          "toMs": 41940
+        },
+        {
+          "text": " Mô-xê",
+          "fromMs": 41940,
+          "toMs": 42380
+        },
+        {
+          "text": " và",
+          "fromMs": 42380,
+          "toMs": 42580
+        },
+        {
+          "text": " các",
+          "fromMs": 42580,
+          "toMs": 42850
+        },
+        {
+          "text": " sách",
+          "fromMs": 42850,
+          "toMs": 43310
+        },
+        {
+          "text": " ngôn",
+          "fromMs": 43310,
+          "toMs": 43510
+        }
+      ]
+    },
+    {
+      "text": "đều tuỳ thuộc vào hai \nđiều răn ấy.",
+      "startMs": 44330,
+      "durationMs": 2330,
+      "tokens": [
+        {
+          "text": " sứ",
+          "fromMs": 43510,
+          "toMs": 43840
+        },
+        {
+          "text": " đều",
+          "fromMs": 43840,
+          "toMs": 44190
+        },
+        {
+          "text": " tùy",
+          "fromMs": 44190,
+          "toMs": 44420
+        },
+        {
+          "text": " thuộc",
+          "fromMs": 44420,
+          "toMs": 44890
+        },
+        {
+          "text": " vào",
+          "fromMs": 44890,
+          "toMs": 45160
+        },
+        {
+          "text": " hai",
+          "fromMs": 45160,
+          "toMs": 45460
+        },
+        {
+          "text": " điều",
+          "fromMs": 45460,
+          "toMs": 45840
+        },
+        {
+          "text": " răng",
+          "fromMs": 45840,
+          "toMs": 46170
+        },
+        {
+          "text": " ấy.",
+          "fromMs": 46170,
+          "toMs": 46660
+        }
+      ]
+    }
+  ]
+}

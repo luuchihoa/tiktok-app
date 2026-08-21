@@ -65,7 +65,9 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
           if (resCurrent.ok) {
             subsData = await resCurrent.json();
           }
-        } catch (_) {}
+        } catch {
+          // Fallback to specific audio file subtitle if current_subtitles.json is not present
+        }
 
         if (!subsData) {
           try {

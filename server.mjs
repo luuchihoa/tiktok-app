@@ -54,7 +54,7 @@ const upload = multer({
   limits: { fileSize: UPLOAD_MAX_MB * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
-    const mimeOk = ALLOWED_MIME_TYPES.has(file.mimetype);
+    const mimeOk = ALLOWED_MIME_TYPES.has(file.mimetype) || file.mimetype.startsWith("audio/") || file.mimetype.startsWith("image/") || file.mimetype === "application/octet-stream";
     const extOk = ALL_UPLOAD_EXTENSIONS.has(ext);
     if (!mimeOk || !extOk) {
       return cb(
@@ -117,6 +117,8 @@ app.post("/api/upload-file", handleUpload, (req, res) => {
     return res.status(400).json({ success: false, error: "No file uploaded" });
   }
 
+  const ext = path.extname(req.file.originalname).toLowerCase() || ".bin";
+  const fileType = req.body?.fileType || req.query?.fileType;
   const isAudioFile = fileType === "audio" || AUDIO_MIME_TYPES.has(req.file.mimetype) || AUDIO_EXTENSIONS.has(ext);
 
   let prefix = "current_image";

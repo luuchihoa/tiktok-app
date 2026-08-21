@@ -14,15 +14,23 @@ export const ALLOWED_MIME_TYPES = new Set([
   "image/png",
   "image/webp",
   "audio/mpeg",
+  "audio/mp3",
+  "audio/mpeg3",
+  "audio/x-mpeg-3",
   "audio/wav",
   "audio/wave",
   "audio/x-wav",
   "audio/mp4",
+  "audio/m4a",
+  "audio/x-m4a",
+  "audio/aac",
+  "audio/x-aac",
   "video/mp4",
   "video/x-matroska",
   "video/quicktime",
   "video/webm",
   "audio/webm",
+  "application/octet-stream",
 ]);
 
 /**

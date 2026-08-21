@@ -1,0 +1,1093 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-20T14:19:12.215Z",
+  "metadata": {
+    "date": "21/08/2026",
+    "bannerTag": "Phụng Vụ lời chúa hằng ngày",
+    "feastName": "Thứ Sáu sau Chúa Nhật XX Thường Niên",
+    "readingType": "Bài Đọc 1",
+    "bibleRef": "Ed 43,1-7a",
+    "quote": "\"Vinh quang Đức Chúa tràn ngập Đền Thờ.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "ORDINARY",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Bài đọc 1",
+      "startMs": 0,
+      "durationMs": 1200,
+      "tokens": [
+        {
+          "text": "Bài",
+          "fromMs": 40,
+          "toMs": 250
+        },
+        {
+          "text": " đọc",
+          "fromMs": 250,
+          "toMs": 630
+        },
+        {
+          "text": " một,",
+          "fromMs": 630,
+          "toMs": 1240
+        },
+        {
+          "text": " bài",
+          "fromMs": 1240,
+          "toMs": 1490
+        },
+        {
+          "text": " trích",
+          "fromMs": 1490,
+          "toMs": 2000
+        },
+        {
+          "text": " sách",
+          "fromMs": 2000,
+          "toMs": 2400
+        },
+        {
+          "text": " ngôn",
+          "fromMs": 2400,
+          "toMs": 2820
+        },
+        {
+          "text": " sứ",
+          "fromMs": 2820,
+          "toMs": 3150
+        }
+      ]
+    },
+    {
+      "text": "Bài trích sách ngôn sứ \nÊ-dê-ki-en",
+      "startMs": 1200,
+      "durationMs": 3130,
+      "tokens": [
+        {
+          "text": " Egeki",
+          "fromMs": 3150,
+          "toMs": 3550
+        },
+        {
+          "text": " En.",
+          "fromMs": 3550,
+          "toMs": 4000
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 4000,
+          "toMs": 4540
+        },
+        {
+          "text": " sứ",
+          "fromMs": 4540,
+          "toMs": 4900
+        },
+        {
+          "text": " đưa",
+          "fromMs": 4900,
+          "toMs": 5350
+        },
+        {
+          "text": " tôi",
+          "fromMs": 5350,
+          "toMs": 5710
+        },
+        {
+          "text": " đi",
+          "fromMs": 5710,
+          "toMs": 6010
+        }
+      ]
+    },
+    {
+      "text": "Thiên sứ đưa tôi đi tới cổng,",
+      "startMs": 4330,
+      "durationMs": 2170,
+      "tokens": [
+        {
+          "text": " tới",
+          "fromMs": 6010,
+          "toMs": 6700
+        },
+        {
+          "text": " cổng,",
+          "fromMs": 6700,
+          "toMs": 7130
+        },
+        {
+          "text": " cổng",
+          "fromMs": 7130,
+          "toMs": 7280
+        },
+        {
+          "text": " quay",
+          "fromMs": 7280,
+          "toMs": 7460
+        },
+        {
+          "text": " về",
+          "fromMs": 7460,
+          "toMs": 7560
+        },
+        {
+          "text": " phía",
+          "fromMs": 7560,
+          "toMs": 7740
+        },
+        {
+          "text": " đông.",
+          "fromMs": 7740,
+          "toMs": 8500
+        }
+      ]
+    },
+    {
+      "text": "cổng quay về phía đông,",
+      "startMs": 6500,
+      "durationMs": 2200,
+      "tokens": [
+        {
+          "text": " Và",
+          "fromMs": 8500,
+          "toMs": 8980
+        },
+        {
+          "text": " nay,",
+          "fromMs": 8980,
+          "toMs": 9170
+        },
+        {
+          "text": " vinh",
+          "fromMs": 9170,
+          "toMs": 9670
+        },
+        {
+          "text": " quang",
+          "fromMs": 9670,
+          "toMs": 9920
+        },
+        {
+          "text": " của",
+          "fromMs": 9920,
+          "toMs": 10340
+        },
+        {
+          "text": " thiên",
+          "fromMs": 10340,
+          "toMs": 10850
+        },
+        {
+          "text": " chúa",
+          "fromMs": 10850,
+          "toMs": 11310
+        }
+      ]
+    },
+    {
+      "text": "Và  này",
+      "startMs": 8700,
+      "durationMs": 900,
+      "tokens": [
+        {
+          "text": " Yggdra",
+          "fromMs": 11310,
+          "toMs": 11760
+        },
+        {
+          "text": " En",
+          "fromMs": 11760,
+          "toMs": 12060
+        },
+        {
+          "text": " từ",
+          "fromMs": 12060,
+          "toMs": 12360
+        },
+        {
+          "text": " phía",
+          "fromMs": 12360,
+          "toMs": 12710
+        },
+        {
+          "text": " đông",
+          "fromMs": 12710,
+          "toMs": 13180
+        },
+        {
+          "text": " tiến",
+          "fromMs": 13180,
+          "toMs": 13980
+        },
+        {
+          "text": " vào.",
+          "fromMs": 13980,
+          "toMs": 14000
+        }
+      ]
+    },
+    {
+      "text": "vinh quang của Thiên Chúa \nÍt-ra-en",
+      "startMs": 9600,
+      "durationMs": 2300,
+      "tokens": []
+    },
+    {
+      "text": "từ phía đông tiến vào.",
+      "startMs": 11900,
+      "durationMs": 2220,
+      "tokens": [
+        {
+          "text": " Bây",
+          "fromMs": 14000,
+          "toMs": 14330
+        },
+        {
+          "text": " giờ",
+          "fromMs": 14330,
+          "toMs": 14660
+        },
+        {
+          "text": " có",
+          "fromMs": 14660,
+          "toMs": 14870
+        },
+        {
+          "text": " tiếng",
+          "fromMs": 14870,
+          "toMs": 15390
+        },
+        {
+          "text": " như",
+          "fromMs": 15390,
+          "toMs": 15730
+        },
+        {
+          "text": " tiếng",
+          "fromMs": 15730,
+          "toMs": 16200
+        },
+        {
+          "text": " nước",
+          "fromMs": 16200,
+          "toMs": 16790
+        },
+        {
+          "text": " lũ",
+          "fromMs": 16790,
+          "toMs": 17000
+        }
+      ]
+    },
+    {
+      "text": "Bấy giờ có tiếng như tiếng\n nước lũ",
+      "startMs": 14120,
+      "durationMs": 2480,
+      "tokens": [
+        {
+          "text": " và",
+          "fromMs": 17000,
+          "toMs": 17330
+        },
+        {
+          "text": " đất",
+          "fromMs": 17330,
+          "toMs": 17660
+        },
+        {
+          "text": " rạn",
+          "fromMs": 17660,
+          "toMs": 18020
+        },
+        {
+          "text": " ngời",
+          "fromMs": 18020,
+          "toMs": 18470
+        },
+        {
+          "text": " vinh",
+          "fromMs": 18470,
+          "toMs": 18750
+        },
+        {
+          "text": " quang",
+          "fromMs": 18750,
+          "toMs": 19120
+        },
+        {
+          "text": " đức",
+          "fromMs": 19120,
+          "toMs": 19710
+        },
+        {
+          "text": " chúa.",
+          "fromMs": 19710,
+          "toMs": 20000
+        }
+      ]
+    },
+    {
+      "text": "và đất rạng ngời vinh quang \nĐức Chúa.",
+      "startMs": 16600,
+      "durationMs": 3220,
+      "tokens": []
+    },
+    {
+      "text": "Thị kiến này",
+      "startMs": 19820,
+      "durationMs": 1180,
+      "tokens": [
+        {
+          "text": " Thị",
+          "fromMs": 20000,
+          "toMs": 20340
+        },
+        {
+          "text": " kiến",
+          "fromMs": 20340,
+          "toMs": 20620
+        },
+        {
+          "text": " này,",
+          "fromMs": 20620,
+          "toMs": 20990
+        },
+        {
+          "text": " giống",
+          "fromMs": 20990,
+          "toMs": 21460
+        },
+        {
+          "text": " như",
+          "fromMs": 21460,
+          "toMs": 21720
+        },
+        {
+          "text": " thị",
+          "fromMs": 21720,
+          "toMs": 22150
+        },
+        {
+          "text": " kiến",
+          "fromMs": 22150,
+          "toMs": 22460
+        },
+        {
+          "text": " tôi",
+          "fromMs": 22460,
+          "toMs": 22690
+        }
+      ]
+    },
+    {
+      "text": "giống như thị kiến tôi đã \nthấy khi Người đến ",
+      "startMs": 21000,
+      "durationMs": 2930,
+      "tokens": [
+        {
+          "text": " đã",
+          "fromMs": 22690,
+          "toMs": 22950
+        },
+        {
+          "text": " thấy",
+          "fromMs": 22950,
+          "toMs": 23340
+        },
+        {
+          "text": " khi",
+          "fromMs": 23340,
+          "toMs": 23540
+        },
+        {
+          "text": " người",
+          "fromMs": 23540,
+          "toMs": 24070
+        },
+        {
+          "text": " đến",
+          "fromMs": 24070,
+          "toMs": 24460
+        },
+        {
+          "text": " để",
+          "fromMs": 24460,
+          "toMs": 24790
+        },
+        {
+          "text": " hủy",
+          "fromMs": 24790,
+          "toMs": 25100
+        },
+        {
+          "text": " diệt",
+          "fromMs": 25100,
+          "toMs": 25810
+        }
+      ]
+    },
+    {
+      "text": "để huỷ diệt thành,",
+      "startMs": 23930,
+      "durationMs": 1800,
+      "tokens": []
+    },
+    {
+      "text": "đồng thời cũng giống \nnhư thị kiến",
+      "startMs": 25730,
+      "durationMs": 2070,
+      "tokens": [
+        {
+          "text": " thành.",
+          "fromMs": 25810,
+          "toMs": 26000
+        },
+        {
+          "text": " Thêm",
+          "fromMs": 26000,
+          "toMs": 26300
+        },
+        {
+          "text": " thời",
+          "fromMs": 26300,
+          "toMs": 26660
+        },
+        {
+          "text": " cũng",
+          "fromMs": 26660,
+          "toMs": 26960
+        },
+        {
+          "text": " giống",
+          "fromMs": 26960,
+          "toMs": 27450
+        },
+        {
+          "text": " như",
+          "fromMs": 27450,
+          "toMs": 27620
+        },
+        {
+          "text": " thị",
+          "fromMs": 27620,
+          "toMs": 28030
+        },
+        {
+          "text": " kiến",
+          "fromMs": 28030,
+          "toMs": 28280
+        }
+      ]
+    },
+    {
+      "text": "tôi đã thấy bên sông Cơ-va",
+      "startMs": 27800,
+      "durationMs": 2220,
+      "tokens": [
+        {
+          "text": " tôi",
+          "fromMs": 28280,
+          "toMs": 28520
+        },
+        {
+          "text": " đã",
+          "fromMs": 28520,
+          "toMs": 28790
+        },
+        {
+          "text": " thấy",
+          "fromMs": 28790,
+          "toMs": 29130
+        },
+        {
+          "text": " bên",
+          "fromMs": 29130,
+          "toMs": 29420
+        },
+        {
+          "text": " sông",
+          "fromMs": 29420,
+          "toMs": 29660
+        },
+        {
+          "text": " Cova.",
+          "fromMs": 29660,
+          "toMs": 30000
+        }
+      ]
+    },
+    {
+      "text": "Bấy giờ, tôi sấp mặt xuống đất",
+      "startMs": 30020,
+      "durationMs": 2800,
+      "tokens": [
+        {
+          "text": " Bây",
+          "fromMs": 30000,
+          "toMs": 30470
+        },
+        {
+          "text": " giờ,",
+          "fromMs": 30470,
+          "toMs": 30780
+        },
+        {
+          "text": " tôi",
+          "fromMs": 30780,
+          "toMs": 31070
+        },
+        {
+          "text": " sắp",
+          "fromMs": 31070,
+          "toMs": 31420
+        },
+        {
+          "text": " mặt",
+          "fromMs": 31420,
+          "toMs": 31780
+        },
+        {
+          "text": " xuống",
+          "fromMs": 31780,
+          "toMs": 32280
+        },
+        {
+          "text": " đất.",
+          "fromMs": 32280,
+          "toMs": 33000
+        }
+      ]
+    },
+    {
+      "text": "Vinh quang Đức Chúa tiến\n vào Đền Thờ ",
+      "startMs": 32820,
+      "durationMs": 2600,
+      "tokens": [
+        {
+          "text": " Vinh",
+          "fromMs": 33000,
+          "toMs": 33320
+        },
+        {
+          "text": " quang",
+          "fromMs": 33320,
+          "toMs": 33600
+        },
+        {
+          "text": " đức",
+          "fromMs": 33600,
+          "toMs": 34000
+        },
+        {
+          "text": " chúa",
+          "fromMs": 34000,
+          "toMs": 34330
+        },
+        {
+          "text": " tiến",
+          "fromMs": 34330,
+          "toMs": 34730
+        },
+        {
+          "text": " vào",
+          "fromMs": 34730,
+          "toMs": 35000
+        },
+        {
+          "text": " đền",
+          "fromMs": 35000,
+          "toMs": 35400
+        },
+        {
+          "text": " thờ,",
+          "fromMs": 35400,
+          "toMs": 36000
+        }
+      ]
+    },
+    {
+      "text": "qua cổng quay về phía đông.",
+      "startMs": 35420,
+      "durationMs": 2200,
+      "tokens": [
+        {
+          "text": " qua",
+          "fromMs": 36000,
+          "toMs": 36100
+        },
+        {
+          "text": " cổng",
+          "fromMs": 36100,
+          "toMs": 36300
+        },
+        {
+          "text": " quay",
+          "fromMs": 36300,
+          "toMs": 36440
+        },
+        {
+          "text": " về",
+          "fromMs": 36440,
+          "toMs": 36580
+        },
+        {
+          "text": " phía",
+          "fromMs": 36580,
+          "toMs": 36760
+        },
+        {
+          "text": " đông.",
+          "fromMs": 36760,
+          "toMs": 38000
+        }
+      ]
+    },
+    {
+      "text": "Thần khí đưa tôi lên và dẫn \ntôi vào sân trong, ",
+      "startMs": 37620,
+      "durationMs": 3300,
+      "tokens": [
+        {
+          "text": " Thần",
+          "fromMs": 38000,
+          "toMs": 38360
+        },
+        {
+          "text": " khí",
+          "fromMs": 38360,
+          "toMs": 38600
+        },
+        {
+          "text": " đưa",
+          "fromMs": 38600,
+          "toMs": 38900
+        },
+        {
+          "text": " tôi",
+          "fromMs": 38900,
+          "toMs": 39140
+        },
+        {
+          "text": " lên",
+          "fromMs": 39140,
+          "toMs": 39380
+        },
+        {
+          "text": " và",
+          "fromMs": 39380,
+          "toMs": 39560
+        },
+        {
+          "text": " dẫn",
+          "fromMs": 39560,
+          "toMs": 39860
+        },
+        {
+          "text": " tôi",
+          "fromMs": 39860,
+          "toMs": 40100
+        }
+      ]
+    },
+    {
+      "text": "và này vinh quang Đức Chúa \ntràn ngập Đền Thờ.",
+      "startMs": 40920,
+      "durationMs": 3900,
+      "tokens": [
+        {
+          "text": " Và",
+          "fromMs": 41000,
+          "toMs": 41230
+        },
+        {
+          "text": " nay,",
+          "fromMs": 41230,
+          "toMs": 41590
+        },
+        {
+          "text": " vinh",
+          "fromMs": 41590,
+          "toMs": 41880
+        },
+        {
+          "text": " quang",
+          "fromMs": 41880,
+          "toMs": 42250
+        },
+        {
+          "text": " đức",
+          "fromMs": 42250,
+          "toMs": 42700
+        },
+        {
+          "text": " chúa",
+          "fromMs": 42700,
+          "toMs": 43070
+        },
+        {
+          "text": " tràn",
+          "fromMs": 43070,
+          "toMs": 43480
+        },
+        {
+          "text": " ngập",
+          "fromMs": 43480,
+          "toMs": 43890
+        },
+        {
+          "text": " đền",
+          "fromMs": 43890,
+          "toMs": 44340
+        },
+        {
+          "text": " thờ.",
+          "fromMs": 44340,
+          "toMs": 45000
+        }
+      ]
+    },
+    {
+      "text": "Tôi nghe có Đấng phán với \ntôi từ Đền Thờ,",
+      "startMs": 44820,
+      "durationMs": 3160,
+      "tokens": [
+        {
+          "text": " Tôi",
+          "fromMs": 45000,
+          "toMs": 45260
+        },
+        {
+          "text": " nghe",
+          "fromMs": 45260,
+          "toMs": 45520
+        },
+        {
+          "text": " có",
+          "fromMs": 45520,
+          "toMs": 45710
+        },
+        {
+          "text": " đấn",
+          "fromMs": 45710,
+          "toMs": 46100
+        },
+        {
+          "text": " phán",
+          "fromMs": 46100,
+          "toMs": 46450
+        },
+        {
+          "text": " với",
+          "fromMs": 46450,
+          "toMs": 46820
+        },
+        {
+          "text": " tôi",
+          "fromMs": 46820,
+          "toMs": 47000
+        },
+        {
+          "text": " từ",
+          "fromMs": 47000,
+          "toMs": 47260
+        }
+      ]
+    },
+    {
+      "text": "trong khi người kia vẫn \nđứng bên tôi.",
+      "startMs": 47980,
+      "durationMs": 2890,
+      "tokens": [
+        {
+          "text": " đền",
+          "fromMs": 47260,
+          "toMs": 47650
+        },
+        {
+          "text": " thờ,",
+          "fromMs": 47650,
+          "toMs": 48270
+        },
+        {
+          "text": " trong",
+          "fromMs": 48270,
+          "toMs": 48470
+        },
+        {
+          "text": " khi",
+          "fromMs": 48470,
+          "toMs": 48670
+        },
+        {
+          "text": " người",
+          "fromMs": 48670,
+          "toMs": 49210
+        },
+        {
+          "text": " kia",
+          "fromMs": 49210,
+          "toMs": 49400
+        },
+        {
+          "text": " vẫn",
+          "fromMs": 49400,
+          "toMs": 49740
+        },
+        {
+          "text": " đứng",
+          "fromMs": 49740,
+          "toMs": 50250
+        }
+      ]
+    },
+    {
+      "text": "Đấng ấy phán với tôi : ",
+      "startMs": 50870,
+      "durationMs": 1960,
+      "tokens": [
+        {
+          "text": " bên",
+          "fromMs": 50250,
+          "toMs": 50480
+        },
+        {
+          "text": " tôi.",
+          "fromMs": 50480,
+          "toMs": 51000
+        },
+        {
+          "text": " Đấn",
+          "fromMs": 51080,
+          "toMs": 51390
+        },
+        {
+          "text": " ấy",
+          "fromMs": 51390,
+          "toMs": 51650
+        },
+        {
+          "text": " phán",
+          "fromMs": 51650,
+          "toMs": 51970
+        },
+        {
+          "text": " với",
+          "fromMs": 51970,
+          "toMs": 52300
+        },
+        {
+          "text": " tôi,",
+          "fromMs": 52300,
+          "toMs": 52690
+        },
+        {
+          "text": " hỏi",
+          "fromMs": 52690,
+          "toMs": 53010
+        }
+      ]
+    },
+    {
+      "text": "Hỡi con người, ",
+      "startMs": 52830,
+      "durationMs": 1120,
+      "tokens": [
+        {
+          "text": " con",
+          "fromMs": 53010,
+          "toMs": 53250
+        },
+        {
+          "text": " người,",
+          "fromMs": 53250,
+          "toMs": 54190
+        },
+        {
+          "text": " đây",
+          "fromMs": 54190,
+          "toMs": 54200
+        },
+        {
+          "text": " là",
+          "fromMs": 54200,
+          "toMs": 54400
+        },
+        {
+          "text": " nơi",
+          "fromMs": 54400,
+          "toMs": 54650
+        },
+        {
+          "text": " ta",
+          "fromMs": 54650,
+          "toMs": 54780
+        },
+        {
+          "text": " đặt",
+          "fromMs": 54780,
+          "toMs": 55170
+        },
+        {
+          "text": " ngai",
+          "fromMs": 55170,
+          "toMs": 55430
+        }
+      ]
+    },
+    {
+      "text": "đây là nơi Ta đặt ngai của Ta",
+      "startMs": 53950,
+      "durationMs": 2300,
+      "tokens": [
+        {
+          "text": " của",
+          "fromMs": 55430,
+          "toMs": 55760
+        },
+        {
+          "text": " ta,",
+          "fromMs": 55760,
+          "toMs": 56430
+        },
+        {
+          "text": " đây",
+          "fromMs": 56430,
+          "toMs": 56610
+        },
+        {
+          "text": " là",
+          "fromMs": 56610,
+          "toMs": 56870
+        },
+        {
+          "text": " nơi",
+          "fromMs": 56870,
+          "toMs": 57210
+        },
+        {
+          "text": " ta",
+          "fromMs": 57210,
+          "toMs": 57380
+        },
+        {
+          "text": " đặt",
+          "fromMs": 57380,
+          "toMs": 57900
+        },
+        {
+          "text": " chân",
+          "fromMs": 57900,
+          "toMs": 58330
+        }
+      ]
+    },
+    {
+      "text": "đây là nơi Ta đặt chân của Ta",
+      "startMs": 56250,
+      "durationMs": 2650,
+      "tokens": [
+        {
+          "text": " của",
+          "fromMs": 58330,
+          "toMs": 59000
+        },
+        {
+          "text": " ta.",
+          "fromMs": 59000,
+          "toMs": 59000
+        },
+        {
+          "text": " Ta",
+          "fromMs": 59000,
+          "toMs": 59150
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 59150,
+          "toMs": 59460
+        },
+        {
+          "text": " ngự",
+          "fromMs": 59460,
+          "toMs": 59840
+        },
+        {
+          "text": " tại",
+          "fromMs": 59840,
+          "toMs": 60500
+        },
+        {
+          "text": " đây",
+          "fromMs": 60500,
+          "toMs": 60620
+        },
+        {
+          "text": " giữa",
+          "fromMs": 60620,
+          "toMs": 61110
+        }
+      ]
+    },
+    {
+      "text": "Ta sẽ ngự tại đây,",
+      "startMs": 58900,
+      "durationMs": 1400,
+      "tokens": [
+        {
+          "text": " con",
+          "fromMs": 61110,
+          "toMs": 61310
+        },
+        {
+          "text": " cái",
+          "fromMs": 61310,
+          "toMs": 61620
+        },
+        {
+          "text": " Yggdra",
+          "fromMs": 61620,
+          "toMs": 62210
+        },
+        {
+          "text": " En,",
+          "fromMs": 62210,
+          "toMs": 62360
+        },
+        {
+          "text": " cho",
+          "fromMs": 62360,
+          "toMs": 62590
+        },
+        {
+          "text": " đến",
+          "fromMs": 62590,
+          "toMs": 63050
+        },
+        {
+          "text": " muôn",
+          "fromMs": 63050,
+          "toMs": 63430
+        },
+        {
+          "text": " đời.",
+          "fromMs": 63430,
+          "toMs": 64000
+        }
+      ]
+    },
+    {
+      "text": " giữa con cái Ít-ra-en,",
+      "startMs": 60300,
+      "durationMs": 1700,
+      "tokens": []
+    },
+    {
+      "text": "cho đến muôn đời.",
+      "startMs": 62000,
+      "durationMs": 2000,
+      "tokens": []
+    }
+  ]
+}

@@ -1,0 +1,969 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-20T08:25:05.680Z",
+  "metadata": {
+    "date": "21/08/2026",
+    "bannerTag": "Lễ Nhớ Bắt Buộc",
+    "feastName": "Thánh Pi-ô X, giáo hoàng",
+    "readingType": "Tin Mừng",
+    "bibleRef": "Ga 21,15-17",
+    "quote": "\"Hãy chăm sóc chiên con của Thầy. \nHãy chăn dắt chiên của Thầy.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "EASTER_CHRISTMAS",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Tin Mừng Chúa Giêsu Kitô \ntheo thánh Gio-an",
+      "startMs": 0,
+      "durationMs": 3520,
+      "tokens": [
+        {
+          "text": "tin",
+          "fromMs": 120,
+          "toMs": 220
+        },
+        {
+          "text": " mừng",
+          "fromMs": 220,
+          "toMs": 660
+        },
+        {
+          "text": " chúa",
+          "fromMs": 660,
+          "toMs": 1030
+        },
+        {
+          "text": " Giê-xu",
+          "fromMs": 1030,
+          "toMs": 1550
+        },
+        {
+          "text": " Kito",
+          "fromMs": 1550,
+          "toMs": 1860
+        },
+        {
+          "text": " theo",
+          "fromMs": 1860,
+          "toMs": 2130
+        },
+        {
+          "text": " thánh",
+          "fromMs": 2130,
+          "toMs": 2580
+        },
+        {
+          "text": " Gio-an.",
+          "fromMs": 2580,
+          "toMs": 3200
+        }
+      ]
+    },
+    {
+      "text": "Sau khi dùng bữa với \ncác môn đệ ",
+      "startMs": 3520,
+      "durationMs": 2270,
+      "tokens": [
+        {
+          "text": " Sau",
+          "fromMs": 3200,
+          "toMs": 3680
+        },
+        {
+          "text": " khi",
+          "fromMs": 3680,
+          "toMs": 3760
+        },
+        {
+          "text": " dùng",
+          "fromMs": 3760,
+          "toMs": 4130
+        },
+        {
+          "text": " bữa",
+          "fromMs": 4130,
+          "toMs": 4460
+        },
+        {
+          "text": " với",
+          "fromMs": 4460,
+          "toMs": 4850
+        },
+        {
+          "text": " các",
+          "fromMs": 4850,
+          "toMs": 5190
+        },
+        {
+          "text": " môn",
+          "fromMs": 5190,
+          "toMs": 5480
+        },
+        {
+          "text": " đệ",
+          "fromMs": 5480,
+          "toMs": 5970
+        }
+      ]
+    },
+    {
+      "text": "tại biển hồ Ti-bê-ri-a,",
+      "startMs": 5790,
+      "durationMs": 2540,
+      "tokens": [
+        {
+          "text": " tại",
+          "fromMs": 5970,
+          "toMs": 6300
+        },
+        {
+          "text": " biển",
+          "fromMs": 6300,
+          "toMs": 6760
+        },
+        {
+          "text": " hồ",
+          "fromMs": 6760,
+          "toMs": 7040
+        },
+        {
+          "text": " Tiberia,",
+          "fromMs": 7040,
+          "toMs": 7760
+        },
+        {
+          "text": " Đức",
+          "fromMs": 7760,
+          "toMs": 8180
+        },
+        {
+          "text": " Giê-xu",
+          "fromMs": 8180,
+          "toMs": 8720
+        },
+        {
+          "text": " phục",
+          "fromMs": 8720,
+          "toMs": 9110
+        }
+      ]
+    },
+    {
+      "text": "Đức Giê-su Phục Sinh hỏi \nông Si-môn Phê-rô :",
+      "startMs": 8330,
+      "durationMs": 3010,
+      "tokens": [
+        {
+          "text": " sinh",
+          "fromMs": 9110,
+          "toMs": 9370
+        },
+        {
+          "text": " hỏi",
+          "fromMs": 9370,
+          "toMs": 9720
+        },
+        {
+          "text": " ông",
+          "fromMs": 9720,
+          "toMs": 10010
+        },
+        {
+          "text": " Simón-fê-rô,",
+          "fromMs": 10010,
+          "toMs": 11240
+        },
+        {
+          "text": " \"Này",
+          "fromMs": 11240,
+          "toMs": 11660
+        },
+        {
+          "text": " anh",
+          "fromMs": 11660,
+          "toMs": 11920
+        }
+      ]
+    },
+    {
+      "text": "Này anh Si-môn, \ncon ông Gio-an,",
+      "startMs": 11340,
+      "durationMs": 2350,
+      "tokens": [
+        {
+          "text": " Simón",
+          "fromMs": 11920,
+          "toMs": 12440
+        },
+        {
+          "text": " con",
+          "fromMs": 12440,
+          "toMs": 12700
+        },
+        {
+          "text": " ông",
+          "fromMs": 12700,
+          "toMs": 13050
+        },
+        {
+          "text": " Gio-an,",
+          "fromMs": 13050,
+          "toMs": 13840
+        },
+        {
+          "text": " anh",
+          "fromMs": 13840,
+          "toMs": 13890
+        },
+        {
+          "text": " có",
+          "fromMs": 13890,
+          "toMs": 14100
+        },
+        {
+          "text": " yêu",
+          "fromMs": 14100,
+          "toMs": 14290
+        },
+        {
+          "text": " mến",
+          "fromMs": 14290,
+          "toMs": 14570
+        }
+      ]
+    },
+    {
+      "text": "anh có yêu mến Thầy hơn \ncác anh em này không?",
+      "startMs": 13690,
+      "durationMs": 3250,
+      "tokens": [
+        {
+          "text": " thầy",
+          "fromMs": 14570,
+          "toMs": 14900
+        },
+        {
+          "text": " hơn",
+          "fromMs": 14900,
+          "toMs": 15130
+        },
+        {
+          "text": " các",
+          "fromMs": 15130,
+          "toMs": 15360
+        },
+        {
+          "text": " anh",
+          "fromMs": 15360,
+          "toMs": 15530
+        },
+        {
+          "text": " em",
+          "fromMs": 15530,
+          "toMs": 15640
+        },
+        {
+          "text": " này",
+          "fromMs": 15640,
+          "toMs": 15870
+        },
+        {
+          "text": " không?\"",
+          "fromMs": 15870,
+          "toMs": 16520
+        }
+      ]
+    },
+    {
+      "text": "Ông đáp: “Thưa Thầy có,",
+      "startMs": 16940,
+      "durationMs": 2450,
+      "tokens": [
+        {
+          "text": " Ông",
+          "fromMs": 16520,
+          "toMs": 17320
+        },
+        {
+          "text": " đáp,",
+          "fromMs": 17320,
+          "toMs": 18180
+        },
+        {
+          "text": " \"Thưa",
+          "fromMs": 18180,
+          "toMs": 18490
+        },
+        {
+          "text": " thầy",
+          "fromMs": 18490,
+          "toMs": 18880
+        },
+        {
+          "text": " có,",
+          "fromMs": 18880,
+          "toMs": 19060
+        },
+        {
+          "text": " thầy",
+          "fromMs": 19060,
+          "toMs": 19570
+        }
+      ]
+    },
+    {
+      "text": "Thầy biết con thương mến Thầy.",
+      "startMs": 19390,
+      "durationMs": 1630,
+      "tokens": [
+        {
+          "text": " biết",
+          "fromMs": 19570,
+          "toMs": 19690
+        },
+        {
+          "text": " con",
+          "fromMs": 19690,
+          "toMs": 19850
+        },
+        {
+          "text": " thương",
+          "fromMs": 19850,
+          "toMs": 20270
+        },
+        {
+          "text": " mến",
+          "fromMs": 20270,
+          "toMs": 20530
+        },
+        {
+          "text": " thầy.\"",
+          "fromMs": 20530,
+          "toMs": 21200
+        }
+      ]
+    },
+    {
+      "text": "Đức Giê-su nói với ông:",
+      "startMs": 21020,
+      "durationMs": 2010,
+      "tokens": [
+        {
+          "text": " Đức",
+          "fromMs": 21200,
+          "toMs": 21590
+        },
+        {
+          "text": " Giê-xu",
+          "fromMs": 21590,
+          "toMs": 22070
+        },
+        {
+          "text": " nói",
+          "fromMs": 22070,
+          "toMs": 22290
+        },
+        {
+          "text": " với",
+          "fromMs": 22290,
+          "toMs": 22620
+        },
+        {
+          "text": " ông,",
+          "fromMs": 22620,
+          "toMs": 23130
+        },
+        {
+          "text": " \"Hãy",
+          "fromMs": 23130,
+          "toMs": 23340
+        },
+        {
+          "text": " chăm",
+          "fromMs": 23340,
+          "toMs": 23600
+        },
+        {
+          "text": " sóc",
+          "fromMs": 23600,
+          "toMs": 23810
+        }
+      ]
+    },
+    {
+      "text": "Hãy chăm sóc chiên con \ncủa Thầy.",
+      "startMs": 23030,
+      "durationMs": 2110,
+      "tokens": [
+        {
+          "text": " chiên",
+          "fromMs": 23810,
+          "toMs": 24130
+        },
+        {
+          "text": " con",
+          "fromMs": 24130,
+          "toMs": 24290
+        },
+        {
+          "text": " của",
+          "fromMs": 24290,
+          "toMs": 24550
+        },
+        {
+          "text": " thầy.\"",
+          "fromMs": 24550,
+          "toMs": 25120
+        }
+      ]
+    },
+    {
+      "text": "Người lại hỏi: \nNày anh Si-môn,",
+      "startMs": 25140,
+      "durationMs": 2600,
+      "tokens": [
+        {
+          "text": " Người",
+          "fromMs": 25120,
+          "toMs": 25590
+        },
+        {
+          "text": " lại",
+          "fromMs": 25590,
+          "toMs": 25890
+        },
+        {
+          "text": " hỏi,",
+          "fromMs": 25890,
+          "toMs": 26320
+        },
+        {
+          "text": " \"Này",
+          "fromMs": 26320,
+          "toMs": 26730
+        },
+        {
+          "text": " anh",
+          "fromMs": 26730,
+          "toMs": 26980
+        },
+        {
+          "text": " Simón,",
+          "fromMs": 26980,
+          "toMs": 27920
+        }
+      ]
+    },
+    {
+      "text": "con ông Gio-an, \nanh có yêu mến Thầy không?",
+      "startMs": 27740,
+      "durationMs": 3350,
+      "tokens": [
+        {
+          "text": " con",
+          "fromMs": 27920,
+          "toMs": 27970
+        },
+        {
+          "text": " ông",
+          "fromMs": 27970,
+          "toMs": 28360
+        },
+        {
+          "text": " Gio-an,",
+          "fromMs": 28360,
+          "toMs": 28960
+        },
+        {
+          "text": " anh",
+          "fromMs": 29150,
+          "toMs": 29180
+        },
+        {
+          "text": " có",
+          "fromMs": 29180,
+          "toMs": 29380
+        },
+        {
+          "text": " yêu",
+          "fromMs": 29380,
+          "toMs": 29590
+        },
+        {
+          "text": " mến",
+          "fromMs": 29590,
+          "toMs": 29890
+        },
+        {
+          "text": " thầy",
+          "fromMs": 29890,
+          "toMs": 30270
+        }
+      ]
+    },
+    {
+      "text": "Ông đáp: “Thưa Thầy có,",
+      "startMs": 31090,
+      "durationMs": 2550,
+      "tokens": [
+        {
+          "text": " không?\"",
+          "fromMs": 30270,
+          "toMs": 30960
+        },
+        {
+          "text": " Ông",
+          "fromMs": 30960,
+          "toMs": 31320
+        },
+        {
+          "text": " đáp,",
+          "fromMs": 31320,
+          "toMs": 31630
+        },
+        {
+          "text": " \"Thưa",
+          "fromMs": 31630,
+          "toMs": 32000
+        },
+        {
+          "text": " thầy",
+          "fromMs": 32000,
+          "toMs": 32560
+        },
+        {
+          "text": " có,",
+          "fromMs": 32560,
+          "toMs": 32680
+        },
+        {
+          "text": " thầy",
+          "fromMs": 32680,
+          "toMs": 33050
+        },
+        {
+          "text": " biết",
+          "fromMs": 33050,
+          "toMs": 33620
+        }
+      ]
+    },
+    {
+      "text": "Thầy biết con thương mến Thầy.",
+      "startMs": 33640,
+      "durationMs": 1380,
+      "tokens": [
+        {
+          "text": " con",
+          "fromMs": 33620,
+          "toMs": 33680
+        },
+        {
+          "text": " thương",
+          "fromMs": 33680,
+          "toMs": 34120
+        },
+        {
+          "text": " mến",
+          "fromMs": 34120,
+          "toMs": 34430
+        },
+        {
+          "text": " thầy.\"",
+          "fromMs": 34430,
+          "toMs": 35200
+        }
+      ]
+    },
+    {
+      "text": "Người nói : Hãy chăn dắt \nchiên của Thầy.",
+      "startMs": 35020,
+      "durationMs": 3200,
+      "tokens": [
+        {
+          "text": " Người",
+          "fromMs": 35200,
+          "toMs": 35700
+        },
+        {
+          "text": " nói,",
+          "fromMs": 35700,
+          "toMs": 36130
+        },
+        {
+          "text": " \"Hãy",
+          "fromMs": 36130,
+          "toMs": 36430
+        },
+        {
+          "text": " chăn",
+          "fromMs": 36430,
+          "toMs": 36690
+        },
+        {
+          "text": " giác",
+          "fromMs": 36690,
+          "toMs": 37000
+        },
+        {
+          "text": " chiên",
+          "fromMs": 37000,
+          "toMs": 37380
+        },
+        {
+          "text": " của",
+          "fromMs": 37380,
+          "toMs": 37700
+        },
+        {
+          "text": " thầy.\"",
+          "fromMs": 37700,
+          "toMs": 38400
+        }
+      ]
+    },
+    {
+      "text": "Người hỏi lần thứ ba:",
+      "startMs": 38220,
+      "durationMs": 1850,
+      "tokens": [
+        {
+          "text": " Người",
+          "fromMs": 38400,
+          "toMs": 38880
+        },
+        {
+          "text": " hỏi",
+          "fromMs": 38880,
+          "toMs": 39180
+        },
+        {
+          "text": " lần",
+          "fromMs": 39180,
+          "toMs": 39480
+        },
+        {
+          "text": " thứ",
+          "fromMs": 39480,
+          "toMs": 39920
+        },
+        {
+          "text": " ba,",
+          "fromMs": 39920,
+          "toMs": 40100
+        },
+        {
+          "text": " \"Này",
+          "fromMs": 40100,
+          "toMs": 40410
+        },
+        {
+          "text": " anh",
+          "fromMs": 40410,
+          "toMs": 40630
+        },
+        {
+          "text": " Simón,",
+          "fromMs": 40630,
+          "toMs": 41350
+        }
+      ]
+    },
+    {
+      "text": "Này anh Si-môn, \ncon ông Gio-an,",
+      "startMs": 40070,
+      "durationMs": 2820,
+      "tokens": [
+        {
+          "text": " con",
+          "fromMs": 41350,
+          "toMs": 41530
+        },
+        {
+          "text": " ông",
+          "fromMs": 41530,
+          "toMs": 41920
+        },
+        {
+          "text": " Gio-an,",
+          "fromMs": 41920,
+          "toMs": 42600
+        },
+        {
+          "text": " anh",
+          "fromMs": 42600,
+          "toMs": 43020
+        },
+        {
+          "text": " có",
+          "fromMs": 43020,
+          "toMs": 43120
+        },
+        {
+          "text": " thương",
+          "fromMs": 43120,
+          "toMs": 43650
+        },
+        {
+          "text": " mến",
+          "fromMs": 43650,
+          "toMs": 43950
+        },
+        {
+          "text": " thầy",
+          "fromMs": 43950,
+          "toMs": 44370
+        }
+      ]
+    },
+    {
+      "text": "anh có thương mến Thầy không?",
+      "startMs": 42890,
+      "durationMs": 2440,
+      "tokens": [
+        {
+          "text": " không?\"",
+          "fromMs": 44370,
+          "toMs": 45160
+        },
+        {
+          "text": " Ông",
+          "fromMs": 45160,
+          "toMs": 45420
+        },
+        {
+          "text": " fê-rô",
+          "fromMs": 45420,
+          "toMs": 45870
+        },
+        {
+          "text": " buồn",
+          "fromMs": 45870,
+          "toMs": 46240
+        },
+        {
+          "text": " vì",
+          "fromMs": 46240,
+          "toMs": 46430
+        },
+        {
+          "text": " người",
+          "fromMs": 46430,
+          "toMs": 46950
+        },
+        {
+          "text": " hỏi",
+          "fromMs": 46950,
+          "toMs": 47310
+        }
+      ]
+    },
+    {
+      "text": "Ông Phê-rô buồn vì Người \nhỏi tới ba lần :",
+      "startMs": 45330,
+      "durationMs": 2810,
+      "tokens": [
+        {
+          "text": " tới",
+          "fromMs": 47310,
+          "toMs": 47590
+        },
+        {
+          "text": " ba",
+          "fromMs": 47590,
+          "toMs": 47720
+        },
+        {
+          "text": " lần,",
+          "fromMs": 47720,
+          "toMs": 48120
+        },
+        {
+          "text": " \"Anh",
+          "fromMs": 48120,
+          "toMs": 48350
+        },
+        {
+          "text": " có",
+          "fromMs": 48350,
+          "toMs": 48490
+        },
+        {
+          "text": " thương",
+          "fromMs": 48490,
+          "toMs": 48930
+        },
+        {
+          "text": " mến",
+          "fromMs": 48930,
+          "toMs": 49190
+        },
+        {
+          "text": " thầy",
+          "fromMs": 49190,
+          "toMs": 49520
+        }
+      ]
+    },
+    {
+      "text": "Anh có thương mến Thầy không?",
+      "startMs": 48140,
+      "durationMs": 1960,
+      "tokens": [
+        {
+          "text": " không?\"",
+          "fromMs": 49520,
+          "toMs": 50120
+        },
+        {
+          "text": " Ông",
+          "fromMs": 50120,
+          "toMs": 50380
+        },
+        {
+          "text": " đáp,",
+          "fromMs": 50380,
+          "toMs": 50840
+        },
+        {
+          "text": " \"Thưa",
+          "fromMs": 50840,
+          "toMs": 51270
+        },
+        {
+          "text": " thầy,",
+          "fromMs": 51270,
+          "toMs": 51880
+        },
+        {
+          "text": " thầy",
+          "fromMs": 51880,
+          "toMs": 52140
+        },
+        {
+          "text": " biết",
+          "fromMs": 52140,
+          "toMs": 52540
+        },
+        {
+          "text": " rõ",
+          "fromMs": 52540,
+          "toMs": 52730
+        },
+        {
+          "text": " mọi",
+          "fromMs": 52730,
+          "toMs": 53050
+        },
+        {
+          "text": " sự.",
+          "fromMs": 53050,
+          "toMs": 53480
+        }
+      ]
+    },
+    {
+      "text": "Ông đáp: “Thưa Thầy,\nThầy biết rõ mọi sự;",
+      "startMs": 50100,
+      "durationMs": 3300,
+      "tokens": [
+        {
+          "text": " Thầy",
+          "fromMs": 53480,
+          "toMs": 53780
+        },
+        {
+          "text": " biết",
+          "fromMs": 53780,
+          "toMs": 54090
+        },
+        {
+          "text": " con",
+          "fromMs": 54090,
+          "toMs": 54290
+        },
+        {
+          "text": " thương",
+          "fromMs": 54290,
+          "toMs": 54650
+        },
+        {
+          "text": " mến",
+          "fromMs": 54650,
+          "toMs": 54910
+        },
+        {
+          "text": " thầy.\"",
+          "fromMs": 54910,
+          "toMs": 55480
+        }
+      ]
+    },
+    {
+      "text": "Thầy biết con thương mến Thầy.",
+      "startMs": 53400,
+      "durationMs": 2000,
+      "tokens": [
+        {
+          "text": " Đức",
+          "fromMs": 55590,
+          "toMs": 55900
+        },
+        {
+          "text": " Giê-xu",
+          "fromMs": 55900,
+          "toMs": 56390
+        },
+        {
+          "text": " bạo!",
+          "fromMs": 56390,
+          "toMs": 57000
+        }
+      ]
+    },
+    {
+      "text": "Đức Giê-su bảo: ",
+      "startMs": 55400,
+      "durationMs": 1500,
+      "tokens": [
+        {
+          "text": " Hãy",
+          "fromMs": 57000,
+          "toMs": 57180
+        },
+        {
+          "text": " chăm",
+          "fromMs": 57180,
+          "toMs": 57480
+        },
+        {
+          "text": " sóc",
+          "fromMs": 57480,
+          "toMs": 57840
+        },
+        {
+          "text": " chiên",
+          "fromMs": 57840,
+          "toMs": 58180
+        },
+        {
+          "text": " của",
+          "fromMs": 58180,
+          "toMs": 58400
+        },
+        {
+          "text": " Thầy!",
+          "fromMs": 58400,
+          "toMs": 60480
+        }
+      ]
+    },
+    {
+      "text": "“Hãy chăm sóc chiên của Thầy.”",
+      "startMs": 56900,
+      "durationMs": 6680,
+      "tokens": []
+    }
+  ]
+}

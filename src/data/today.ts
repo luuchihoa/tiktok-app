@@ -1,18 +1,17 @@
 import { VideoInput } from "./videoInput";
 
 export const videoData: VideoInput = {
-  "date": "",
-  "bannerTag": "",
-  "feastName": "",
+  "date": "21/08/2026",
+  "bannerTag": "Phụng Vụ lời chúa hằng ngày",
+  "feastName": "Thứ Sáu sau Chúa Nhật XX Thường Niên",
   "readingType": "Bài Đọc 1",
-  "bibleRef": "Ed 36,23-28",
-  "quote": "",
+  "bibleRef": "Ed 43,1-7a",
+  "quote": "\"Vinh quang Đức Chúa tràn ngập Đền Thờ.\"",
   "audioFile": "current_audio.mp3",
-  "audioDurationSeconds": 192.76,
   "introAudioFile": "piano_intro.mp3",
   "outroAudioFile": "piano_outro.mp3",
-  "imageFile": "cross.jpg",
+  "imageFile": "current_image.jpeg",
   "imagePositionY": 50,
-  "season": "EASTER_CHRISTMAS",
+  "season": "ORDINARY",
   "websiteUrl": "loichuamoingay.org"
 };

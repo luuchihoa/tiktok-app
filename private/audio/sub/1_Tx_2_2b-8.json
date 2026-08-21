@@ -1,0 +1,1576 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-20T07:54:56.974Z",
+  "metadata": {
+    "date": "21/08/2026",
+    "bannerTag": "Lễ Nhớ Bắt Buộc",
+    "feastName": "Thánh Pi-ô X, giáo hoàng",
+    "readingType": "Bài Đọc 1",
+    "bibleRef": "1 Tx 2,2b-8",
+    "quote": "\"Chúng tôi sẵn sàng hiến cho anh em, không những Tin Mừng \ncủa Thiên Chúa, mà cả mạng sống của chúng tôi nữa.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "EASTER_CHRISTMAS",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Bài Đọc 1",
+      "startMs": 0,
+      "durationMs": 1700,
+      "tokens": [
+        {
+          "text": "Bài",
+          "fromMs": 40,
+          "toMs": 560
+        },
+        {
+          "text": " Đọc",
+          "fromMs": 560,
+          "toMs": 1400
+        },
+        {
+          "text": " Một",
+          "fromMs": 1400,
+          "toMs": 2120
+        },
+        {
+          "text": " Bài",
+          "fromMs": 2120,
+          "toMs": 2340
+        },
+        {
+          "text": " Trích",
+          "fromMs": 2340,
+          "toMs": 2680
+        },
+        {
+          "text": " Thư",
+          "fromMs": 2680,
+          "toMs": 2920
+        }
+      ]
+    },
+    {
+      "text": "Bài trích thư thứ nhất của\n thánh Phao-lô tông đồ ",
+      "startMs": 1700,
+      "durationMs": 3380,
+      "tokens": [
+        {
+          "text": " thứ",
+          "fromMs": 2920,
+          "toMs": 3180
+        },
+        {
+          "text": " nhất",
+          "fromMs": 3180,
+          "toMs": 3520
+        },
+        {
+          "text": " của",
+          "fromMs": 3520,
+          "toMs": 3800
+        },
+        {
+          "text": " Thánh",
+          "fromMs": 3800,
+          "toMs": 4140
+        },
+        {
+          "text": " Phào",
+          "fromMs": 4140,
+          "toMs": 4420
+        },
+        {
+          "text": " Lô",
+          "fromMs": 4420,
+          "toMs": 4580
+        },
+        {
+          "text": " Tông",
+          "fromMs": 4580,
+          "toMs": 4860
+        },
+        {
+          "text": " Đồ",
+          "fromMs": 4860,
+          "toMs": 5260
+        }
+      ]
+    },
+    {
+      "text": "gửi tín hữu Thê-xa-lô-ni-ca.",
+      "startMs": 5080,
+      "durationMs": 3260,
+      "tokens": [
+        {
+          "text": " gửi",
+          "fromMs": 5260,
+          "toMs": 5890
+        },
+        {
+          "text": " tín",
+          "fromMs": 5890,
+          "toMs": 6410
+        },
+        {
+          "text": " hữu",
+          "fromMs": 6410,
+          "toMs": 7060
+        },
+        {
+          "text": " The",
+          "fromMs": 7060,
+          "toMs": 7450
+        },
+        {
+          "text": " Salonika",
+          "fromMs": 7450,
+          "toMs": 8520
+        }
+      ]
+    },
+    {
+      "text": "Thưa anh em, vì tin tưởng vào\nThiên Chúa chúng ta",
+      "startMs": 8340,
+      "durationMs": 3280,
+      "tokens": [
+        {
+          "text": " Thưa",
+          "fromMs": 8520,
+          "toMs": 8990
+        },
+        {
+          "text": " anh",
+          "fromMs": 8990,
+          "toMs": 9480
+        },
+        {
+          "text": " em,",
+          "fromMs": 9480,
+          "toMs": 9600
+        },
+        {
+          "text": " vì",
+          "fromMs": 9600,
+          "toMs": 9790
+        },
+        {
+          "text": " tin",
+          "fromMs": 9790,
+          "toMs": 9980
+        },
+        {
+          "text": " tưởng",
+          "fromMs": 9980,
+          "toMs": 10480
+        },
+        {
+          "text": " vào",
+          "fromMs": 10480,
+          "toMs": 10730
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 10730,
+          "toMs": 11100
+        }
+      ]
+    },
+    {
+      "text": "mà chúng tôi đã mạnh dạn \nrao giảng Tin Mừng",
+      "startMs": 11620,
+      "durationMs": 3500,
+      "tokens": [
+        {
+          "text": " Chúa",
+          "fromMs": 11100,
+          "toMs": 11420
+        },
+        {
+          "text": " chúng",
+          "fromMs": 11420,
+          "toMs": 11960
+        },
+        {
+          "text": " ta",
+          "fromMs": 11960,
+          "toMs": 11980
+        },
+        {
+          "text": " mà",
+          "fromMs": 11980,
+          "toMs": 12150
+        },
+        {
+          "text": " chúng",
+          "fromMs": 12150,
+          "toMs": 12530
+        },
+        {
+          "text": " tôi",
+          "fromMs": 12530,
+          "toMs": 12780
+        },
+        {
+          "text": " đã",
+          "fromMs": 12780,
+          "toMs": 13030
+        },
+        {
+          "text": " mạnh",
+          "fromMs": 13030,
+          "toMs": 13400
+        }
+      ]
+    },
+    {
+      "text": "của Thiên Chúa cho anh em,",
+      "startMs": 15120,
+      "durationMs": 1980,
+      "tokens": [
+        {
+          "text": " dạng",
+          "fromMs": 13400,
+          "toMs": 13800
+        },
+        {
+          "text": " rao",
+          "fromMs": 13800,
+          "toMs": 14080
+        },
+        {
+          "text": " dãn",
+          "fromMs": 14080,
+          "toMs": 14530
+        },
+        {
+          "text": " tin",
+          "fromMs": 14530,
+          "toMs": 14700
+        },
+        {
+          "text": " mừng",
+          "fromMs": 14700,
+          "toMs": 15220
+        },
+        {
+          "text": " của",
+          "fromMs": 15220,
+          "toMs": 15490
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 15490,
+          "toMs": 15870
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 15870,
+          "toMs": 16280
+        }
+      ]
+    },
+    {
+      "text": "qua những cuộc chiến đấu \ngay go.",
+      "startMs": 17100,
+      "durationMs": 2670,
+      "tokens": [
+        {
+          "text": " cho",
+          "fromMs": 16280,
+          "toMs": 16690
+        },
+        {
+          "text": " anh",
+          "fromMs": 16690,
+          "toMs": 17480
+        },
+        {
+          "text": " em",
+          "fromMs": 17480,
+          "toMs": 17480
+        },
+        {
+          "text": " qua",
+          "fromMs": 17480,
+          "toMs": 17720
+        },
+        {
+          "text": " những",
+          "fromMs": 17720,
+          "toMs": 18290
+        },
+        {
+          "text": " cuộc",
+          "fromMs": 18290,
+          "toMs": 18780
+        },
+        {
+          "text": " chiến",
+          "fromMs": 18780,
+          "toMs": 19350
+        }
+      ]
+    },
+    {
+      "text": "Lời giảng của chúng tôi \nkhông do sự sai lầm,",
+      "startMs": 19770,
+      "durationMs": 3290,
+      "tokens": [
+        {
+          "text": " đấu",
+          "fromMs": 19350,
+          "toMs": 19900
+        },
+        {
+          "text": " gây",
+          "fromMs": 19900,
+          "toMs": 20360
+        },
+        {
+          "text": " go",
+          "fromMs": 20360,
+          "toMs": 20360
+        },
+        {
+          "text": " lời",
+          "fromMs": 20360,
+          "toMs": 20710
+        },
+        {
+          "text": " dãn",
+          "fromMs": 20710,
+          "toMs": 20990
+        },
+        {
+          "text": " của",
+          "fromMs": 20990,
+          "toMs": 21340
+        },
+        {
+          "text": " chúng",
+          "fromMs": 21340,
+          "toMs": 21760
+        },
+        {
+          "text": " tôi",
+          "fromMs": 21760,
+          "toMs": 22040
+        }
+      ]
+    },
+    {
+      "text": "không có dụng ý xấu, ",
+      "startMs": 23060,
+      "durationMs": 1730,
+      "tokens": [
+        {
+          "text": " không",
+          "fromMs": 22040,
+          "toMs": 22540
+        },
+        {
+          "text": " do",
+          "fromMs": 22540,
+          "toMs": 22600
+        },
+        {
+          "text": " sự",
+          "fromMs": 22600,
+          "toMs": 22880
+        },
+        {
+          "text": " sai",
+          "fromMs": 22880,
+          "toMs": 23160
+        },
+        {
+          "text": " lầm,",
+          "fromMs": 23160,
+          "toMs": 23620
+        },
+        {
+          "text": " không",
+          "fromMs": 23620,
+          "toMs": 24040
+        },
+        {
+          "text": " có",
+          "fromMs": 24040,
+          "toMs": 24250
+        },
+        {
+          "text": " dụng",
+          "fromMs": 24250,
+          "toMs": 24670
+        }
+      ]
+    },
+    {
+      "text": "không nhằm lừa dối ai, ",
+      "startMs": 24790,
+      "durationMs": 2130,
+      "tokens": [
+        {
+          "text": " ý",
+          "fromMs": 24670,
+          "toMs": 24880
+        },
+        {
+          "text": " xấu,",
+          "fromMs": 24880,
+          "toMs": 25340
+        },
+        {
+          "text": " không",
+          "fromMs": 25340,
+          "toMs": 25780
+        },
+        {
+          "text": " nhằm",
+          "fromMs": 25780,
+          "toMs": 26210
+        },
+        {
+          "text": " lừa",
+          "fromMs": 26210,
+          "toMs": 26570
+        },
+        {
+          "text": " dối",
+          "fromMs": 26570,
+          "toMs": 27120
+        },
+        {
+          "text": " ai",
+          "fromMs": 27120,
+          "toMs": 27120
+        },
+        {
+          "text": " nhưng",
+          "fromMs": 27130,
+          "toMs": 27600
+        }
+      ]
+    },
+    {
+      "text": "nhưng vì Thiên Chúa đã \nthử luyện chúng tôi",
+      "startMs": 26920,
+      "durationMs": 3110,
+      "tokens": [
+        {
+          "text": " vì",
+          "fromMs": 27600,
+          "toMs": 27870
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 27870,
+          "toMs": 28310
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 28310,
+          "toMs": 28650
+        },
+        {
+          "text": " đã",
+          "fromMs": 28650,
+          "toMs": 28950
+        },
+        {
+          "text": " thử",
+          "fromMs": 28950,
+          "toMs": 29330
+        },
+        {
+          "text": " luyện",
+          "fromMs": 29330,
+          "toMs": 30180
+        },
+        {
+          "text": " chúng",
+          "fromMs": 30180,
+          "toMs": 30310
+        },
+        {
+          "text": " tôi",
+          "fromMs": 30310,
+          "toMs": 30610
+        }
+      ]
+    },
+    {
+      "text": "và giao phó Tin Mừng cho \nchúng tôi, ",
+      "startMs": 30030,
+      "durationMs": 2890,
+      "tokens": [
+        {
+          "text": " và",
+          "fromMs": 30610,
+          "toMs": 30890
+        },
+        {
+          "text": " giao",
+          "fromMs": 30890,
+          "toMs": 31190
+        },
+        {
+          "text": " phó",
+          "fromMs": 31190,
+          "toMs": 31440
+        },
+        {
+          "text": " tin",
+          "fromMs": 31440,
+          "toMs": 31670
+        },
+        {
+          "text": " mừng",
+          "fromMs": 31670,
+          "toMs": 32120
+        },
+        {
+          "text": " cho",
+          "fromMs": 32120,
+          "toMs": 32350
+        },
+        {
+          "text": " chúng",
+          "fromMs": 32350,
+          "toMs": 33200
+        },
+        {
+          "text": " tôi",
+          "fromMs": 33200,
+          "toMs": 33200
+        }
+      ]
+    },
+    {
+      "text": "thì chúng tôi cứ vậy mà \nrao giảng,",
+      "startMs": 32920,
+      "durationMs": 2880,
+      "tokens": [
+        {
+          "text": " thì",
+          "fromMs": 33200,
+          "toMs": 33530
+        },
+        {
+          "text": " chúng",
+          "fromMs": 33530,
+          "toMs": 34040
+        },
+        {
+          "text": " tôi",
+          "fromMs": 34040,
+          "toMs": 34360
+        },
+        {
+          "text": " cứ",
+          "fromMs": 34360,
+          "toMs": 34690
+        },
+        {
+          "text": " vậy",
+          "fromMs": 34690,
+          "toMs": 35110
+        },
+        {
+          "text": " mà",
+          "fromMs": 35110,
+          "toMs": 35360
+        },
+        {
+          "text": " rao",
+          "fromMs": 35360,
+          "toMs": 35610
+        },
+        {
+          "text": " dãn",
+          "fromMs": 35610,
+          "toMs": 36080
+        }
+      ]
+    },
+    {
+      "text": "không phải để làm vừa lòng \nngười phàm,",
+      "startMs": 35800,
+      "durationMs": 3000,
+      "tokens": [
+        {
+          "text": " không",
+          "fromMs": 36080,
+          "toMs": 36410
+        },
+        {
+          "text": " phải",
+          "fromMs": 36410,
+          "toMs": 36820
+        },
+        {
+          "text": " để",
+          "fromMs": 36820,
+          "toMs": 37160
+        },
+        {
+          "text": " làm",
+          "fromMs": 37160,
+          "toMs": 37430
+        },
+        {
+          "text": " vừa",
+          "fromMs": 37430,
+          "toMs": 37760
+        },
+        {
+          "text": " lòng",
+          "fromMs": 37760,
+          "toMs": 38170
+        },
+        {
+          "text": " người",
+          "fromMs": 38170,
+          "toMs": 38760
+        },
+        {
+          "text": " phạm",
+          "fromMs": 38760,
+          "toMs": 39080
+        }
+      ]
+    },
+    {
+      "text": "mà để làm đẹp lòng \nThiên Chúa,",
+      "startMs": 38800,
+      "durationMs": 2720,
+      "tokens": [
+        {
+          "text": " mà",
+          "fromMs": 39080,
+          "toMs": 39310
+        },
+        {
+          "text": " để",
+          "fromMs": 39310,
+          "toMs": 39690
+        },
+        {
+          "text": " làm",
+          "fromMs": 39690,
+          "toMs": 40000
+        },
+        {
+          "text": " đẹp",
+          "fromMs": 40000,
+          "toMs": 40450
+        },
+        {
+          "text": " lòng",
+          "fromMs": 40450,
+          "toMs": 40850
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 40850,
+          "toMs": 41440
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 41440,
+          "toMs": 41670
+        },
+        {
+          "text": " đấng",
+          "fromMs": 41670,
+          "toMs": 42200
+        }
+      ]
+    },
+    {
+      "text": "Đấng thử luyện tâm hồn \nchúng tôi. ",
+      "startMs": 41520,
+      "durationMs": 2880,
+      "tokens": [
+        {
+          "text": " thử",
+          "fromMs": 42200,
+          "toMs": 42600
+        },
+        {
+          "text": " luyện",
+          "fromMs": 42600,
+          "toMs": 43170
+        },
+        {
+          "text": " tâm",
+          "fromMs": 43170,
+          "toMs": 43410
+        },
+        {
+          "text": " hồn",
+          "fromMs": 43410,
+          "toMs": 44240
+        },
+        {
+          "text": " chúng",
+          "fromMs": 44240,
+          "toMs": 44680
+        },
+        {
+          "text": " tôi",
+          "fromMs": 44680,
+          "toMs": 44680
+        },
+        {
+          "text": " không",
+          "fromMs": 44680,
+          "toMs": 45080
+        }
+      ]
+    },
+    {
+      "text": "Không bao giờ chúng tôi đã \ndùng lời xu nịnh,",
+      "startMs": 44400,
+      "durationMs": 3120,
+      "tokens": [
+        {
+          "text": " bao",
+          "fromMs": 45080,
+          "toMs": 45280
+        },
+        {
+          "text": " giờ",
+          "fromMs": 45280,
+          "toMs": 45630
+        },
+        {
+          "text": " chúng",
+          "fromMs": 45630,
+          "toMs": 46010
+        },
+        {
+          "text": " tôi",
+          "fromMs": 46010,
+          "toMs": 46270
+        },
+        {
+          "text": " đã",
+          "fromMs": 46270,
+          "toMs": 46530
+        },
+        {
+          "text": " dùng",
+          "fromMs": 46530,
+          "toMs": 46870
+        },
+        {
+          "text": " lời",
+          "fromMs": 46870,
+          "toMs": 47170
+        },
+        {
+          "text": " su",
+          "fromMs": 47170,
+          "toMs": 47300
+        }
+      ]
+    },
+    {
+      "text": "như anh em biết;",
+      "startMs": 47520,
+      "durationMs": 1340,
+      "tokens": [
+        {
+          "text": " nịnh",
+          "fromMs": 47300,
+          "toMs": 47780
+        },
+        {
+          "text": " như",
+          "fromMs": 47780,
+          "toMs": 48150
+        },
+        {
+          "text": " anh",
+          "fromMs": 48150,
+          "toMs": 48440
+        },
+        {
+          "text": " em",
+          "fromMs": 48440,
+          "toMs": 48630
+        },
+        {
+          "text": " biết",
+          "fromMs": 48630,
+          "toMs": 49240
+        },
+        {
+          "text": " không",
+          "fromMs": 49240,
+          "toMs": 49670
+        },
+        {
+          "text": " bao",
+          "fromMs": 49670,
+          "toMs": 49890
+        },
+        {
+          "text": " giờ",
+          "fromMs": 49890,
+          "toMs": 50240
+        }
+      ]
+    },
+    {
+      "text": "không bao giờ chúng tôi \nđã viện cớ ",
+      "startMs": 48860,
+      "durationMs": 2390,
+      "tokens": [
+        {
+          "text": " chúng",
+          "fromMs": 50240,
+          "toMs": 50670
+        },
+        {
+          "text": " tôi",
+          "fromMs": 50670,
+          "toMs": 50960
+        },
+        {
+          "text": " đã",
+          "fromMs": 50960,
+          "toMs": 51360
+        },
+        {
+          "text": " viện",
+          "fromMs": 51360,
+          "toMs": 51730
+        },
+        {
+          "text": " cớ",
+          "fromMs": 51730,
+          "toMs": 51960
+        },
+        {
+          "text": " để",
+          "fromMs": 51960,
+          "toMs": 52320
+        },
+        {
+          "text": " che",
+          "fromMs": 52320,
+          "toMs": 52530
+        },
+        {
+          "text": " đậy",
+          "fromMs": 52530,
+          "toMs": 53030
+        }
+      ]
+    },
+    {
+      "text": "để che đậy lòng tham,",
+      "startMs": 51250,
+      "durationMs": 1950,
+      "tokens": [
+        {
+          "text": " lòng",
+          "fromMs": 53030,
+          "toMs": 53320
+        },
+        {
+          "text": " tham",
+          "fromMs": 53320,
+          "toMs": 53680
+        },
+        {
+          "text": " có",
+          "fromMs": 53700,
+          "toMs": 53910
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 53910,
+          "toMs": 54340
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 54340,
+          "toMs": 54730
+        },
+        {
+          "text": " chứng",
+          "fromMs": 54730,
+          "toMs": 55230
+        },
+        {
+          "text": " dám",
+          "fromMs": 55230,
+          "toMs": 55790
+        },
+        {
+          "text": " không",
+          "fromMs": 55790,
+          "toMs": 55960
+        }
+      ]
+    },
+    {
+      "text": "có Thiên Chúa chứng giám;",
+      "startMs": 53200,
+      "durationMs": 2380,
+      "tokens": [
+        {
+          "text": " bao",
+          "fromMs": 55960,
+          "toMs": 56180
+        },
+        {
+          "text": " giờ",
+          "fromMs": 56180,
+          "toMs": 56880
+        },
+        {
+          "text": " chúng",
+          "fromMs": 56880,
+          "toMs": 56990
+        },
+        {
+          "text": " tôi",
+          "fromMs": 56990,
+          "toMs": 57320
+        },
+        {
+          "text": " đã",
+          "fromMs": 57320,
+          "toMs": 57610
+        },
+        {
+          "text": " tìm",
+          "fromMs": 57610,
+          "toMs": 57840
+        },
+        {
+          "text": " cách",
+          "fromMs": 57840,
+          "toMs": 58350
+        },
+        {
+          "text": " để",
+          "fromMs": 58350,
+          "toMs": 58500
+        }
+      ]
+    },
+    {
+      "text": "không bao giờ chúng tôi \nđã tìm cách ",
+      "startMs": 55580,
+      "durationMs": 2570,
+      "tokens": [
+        {
+          "text": " được",
+          "fromMs": 58500,
+          "toMs": 58800
+        },
+        {
+          "text": " một",
+          "fromMs": 58800,
+          "toMs": 59160
+        },
+        {
+          "text": " người",
+          "fromMs": 59160,
+          "toMs": 59740
+        },
+        {
+          "text": " phạm",
+          "fromMs": 59740,
+          "toMs": 60170
+        },
+        {
+          "text": " nào",
+          "fromMs": 60170,
+          "toMs": 60460
+        },
+        {
+          "text": " tôn",
+          "fromMs": 60460,
+          "toMs": 60820
+        },
+        {
+          "text": " vinh",
+          "fromMs": 60820,
+          "toMs": 61080
+        },
+        {
+          "text": " dù",
+          "fromMs": 61080,
+          "toMs": 61330
+        }
+      ]
+    },
+    {
+      "text": "để được một người phàm\n nào tôn vinh,",
+      "startMs": 58150,
+      "durationMs": 2650,
+      "tokens": [
+        {
+          "text": " là",
+          "fromMs": 61330,
+          "toMs": 61590
+        },
+        {
+          "text": " anh",
+          "fromMs": 61590,
+          "toMs": 61850
+        },
+        {
+          "text": " em",
+          "fromMs": 61850,
+          "toMs": 62020
+        },
+        {
+          "text": " hay",
+          "fromMs": 62020,
+          "toMs": 62280
+        },
+        {
+          "text": " người",
+          "fromMs": 62280,
+          "toMs": 63480
+        },
+        {
+          "text": " khác",
+          "fromMs": 63480,
+          "toMs": 63480
+        },
+        {
+          "text": " trong",
+          "fromMs": 63480,
+          "toMs": 63800
+        },
+        {
+          "text": " khi",
+          "fromMs": 63800,
+          "toMs": 64070
+        }
+      ]
+    },
+    {
+      "text": "dù là anh em hay người khác,",
+      "startMs": 60800,
+      "durationMs": 2490,
+      "tokens": []
+    },
+    {
+      "text": "trong khi chúng tôi có thể đòi \nanh em phải trọng đãi,",
+      "startMs": 63290,
+      "durationMs": 3510,
+      "tokens": [
+        {
+          "text": " chúng",
+          "fromMs": 64070,
+          "toMs": 64380
+        },
+        {
+          "text": " tôi",
+          "fromMs": 64380,
+          "toMs": 64640
+        },
+        {
+          "text": " có",
+          "fromMs": 64640,
+          "toMs": 64830
+        },
+        {
+          "text": " thể",
+          "fromMs": 64830,
+          "toMs": 65150
+        },
+        {
+          "text": " đòi",
+          "fromMs": 65150,
+          "toMs": 65470
+        },
+        {
+          "text": " anh",
+          "fromMs": 65470,
+          "toMs": 65660
+        },
+        {
+          "text": " em",
+          "fromMs": 65660,
+          "toMs": 65780
+        },
+        {
+          "text": " phải",
+          "fromMs": 65780,
+          "toMs": 66180
+        }
+      ]
+    },
+    {
+      "text": "với tư cách là Tông Đồ \nĐức Ki-tô.",
+      "startMs": 66800,
+      "durationMs": 2620,
+      "tokens": [
+        {
+          "text": " trộn",
+          "fromMs": 66180,
+          "toMs": 66560
+        },
+        {
+          "text": " đãi",
+          "fromMs": 66560,
+          "toMs": 67020
+        },
+        {
+          "text": " với",
+          "fromMs": 67020,
+          "toMs": 67360
+        },
+        {
+          "text": " tư",
+          "fromMs": 67360,
+          "toMs": 67600
+        },
+        {
+          "text": " cách",
+          "fromMs": 67600,
+          "toMs": 68000
+        },
+        {
+          "text": " là",
+          "fromMs": 68000,
+          "toMs": 68240
+        },
+        {
+          "text": " tông",
+          "fromMs": 68240,
+          "toMs": 68640
+        },
+        {
+          "text": " đồ",
+          "fromMs": 68640,
+          "toMs": 69200
+        }
+      ]
+    },
+    {
+      "text": "Trái lại, khi ở giữa anh em,",
+      "startMs": 69420,
+      "durationMs": 2520,
+      "tokens": [
+        {
+          "text": " Đức",
+          "fromMs": 69200,
+          "toMs": 69520
+        },
+        {
+          "text": " Ky",
+          "fromMs": 69520,
+          "toMs": 69680
+        },
+        {
+          "text": " Tô",
+          "fromMs": 69680,
+          "toMs": 69960
+        },
+        {
+          "text": " trái",
+          "fromMs": 69960,
+          "toMs": 70360
+        },
+        {
+          "text": " lại",
+          "fromMs": 70360,
+          "toMs": 70760
+        },
+        {
+          "text": " khi",
+          "fromMs": 70760,
+          "toMs": 71000
+        },
+        {
+          "text": " ở",
+          "fromMs": 71000,
+          "toMs": 71240
+        },
+        {
+          "text": " giữa",
+          "fromMs": 71240,
+          "toMs": 71720
+        }
+      ]
+    },
+    {
+      "text": "chúng tôi đã cư xử thật \ndịu dàng,",
+      "startMs": 71940,
+      "durationMs": 2430,
+      "tokens": [
+        {
+          "text": " anh",
+          "fromMs": 71720,
+          "toMs": 72160
+        },
+        {
+          "text": " em",
+          "fromMs": 72160,
+          "toMs": 72210
+        },
+        {
+          "text": " chúng",
+          "fromMs": 72210,
+          "toMs": 72580
+        },
+        {
+          "text": " tôi",
+          "fromMs": 72580,
+          "toMs": 72860
+        },
+        {
+          "text": " đã",
+          "fromMs": 72860,
+          "toMs": 73140
+        },
+        {
+          "text": " cư",
+          "fromMs": 73140,
+          "toMs": 73350
+        },
+        {
+          "text": " xử",
+          "fromMs": 73350,
+          "toMs": 73630
+        },
+        {
+          "text": " thật",
+          "fromMs": 73630,
+          "toMs": 74050
+        }
+      ]
+    },
+    {
+      "text": "chẳng khác nào mẹ hiền \nấp ủ con thơ. ",
+      "startMs": 74370,
+      "durationMs": 2710,
+      "tokens": [
+        {
+          "text": " dịu",
+          "fromMs": 74050,
+          "toMs": 74470
+        },
+        {
+          "text": " dàng",
+          "fromMs": 74470,
+          "toMs": 74760
+        },
+        {
+          "text": " chẳng",
+          "fromMs": 74760,
+          "toMs": 75250
+        },
+        {
+          "text": " khác",
+          "fromMs": 75250,
+          "toMs": 75600
+        },
+        {
+          "text": " nào",
+          "fromMs": 75600,
+          "toMs": 75880
+        },
+        {
+          "text": " mẹ",
+          "fromMs": 75880,
+          "toMs": 76230
+        },
+        {
+          "text": " hiền",
+          "fromMs": 76230,
+          "toMs": 76580
+        },
+        {
+          "text": " ấp",
+          "fromMs": 76580,
+          "toMs": 76860
+        }
+      ]
+    },
+    {
+      "text": "Chúng tôi đã quý mến \nanh em,",
+      "startMs": 77080,
+      "durationMs": 2500,
+      "tokens": [
+        {
+          "text": " ủ",
+          "fromMs": 76860,
+          "toMs": 77070
+        },
+        {
+          "text": " con",
+          "fromMs": 77070,
+          "toMs": 77420
+        },
+        {
+          "text": " thơ",
+          "fromMs": 77420,
+          "toMs": 77640
+        },
+        {
+          "text": " chúng",
+          "fromMs": 77640,
+          "toMs": 78090
+        },
+        {
+          "text": " tôi",
+          "fromMs": 78090,
+          "toMs": 78410
+        },
+        {
+          "text": " đã",
+          "fromMs": 78410,
+          "toMs": 78690
+        },
+        {
+          "text": " quý",
+          "fromMs": 78690,
+          "toMs": 78990
+        },
+        {
+          "text": " mến",
+          "fromMs": 78990,
+          "toMs": 79360
+        }
+      ]
+    },
+    {
+      "text": " đến nỗi sẵn sàng hiến \ncho anh em,",
+      "startMs": 79580,
+      "durationMs": 2410,
+      "tokens": [
+        {
+          "text": " anh",
+          "fromMs": 79360,
+          "toMs": 79760
+        },
+        {
+          "text": " em",
+          "fromMs": 79760,
+          "toMs": 79820
+        },
+        {
+          "text": " đến",
+          "fromMs": 79820,
+          "toMs": 80190
+        },
+        {
+          "text": " nỗi",
+          "fromMs": 80190,
+          "toMs": 80540
+        },
+        {
+          "text": " sẵn",
+          "fromMs": 80540,
+          "toMs": 80890
+        },
+        {
+          "text": " sàng",
+          "fromMs": 80890,
+          "toMs": 81240
+        },
+        {
+          "text": " hiến",
+          "fromMs": 81240,
+          "toMs": 81660
+        },
+        {
+          "text": " cho",
+          "fromMs": 81660,
+          "toMs": 81870
+        }
+      ]
+    },
+    {
+      "text": "không những Tin Mừng của \nThiên Chúa,",
+      "startMs": 81990,
+      "durationMs": 2460,
+      "tokens": [
+        {
+          "text": " anh",
+          "fromMs": 81870,
+          "toMs": 82280
+        },
+        {
+          "text": " em",
+          "fromMs": 82280,
+          "toMs": 82280
+        },
+        {
+          "text": " không",
+          "fromMs": 82340,
+          "toMs": 82690
+        },
+        {
+          "text": " những",
+          "fromMs": 82690,
+          "toMs": 83160
+        },
+        {
+          "text": " tin",
+          "fromMs": 83160,
+          "toMs": 83360
+        },
+        {
+          "text": " mừng",
+          "fromMs": 83360,
+          "toMs": 83770
+        },
+        {
+          "text": " của",
+          "fromMs": 83770,
+          "toMs": 84100
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 84100,
+          "toMs": 84630
+        }
+      ]
+    },
+    {
+      "text": "mà cả mạng sống của \nchúng tôi nữa,",
+      "startMs": 84450,
+      "durationMs": 3250,
+      "tokens": [
+        {
+          "text": " Chúa",
+          "fromMs": 84630,
+          "toMs": 84960
+        },
+        {
+          "text": " mà",
+          "fromMs": 84960,
+          "toMs": 85110
+        },
+        {
+          "text": " cả",
+          "fromMs": 85110,
+          "toMs": 85420
+        },
+        {
+          "text": " mạng",
+          "fromMs": 85420,
+          "toMs": 85900
+        },
+        {
+          "text": " sóng",
+          "fromMs": 85900,
+          "toMs": 86250
+        },
+        {
+          "text": " của",
+          "fromMs": 86250,
+          "toMs": 86640
+        },
+        {
+          "text": " chúng",
+          "fromMs": 86640,
+          "toMs": 87080
+        },
+        {
+          "text": " tôi",
+          "fromMs": 87080,
+          "toMs": 87880
+        }
+      ]
+    },
+    {
+      "text": "vì anh em đã trở nên ",
+      "startMs": 87700,
+      "durationMs": 1940,
+      "tokens": [
+        {
+          "text": " nữa",
+          "fromMs": 87880,
+          "toMs": 87880
+        },
+        {
+          "text": " vì",
+          "fromMs": 87880,
+          "toMs": 88070
+        },
+        {
+          "text": " anh",
+          "fromMs": 88070,
+          "toMs": 88260
+        },
+        {
+          "text": " em",
+          "fromMs": 88260,
+          "toMs": 88380
+        },
+        {
+          "text": " đã",
+          "fromMs": 88380,
+          "toMs": 88630
+        },
+        {
+          "text": " trở",
+          "fromMs": 88630,
+          "toMs": 88930
+        },
+        {
+          "text": " nên",
+          "fromMs": 88930,
+          "toMs": 89180
+        },
+        {
+          "text": " những",
+          "fromMs": 89180,
+          "toMs": 89620
+        }
+      ]
+    },
+    {
+      "text": "những người thân yêu \ncủa chúng tôi.",
+      "startMs": 89640,
+      "durationMs": 2040,
+      "tokens": [
+        {
+          "text": " người",
+          "fromMs": 89620,
+          "toMs": 90120
+        },
+        {
+          "text": " thân",
+          "fromMs": 90120,
+          "toMs": 90420
+        },
+        {
+          "text": " yêu",
+          "fromMs": 90420,
+          "toMs": 90670
+        },
+        {
+          "text": " của",
+          "fromMs": 90670,
+          "toMs": 91040
+        },
+        {
+          "text": " chúng",
+          "fromMs": 91040,
+          "toMs": 91350
+        },
+        {
+          "text": " tôi",
+          "fromMs": 91350,
+          "toMs": 91680
+        }
+      ]
+    }
+  ]
+}
