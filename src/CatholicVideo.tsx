@@ -558,52 +558,52 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
               transform: `scale(${breathScale})`,
             }}
           />
-          {/* Top Blend Gradient — 130px, 4-stop feather, solid black at edge */}
+          {/* Top Blend Gradient — 60px, gentle feather */}
           <div
             style={{
               position: "absolute",
               top: 0,
               left: 0,
               width: 1080,
-              height: 130,
+              height: 60,
               background:
-                "linear-gradient(to bottom, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.75) 35%, rgba(10,8,6,0.25) 70%, transparent 100%)",
+                "linear-gradient(to bottom, rgba(10,8,6,0.80) 0%, rgba(10,8,6,0.40) 40%, rgba(10,8,6,0.10) 75%, transparent 100%)",
             }}
           />
-          {/* Bottom Blend Gradient — 130px, 4-stop feather, solid black at edge */}
+          {/* Bottom Blend Gradient — 60px, gentle feather */}
           <div
             style={{
               position: "absolute",
               bottom: 0,
               left: 0,
               width: 1080,
-              height: 130,
+              height: 60,
               background:
-                "linear-gradient(to top, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.75) 35%, rgba(10,8,6,0.25) 70%, transparent 100%)",
+                "linear-gradient(to top, rgba(10,8,6,0.80) 0%, rgba(10,8,6,0.40) 40%, rgba(10,8,6,0.10) 75%, transparent 100%)",
             }}
           />
-          {/* Left Blend Gradient — 80px feather */}
+          {/* Left Blend Gradient — 45px soft feather */}
           <div
             style={{
               position: "absolute",
               top: 0,
               left: 0,
-              width: 80,
+              width: 45,
               height: 540,
               background:
-                "linear-gradient(to right, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.5) 50%, transparent 100%)",
+                "linear-gradient(to right, rgba(10,8,6,0.65) 0%, rgba(10,8,6,0.20) 60%, transparent 100%)",
             }}
           />
-          {/* Right Blend Gradient — 80px feather */}
+          {/* Right Blend Gradient — 45px soft feather */}
           <div
             style={{
               position: "absolute",
               top: 0,
               right: 0,
-              width: 80,
+              width: 45,
               height: 540,
               background:
-                "linear-gradient(to left, rgba(10,8,6,1.0) 0%, rgba(10,8,6,0.5) 50%, transparent 100%)",
+                "linear-gradient(to left, rgba(10,8,6,0.65) 0%, rgba(10,8,6,0.20) 60%, transparent 100%)",
             }}
           />
         </div>
