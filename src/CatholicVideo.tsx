@@ -636,13 +636,16 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
       >
         <h1
           style={{
-            fontSize: 56,
-            fontWeight: 800,
+            fontSize: 64,
+            fontWeight: 900,
             color: theme.primaryColor,
+            WebkitTextStroke: "6px #000000",
+            paintOrder: "stroke fill markers",
             textTransform: "uppercase",
             letterSpacing: "4px",
             margin: 0,
-            textShadow: `0 4px 20px ${theme.glowColor}, 0 2px 4px rgba(0,0,0,0.9)`,
+            filter:
+              "drop-shadow(0 0 15px rgba(0,0,0,0.95)) drop-shadow(0 6px 12px rgba(0,0,0,0.95))",
           }}
         >
           {data.readingType}
