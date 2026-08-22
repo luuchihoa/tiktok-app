@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { useCurrentFrame, useVideoConfig } from "remotion";
 
 interface GoldenParticlesProps {
   color?: string;
@@ -8,22 +8,32 @@ interface GoldenParticlesProps {
 
 export const GoldenParticles: React.FC<GoldenParticlesProps> = ({
   color = "#fde68a",
-  count = 25,
+  count = 12,
 }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { fps } = useVideoConfig();
 
-  // Generate deterministic particle positions based on index
+  // Restrained, deterministic motes: they frame the sacred image instead of
+  // competing with the reading text and subtitles.
   const particles = useMemo(() => {
     return Array.from({ length: count }).map((_, i) => {
-      const seedX = (i * 137.5) % 1080;
-      const seedY = (i * 73.3) % 1920;
-      const size = 3 + (i % 5) * 2; // 3px to 11px
-      const speed = 0.8 + (i % 3) * 0.4;
-      const opacityBase = 0.3 + (i % 4) * 0.15;
-      return { id: i, x: seedX, y: seedY, size, speed, opacityBase };
+      const isLeft = i % 2 === 0;
+      const accent = i === 2 || i === 9;
+      return {
+        id: i,
+        // Keep particles along the hero image's outer edges (not the subtitle area).
+        x: (isLeft ? 120 : 860) + ((i * 43) % 115),
+        y: 330 + ((i * 137) % 860),
+        size: accent ? 8 : 3 + (i % 3),
+        driftX: 8 + (i % 4) * 3,
+        driftY: 70 + (i % 5) * 14,
+        lifetime: Math.round(fps * (10 + (i % 4) * 2)),
+        phase: i * Math.round(fps * 0.9),
+        opacity: accent ? 0.58 : 0.2 + (i % 4) * 0.07,
+        accent,
+      };
     });
-  }, [count]);
+  }, [count, fps]);
 
   return (
     <div
@@ -36,34 +46,28 @@ export const GoldenParticles: React.FC<GoldenParticlesProps> = ({
       }}
     >
       {particles.map((p) => {
-        // Float upwards over time
-        const translateY = interpolate(
-          frame,
-          [0, durationInFrames],
-          [0, -p.speed * 300],
-          { extrapolateRight: "wrap" }
-        );
-
-        // Sinusoidal sway horizontally
-        const swayX = Math.sin((frame + p.id * 10) / 20) * 15;
-
-        // Twinkle opacity
-        const opacity =
-          p.opacityBase + Math.sin((frame + p.id * 5) / 10) * 0.2;
+        const cycleFrame = (frame + p.phase) % p.lifetime;
+        const progress = cycleFrame / p.lifetime;
+        const driftY = -progress * p.driftY;
+        const swayX = Math.sin(progress * Math.PI * 2 + p.id) * p.driftX;
+        // Fade in/out slowly once per journey — no distracting glitter flicker.
+        const opacity = p.opacity * Math.sin(progress * Math.PI);
 
         return (
           <div
             key={p.id}
             style={{
               position: "absolute",
-              left: p.x + swayX,
-              top: (p.y + translateY + 1920) % 1920,
-              width: p.size * 2,
-              height: p.size * 2,
+              left: p.x,
+              top: p.y,
+              width: p.size,
+              height: p.size,
               borderRadius: "50%",
-              background: `radial-gradient(circle, #ffffff 15%, ${color} 60%, transparent 80%)`,
-              opacity: Math.max(0.15, Math.min(0.85, opacity)),
-              transform: "translate3d(0, 0, 0)",
+              background: p.accent ? "#fffdf0" : color,
+              opacity,
+              transform: `translate3d(${swayX}px, ${driftY}px, 0)`,
+              // Only two accent motes use a glow; the rest stay cheap to composite.
+              boxShadow: p.accent ? `0 0 ${p.size * 3}px ${color}` : undefined,
             }}
           />
         );

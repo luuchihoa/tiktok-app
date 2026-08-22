@@ -1280,11 +1280,11 @@
     function onLibraryFieldsInput() {
       saveData();
       clearTimeout(_librarySearchDebounce);
-      const readingType = (document.getElementById('input-readingType').value || '').trim();
-      const bibleRef = (document.getElementById('input-bibleRef').value || '').trim();
+      const readingType = (document.getElementById('input-readingType')?.value || '').trim();
+      const bibleRef = (document.getElementById('input-bibleRef')?.value || '').trim();
       const container = document.getElementById('ref-sub-suggestion-container');
 
-      if (!readingType || !bibleRef || bibleRef.length < 2) {
+      if (!bibleRef || bibleRef.length < 2) {
         if (container) container.classList.add('hidden');
         _pendingLibraryAssets = null;
         return;
@@ -1293,7 +1293,10 @@
       const requestVersion = ++_librarySearchVersion;
       _librarySearchDebounce = setTimeout(async () => {
         try {
-          const params = new URLSearchParams({ readingType, bibleRef });
+          const params = new URLSearchParams();
+          if (readingType) params.append('readingType', readingType);
+          params.append('bibleRef', bibleRef);
+
           const res = await fetch(`/api/library-assets?${params}`);
           const data = await res.json();
           if (requestVersion !== _librarySearchVersion) return;
@@ -1302,12 +1305,16 @@
             _pendingLibraryAssets = null;
             return;
           }
-          _pendingLibraryAssets = { ...data, readingType, bibleRef };
+          _pendingLibraryAssets = {
+            ...data,
+            readingType: readingType || data.detectedReadingType || '',
+            bibleRef
+          };
           renderLibrarySuggestion();
         } catch (e) {
           console.warn('Error checking library assets:', e);
         }
-      }, 350);
+      }, 300);
     }
 
     // Backward-compatible name for any code that still invokes the previous ref handler.
@@ -1319,22 +1326,58 @@
       if (!container || !data) return;
       const audio = data.audio;
       const subtitle = data.subtitle;
+      const detectedLabel = audio?.readingType || data.detectedReadingType || data.readingType || "Lời Chúa";
+
       const audioRow = audio
-        ? `<div class="flex items-center justify-between gap-2"><span class="text-blue-200 truncate">🎙️ ${escapeHtml(audio.filename)}</span><span class="flex gap-1 shrink-0"><button type="button" onclick="previewLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500/20 hover:bg-blue-500/35 text-blue-200">▶ Nghe</button><button type="button" onclick="applyLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500 hover:bg-blue-400 text-white font-bold">Dùng audio</button></span></div>`
-        : `<div class="text-zinc-500">🎙️ Chưa tìm thấy audio</div>`;
+        ? `<div class="flex items-center justify-between gap-2">
+             <span class="text-blue-200 truncate flex items-center gap-1.5">
+               <span>🎙️</span>
+               <span class="font-bold text-white">${escapeHtml(audio.filename)}</span>
+               <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-semibold">${escapeHtml(audio.readingType || detectedLabel)}</span>
+             </span>
+             <span class="flex gap-1 shrink-0">
+               <button type="button" onclick="previewLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500/20 hover:bg-blue-500/35 text-blue-200">▶ Nghe</button>
+               <button type="button" onclick="applyLibraryAudio()" class="text-[10px] px-2 py-1 rounded bg-blue-500 hover:bg-blue-400 text-white font-bold">Dùng audio</button>
+             </span>
+           </div>`
+        : `<div class="text-zinc-500">🎙️ Chưa tìm thấy audio trong gospels / r1 / r2</div>`;
+
       const subtitleRow = subtitle
-        ? `<div class="flex items-center justify-between gap-2"><span class="text-amber-200 truncate">💬 ${escapeHtml(subtitle.filename)} <span class="text-zinc-400">(${subtitle.subtitleCount} đoạn)</span></span><button type="button" onclick="applyLibrarySubtitles()" class="text-[10px] px-2 py-1 rounded bg-amber-500 hover:bg-amber-400 text-black font-bold shrink-0">Nạp phụ đề</button></div>`
-        : `<div class="text-zinc-500">💬 Chưa tìm thấy phụ đề</div>`;
+        ? `<div class="flex items-center justify-between gap-2">
+             <span class="text-amber-200 truncate flex items-center gap-1.5">
+               <span>💬</span>
+               <span class="font-bold text-white">${escapeHtml(subtitle.filename)}</span>
+               <span class="text-zinc-400">(${subtitle.subtitleCount} đoạn)</span>
+             </span>
+             <button type="button" onclick="applyLibrarySubtitles()" class="text-[10px] px-2 py-1 rounded bg-amber-500 hover:bg-amber-400 text-black font-bold shrink-0">Nạp phụ đề</button>
+           </div>`
+        : `<div class="text-zinc-500">💬 Chưa tìm thấy phụ đề trong thư viện</div>`;
+
       const bothButton = audio && subtitle
-        ? `<button type="button" onclick="applyLibraryAssets()" class="mt-2 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs px-3 py-1.5 rounded-lg transition shadow cursor-pointer">📥 Nạp cả audio & phụ đề</button>`
+        ? `<button type="button" onclick="applyLibraryAssets()" class="mt-2 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs px-3.5 py-1.5 rounded-lg transition shadow cursor-pointer flex items-center gap-1.5"><span>📥 Nạp cả audio & phụ đề</span><span class="text-[10px] opacity-80 font-normal">(${escapeHtml(detectedLabel)})</span></button>`
         : '';
-      container.innerHTML = `<div class="relative bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-xs shadow-lg animate-fadeIn"><div class="font-bold text-emerald-300 mb-2 pr-5">✨ Tài nguyên tìm thấy cho ${escapeHtml(data.readingType)} — ${escapeHtml(data.bibleRef)}</div><div class="space-y-1.5 font-mono text-[11px]">${audioRow}${subtitleRow}</div>${bothButton}<button type="button" onclick="dismissLibrarySuggestion()" title="Bỏ qua" class="absolute top-2.5 right-3 text-zinc-400 hover:text-zinc-200 text-xs">✕</button></div>`;
+
+      container.innerHTML = `
+        <div class="relative bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-xs shadow-lg animate-fadeIn">
+          <div class="font-bold text-emerald-300 mb-2 pr-5 flex items-center gap-1.5">
+            <span>✨</span>
+            <span>Tài nguyên tìm thấy cho: <span class="text-amber-300">${escapeHtml(data.bibleRef)}</span></span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-200 ml-1 font-semibold">${escapeHtml(detectedLabel)}</span>
+          </div>
+          <div class="space-y-1.5 font-mono text-[11px]">${audioRow}${subtitleRow}</div>
+          ${bothButton}
+          <button type="button" onclick="dismissLibrarySuggestion()" title="Bỏ qua" class="absolute top-2.5 right-3 text-zinc-400 hover:text-zinc-200 text-xs">✕</button>
+        </div>`;
       container.classList.remove('hidden');
     }
 
     function getLibraryParams() {
       if (!_pendingLibraryAssets) return null;
-      return new URLSearchParams({ readingType: _pendingLibraryAssets.readingType, bibleRef: _pendingLibraryAssets.bibleRef });
+      const params = new URLSearchParams({ bibleRef: _pendingLibraryAssets.bibleRef });
+      if (_pendingLibraryAssets.readingType) {
+        params.append('readingType', _pendingLibraryAssets.readingType);
+      }
+      return params;
     }
 
     function previewLibraryAudio() {
@@ -1357,11 +1400,27 @@
         if (!confirmed) return false;
       }
       try {
-        const res = await fetch('/api/library-assets/import-audio', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ readingType: data.readingType, bibleRef: data.bibleRef }) });
+        const payload = {
+          bibleRef: data.bibleRef,
+          readingType: data.readingType || data.detectedReadingType || ''
+        };
+        const res = await fetch('/api/library-assets/import-audio', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
         const json = await res.json();
         if (!res.ok || !json.success) throw new Error(json.error || 'Không thể nạp audio.');
         currentData.audioFile = json.filename;
         document.getElementById('audio-filename').innerText = `✅ Đã nạp audio thư viện: ${json.sourceFilename}`;
+
+        // Auto-fill readingType if empty
+        const readingTypeInput = document.getElementById('input-readingType');
+        if (readingTypeInput && !readingTypeInput.value.trim() && (data.detectedReadingType || data.audio.readingType)) {
+          readingTypeInput.value = (data.detectedReadingType || data.audio.readingType).toUpperCase();
+          currentData.readingType = readingTypeInput.value;
+        }
+
         saveData();
         showToast('✅ Đã nạp audio!', json.sourceFilename, 'success');
         return true;
@@ -1389,7 +1448,15 @@
         if (!res.ok || !json.success || !Array.isArray(json.subtitles)) throw new Error(json.error || 'Không thể nạp phụ đề.');
         currentSubtitles = json.subtitles;
         try { localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(currentSubtitles)); } catch (_) {}
-        await saveSubtitles();
+        
+        // Auto-fill readingType if empty
+        const readingTypeInput = document.getElementById('input-readingType');
+        if (readingTypeInput && !readingTypeInput.value.trim() && (data.detectedReadingType || data.audio?.readingType)) {
+          readingTypeInput.value = (data.detectedReadingType || data.audio?.readingType).toUpperCase();
+          currentData.readingType = readingTypeInput.value;
+        }
+
+        await saveSubtitles(true);
         renderSubtitlesList();
         showToast('✅ Đã nạp phụ đề!', `${json.filename} (${json.subtitleCount} đoạn)`, 'success');
         return true;
@@ -1706,6 +1773,7 @@
           showToast('Lỗi nạp file', 'Không thể nạp file phụ đề: ' + err.message, 'error');
           showStatus("❌ Lỗi Nạp File", err.message);
         }
+      };
       fileInput.click();
     }
 

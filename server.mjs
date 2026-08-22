@@ -23,7 +23,7 @@ const AUDIO_LIBRARY_ROOTS = [
 ].filter(Boolean);
 const AUDIO_LIBRARY_ROOT = AUDIO_LIBRARY_ROOTS[0];
 
-const app = express();
+export const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
 
 // ── CORS: allow local and tunnel origins ──────────────────────────────────────
@@ -188,16 +188,22 @@ function normalizeReadingType(readingType) {
     .trim();
 }
 
+const ALL_LIBRARY_SPECS = [
+  { directory: "gospels", prefix: "gospel_", detectedType: "Tin Mừng" },
+  { directory: path.join("readings", "r1"), prefix: "r1_", detectedType: "Bài Đọc 1" },
+  { directory: path.join("readings", "r2"), prefix: "r2_", detectedType: "Bài Đọc 2" },
+];
+
 function getLibraryAudioSpec(readingType) {
   const value = normalizeReadingType(readingType);
   if (value === "tin mung" || value === "phuc am" || value === "gospel") {
-    return { directory: "gospels", prefix: "gospel_" };
+    return { directory: "gospels", prefix: "gospel_", detectedType: "Tin Mừng" };
   }
   if (/^bai doc (1|i)$/.test(value)) {
-    return { directory: path.join("readings", "r1"), prefix: "r1_" };
+    return { directory: path.join("readings", "r1"), prefix: "r1_", detectedType: "Bài Đọc 1" };
   }
   if (/^bai doc (2|ii)$/.test(value)) {
-    return { directory: path.join("readings", "r2"), prefix: "r2_" };
+    return { directory: path.join("readings", "r2"), prefix: "r2_", detectedType: "Bài Đọc 2" };
   }
   return null;
 }
@@ -228,47 +234,66 @@ function isInsideLibrary(candidate) {
 
 export function findLibraryAssets(readingType, bibleRef) {
   const keys = getBibleReferenceKeys(bibleRef);
-  const audioSpec = getLibraryAudioSpec(readingType);
   if (!keys) return { error: "Kinh Thánh Ref không đúng định dạng tên file." };
-  if (!audioSpec) return { error: "Loại Bài Đọc chưa được hỗ trợ." };
+
+  const preferredSpec = readingType ? getLibraryAudioSpec(readingType) : null;
+  const specsToCheck = preferredSpec
+    ? [preferredSpec, ...ALL_LIBRARY_SPECS.filter((s) => s.directory !== preferredSpec.directory)]
+    : ALL_LIBRARY_SPECS;
 
   let audio = null;
   let subtitle = null;
+  let detectedReadingType = preferredSpec ? preferredSpec.detectedType : null;
 
   for (const root of AUDIO_LIBRARY_ROOTS) {
     try {
-      const audioDir = path.resolve(root, audioSpec.directory);
-      const subtitleDir = path.resolve(root, "sub");
-
-      if (!audio && fs.existsSync(audioDir)) {
-        for (const extension of [".mp3", ".wav"]) {
-          const filename = `${audioSpec.prefix}${keys.audioKey}${extension}`;
-          const filePath = path.join(audioDir, filename);
-          if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-            audio = { filename, filePath, extension: extension.slice(1) };
-            break;
+      if (!audio) {
+        for (const spec of specsToCheck) {
+          const audioDir = path.resolve(root, spec.directory);
+          if (fs.existsSync(audioDir)) {
+            for (const extension of [".mp3", ".wav"]) {
+              const filename = `${spec.prefix}${keys.audioKey}${extension}`;
+              const filePath = path.join(audioDir, filename);
+              if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+                audio = {
+                  filename,
+                  filePath,
+                  extension: extension.slice(1),
+                  directory: spec.directory,
+                  readingType: spec.detectedType,
+                };
+                if (!detectedReadingType) {
+                  detectedReadingType = spec.detectedType;
+                }
+                break;
+              }
+            }
           }
+          if (audio) break;
         }
       }
 
-      if (!subtitle && fs.existsSync(subtitleDir)) {
-        for (const ext of [".srt", ".json"]) {
-          const subtitleFilename = `${keys.subtitleKey}${ext}`;
-          const subtitlePath = path.join(subtitleDir, subtitleFilename);
-          if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
-            let parsed = [];
-            const raw = fs.readFileSync(subtitlePath, "utf-8");
-            if (ext === ".srt") {
-              parsed = parseSrt(raw);
-            } else {
-              try {
-                const j = JSON.parse(raw);
-                parsed = Array.isArray(j) ? j : (j.subtitles || []);
-              } catch (_) {}
-            }
-            if (parsed.length > 0) {
-              subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: parsed.length };
-              break;
+      if (!subtitle) {
+        const subtitleDir = path.resolve(root, "sub");
+        if (fs.existsSync(subtitleDir)) {
+          for (const ext of [".srt", ".json"]) {
+            const subtitleFilename = `${keys.subtitleKey}${ext}`;
+            const subtitlePath = path.join(subtitleDir, subtitleFilename);
+            if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
+              let parsed = [];
+              const raw = fs.readFileSync(subtitlePath, "utf-8");
+              if (ext === ".srt") {
+                parsed = parseSrt(raw);
+              } else {
+                try {
+                  const j = JSON.parse(raw);
+                  parsed = Array.isArray(j) ? j : (j.subtitles || []);
+                } catch (_) {}
+              }
+              if (parsed.length > 0) {
+                subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: parsed.length };
+                break;
+              }
             }
           }
         }
@@ -276,7 +301,7 @@ export function findLibraryAssets(readingType, bibleRef) {
     } catch (_) {}
   }
 
-  return { keys, audio, subtitle };
+  return { keys, audio, subtitle, detectedReadingType };
 }
 
 function libraryLookupHandler(req, res) {
@@ -286,8 +311,18 @@ function libraryLookupHandler(req, res) {
     success: true,
     audioKey: result.keys.audioKey,
     subtitleKey: result.keys.subtitleKey,
-    audio: result.audio && { found: true, filename: result.audio.filename, format: result.audio.extension },
-    subtitle: result.subtitle && { found: true, filename: result.subtitle.filename, subtitleCount: result.subtitle.subtitleCount },
+    detectedReadingType: result.detectedReadingType,
+    audio: result.audio && {
+      found: true,
+      filename: result.audio.filename,
+      format: result.audio.extension,
+      readingType: result.audio.readingType,
+    },
+    subtitle: result.subtitle && {
+      found: true,
+      filename: result.subtitle.filename,
+      subtitleCount: result.subtitle.subtitleCount,
+    },
   });
 }
 
@@ -951,7 +986,9 @@ app.post("/api/cancel-render", (_req, res) => {
 
 // ── Serve Main Studio Web Page ─────────────────────────────────────────────────
 app.get("/", (_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "studio.html"));
+  // Read the Studio shell for every request so a local restart always serves
+  // the current inline JavaScript instead of a stale static-file cache.
+  res.type("html").send(fs.readFileSync(path.join(__dirname, "public", "studio.html"), "utf-8"));
 });
 
 const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url).endsWith(path.basename(process.argv[1]));

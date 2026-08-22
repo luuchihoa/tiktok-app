@@ -312,10 +312,13 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
             <span
               style={{
                 fontFamily: "Outfit, 'Be Vietnam Pro', sans-serif",
-                fontSize: 22,
-                fontWeight: 700,
-                color: theme.secondaryColor,
-                letterSpacing: "0.5px",
+                // Kept deliberately high-contrast: small coloured lettering
+                // becomes soft after H.264/TikTok chroma compression.
+                fontSize: 28,
+                fontWeight: 800,
+                color: "#ecfdf5",
+                letterSpacing: "0.6px",
+                textShadow: "0 2px 5px rgba(0, 0, 0, 0.95), 0 0 8px rgba(16, 185, 129, 0.4)",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -327,7 +330,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
         </div>
       )}
       {/* GOLDEN PARTICLES LAYER */}
-      <GoldenParticles color={theme.particleColor} count={25} />
+      <GoldenParticles color={theme.particleColor} count={12} />
       {/* SWEEPING GOD RAYS LIGHT BEAM (FEATHERED CONIC GRADIENT - 0 FILTER COST) */}
       <div
         style={{
