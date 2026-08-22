@@ -1442,30 +1442,48 @@
         .join('\n');
     }
 
-    // ── Helper: Parse SRT text into subtitles array ──────────────────────────
+    // ── Helper: Normalize Subtitle List ─────────────────────────────────────
+    function normalizeSubtitleList(list) {
+      if (!Array.isArray(list)) return [];
+      return list
+        .map((item) => {
+          if (!item) return null;
+          const text = String(item.text ?? item.content ?? item.caption ?? "").trim();
+          if (!text) return null;
+          const startMs = Math.max(0, Math.round(Number(item.startMs ?? (item.start !== undefined ? item.start * 1000 : (item.fromMs ?? 0)))));
+          let durationMs = Math.round(Number(item.durationMs ?? (item.duration !== undefined ? item.duration * 1000 : (item.endMs ? item.endMs - startMs : (item.end !== undefined ? (item.end * 1000) - startMs : 2000)))));
+          if (isNaN(durationMs) || durationMs <= 0) durationMs = 2000;
+          return { text, startMs, durationMs };
+        })
+        .filter(Boolean);
+    }
+
+    // ── Helper: Parse SRT / WebVTT text into subtitles array ─────────────────
     function parseSrtContent(srtText) {
       if (!srtText || typeof srtText !== 'string') return [];
-      // Clean BOM and normalize newlines
       const cleanText = srtText.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
       const entries = cleanText.split(/\n\s*\n/);
       const subtitles = [];
 
       for (const entry of entries) {
-        const lines = entry.trim().split('\n');
-        if (lines.length < 2) continue;
+        const lines = entry.trim().split('\n').map(l => l.trim()).filter(Boolean);
+        if (lines.length === 0) continue;
 
-        let timeLineIdx = 0;
-        if (/^\d+$/.test(lines[0].trim())) {
-          timeLineIdx = 1;
+        let timeLineIdx = -1;
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].includes('-->')) {
+            timeLineIdx = i;
+            break;
+          }
         }
+        if (timeLineIdx === -1) continue;
 
         const timeLine = lines[timeLineIdx];
-        if (!timeLine || !timeLine.includes('-->')) continue;
-
         const [startStr, endStr] = timeLine.split('-->').map(s => s.trim());
         const parseTime = (str) => {
           if (!str) return 0;
-          const parts = str.replace(',', '.').split(':');
+          const clean = str.replace(',', '.');
+          const parts = clean.split(':');
           if (parts.length === 3) {
             const h = parseFloat(parts[0]) || 0;
             const m = parseFloat(parts[1]) || 0;
@@ -1476,7 +1494,7 @@
             const s = parseFloat(parts[1]) || 0;
             return Math.round((m * 60 + s) * 1000);
           }
-          return Math.round((parseFloat(parts[0]) || 0) * 1000);
+          return Math.round((parseFloat(clean) || 0) * 1000);
         };
 
         const startMs = parseTime(startStr);
@@ -1576,11 +1594,10 @@
       setTimeout(hideStatus, 4500);
     }
 
-
     function importProject() {
       const fileInput = document.createElement("input");
       fileInput.type = "file";
-      fileInput.accept = ".srt,.json,text/plain,application/json";
+      fileInput.accept = ".srt,.vtt,.json,.txt,text/plain,application/json";
 
       fileInput.onchange = async (e) => {
         const file = e.target.files[0];
@@ -1590,115 +1607,105 @@
 
         try {
           const text = await file.text();
+          let parsedSubs = [];
 
-          // TH1: File .srt hoặc text có format SRT
-          if (file.name.toLowerCase().endsWith('.srt') || text.includes('-->')) {
-            const parsedSubs = parseSrtContent(text);
-            if (!parsedSubs || parsedSubs.length === 0) {
-              showToast('Lỗi nạp phụ đề', 'Không thể đọc nội dung file SRT!', 'error');
-              showStatus("❌ Lỗi Nạp SRT", "File phụ đề không hợp lệ.");
-              return;
-            }
-
-            currentSubtitles = parsedSubs;
-            loadedJsonName = "current_subtitles.json";
-
+          // Case A: SRT / WebVTT format or text containing timestamps
+          if (file.name.toLowerCase().endsWith('.srt') || file.name.toLowerCase().endsWith('.vtt') || text.includes('-->')) {
+            parsedSubs = parseSrtContent(text);
+          } else {
+            // Case B: JSON file
             try {
-              localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(currentSubtitles));
-            } catch(e) {}
+              const json = JSON.parse(text);
 
-            await fetch('/api/subtitles', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                jsonName: loadedJsonName,
-                subtitles: currentSubtitles
-              })
-            });
+              // Sub-case B1: Array of subtitles: [ { text, startMs, durationMs } ]
+              if (Array.isArray(json)) {
+                parsedSubs = normalizeSubtitleList(json);
+              }
+              // Sub-case B2: Object with subtitles array: { subtitles: [...] }
+              else if (Array.isArray(json.subtitles)) {
+                parsedSubs = normalizeSubtitleList(json.subtitles);
+                
+                // If it also contains project metadata, restore it!
+                if (json.metadata || json.date) {
+                  const meta = json.metadata || json;
+                  if (meta.date) { currentData.date = meta.date; document.getElementById('input-date').value = meta.date; }
+                  if (meta.bannerTag) { currentData.bannerTag = meta.bannerTag; document.getElementById('input-bannerTag').value = meta.bannerTag; }
+                  if (meta.feastName) { currentData.feastName = meta.feastName; document.getElementById('input-feastName').value = meta.feastName; }
+                  if (meta.readingType) { currentData.readingType = meta.readingType; document.getElementById('input-readingType').value = meta.readingType; }
+                  if (meta.bibleRef) { currentData.bibleRef = meta.bibleRef; document.getElementById('input-bibleRef').value = meta.bibleRef; }
+                  if (meta.quote) { currentData.quote = meta.quote; document.getElementById('input-quote').value = meta.quote; }
+                  if (meta.websiteUrl) { currentData.websiteUrl = meta.websiteUrl; if (document.getElementById('input-websiteUrl')) document.getElementById('input-websiteUrl').value = meta.websiteUrl; }
+                  if (meta.season) { currentData.season = meta.season; selectSeason(meta.season, false); }
+                  saveData();
+                }
+              }
+              // Sub-case B3: Object with segments / transcription: { segments: [...] }
+              else if (Array.isArray(json.segments)) {
+                parsedSubs = normalizeSubtitleList(json.segments);
+              }
+              // Sub-case B4: Full project without subtitles array (only metadata)
+              else if (json.metadata || json.date) {
+                const meta = json.metadata || json;
+                if (meta.date) { currentData.date = meta.date; document.getElementById('input-date').value = meta.date; }
+                if (meta.bannerTag) { currentData.bannerTag = meta.bannerTag; document.getElementById('input-bannerTag').value = meta.bannerTag; }
+                if (meta.feastName) { currentData.feastName = meta.feastName; document.getElementById('input-feastName').value = meta.feastName; }
+                if (meta.readingType) { currentData.readingType = meta.readingType; document.getElementById('input-readingType').value = meta.readingType; }
+                if (meta.bibleRef) { currentData.bibleRef = meta.bibleRef; document.getElementById('input-bibleRef').value = meta.bibleRef; }
+                if (meta.quote) { currentData.quote = meta.quote; document.getElementById('input-quote').value = meta.quote; }
+                if (meta.season) { currentData.season = meta.season; selectSeason(meta.season, false); }
+                saveData();
+                showToast('✅ Đã nạp metadata dự án', file.name, 'success');
+                hideStatus();
+                return;
+              }
+            } catch (_) {
+              // Not valid JSON, fallback to parsing as plain text lines
+              const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+              if (lines.length > 0) {
+                let curTime = 0;
+                parsedSubs = lines.map((l) => {
+                  const sub = { text: l, startMs: curTime, durationMs: 2500 };
+                  curTime += 2600;
+                  return sub;
+                });
+              }
+            }
+          }
 
-            renderSubtitlesList();
-
-            showToast('Nạp SRT Thành Công', `Đã nạp ${parsedSubs.length} đoạn phụ đề từ file ${file.name}!`, 'success');
-            showStatus("✅ Đã Nạp Phụ Đề .SRT!", `${file.name} (${parsedSubs.length} đoạn)`);
-            setTimeout(hideStatus, 4000);
-
-            const iframe = document.getElementById('preview-iframe');
-            if (iframe) iframe.src = 'http://localhost:3000?t=' + Date.now();
+          if (!parsedSubs || parsedSubs.length === 0) {
+            showToast('Lỗi nạp phụ đề', 'Không tìm thấy dữ liệu phụ đề hợp lệ trong file ' + file.name, 'error');
+            showStatus("❌ Lỗi Nạp File", "Không tìm thấy phụ đề trong file.");
             return;
           }
 
-          // TH2: File .json dự án
-          const json = JSON.parse(text);
+          currentSubtitles = parsedSubs;
+          loadedJsonName = "current_subtitles.json";
 
-          if (!json.metadata && !json.date && !json.subtitles) {
-            showToast('Lỗi nạp dự án', 'File JSON không đúng định dạng dự án Catholic Video Studio!', 'error');
-            showStatus("❌ Lỗi Nạp Dự Án", "File JSON không hợp lệ.");
-            return;
-          }
+          try {
+            localStorage.setItem('catholic_studio_subs_current_subtitles.json', JSON.stringify(currentSubtitles));
+          } catch(e) {}
 
-          const meta = json.metadata || json;
-          const assets = json.assets || json;
+          await fetch('/api/subtitles', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              jsonName: loadedJsonName,
+              subtitles: currentSubtitles
+            })
+          });
 
-          currentData.date = meta.date || "";
-          currentData.bannerTag = meta.bannerTag || "PHỤNG VỤ LỜI CHÚA HÀNG NGÀY";
-          currentData.feastName = meta.feastName || "";
-          currentData.readingType = meta.readingType || "";
-          currentData.bibleRef = meta.bibleRef || "";
-          currentData.quote = meta.quote || "";
-          currentData.websiteUrl = meta.websiteUrl || "loichuamoingay.org";
-          currentData.season = meta.season || "ORDINARY";
-          currentData.imagePositionY = meta.imagePositionY !== undefined ? meta.imagePositionY : 50;
+          renderSubtitlesList();
 
-          // NOTE: audioFile / imageFile are NOT loaded from the project file.
-          // Media files are machine-specific. User must re-upload them manually.
-          // introAudioFile / outroAudioFile keep their current server values.
-
-          document.getElementById('input-date').value = currentData.date;
-          document.getElementById('input-bannerTag').value = currentData.bannerTag;
-          document.getElementById('input-feastName').value = currentData.feastName;
-          document.getElementById('input-readingType').value = currentData.readingType;
-          document.getElementById('input-bibleRef').value = currentData.bibleRef;
-          document.getElementById('input-quote').value = currentData.quote;
-          document.getElementById('input-websiteUrl').value = currentData.websiteUrl;
-          document.getElementById('input-imagePositionY').value = currentData.imagePositionY;
-          updatePosLabel(currentData.imagePositionY);
-
-          // Prompt user to re-upload media for this project
-          document.getElementById('image-filename').innerText = '⚠️ Vui lòng upload lại ảnh nền cho dự án này';
-          document.getElementById('audio-filename').innerText  = '⚠️ Vui lòng upload lại audio bài đọc cho dự án này';
-
-          showToast('📤 Dự án đã được nạp!', 'Metadata & phụ đề đã khôi phục. Vui lòng upload lại ảnh nền và audio bài đọc để hoàn chỉnh dự án.', 'warning');
-
-          selectSeason(currentData.season, false);
-          await saveData();
-
-          if (json.subtitles && Array.isArray(json.subtitles)) {
-            currentSubtitles = json.subtitles;
-            loadedJsonName = "current_subtitles.json";
-
-            await fetch('/api/subtitles', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                jsonName: loadedJsonName,
-                subtitles: currentSubtitles
-              })
-            });
-            renderSubtitlesList();
-          }
-
-          showStatus("🎉 Khôi Phục Dự Án Thành Công!", file.name + " đã nạp 100%!");
+          showToast('✅ Nạp Phụ Đề Thành Công', `Đã nạp ${parsedSubs.length} đoạn phụ đề từ file ${file.name}!`, 'success');
+          showStatus("✅ Đã Nạp Phụ Đề!", `${file.name} (${parsedSubs.length} đoạn)`);
           setTimeout(hideStatus, 3500);
 
-          const iframe = document.getElementById('preview-iframe');
-          iframe.src = 'http://localhost:3000?t=' + Date.now();
+          refreshPreview();
         } catch (err) {
           console.error(err);
-          showToast('Lỗi nạp file', 'Không thể nạp file phụ đề / dự án: ' + err.message, 'error');
+          showToast('Lỗi nạp file', 'Không thể nạp file phụ đề: ' + err.message, 'error');
           showStatus("❌ Lỗi Nạp File", err.message);
         }
-      };
-
       fileInput.click();
     }
 

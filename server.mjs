@@ -252,11 +252,25 @@ export function findLibraryAssets(readingType, bibleRef) {
       }
 
       if (!subtitle && fs.existsSync(subtitleDir)) {
-        const subtitleFilename = `${keys.subtitleKey}.srt`;
-        const subtitlePath = path.join(subtitleDir, subtitleFilename);
-        if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
-          const subtitles = parseSrt(fs.readFileSync(subtitlePath, "utf-8"));
-          subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: subtitles.length };
+        for (const ext of [".srt", ".json"]) {
+          const subtitleFilename = `${keys.subtitleKey}${ext}`;
+          const subtitlePath = path.join(subtitleDir, subtitleFilename);
+          if (fs.existsSync(subtitlePath) && fs.statSync(subtitlePath).isFile()) {
+            let parsed = [];
+            const raw = fs.readFileSync(subtitlePath, "utf-8");
+            if (ext === ".srt") {
+              parsed = parseSrt(raw);
+            } else {
+              try {
+                const j = JSON.parse(raw);
+                parsed = Array.isArray(j) ? j : (j.subtitles || []);
+              } catch (_) {}
+            }
+            if (parsed.length > 0) {
+              subtitle = { filename: subtitleFilename, filePath: subtitlePath, subtitleCount: parsed.length };
+              break;
+            }
+          }
         }
       }
     } catch (_) {}
@@ -290,7 +304,16 @@ app.get("/api/library-assets/subtitles", (req, res) => {
   const result = findLibraryAssets(req.query.readingType, req.query.bibleRef);
   if (result.error) return res.status(400).json({ success: false, error: result.error });
   if (!result.subtitle) return res.status(404).json({ success: false, error: "Không tìm thấy phụ đề trong thư viện." });
-  const subtitles = parseSrt(fs.readFileSync(result.subtitle.filePath, "utf-8"));
+  const raw = fs.readFileSync(result.subtitle.filePath, "utf-8");
+  let subtitles = [];
+  if (result.subtitle.filename.endsWith(".srt")) {
+    subtitles = parseSrt(raw);
+  } else {
+    try {
+      const parsed = JSON.parse(raw);
+      subtitles = Array.isArray(parsed) ? parsed : (parsed.subtitles || []);
+    } catch (_) {}
+  }
   res.json({ success: true, filename: result.subtitle.filename, subtitleCount: subtitles.length, subtitles });
 });
 
