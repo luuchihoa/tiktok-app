@@ -638,14 +638,15 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
           style={{
             fontSize: 64,
             fontWeight: 900,
-            color: theme.primaryColor,
-            WebkitTextStroke: "6px #000000",
-            paintOrder: "stroke fill markers",
+            backgroundImage:
+              "linear-gradient(180deg, #ffffff 0%, #fef08a 35%, #f59e0b 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
             textTransform: "uppercase",
             letterSpacing: "4px",
             margin: 0,
             filter:
-              "drop-shadow(0 0 15px rgba(0,0,0,0.95)) drop-shadow(0 6px 12px rgba(0,0,0,0.95))",
+              "drop-shadow(0 4px 14px rgba(0,0,0,0.95)) drop-shadow(0 0 24px rgba(245,158,11,0.5))",
           }}
         >
           {data.readingType}

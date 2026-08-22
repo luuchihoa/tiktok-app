@@ -12,7 +12,6 @@ export const videoData: VideoInput = {
   "outroAudioFile": "piano_outro.mp3",
   "imageFile": "current_image.jpg",
   "imagePositionY": 0,
-  "season": "ORDINARY",
-  "websiteUrl": "loichuamoingay.org",
-  "logoFile": "favicon.svg"
+  "season": "LENT_ADVENT",
+  "websiteUrl": "loichuamoingay.org"
 };
