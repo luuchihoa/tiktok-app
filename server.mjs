@@ -382,7 +382,7 @@ app.post("/api/data", (req, res) => {
     audioFile: cleanAudioName,
     audioDurationSeconds: audioDuration,
     bgImageFile: req.body.bgImageFile ? sanitizeFilename(req.body.bgImageFile) : undefined,
-    logoFile: req.body.logoFile ? sanitizeFilename(req.body.logoFile) : "logo.png",
+    logoFile: req.body.logoFile ? sanitizeFilename(req.body.logoFile) : "favicon.svg",
     introAudioFile: req.body.introAudioFile ? sanitizeFilename(req.body.introAudioFile) : "piano_intro.mp3",
     outroAudioFile: req.body.outroAudioFile ? sanitizeFilename(req.body.outroAudioFile) : "piano_outro.mp3",
   };

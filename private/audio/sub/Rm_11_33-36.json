@@ -1,0 +1,620 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-21T23:55:42.370Z",
+  "metadata": {
+    "date": "23/08/2026",
+    "bannerTag": "Phụng Vụ lời chúa hằng ngày",
+    "feastName": "Chúa Nhật XXI Thường Niên",
+    "readingType": "Bài Đọc 2",
+    "bibleRef": "Rm 11,33-36",
+    "quote": "\"Muôn vật đều do Người mà có, \nnhờ Người mà tồn tại và quy hướng về Người.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "ORDINARY",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Bài trích thư của thánh \nPhao-lô tông đồ ",
+      "startMs": 0,
+      "durationMs": 2750,
+      "tokens": [
+        {
+          "text": "Bài",
+          "fromMs": 20,
+          "toMs": 300
+        },
+        {
+          "text": " trích",
+          "fromMs": 300,
+          "toMs": 610
+        },
+        {
+          "text": " thư",
+          "fromMs": 610,
+          "toMs": 850
+        },
+        {
+          "text": " của",
+          "fromMs": 850,
+          "toMs": 1160
+        },
+        {
+          "text": " Thánh",
+          "fromMs": 1160,
+          "toMs": 1540
+        },
+        {
+          "text": " Fàu",
+          "fromMs": 1540,
+          "toMs": 1770
+        },
+        {
+          "text": " Lô",
+          "fromMs": 1770,
+          "toMs": 1950
+        },
+        {
+          "text": " Tông",
+          "fromMs": 1950,
+          "toMs": 2260
+        }
+      ]
+    },
+    {
+      "text": "gửi tín hữu Rô-ma.",
+      "startMs": 2750,
+      "durationMs": 2660,
+      "tokens": [
+        {
+          "text": " Đồ",
+          "fromMs": 2260,
+          "toMs": 2660
+        },
+        {
+          "text": " gửi",
+          "fromMs": 2660,
+          "toMs": 3260
+        },
+        {
+          "text": " tín",
+          "fromMs": 3260,
+          "toMs": 3740
+        },
+        {
+          "text": " hữu",
+          "fromMs": 3740,
+          "toMs": 4840
+        },
+        {
+          "text": " Roma",
+          "fromMs": 4840,
+          "toMs": 4840
+        },
+        {
+          "text": " Thư",
+          "fromMs": 4840,
+          "toMs": 5590
+        }
+      ]
+    },
+    {
+      "text": "Thưa anh em, sự giàu có,\nkhôn ngoan ",
+      "startMs": 5410,
+      "durationMs": 3190,
+      "tokens": [
+        {
+          "text": " anh",
+          "fromMs": 5590,
+          "toMs": 6140
+        },
+        {
+          "text": " em,",
+          "fromMs": 6140,
+          "toMs": 6680
+        },
+        {
+          "text": " sự",
+          "fromMs": 6680,
+          "toMs": 7000
+        },
+        {
+          "text": " giàu",
+          "fromMs": 7000,
+          "toMs": 7400
+        },
+        {
+          "text": " có,",
+          "fromMs": 7400,
+          "toMs": 7880
+        },
+        {
+          "text": " khôn",
+          "fromMs": 7880,
+          "toMs": 8200
+        },
+        {
+          "text": " ngoan",
+          "fromMs": 8200,
+          "toMs": 8780
+        }
+      ]
+    },
+    {
+      "text": "và thông suốt của Thiên Chúa \nsâu thẳm dường nào !",
+      "startMs": 8600,
+      "durationMs": 3840,
+      "tokens": [
+        {
+          "text": " và",
+          "fromMs": 8780,
+          "toMs": 8820
+        },
+        {
+          "text": " thông",
+          "fromMs": 8820,
+          "toMs": 9180
+        },
+        {
+          "text": " suốt",
+          "fromMs": 9180,
+          "toMs": 9720
+        },
+        {
+          "text": " của",
+          "fromMs": 9720,
+          "toMs": 9900
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 9900,
+          "toMs": 10300
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 10300,
+          "toMs": 10630
+        },
+        {
+          "text": " sâu",
+          "fromMs": 10630,
+          "toMs": 10900
+        },
+        {
+          "text": " thẩm",
+          "fromMs": 10900,
+          "toMs": 11290
+        },
+        {
+          "text": " dường",
+          "fromMs": 11290,
+          "toMs": 12200
+        },
+        {
+          "text": " nào?",
+          "fromMs": 12200,
+          "toMs": 12320
+        }
+      ]
+    },
+    {
+      "text": "Quyết định của Người, ai \ndò cho thấu !",
+      "startMs": 12440,
+      "durationMs": 3260,
+      "tokens": [
+        {
+          "text": " Quyết",
+          "fromMs": 12320,
+          "toMs": 12960
+        },
+        {
+          "text": " định",
+          "fromMs": 12960,
+          "toMs": 13440
+        },
+        {
+          "text": " của",
+          "fromMs": 13440,
+          "toMs": 13970
+        },
+        {
+          "text": " người",
+          "fromMs": 13970,
+          "toMs": 14480
+        },
+        {
+          "text": " ai",
+          "fromMs": 14480,
+          "toMs": 14640
+        },
+        {
+          "text": " dò",
+          "fromMs": 14640,
+          "toMs": 14880
+        },
+        {
+          "text": " cho",
+          "fromMs": 14880,
+          "toMs": 15280
+        }
+      ]
+    },
+    {
+      "text": "Đường lối của Người, ai \ntheo dõi được !",
+      "startMs": 15700,
+      "durationMs": 3420,
+      "tokens": [
+        {
+          "text": " thấu?",
+          "fromMs": 15280,
+          "toMs": 15960
+        },
+        {
+          "text": " Đường",
+          "fromMs": 15960,
+          "toMs": 16440
+        },
+        {
+          "text": " lối",
+          "fromMs": 16440,
+          "toMs": 16770
+        },
+        {
+          "text": " của",
+          "fromMs": 16770,
+          "toMs": 17400
+        },
+        {
+          "text": " người",
+          "fromMs": 17400,
+          "toMs": 17700
+        },
+        {
+          "text": " ai",
+          "fromMs": 17700,
+          "toMs": 17780
+        },
+        {
+          "text": " theo",
+          "fromMs": 17780,
+          "toMs": 18050
+        },
+        {
+          "text": " dõi",
+          "fromMs": 18050,
+          "toMs": 18300
+        }
+      ]
+    },
+    {
+      "text": "Thật vậy, ai đã biết \ntư tưởng của Chúa ? ",
+      "startMs": 19120,
+      "durationMs": 3340,
+      "tokens": [
+        {
+          "text": " được?",
+          "fromMs": 18300,
+          "toMs": 19120
+        },
+        {
+          "text": " Thật",
+          "fromMs": 19120,
+          "toMs": 19640
+        },
+        {
+          "text": " vậy",
+          "fromMs": 19640,
+          "toMs": 19890
+        },
+        {
+          "text": " ai",
+          "fromMs": 19890,
+          "toMs": 20300
+        },
+        {
+          "text": " đã",
+          "fromMs": 20300,
+          "toMs": 20310
+        },
+        {
+          "text": " biết",
+          "fromMs": 20310,
+          "toMs": 20730
+        },
+        {
+          "text": " tư",
+          "fromMs": 20730,
+          "toMs": 20940
+        },
+        {
+          "text": " tưởng",
+          "fromMs": 20940,
+          "toMs": 21500
+        },
+        {
+          "text": " của",
+          "fromMs": 21500,
+          "toMs": 21850
+        },
+        {
+          "text": " Chúa?",
+          "fromMs": 21850,
+          "toMs": 22640
+        }
+      ]
+    },
+    {
+      "text": "Ai đã làm cố vấn cho Người ?",
+      "startMs": 22460,
+      "durationMs": 2480,
+      "tokens": [
+        {
+          "text": " Ai",
+          "fromMs": 22640,
+          "toMs": 22940
+        },
+        {
+          "text": " đã",
+          "fromMs": 22940,
+          "toMs": 22960
+        },
+        {
+          "text": " làm",
+          "fromMs": 22960,
+          "toMs": 23280
+        },
+        {
+          "text": " cố",
+          "fromMs": 23280,
+          "toMs": 23590
+        },
+        {
+          "text": " vấn",
+          "fromMs": 23590,
+          "toMs": 23980
+        },
+        {
+          "text": " cho",
+          "fromMs": 23980,
+          "toMs": 24220
+        },
+        {
+          "text": " người?",
+          "fromMs": 24220,
+          "toMs": 25120
+        }
+      ]
+    },
+    {
+      "text": "Ai đã cho Người trước, ",
+      "startMs": 24940,
+      "durationMs": 1900,
+      "tokens": [
+        {
+          "text": " Ai",
+          "fromMs": 25120,
+          "toMs": 25380
+        },
+        {
+          "text": " đã",
+          "fromMs": 25380,
+          "toMs": 25510
+        },
+        {
+          "text": " cho",
+          "fromMs": 25510,
+          "toMs": 25710
+        },
+        {
+          "text": " người",
+          "fromMs": 25710,
+          "toMs": 26240
+        },
+        {
+          "text": " trước",
+          "fromMs": 26240,
+          "toMs": 26890
+        },
+        {
+          "text": " để",
+          "fromMs": 26890,
+          "toMs": 27100
+        },
+        {
+          "text": " người",
+          "fromMs": 27100,
+          "toMs": 27710
+        },
+        {
+          "text": " phải",
+          "fromMs": 27710,
+          "toMs": 28020
+        }
+      ]
+    },
+    {
+      "text": "để Người phải trả lại sau ?",
+      "startMs": 26840,
+      "durationMs": 2170,
+      "tokens": [
+        {
+          "text": " trả",
+          "fromMs": 28020,
+          "toMs": 28340
+        },
+        {
+          "text": " lại",
+          "fromMs": 28340,
+          "toMs": 28870
+        },
+        {
+          "text": " sau?",
+          "fromMs": 28870,
+          "toMs": 29120
+        }
+      ]
+    },
+    {
+      "text": "Vì muôn vật đều do \nNgười mà có,",
+      "startMs": 29010,
+      "durationMs": 2770,
+      "tokens": [
+        {
+          "text": " Vì",
+          "fromMs": 29190,
+          "toMs": 29470
+        },
+        {
+          "text": " muôn",
+          "fromMs": 29470,
+          "toMs": 29690
+        },
+        {
+          "text": " vật",
+          "fromMs": 29690,
+          "toMs": 30050
+        },
+        {
+          "text": " đều",
+          "fromMs": 30050,
+          "toMs": 30480
+        },
+        {
+          "text": " do",
+          "fromMs": 30480,
+          "toMs": 30620
+        },
+        {
+          "text": " người",
+          "fromMs": 30620,
+          "toMs": 31200
+        },
+        {
+          "text": " mà",
+          "fromMs": 31200,
+          "toMs": 31420
+        },
+        {
+          "text": " có,",
+          "fromMs": 31420,
+          "toMs": 31960
+        }
+      ]
+    },
+    {
+      "text": "nhờ Người mà tồn tại và \nquy hướng về Người.",
+      "startMs": 31780,
+      "durationMs": 3520,
+      "tokens": [
+        {
+          "text": " nhờ",
+          "fromMs": 31960,
+          "toMs": 32140
+        },
+        {
+          "text": " người",
+          "fromMs": 32140,
+          "toMs": 32640
+        },
+        {
+          "text": " mà",
+          "fromMs": 32640,
+          "toMs": 32820
+        },
+        {
+          "text": " tồn",
+          "fromMs": 32820,
+          "toMs": 33120
+        },
+        {
+          "text": " tại",
+          "fromMs": 33120,
+          "toMs": 33430
+        },
+        {
+          "text": " và",
+          "fromMs": 33430,
+          "toMs": 33680
+        },
+        {
+          "text": " quy",
+          "fromMs": 33680,
+          "toMs": 33790
+        },
+        {
+          "text": " hướng",
+          "fromMs": 33790,
+          "toMs": 34280
+        }
+      ]
+    },
+    {
+      "text": "Xin tôn vinh Thiên Chúa \nđến muôn đời ! ",
+      "startMs": 35300,
+      "durationMs": 3240,
+      "tokens": [
+        {
+          "text": " về",
+          "fromMs": 34280,
+          "toMs": 34530
+        },
+        {
+          "text": " người.",
+          "fromMs": 34530,
+          "toMs": 35120
+        },
+        {
+          "text": " Xin",
+          "fromMs": 35120,
+          "toMs": 35390
+        },
+        {
+          "text": " tồn",
+          "fromMs": 35390,
+          "toMs": 35720
+        },
+        {
+          "text": " vinh",
+          "fromMs": 35720,
+          "toMs": 35920
+        },
+        {
+          "text": " Thiên",
+          "fromMs": 35920,
+          "toMs": 36320
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 36320,
+          "toMs": 36670
+        },
+        {
+          "text": " đến",
+          "fromMs": 36670,
+          "toMs": 37060
+        },
+        {
+          "text": " muôn",
+          "fromMs": 37060,
+          "toMs": 37410
+        },
+        {
+          "text": " đời.",
+          "fromMs": 37410,
+          "toMs": 38120
+        }
+      ]
+    },
+    {
+      "text": "A-men.",
+      "startMs": 38540,
+      "durationMs": 1580,
+      "tokens": [
+        {
+          "text": " Amen.",
+          "fromMs": 38120,
+          "toMs": 40120
+        }
+      ]
+    }
+  ]
+}

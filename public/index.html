@@ -6,10 +6,10 @@
   <title>✝️ Catholic Video Studio Pro</title>
   
   <!-- FAVICON & APP ICONS -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./logo.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="./logo.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./logo.png">
-  <link rel="shortcut icon" href="./logo.png">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="./logo.png">
+  <link rel="apple-touch-icon" href="./favicon.svg">
+  <link rel="shortcut icon" href="./favicon.svg">
   <meta name="theme-color" content="#120e0b">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +31,7 @@
   <header class="h-16 border-b border-amber-500/20 bg-[#120e0b] px-6 flex items-center justify-between z-10 shrink-0">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-yellow-200 to-amber-600 shadow-lg shadow-amber-500/20 shrink-0">
-        <img src="./logo.png" alt="Logo" class="w-full h-full rounded-full object-cover bg-black">
+        <img src="./favicon.svg" alt="Logo" class="w-full h-full rounded-full object-cover bg-black">
       </div>
       <div>
         <div class="flex items-center gap-2.5">
@@ -1209,7 +1209,7 @@
       currentData.bibleRef = document.getElementById('input-bibleRef')?.value || currentData.bibleRef || '';
       currentData.quote = document.getElementById('input-quote')?.value || currentData.quote || '';
       currentData.websiteUrl = document.getElementById('input-websiteUrl')?.value || currentData.websiteUrl || 'loichuamoingay.org';
-      currentData.logoFile = currentData.logoFile || 'logo.png';
+      currentData.logoFile = currentData.logoFile || 'favicon.svg';
       currentData.introAudioFile = currentData.introAudioFile || 'piano_intro.mp3';
       currentData.outroAudioFile = currentData.outroAudioFile || 'piano_outro.mp3';
       currentData.imagePositionY = parseInt(document.getElementById('input-imagePositionY')?.value || '50', 10);

@@ -189,7 +189,7 @@ export const CatholicVideo: React.FC<VideoInput> = (props) => {
     data.outroAudioFile,
     "piano_outro.mp3",
   );
-  const cleanLogoFile = getCleanBasename(data.logoFile, "logo.png");
+  const cleanLogoFile = getCleanBasename(data.logoFile, "favicon.svg");
 
   const audioSrc = data.audioFile?.startsWith("blob:")
     ? data.audioFile

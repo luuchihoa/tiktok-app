@@ -130,6 +130,10 @@ describe("validateFilename — accepts valid input", () => {
   it("accepts .webp for image kind", () => {
     assert.doesNotThrow(() => validateFilename("photo.webp", "image", "public", PROJECT_ROOT));
   });
+
+  it("accepts .svg for image kind", () => {
+    assert.doesNotThrow(() => validateFilename("favicon.svg", "image", "public", PROJECT_ROOT));
+  });
 });
 
 // ── Tests: subtitle entry validation ─────────────────────────────────────────

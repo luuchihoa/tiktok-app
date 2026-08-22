@@ -6,13 +6,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname);
 
 export const MEDIA_EXTENSIONS = new Set([".mp3", ".wav", ".mp4", ".mkv", ".mov", ".webm"]);
-export const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp"]);
+export const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".svg"]);
 export const ALL_UPLOAD_EXTENSIONS = new Set([...MEDIA_EXTENSIONS, ...IMAGE_EXTENSIONS]);
 
 export const ALLOWED_MIME_TYPES = new Set([
   "image/jpeg",
   "image/png",
   "image/webp",
+  "image/svg+xml",
   "audio/mpeg",
   "audio/mp3",
   "audio/mpeg3",

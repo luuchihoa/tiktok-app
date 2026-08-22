@@ -1,0 +1,771 @@
+{
+  "projectVersion": "2.1",
+  "exportedAt": "2026-08-21T23:32:19.811Z",
+  "metadata": {
+    "date": "23/08/2026",
+    "bannerTag": "Phụng Vụ lời chúa hằng ngày",
+    "feastName": "Chúa Nhật XXI Thường Niên",
+    "readingType": "Bài Đọc 1",
+    "bibleRef": "Is 22,19-23",
+    "quote": "\"Chìa khoá nhà Đa-vít, Ta sẽ đặt trên vai nó.\"",
+    "websiteUrl": "loichuamoingay.org",
+    "season": "ORDINARY",
+    "imagePositionY": 50
+  },
+  "subtitles": [
+    {
+      "text": "Bài trích sách ngôn sứ \nI-sai-a.",
+      "startMs": 0,
+      "durationMs": 2260,
+      "tokens": [
+        {
+          "text": "Bài",
+          "fromMs": 50,
+          "toMs": 360
+        },
+        {
+          "text": " trích",
+          "fromMs": 360,
+          "toMs": 800
+        },
+        {
+          "text": " sách",
+          "fromMs": 800,
+          "toMs": 1200
+        },
+        {
+          "text": " Ngôn",
+          "fromMs": 1200,
+          "toMs": 1600
+        },
+        {
+          "text": " sứ",
+          "fromMs": 1600,
+          "toMs": 1920
+        },
+        {
+          "text": " Isai",
+          "fromMs": 1920,
+          "toMs": 2240
+        },
+        {
+          "text": " à.",
+          "fromMs": 2240,
+          "toMs": 2440
+        }
+      ]
+    },
+    {
+      "text": "Đức Chúa phán những lời này \nvới ông Sép-na, ",
+      "startMs": 2260,
+      "durationMs": 3800,
+      "tokens": [
+        {
+          "text": " Đức",
+          "fromMs": 2440,
+          "toMs": 2860
+        },
+        {
+          "text": " Chúa",
+          "fromMs": 2860,
+          "toMs": 3230
+        },
+        {
+          "text": " phán",
+          "fromMs": 3230,
+          "toMs": 3560
+        },
+        {
+          "text": " những",
+          "fromMs": 3560,
+          "toMs": 4060
+        },
+        {
+          "text": " lời",
+          "fromMs": 4060,
+          "toMs": 4410
+        },
+        {
+          "text": " này",
+          "fromMs": 4410,
+          "toMs": 4850
+        },
+        {
+          "text": " với",
+          "fromMs": 4850,
+          "toMs": 5170
+        },
+        {
+          "text": " ông",
+          "fromMs": 5170,
+          "toMs": 5540
+        }
+      ]
+    },
+    {
+      "text": "tể tướng triều đình :",
+      "startMs": 6060,
+      "durationMs": 1640,
+      "tokens": [
+        {
+          "text": " Sépna,",
+          "fromMs": 5540,
+          "toMs": 6100
+        },
+        {
+          "text": " tể",
+          "fromMs": 6100,
+          "toMs": 6360
+        },
+        {
+          "text": " tướng",
+          "fromMs": 6360,
+          "toMs": 6730
+        },
+        {
+          "text": " triều",
+          "fromMs": 6730,
+          "toMs": 7100
+        },
+        {
+          "text": " đình.",
+          "fromMs": 7100,
+          "toMs": 7480
+        }
+      ]
+    },
+    {
+      "text": "Ta sẽ tống ngươi khỏi chức vụ,",
+      "startMs": 7700,
+      "durationMs": 2500,
+      "tokens": [
+        {
+          "text": " Ta",
+          "fromMs": 7480,
+          "toMs": 7790
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 7790,
+          "toMs": 8000
+        },
+        {
+          "text": " tống",
+          "fromMs": 8000,
+          "toMs": 8410
+        },
+        {
+          "text": " ngươi",
+          "fromMs": 8410,
+          "toMs": 8900
+        },
+        {
+          "text": " khỏi",
+          "fromMs": 8900,
+          "toMs": 9420
+        },
+        {
+          "text": " chức",
+          "fromMs": 9420,
+          "toMs": 9800
+        },
+        {
+          "text": " vụ,",
+          "fromMs": 9800,
+          "toMs": 10270
+        },
+        {
+          "text": " ta",
+          "fromMs": 10270,
+          "toMs": 10380
+        }
+      ]
+    },
+    {
+      "text": "Ta sẽ đuổi ngươi khỏi địa vị.",
+      "startMs": 10200,
+      "durationMs": 2240,
+      "tokens": [
+        {
+          "text": " sẽ",
+          "fromMs": 10380,
+          "toMs": 10600
+        },
+        {
+          "text": " đuổi",
+          "fromMs": 10600,
+          "toMs": 10980
+        },
+        {
+          "text": " ngươi",
+          "fromMs": 10980,
+          "toMs": 11370
+        },
+        {
+          "text": " khỏi",
+          "fromMs": 11370,
+          "toMs": 11700
+        },
+        {
+          "text": " địa",
+          "fromMs": 11700,
+          "toMs": 12030
+        },
+        {
+          "text": " vị.",
+          "fromMs": 12030,
+          "toMs": 12320
+        }
+      ]
+    },
+    {
+      "text": "Ngày ấy, Ta sẽ gọi tôi tớ Ta\nlà En-gia-kim",
+      "startMs": 12440,
+      "durationMs": 3440,
+      "tokens": [
+        {
+          "text": " Ngày",
+          "fromMs": 12320,
+          "toMs": 12720
+        },
+        {
+          "text": " ấy,",
+          "fromMs": 12720,
+          "toMs": 13370
+        },
+        {
+          "text": " ta",
+          "fromMs": 13370,
+          "toMs": 13580
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 13580,
+          "toMs": 13700
+        },
+        {
+          "text": " gọi",
+          "fromMs": 13700,
+          "toMs": 14110
+        },
+        {
+          "text": " tôi",
+          "fromMs": 14110,
+          "toMs": 14440
+        },
+        {
+          "text": " tới",
+          "fromMs": 14440,
+          "toMs": 14850
+        },
+        {
+          "text": " ta",
+          "fromMs": 14850,
+          "toMs": 15060
+        }
+      ]
+    },
+    {
+      "text": "con của Khin-ki-gia-hu.",
+      "startMs": 15880,
+      "durationMs": 1920,
+      "tokens": [
+        {
+          "text": " là",
+          "fromMs": 15060,
+          "toMs": 15250
+        },
+        {
+          "text": " En",
+          "fromMs": 15250,
+          "toMs": 15410
+        },
+        {
+          "text": " Gia",
+          "fromMs": 15410,
+          "toMs": 15650
+        },
+        {
+          "text": " Kim,",
+          "fromMs": 15650,
+          "toMs": 16210
+        },
+        {
+          "text": " con",
+          "fromMs": 16210,
+          "toMs": 16340
+        },
+        {
+          "text": " của",
+          "fromMs": 16340,
+          "toMs": 16730
+        },
+        {
+          "text": " Khin",
+          "fromMs": 16730,
+          "toMs": 17030
+        },
+        {
+          "text": " Ki",
+          "fromMs": 17030,
+          "toMs": 17180
+        }
+      ]
+    },
+    {
+      "text": "Áo thụng của ngươi, Ta sẽ \nlấy mặc cho nó,",
+      "startMs": 17800,
+      "durationMs": 3180,
+      "tokens": [
+        {
+          "text": " Gia",
+          "fromMs": 17180,
+          "toMs": 17400
+        },
+        {
+          "text": " Hu.",
+          "fromMs": 17400,
+          "toMs": 17600
+        },
+        {
+          "text": " Áo",
+          "fromMs": 17600,
+          "toMs": 17950
+        },
+        {
+          "text": " thùng",
+          "fromMs": 17950,
+          "toMs": 18240
+        },
+        {
+          "text": " của",
+          "fromMs": 18240,
+          "toMs": 18610
+        },
+        {
+          "text": " ngươi,",
+          "fromMs": 18610,
+          "toMs": 19390
+        },
+        {
+          "text": " ta",
+          "fromMs": 19390,
+          "toMs": 19420
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 19420,
+          "toMs": 19750
+        }
+      ]
+    },
+    {
+      "text": "cân đai của ngươi, Ta sẽ \nđem thắt cho nó,",
+      "startMs": 20980,
+      "durationMs": 3330,
+      "tokens": [
+        {
+          "text": " Cần",
+          "fromMs": 20960,
+          "toMs": 21350
+        },
+        {
+          "text": " đài",
+          "fromMs": 21350,
+          "toMs": 21570
+        },
+        {
+          "text": " của",
+          "fromMs": 21570,
+          "toMs": 21880
+        },
+        {
+          "text": " ngươi,",
+          "fromMs": 21880,
+          "toMs": 22540
+        },
+        {
+          "text": " ta",
+          "fromMs": 22540,
+          "toMs": 22690
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 22690,
+          "toMs": 22790
+        },
+        {
+          "text": " đem",
+          "fromMs": 22790,
+          "toMs": 23030
+        },
+        {
+          "text": " thắt",
+          "fromMs": 23030,
+          "toMs": 23490
+        }
+      ]
+    },
+    {
+      "text": "quyền bính của ngươi, Ta sẽ \ntrao vào tay nó,",
+      "startMs": 24310,
+      "durationMs": 3480,
+      "tokens": [
+        {
+          "text": " cho",
+          "fromMs": 23490,
+          "toMs": 23580
+        },
+        {
+          "text": " nó.",
+          "fromMs": 23580,
+          "toMs": 24040
+        },
+        {
+          "text": " Quyền",
+          "fromMs": 24040,
+          "toMs": 24630
+        },
+        {
+          "text": " bính",
+          "fromMs": 24630,
+          "toMs": 24930
+        },
+        {
+          "text": " của",
+          "fromMs": 24930,
+          "toMs": 25300
+        },
+        {
+          "text": " ngươi,",
+          "fromMs": 25300,
+          "toMs": 26030
+        },
+        {
+          "text": " ta",
+          "fromMs": 26030,
+          "toMs": 26120
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 26120,
+          "toMs": 26420
+        }
+      ]
+    },
+    {
+      "text": "nó sẽ là cha đối với cư dân \nGiê-ru-sa-lem ",
+      "startMs": 27790,
+      "durationMs": 3120,
+      "tokens": [
+        {
+          "text": " Nó",
+          "fromMs": 28070,
+          "toMs": 28210
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 28210,
+          "toMs": 28500
+        },
+        {
+          "text": " là",
+          "fromMs": 28500,
+          "toMs": 28710
+        },
+        {
+          "text": " cha",
+          "fromMs": 28710,
+          "toMs": 28920
+        },
+        {
+          "text": " đối",
+          "fromMs": 28920,
+          "toMs": 29340
+        },
+        {
+          "text": " với",
+          "fromMs": 29340,
+          "toMs": 29700
+        },
+        {
+          "text": " cư",
+          "fromMs": 29700,
+          "toMs": 29910
+        },
+        {
+          "text": " dân",
+          "fromMs": 29910,
+          "toMs": 30190
+        }
+      ]
+    },
+    {
+      "text": "và với nhà Giu-đa.",
+      "startMs": 30910,
+      "durationMs": 1890,
+      "tokens": [
+        {
+          "text": " Jerusalem",
+          "fromMs": 30190,
+          "toMs": 30840
+        },
+        {
+          "text": " và",
+          "fromMs": 30840,
+          "toMs": 31080
+        },
+        {
+          "text": " với",
+          "fromMs": 31080,
+          "toMs": 31410
+        },
+        {
+          "text": " nhà",
+          "fromMs": 31410,
+          "toMs": 31700
+        },
+        {
+          "text": " Yuda.",
+          "fromMs": 31700,
+          "toMs": 32280
+        }
+      ]
+    },
+    {
+      "text": "Chìa khoá nhà Đa-vít, Ta sẽ \nđặt trên vai nó.",
+      "startMs": 32800,
+      "durationMs": 3390,
+      "tokens": [
+        {
+          "text": " Chìa",
+          "fromMs": 32280,
+          "toMs": 32800
+        },
+        {
+          "text": " khóa",
+          "fromMs": 32800,
+          "toMs": 33080
+        },
+        {
+          "text": " nhà",
+          "fromMs": 33080,
+          "toMs": 33410
+        },
+        {
+          "text": " David,",
+          "fromMs": 33410,
+          "toMs": 33980
+        },
+        {
+          "text": " ta",
+          "fromMs": 33980,
+          "toMs": 34470
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 34470,
+          "toMs": 34520
+        },
+        {
+          "text": " đặt",
+          "fromMs": 34520,
+          "toMs": 34960
+        },
+        {
+          "text": " trên",
+          "fromMs": 34960,
+          "toMs": 35370
+        }
+      ]
+    },
+    {
+      "text": "Nó mở ra thì không ai \nđóng được,",
+      "startMs": 36190,
+      "durationMs": 2840,
+      "tokens": [
+        {
+          "text": " vai",
+          "fromMs": 35370,
+          "toMs": 35610
+        },
+        {
+          "text": " nó.",
+          "fromMs": 35610,
+          "toMs": 35960
+        },
+        {
+          "text": " Nó",
+          "fromMs": 35960,
+          "toMs": 36190
+        },
+        {
+          "text": " mở",
+          "fromMs": 36190,
+          "toMs": 36640
+        },
+        {
+          "text": " ra",
+          "fromMs": 36640,
+          "toMs": 36660
+        },
+        {
+          "text": " thì",
+          "fromMs": 36660,
+          "toMs": 37010
+        },
+        {
+          "text": " không",
+          "fromMs": 37010,
+          "toMs": 37450
+        },
+        {
+          "text": " ai",
+          "fromMs": 37450,
+          "toMs": 37610
+        }
+      ]
+    },
+    {
+      "text": "nó đóng lại thì không ai \nmở được.",
+      "startMs": 39030,
+      "durationMs": 2470,
+      "tokens": [
+        {
+          "text": " đóng",
+          "fromMs": 37610,
+          "toMs": 38080
+        },
+        {
+          "text": " được,",
+          "fromMs": 38080,
+          "toMs": 38800
+        },
+        {
+          "text": " nó",
+          "fromMs": 38800,
+          "toMs": 39180
+        },
+        {
+          "text": " đóng",
+          "fromMs": 39180,
+          "toMs": 39340
+        },
+        {
+          "text": " lại",
+          "fromMs": 39340,
+          "toMs": 39650
+        },
+        {
+          "text": " thì",
+          "fromMs": 39650,
+          "toMs": 39880
+        },
+        {
+          "text": " không",
+          "fromMs": 39880,
+          "toMs": 40350
+        },
+        {
+          "text": " ai",
+          "fromMs": 40350,
+          "toMs": 40380
+        }
+      ]
+    },
+    {
+      "text": "Ta sẽ làm cho nó vững chắc\n như đinh đóng cột,",
+      "startMs": 41500,
+      "durationMs": 3900,
+      "tokens": [
+        {
+          "text": " mở",
+          "fromMs": 40380,
+          "toMs": 40620
+        },
+        {
+          "text": " được.",
+          "fromMs": 40620,
+          "toMs": 41200
+        },
+        {
+          "text": " Ta",
+          "fromMs": 41200,
+          "toMs": 41650
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 41650,
+          "toMs": 41950
+        },
+        {
+          "text": " làm",
+          "fromMs": 41950,
+          "toMs": 41990
+        },
+        {
+          "text": " cho",
+          "fromMs": 41990,
+          "toMs": 42210
+        },
+        {
+          "text": " nó",
+          "fromMs": 42210,
+          "toMs": 42410
+        },
+        {
+          "text": " vững",
+          "fromMs": 42410,
+          "toMs": 42860
+        }
+      ]
+    },
+    {
+      "text": "nó sẽ nên như ngai vinh hiển \ncho nhà cha nó.",
+      "startMs": 45400,
+      "durationMs": 3600,
+      "tokens": [
+        {
+          "text": " Nó",
+          "fromMs": 44880,
+          "toMs": 45260
+        },
+        {
+          "text": " sẽ",
+          "fromMs": 45260,
+          "toMs": 45660
+        },
+        {
+          "text": " nên",
+          "fromMs": 45660,
+          "toMs": 45720
+        },
+        {
+          "text": " như",
+          "fromMs": 45720,
+          "toMs": 46030
+        },
+        {
+          "text": " ngai",
+          "fromMs": 46030,
+          "toMs": 46330
+        },
+        {
+          "text": " vinh",
+          "fromMs": 46330,
+          "toMs": 46630
+        },
+        {
+          "text": " hiển",
+          "fromMs": 46630,
+          "toMs": 47090
+        },
+        {
+          "text": " cho",
+          "fromMs": 47090,
+          "toMs": 47320
+        }
+      ]
+    }
+  ]
+}
